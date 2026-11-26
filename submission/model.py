@@ -21,13 +21,23 @@ def buttons(groups: torch.Tensor) -> torch.Tensor:
                         groups[..., 5] == 1], dim=-1).to(torch.int8)
 
 
+def _choose_groups(distributions, deterministic, generator):
+    return torch.stack([
+        d.logits.argmax(-1) if deterministic else
+        torch.multinomial(d.probs, 1, generator=generator).squeeze(-1)
+        for d in distributions], -1)
+
+
+def action_groups(logits, deterministic=False, generator=None):
+    """Choose the same PPO policy actions without computing training statistics."""
+    distributions = [Categorical(logits=group) for group in logits.split(GROUP_SIZES, -1)]
+    return _choose_groups(distributions, deterministic, generator)
+
+
 def policy_stats(logits, actions=None, deterministic=False, generator=None):
     distributions = [Categorical(logits=x) for x in logits.split(GROUP_SIZES, -1)]
     if actions is None:
-        actions = torch.stack([
-            d.logits.argmax(-1) if deterministic else
-            torch.multinomial(d.probs, 1, generator=generator).squeeze(-1)
-            for d in distributions], -1)
+        actions = _choose_groups(distributions, deterministic, generator)
     log_prob = torch.stack([d.log_prob(actions[..., i])
                             for i, d in enumerate(distributions)], -1).sum(-1)
     entropy = torch.stack([d.entropy() for d in distributions], -1).sum(-1)

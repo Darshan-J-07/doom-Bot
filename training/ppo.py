@@ -8,12 +8,42 @@ def generalized_advantage(rewards, values, next_values, terminated, truncated, g
     advantage = torch.zeros_like(rewards)
     tail = torch.zeros_like(rewards[0])
     for t in reversed(range(len(rewards))):
-        # Time limits bootstrap the FINAL observation, never the reset observation.
+        # ViZDoom's wrapper supplies its last available observation on timeout.
         delta = rewards[t] + gamma * next_values[t] * (~terminated[t]) - values[t]
         # Neither kind of episode boundary propagates GAE into the next episode.
         tail = delta + gamma * lam * (~(terminated[t] | truncated[t])) * tail
         advantage[t] = tail
     return advantage, advantage + values
+
+
+def _minibatch(model, data, sequences):
+    device = data["values"].device
+    env = torch.tensor([entry[0] for entry in sequences], device=device)
+    left = torch.tensor([entry[1] for entry in sequences], device=device)
+    right = torch.tensor([entry[2] for entry in sequences], device=device)
+    length = max(end - begin for _, begin, end in sequences)
+    time = torch.arange(length, device=device)[:, None] + left
+    valid = time < right
+    time = torch.minimum(time, right - 1)
+    env = env.expand_as(time)
+
+    if not model.recurrent:
+        index = (time[valid], env[valid])
+        obs = {key: value[index] for key, value in data["obs"].items()}
+        logits, values, _ = model(obs, data["hidden"][index],
+                                   data["previous_action"][index], data["starts"][index])
+        return index, logits, values
+
+    hidden = data["hidden"][left, env[0]].detach()
+    logits_seq, values_seq = [], []
+    for t, e in zip(time, env):
+        obs = {key: value[t, e] for key, value in data["obs"].items()}
+        logits, values, hidden = model(obs, hidden, data["previous_action"][t, e],
+                                        data["starts"][t, e])
+        logits_seq.append(logits)
+        values_seq.append(values)
+    # Padded samples follow the valid prefix and contribute no objective or gradient.
+    return (time[valid], env[valid]), torch.stack(logits_seq)[valid], torch.stack(values_seq)[valid]
 
 
 def update(model, optimizer, data, *, epochs=3, sequence_length=32,
@@ -29,34 +59,19 @@ def update(model, optimizer, data, *, epochs=3, sequence_length=32,
     for _ in range(epochs):
         order = torch.randperm(len(sequences), generator=generator).tolist()
         for start in range(0, len(order), sequences_per_batch):
-            losses, value_losses, entropies, kls, counts = [], [], [], [], []
-            for idx in order[start:start + sequences_per_batch]:
-                env, left, right = sequences[idx]
-                hidden = data["hidden"][left, env:env + 1].detach()
-                logits_seq, value_seq = [], []
-                for t in range(left, right):
-                    obs = {k: v[t, env:env + 1] for k, v in data["obs"].items()}
-                    logits, value, hidden = model(obs, hidden,
-                        data["previous_action"][t, env:env + 1], data["starts"][t, env:env + 1])
-                    logits_seq.append(logits[0]); value_seq.append(value[0])
-                logits, value = torch.stack(logits_seq), torch.stack(value_seq)
-                _, log_prob, entropy = policy_stats(logits, data["actions"][left:right, env])
-                old_log_prob = data["log_probs"][left:right, env]
-                ratio = (log_prob - old_log_prob).exp()
-                adv = advantage[left:right, env]
-                losses.append(-torch.minimum(ratio * adv, ratio.clamp(1-clip, 1+clip) * adv).mean())
-                old_value = data["values"][left:right, env]
-                clipped_value = old_value + (value - old_value).clamp(-clip, clip)
-                target = returns[left:right, env]
-                value_losses.append(.5 * torch.maximum((value-target).square(), (clipped_value-target).square()).mean())
-                entropies.append(entropy.mean())
-                kls.append(((ratio - 1) - (log_prob - old_log_prob)).mean().detach())
-                counts.append(right-left)
-            weights = torch.tensor(counts, device=advantage.device, dtype=torch.float32)
-            weights /= weights.sum()
-            policy_loss = (torch.stack(losses) * weights).sum()
-            value_loss = (torch.stack(value_losses) * weights).sum()
-            entropy = (torch.stack(entropies) * weights).sum()
+            batch = [sequences[i] for i in order[start:start + sequences_per_batch]]
+            index, logits, values = _minibatch(model, data, batch)
+            _, log_prob, entropy = policy_stats(logits, data["actions"][index])
+            old_log_prob = data["log_probs"][index]
+            log_ratio = log_prob - old_log_prob
+            ratio = log_ratio.exp()
+            adv = advantage[index]
+            policy_loss = -torch.minimum(ratio * adv, ratio.clamp(1-clip, 1+clip) * adv).mean()
+            old_value = data["values"][index]
+            clipped_value = old_value + (values - old_value).clamp(-clip, clip)
+            target = returns[index]
+            value_loss = .5 * torch.maximum((values-target).square(), (clipped_value-target).square()).mean()
+            entropy = entropy.mean()
             loss = policy_loss + value_coef * value_loss - entropy_coef * entropy
             if not torch.isfinite(loss):
                 raise FloatingPointError("Non-finite PPO loss")
@@ -64,7 +79,7 @@ def update(model, optimizer, data, *, epochs=3, sequence_length=32,
             loss.backward()
             grad = torch.nn.utils.clip_grad_norm_(model.parameters(), max_grad_norm, error_if_nonfinite=True)
             optimizer.step()
-            stats.append([float(loss.detach()), float(value_loss.detach()), float(entropy.detach()),
-                          float(torch.stack(kls).mean()), float(grad)])
-    result = torch.tensor(stats).mean(0).tolist()
+            kl = ((ratio - 1) - log_ratio).mean()
+            stats.append(torch.stack((loss, value_loss, entropy, kl, grad)).detach())
+    result = torch.stack(stats).mean(0).tolist()
     return dict(zip(("loss", "value_loss", "entropy", "approx_kl", "grad_norm"), result))

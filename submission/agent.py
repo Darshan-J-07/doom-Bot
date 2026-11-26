@@ -4,7 +4,7 @@ from __future__ import annotations
 from pathlib import Path
 import numpy as np
 import torch
-from submission.model import SpatialPolicy, buttons, policy_stats
+from submission.model import SpatialPolicy, action_groups, buttons
 from submission.preprocessing import tensor_batch
 
 
@@ -37,7 +37,7 @@ class DoomAgent:
     def act(self, observation):
         logits, _, self.hidden = self.model(tensor_batch([observation], self.device),
             self.hidden, self.previous_action, self.episode_start)
-        groups, _, _ = policy_stats(logits, deterministic=self.deterministic, generator=self.generator)
+        groups = action_groups(logits, deterministic=self.deterministic, generator=self.generator)
         action = buttons(groups)
         self.previous_action = action.float()
         self.episode_start.zero_()

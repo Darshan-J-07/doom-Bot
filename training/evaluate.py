@@ -8,7 +8,7 @@ import time
 import numpy as np
 import torch
 from doom_env import CONTRACT_VERSION, make_env
-from submission.model import SpatialPolicy, buttons, policy_stats
+from submission.model import SpatialPolicy, action_groups, buttons
 from submission.preprocessing import tensor_batch
 from training.rewards import EpisodeMetrics
 from training.maps import load_verified_maps
@@ -19,7 +19,7 @@ def decision_mode(checkpoint, override=None):
 
 
 @torch.inference_mode()
-def evaluate(checkpoint_path, maps, seeds=(0,), ticks=2100, deterministic=None, device="cpu", record_dir=None):
+def evaluate(checkpoint_path, maps, seeds=(0,), ticks=2100, deterministic=None, device="cpu", record_dir=None, reset_memory=False, policy_seed=None):
     checkpoint = torch.load(checkpoint_path, map_location="cpu", weights_only=True)
     if checkpoint["contract_version"] != CONTRACT_VERSION or checkpoint["trained_steps"] <= 0:
         raise ValueError("Not a trained checkpoint for this contract")
@@ -39,12 +39,14 @@ def evaluate(checkpoint_path, maps, seeds=(0,), ticks=2100, deterministic=None, 
                 metrics = EpisodeMetrics(); metrics.reset(env.privileged_state())
                 hidden = model.initial_state(1, device)
                 prev = torch.zeros(1, 9, device=device); starts = torch.ones(1, device=device)
-                generator = torch.Generator(device=device).manual_seed(seed)
+                generator = torch.Generator(device=device).manual_seed(seed if policy_seed is None else policy_seed)
                 count = 0
                 while True:
                     t = time.perf_counter()
+                    if reset_memory:
+                        hidden.zero_()
                     logits, _, hidden = model(tensor_batch([obs], device), hidden, prev, starts)
-                    groups, _, _ = policy_stats(logits, deterministic=deterministic, generator=generator)
+                    groups = action_groups(logits, deterministic=deterministic, generator=generator)
                     action = buttons(groups)[0].cpu().numpy()
                     if device == "cuda": torch.cuda.synchronize()
                     latencies.append((time.perf_counter()-t)*1000)

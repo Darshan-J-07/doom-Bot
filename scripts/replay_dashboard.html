@@ -1,0 +1,127 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DOOM NEXUS | Replay comparison</title>
+<style>
+:root { color-scheme: dark; --panel:#1c2028; --ink:#f0f4f8; --muted:#aab7c6; --accent:#a0ecc9 }
+* { box-sizing:border-box } body { margin:0; font:15px system-ui,sans-serif; color:var(--ink); background:#101319 }
+main { max-width:1240px; margin:auto; padding:22px } h1 { margin:0; font-size:clamp(26px,5vw,44px) }
+h2 { margin:0 0 14px; font-size:20px } p { color:var(--muted); margin:10px 0 18px }
+.controls { display:flex; gap:14px; align-items:center; margin:18px 0 } button { background:var(--accent); color:#172025; border:0; border-radius:5px; padding:9px 16px; font-weight:700; cursor:pointer }
+input[type=range] { flex:1; min-width:0; accent-color:var(--accent) }
+.columns { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px }
+article, section { border:1px solid #303947; padding:14px; background:var(--panel); border-radius:8px; min-width:0 }
+section { margin-top:14px; overflow:auto } .panels { display:grid; gap:12px; grid-template-columns:minmax(0,2fr) minmax(0,1fr); align-items:start }
+canvas { display:block; width:100%; background:#11141b; border-radius:4px }
+.game { image-rendering:pixelated } dl { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:7px; margin:12px 0 }
+dl div { border-top:1px solid #303947; padding:6px 0 } dt { color:var(--muted); font-size:12px } dd { margin:3px 0 0; font-variant-numeric:tabular-nums }
+.actions { font-size:12px; line-height:1.6; color:var(--muted) } .actions b { color:var(--ink) }
+table { border-collapse:collapse; width:100%; text-align:left; white-space:nowrap } td,th { padding:9px; border-bottom:1px solid #303947 }
+@media(max-width:740px) { .columns { grid-template-columns:1fr } main { padding:14px } }
+</style>
+<main>
+<h1>DOOM NEXUS</h1>
+<p id="scenario"></p>
+<div class="controls">
+  <button id="play">Play</button>
+  <input id="seek" type="range" min="0" value="0" aria-label="Replay decision">
+  <output id="position"></output>
+</div>
+<div class="columns" id="players"></div>
+<p>Positions, shaped reward, and progression counters are diagnostic-only. Rays and entities are permitted policy observations. Rays face right on the plot. White dots mark visible entities. Vitals show the pre-action observation. Progression counters include that action.</p>
+<section><h2>Checkpoint comparison</h2><div id="comparison"></div></section>
+<section id="training" hidden><h2>Training reward</h2><p>Rolling mean shaped return over up to 30 completed training episodes.</p><canvas id="curve" width="900" height="175"></canvas></section>
+</main>
+<script src="data.js"></script>
+<script>
+"use strict";
+const data = window.replayData;
+const $ = id => document.getElementById(id);
+const palette = ["#374151","#d1d5db","#60a5fa","#fb923c","#f87171","#86efac"];
+const actionGroups = ["Forward / backward", "Strafe", "Turn", "Attack", "Use", "Next weapon"];
+const labels = ["Health","Armor","Current ammo","Ammo reserves","Visible entities","Keys","Doors opened","Locks unlocked","Exploration cells","Kills","Cumulative reward","Episode"];
+const frameCount = Math.max(data.baseline.rows.length, data.candidate.rows.length);
+$("scenario").textContent = data.scenario + " · recorded ViZDoom episodes · synchronized engine decisions";
+$("seek").max = frameCount - 1;
+const makePlayer = (title, source) => {
+  const element = document.createElement("article");
+  element.innerHTML = `<h2>${title}</h2><div class="panels">
+      <canvas class="game" width="320" height="240" aria-label="Recorded gameplay"></canvas>
+      <canvas width="180" height="180" aria-label="Raycast and visible entity plot"></canvas></div>
+    <dl></dl><div class="actions" aria-label="Agent action probabilities"></div>`;
+  $("players").append(element);
+  const sprites = source.sprites.map(path => { const image = new Image(); image.src = path; return image; });
+  const [screen, radar] = [...element.querySelectorAll("canvas")].map(c => c.getContext("2d"));
+  let running = 0;
+  const rewards = source.rows.map(row => running += row.reward);
+  return { source, sprites, screen, radar, rewards, list:element.querySelector("dl"),
+           actions:element.querySelector(".actions") };
+};
+const players = [makePlayer("Preserved MLP", data.baseline), makePlayer("Compared checkpoint", data.candidate)];
+const plotSensors = (context, row) => {
+  context.fillStyle="#11141b"; context.fillRect(0,0,180,180);
+  row.ray_ranges.forEach((range, i) => {
+    const a = i * Math.PI / 32;
+    context.strokeStyle=palette[row.ray_types[i]];
+    context.beginPath(); context.moveTo(90,90);
+    context.lineTo(90+80*range*Math.cos(a),90-80*range*Math.sin(a)); context.stroke();
+  });
+  row.entity_features.forEach(([distance,sin,cos]) => {
+    const length = 80 * Math.min(distance,1);
+    context.fillStyle="#fff";
+    context.beginPath(); context.arc(90+length*cos,90-length*sin,3,0,Math.PI*2); context.fill();
+  });
+};
+function render() {
+  const current=Number($("seek").value);
+  $("position").textContent=`${current+1} / ${frameCount}`;
+  for (const p of players) {
+    const i=Math.min(current,p.source.rows.length-1), row=p.source.rows[i];
+    const sheet=p.sprites[Math.floor(i/p.source.frames_per_sprite)];
+    const cell=i%p.source.frames_per_sprite;
+    if (sheet.complete && sheet.naturalWidth) {
+      p.screen.imageSmoothingEnabled=false;
+      p.screen.drawImage(sheet,(cell%p.source.columns)*160,Math.floor(cell/p.source.columns)*120,160,120,0,0,320,240);
+    }
+    plotSensors(p.radar,row);
+    const values=[row.vitals[0],row.vitals[1],row.vitals[3],row.vitals.slice(4,8).join(" / "),row.entities.length,row.keys,row.doors,row.locks,row.exploration,row.kills,p.rewards[i].toFixed(1),row.outcome ?? (i === p.source.rows.length-1 ? "Finished" : "Playing")];
+    p.list.innerHTML=labels.map((label,j)=>`<div><dt>${label}</dt><dd>${values[j]}</dd></div>`).join("");
+    p.actions.innerHTML=row.probabilities.map((group,j) => `<div><b>${actionGroups[j]}</b> · ${group.map(n=>Math.round(100*n)+"%").join(" / ")}</div>`).join("");
+  }
+}
+let timer;
+$("play").onclick=() => {
+  if (timer) { clearInterval(timer); timer=undefined; $("play").textContent="Play"; return; }
+  if (Number($("seek").value)===frameCount-1) $("seek").value=0;
+  $("play").textContent="Pause";
+  timer=setInterval(() => {
+    $("seek").value=Number($("seek").value)+1; render();
+    if (Number($("seek").value)===frameCount-1) $("play").click();
+  }, 1000*4/35);
+};
+$("seek").oninput=render;
+players.flatMap(p=>p.sprites).forEach(image=>image.addEventListener("load",render));
+render();
+const table=document.createElement("table");
+table.innerHTML="<thead><tr><th>Checkpoint</th><th>Tier</th><th>Exit</th><th>Survival</th><th>Kills/ep</th><th>Keys/ep</th><th>Locks/ep</th><th>Cells/ep</th><th>Weighted local proxy</th></tr></thead>";
+const body=table.createTBody();
+data.comparisons.forEach(c => Object.entries(c.tiers).forEach(([name,m]) => {
+  const row=body.insertRow();
+  [c.path.split("/").at(-2), name, Math.round(m.exit*100)+"%", Math.round(m.survived*100)+"%",
+   m.kills.toFixed(2), m.keys.toFixed(2), m.locks.toFixed(2), m.unique_cells.toFixed(1), c.score.toFixed(2)]
+    .forEach(value=>row.insertCell().textContent=value);
+}));
+$("comparison").append(table);
+if (data.learning.length>1) {
+  $("training").hidden=false;
+  const context=$("curve").getContext("2d"), ys=data.learning.map(p=>p[1]);
+  const low=Math.min(...ys), high=Math.max(...ys), first=data.learning[0][0], last=data.learning.at(-1)[0];
+  context.strokeStyle="#a0ecc9"; context.lineWidth=2; context.beginPath();
+  data.learning.forEach(([step,value],i) => {
+    const x=18+864*(step-first)/Math.max(1,last-first), y=151-130*(value-low)/Math.max(.001,high-low);
+    i ? context.lineTo(x,y) : context.moveTo(x,y);
+  });
+  context.stroke();
+  context.fillStyle="#d1d5db"; context.fillText(`${first}–${last} decisions · observed range ${low.toFixed(1)} to ${high.toFixed(1)}`,18,168);
+}
+</script>

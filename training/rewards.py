@@ -53,3 +53,38 @@ class EpisodeMetrics:
                     doors=len(self.opened), locks=len(self.unlocked), unique_cells=len(self.visited),
                     health=s["health"], damage=s["damage_taken"], ticks=s["tic"],
                     shaped_return=self.total_reward)
+
+
+class ProgressReward(EpisodeMetrics):
+    """Training-only shaping with one-time milestones and bounded stall costs."""
+
+    def reset(self, state):
+        super().reset(state)
+        self.stall_steps = 0
+        self.credited_keys = np.asarray(state["keys"], dtype=bool).copy()
+        self.credited_terminal = False
+
+    def step(self, state):
+        if self.credited_terminal:
+            return 0.0
+        previous = self.previous
+        visited, doors, locks = len(self.visited), len(self.opened), len(self.unlocked)
+        self.credited_terminal = bool(state["exit_reached"] or state["dead"])
+        existing_reward = super().step(state)
+        keys = np.asarray(state["keys"], dtype=bool)
+        new_keys = np.count_nonzero(keys & ~self.credited_keys)
+        self.credited_keys |= keys
+        new_doors, new_locks = len(self.opened) - doors, len(self.unlocked) - locks
+        new_cell = len(self.visited) > visited
+        kills = max(0, state["kills"] - previous["kills"])
+        damage = max(0., state["damage_taken"] - previous["damage_taken"])
+        progressed = new_cell or new_keys or new_doors or kills
+        self.stall_steps = 0 if progressed else self.stall_steps + 1
+        stopped = np.hypot(state["x"] - previous["x"], state["y"] - previous["y"]) < 2
+        completion = (24 + 2 * np.clip(state["health"] / 100, 0, 1)) if state["exit_reached"] else 0
+        reward = (completion - 6. * state["dead"] + 2.5 * kills + 5. * new_keys
+                  + 2. * new_doors + 5. * new_locks + .10 * new_cell
+                  - .035 * damage - .002 - .012 * (self.stall_steps > 24)
+                  - .01 * (self.stall_steps > 6 and stopped))
+        self.total_reward += reward - existing_reward
+        return float(reward)
