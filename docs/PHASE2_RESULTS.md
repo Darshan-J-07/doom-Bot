@@ -68,3 +68,13 @@ Both devices also passed the unchanged validator inside a Linux namespace with o
 The ordinary and isolated validator logs are under `benchmarks/phase2/release-*.log`. The 111-case JUnit XML is `benchmarks/phase2/release-regression.xml`.
 
 The five-seed memory intervention confirmed a state-use effect on validation. The same GRU scored 17.79 with normal memory and 11.11 when its state was reset before every decision. Tier 3 unlocks decreased from three across ten episodes to zero. The GRU with memory still trailed the preserved MLP on that panel.
+
+## Organizer-recipe container checks
+
+Docker Desktop 4.100.1 was installed per user with the WSL 2 backend. Docker connectivity from Ubuntu was verified through Windows CLI interop. The native Ubuntu Docker socket still depends on enabling Ubuntu-24.04 in Docker Desktop's WSL Integration settings.
+
+The organizer registry denied access to its published tag. The documented fallback built the unmodified Dockerfile, dependency lock and environment from organizer commit `63b90c441ca92bcdf043de9ee3930ac6370a44bc`. The resulting local image was `devforge-doom:phase2-official-recipe` with image ID `sha256:8d311347d5a761f27b9cef7cc931a2477bad05cbbad4a298f5435b7fdfd17738`.
+
+The untouched official validator passed on CPU and CUDA inside that image. Both runs used networking disabled, a read-only root and repository mount, and one CPU core. The validator reported 745 MB peak RAM on CPU, 1,510 MB on CUDA, and approximately 110 MB of whole-GPU memory above the pre-run level. Agent time was 0.9 seconds on CPU and 5.8 seconds on CUDA over 525 decisions, within the 21-second budget.
+
+See `benchmarks/phase2/organizer-container-cpu.log` and `benchmarks/phase2/organizer-container-cuda.log`.
