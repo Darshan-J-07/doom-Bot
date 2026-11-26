@@ -1,5 +1,7 @@
 # Training prompt
 
+If training is running already, start with the [active-run prompt](LIVE_TRAINING_PROMPT.md).
+
 Copy the prompt below into a coding assistant with access to this repository. The paths assume its working directory is the repository root.
 
 ```text
