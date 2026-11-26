@@ -7,6 +7,10 @@ held-out results and successful official validation remain outstanding.
 Start with [the measured final report](docs/FINAL_REPORT.md). The original starter
 README is preserved in `docs/upstream-README.md`.
 
+Repository: [darshan1117/doomDevForge](https://github.com/darshan1117/doomDevForge).
+The fixed official-source hash manifest preserves the wrapper/validator integrity
+check in fresh clones even when upstream Git objects are unavailable.
+
 ## Measured status
 
 Latest user-verified environment: Ubuntu 24.04 / WSL 2, Python 3.13.18, ViZDoom

@@ -1,0 +1,15 @@
+{
+  "upstream_commit": "63b90c441ca92bcdf043de9ee3930ac6370a44bc",
+  "normalization": "CRLF to LF only",
+  "files": {
+    "env/doom_env/__init__.py": "b928075215c15e2b0213fcb44e743dde18567681430cdfcbf9e54b44da4efdd8",
+    "env/doom_env/limits.py": "fae0fd5fc9047055dbec161f074b07404b99e8cabd84acb3a1bf2f37077e1f2e",
+    "env/doom_env/mapinfo.py": "026112611a46343930cfa4a889479b5e0eed2980f2958e6ce3319e42d313f943",
+    "env/doom_env/remote.py": "201a58bd7f6702c186be7e17b38fc31b562db55e2cee685db8b994d4aa673cf5",
+    "env/doom_env/sensors.py": "d17ba4a55d03e8ddc44377bbfde1fe85d48c4a31c76f1973a47d307342a6916b",
+    "env/doom_env/spaces.py": "a9723b0d86a07cafb20df7057e626ff6b292ee612762f60d12367e7bf89742eb",
+    "env/doom_env/wad.py": "6228b521aab521300424a4d7d6fb9cf5d973283916753982041e33f613806199",
+    "env/doom_env/wrapper.py": "a5611dc46a9af3fbad4e4fa80442fad0918f993953c5250d7791b175fa9fa707",
+    "validate.py": "0cc3c106c1a46442b923c0908f8e6f54cf71ffedde65f90b6cc254aa1c158719"
+  }
+}

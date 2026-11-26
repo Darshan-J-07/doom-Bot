@@ -2,6 +2,7 @@
 from __future__ import annotations
 import inspect
 import json
+import hashlib
 from pathlib import Path
 import subprocess
 import numpy as np
@@ -97,12 +98,16 @@ def test_ppo_updates_parameters_with_finite_gradients(recurrent):
 
 
 def test_official_files_unchanged():
-    # Compare to the inspected source commit, not mutable HEAD or a local test double.
+    # Fixed hashes captured from the inspected upstream commit also work in a
+    # fresh template/snapshot clone that does not contain upstream Git objects.
+    manifest=json.loads((ROOT/"docs/official-source-sha256.json").read_text())
+    assert manifest["upstream_commit"]=="63b90c441ca92bcdf043de9ee3930ac6370a44bc"
     paths = ["validate.py", *[str(p.relative_to(ROOT)).replace("\\","/")
                              for p in (ROOT/"env/doom_env").glob("*.py")]]
+    assert set(paths)==set(manifest["files"])
     for path in paths:
-        raw = subprocess.check_output(["git","show",f"63b90c441ca92bcdf043de9ee3930ac6370a44bc:{path}"],cwd=ROOT)
-        assert (ROOT/path).read_bytes().replace(b"\r\n",b"\n") == raw.replace(b"\r\n",b"\n")
+        raw=(ROOT/path).read_bytes().replace(b"\r\n",b"\n")
+        assert hashlib.sha256(raw).hexdigest()==manifest["files"][path]
 
 
 def test_map_splits_disjoint():
