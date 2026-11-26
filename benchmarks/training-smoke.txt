@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Darshan\Documents\Codex\2026-11-26\files-mentioned-by-the-user-yugaantar\outputs\doom-nexus\training\train.py", line 170, in <module>
+    if __name__ == "__main__": main()
+                               ~~~~^^
+  File "C:\Users\Darshan\Documents\Codex\2026-11-26\files-mentioned-by-the-user-yugaantar\outputs\doom-nexus\training\train.py", line 102, in main
+    env, obs, tracker = new_env(steps / args.steps)
+                        ~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Darshan\Documents\Codex\2026-11-26\files-mentioned-by-the-user-yugaantar\outputs\doom-nexus\training\train.py", line 94, in new_env
+    env = make_env(spec["path"], episode_ticks=args.ticks, render_buffers=False)
+  File "C:\Users\Darshan\Documents\Codex\2026-11-26\files-mentioned-by-the-user-yugaantar\outputs\doom-nexus\env\doom_env\__init__.py", line 18, in make_env
+    return DoomEnv(wad, map_name, **kwargs)
+  File "C:\Users\Darshan\Documents\Codex\2026-11-26\files-mentioned-by-the-user-yugaantar\outputs\doom-nexus\env\doom_env\wrapper.py", line 90, in __init__
+    g.init()
+    ~~~~~~^^
+vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.

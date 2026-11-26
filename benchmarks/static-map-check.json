@@ -1,0 +1,316 @@
+{
+  "maps_parsed": 50,
+  "engine_loaded": false,
+  "results": [
+    {
+      "map": "training/maps/train/movement/00.wad",
+      "sectors": 4,
+      "door_sectors": {}
+    },
+    {
+      "map": "training/maps/train/movement/01.wad",
+      "sectors": 3,
+      "door_sectors": {}
+    },
+    {
+      "map": "training/maps/train/movement/02.wad",
+      "sectors": 5,
+      "door_sectors": {}
+    },
+    {
+      "map": "training/maps/train/movement/03.wad",
+      "sectors": 4,
+      "door_sectors": {}
+    },
+    {
+      "map": "training/maps/train/movement/04.wad",
+      "sectors": 4,
+      "door_sectors": {}
+    },
+    {
+      "map": "training/maps/train/movement/05.wad",
+      "sectors": 4,
+      "door_sectors": {}
+    },
+    {
+      "map": "training/maps/train/combat/00.wad",
+      "sectors": 9,
+      "door_sectors": {}
+    },
+    {
+      "map": "training/maps/train/combat/01.wad",
+      "sectors": 9,
+      "door_sectors": {}
+    },
+    {
+      "map": "training/maps/train/combat/02.wad",
+      "sectors": 9,
+      "door_sectors": {}
+    },
+    {
+      "map": "training/maps/train/combat/03.wad",
+      "sectors": 9,
+      "door_sectors": {}
+    },
+    {
+      "map": "training/maps/train/combat/04.wad",
+      "sectors": 9,
+      "door_sectors": {}
+    },
+    {
+      "map": "training/maps/train/combat/05.wad",
+      "sectors": 9,
+      "door_sectors": {}
+    },
+    {
+      "map": "training/maps/train/exploration/00.wad",
+      "sectors": 8,
+      "door_sectors": {
+        "5": 0
+      }
+    },
+    {
+      "map": "training/maps/train/exploration/01.wad",
+      "sectors": 7,
+      "door_sectors": {
+        "5": 0
+      }
+    },
+    {
+      "map": "training/maps/train/exploration/02.wad",
+      "sectors": 9,
+      "door_sectors": {
+        "8": 0
+      }
+    },
+    {
+      "map": "training/maps/train/exploration/03.wad",
+      "sectors": 7,
+      "door_sectors": {
+        "3": 0
+      }
+    },
+    {
+      "map": "training/maps/train/exploration/04.wad",
+      "sectors": 12,
+      "door_sectors": {
+        "3": 0
+      }
+    },
+    {
+      "map": "training/maps/train/exploration/05.wad",
+      "sectors": 10,
+      "door_sectors": {
+        "8": 0
+      }
+    },
+    {
+      "map": "training/maps/train/keys/00.wad",
+      "sectors": 9,
+      "door_sectors": {
+        "2": 1
+      }
+    },
+    {
+      "map": "training/maps/train/keys/01.wad",
+      "sectors": 9,
+      "door_sectors": {
+        "2": 1
+      }
+    },
+    {
+      "map": "training/maps/train/keys/02.wad",
+      "sectors": 9,
+      "door_sectors": {
+        "2": 1
+      }
+    },
+    {
+      "map": "training/maps/train/keys/03.wad",
+      "sectors": 9,
+      "door_sectors": {
+        "2": 1
+      }
+    },
+    {
+      "map": "training/maps/train/keys/04.wad",
+      "sectors": 9,
+      "door_sectors": {
+        "6": 1
+      }
+    },
+    {
+      "map": "training/maps/train/keys/05.wad",
+      "sectors": 8,
+      "door_sectors": {
+        "2": 1
+      }
+    },
+    {
+      "map": "training/maps/train/gauntlet/00.wad",
+      "sectors": 8,
+      "door_sectors": {
+        "2": 1
+      }
+    },
+    {
+      "map": "training/maps/train/gauntlet/01.wad",
+      "sectors": 10,
+      "door_sectors": {
+        "7": 1
+      }
+    },
+    {
+      "map": "training/maps/train/gauntlet/02.wad",
+      "sectors": 10,
+      "door_sectors": {
+        "7": 1
+      }
+    },
+    {
+      "map": "training/maps/train/gauntlet/03.wad",
+      "sectors": 9,
+      "door_sectors": {
+        "6": 1
+      }
+    },
+    {
+      "map": "training/maps/train/gauntlet/04.wad",
+      "sectors": 8,
+      "door_sectors": {
+        "5": 1
+      }
+    },
+    {
+      "map": "training/maps/train/gauntlet/05.wad",
+      "sectors": 9,
+      "door_sectors": {
+        "6": 1
+      }
+    },
+    {
+      "map": "training/maps/validation/movement/00.wad",
+      "sectors": 4,
+      "door_sectors": {}
+    },
+    {
+      "map": "training/maps/validation/movement/01.wad",
+      "sectors": 5,
+      "door_sectors": {}
+    },
+    {
+      "map": "training/maps/validation/combat/00.wad",
+      "sectors": 9,
+      "door_sectors": {}
+    },
+    {
+      "map": "training/maps/validation/combat/01.wad",
+      "sectors": 9,
+      "door_sectors": {}
+    },
+    {
+      "map": "training/maps/validation/exploration/00.wad",
+      "sectors": 11,
+      "door_sectors": {
+        "1": 0
+      }
+    },
+    {
+      "map": "training/maps/validation/exploration/01.wad",
+      "sectors": 10,
+      "door_sectors": {
+        "7": 0
+      }
+    },
+    {
+      "map": "training/maps/validation/keys/00.wad",
+      "sectors": 9,
+      "door_sectors": {
+        "2": 1
+      }
+    },
+    {
+      "map": "training/maps/validation/keys/01.wad",
+      "sectors": 8,
+      "door_sectors": {
+        "2": 1
+      }
+    },
+    {
+      "map": "training/maps/validation/gauntlet/00.wad",
+      "sectors": 8,
+      "door_sectors": {
+        "5": 1
+      }
+    },
+    {
+      "map": "training/maps/validation/gauntlet/01.wad",
+      "sectors": 8,
+      "door_sectors": {
+        "2": 1
+      }
+    },
+    {
+      "map": "training/maps/test/movement/00.wad",
+      "sectors": 4,
+      "door_sectors": {}
+    },
+    {
+      "map": "training/maps/test/movement/01.wad",
+      "sectors": 4,
+      "door_sectors": {}
+    },
+    {
+      "map": "training/maps/test/combat/00.wad",
+      "sectors": 9,
+      "door_sectors": {}
+    },
+    {
+      "map": "training/maps/test/combat/01.wad",
+      "sectors": 9,
+      "door_sectors": {}
+    },
+    {
+      "map": "training/maps/test/exploration/00.wad",
+      "sectors": 8,
+      "door_sectors": {
+        "5": 0
+      }
+    },
+    {
+      "map": "training/maps/test/exploration/01.wad",
+      "sectors": 8,
+      "door_sectors": {
+        "5": 0
+      }
+    },
+    {
+      "map": "training/maps/test/keys/00.wad",
+      "sectors": 10,
+      "door_sectors": {
+        "7": 1
+      }
+    },
+    {
+      "map": "training/maps/test/keys/01.wad",
+      "sectors": 10,
+      "door_sectors": {
+        "7": 1
+      }
+    },
+    {
+      "map": "training/maps/test/gauntlet/00.wad",
+      "sectors": 9,
+      "door_sectors": {
+        "2": 1
+      }
+    },
+    {
+      "map": "training/maps/test/gauntlet/01.wad",
+      "sectors": 9,
+      "door_sectors": {
+        "6": 1
+      }
+    }
+  ]
+}

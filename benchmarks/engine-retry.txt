@@ -1,0 +1,76 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+___________________ test_generated_curriculum_engine_loads ____________________
+
+    def test_generated_curriculum_engine_loads():
+        rows = json.loads((ROOT/"training/maps/manifest.json").read_text())["maps"]
+        for stage in ("movement","combat","exploration","keys","gauntlet"):
+            spec = next(r for r in rows if r["stage"]==stage and r["split"]=="train")
+>           env = make_env(spec["path"],episode_ticks=40,render_buffers=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_nexus.py:118: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env\doom_env\__init__.py:18: in make_env
+    return DoomEnv(wad, map_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <doom_env.wrapper.DoomEnv object at 0x000001E39FB8FA10>
+wad = 'training/maps/train/movement/00.wad', map_name = 'MAP01'
+
+    def __init__(
+        self,
+        wad: str | os.PathLike,
+        map_name: str = "MAP01",
+        *,
+        episode_ticks: int = DEFAULT_EPISODE_TICKS,
+        render_buffers: bool = True,
+        render_mode: str | None = None,
+    ):
+        """
+        wad: path to a PWAD with the map (e.g. "maps/two_rooms.wad").
+        map_name: map lump inside the WAD.
+        episode_ticks: game tics before truncation (35 tics = 1 second of game time).
+        render_buffers: False skips filling `rgb`/`depth` (zeros, same spaces) for faster training.
+        """
+        self.observation_space = S.observation_space()
+        self.action_space = S.action_space()
+        self.render_mode = render_mode
+        self.wad = str(Path(wad).resolve())
+        self.map_name = map_name.upper()
+        self.episode_ticks = int(episode_ticks)
+        self.render_buffers = render_buffers
+        self.mapinfo = load_mapinfo(self.wad, self.map_name)
+    
+        g = vd.DoomGame()
+        g.set_doom_game_path(IWAD)
+        g.set_doom_scenario_path(self.wad)
+        g.set_doom_map(self.map_name)
+        g.set_doom_skill(SKILL)
+        g.set_mode(vd.Mode.PLAYER)
+        g.set_window_visible(False)
+        g.set_sound_enabled(False)
+        g.set_console_enabled(False)
+        g.set_screen_resolution(vd.ScreenResolution.RES_160X120)
+        g.set_screen_format(vd.ScreenFormat.RGB24)
+        g.set_depth_buffer_enabled(True)
+        g.set_render_hud(False)
+        g.set_render_crosshair(False)
+        g.set_render_weapon(True)
+        g.set_render_decals(False)
+        g.set_render_particles(False)
+        g.set_render_messages(False)
+        g.set_render_corpses(True)
+        g.set_objects_info_enabled(True)
+        g.set_sectors_info_enabled(True)
+        g.set_available_buttons([getattr(vd.Button, b) for b in S.BUTTONS])
+        g.set_available_game_variables(GAME_VARIABLES)
+        g.set_episode_timeout(self.episode_ticks)
+>       g.init()
+E       vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.
+
+env\doom_env\wrapper.py:90: MessageQueueException
+=========================== short test summary info ===========================
+FAILED tests/test_nexus.py::test_generated_curriculum_engine_loads - vizdoom....
+1 failed in 2.74s

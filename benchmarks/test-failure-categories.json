@@ -1,0 +1,173 @@
+{
+  "counts": {
+    "IPC": 29,
+    "missing weights": 4,
+    "Windows platform": 8
+  },
+  "failures": [
+    {
+      "test": "tests.test_env::test_observation_matches_space",
+      "category": "IPC"
+    },
+    {
+      "test": "tests.test_env::test_rays_walls_and_doors",
+      "category": "IPC"
+    },
+    {
+      "test": "tests.test_env::test_locked_door_ray_type",
+      "category": "IPC"
+    },
+    {
+      "test": "tests.test_env::test_enemy_and_item_rays_and_entities",
+      "category": "IPC"
+    },
+    {
+      "test": "tests.test_env::test_line_of_sight_and_fov",
+      "category": "IPC"
+    },
+    {
+      "test": "tests.test_env::test_key_pickup_and_locked_door_exit",
+      "category": "IPC"
+    },
+    {
+      "test": "tests.test_env::test_truncation_at_tick_cap",
+      "category": "IPC"
+    },
+    {
+      "test": "tests.test_env::test_translation_invariance",
+      "category": "IPC"
+    },
+    {
+      "test": "tests.test_env::test_invalid_actions_rejected",
+      "category": "IPC"
+    },
+    {
+      "test": "tests.test_env::test_freedoom_map_runs",
+      "category": "IPC"
+    },
+    {
+      "test": "tests.test_env::test_projectiles_are_classified",
+      "category": "IPC"
+    },
+    {
+      "test": "tests.test_env::test_final_step_variables_are_refreshed",
+      "category": "IPC"
+    },
+    {
+      "test": "tests.test_env::test_static_geometry_comes_from_the_wad",
+      "category": "IPC"
+    },
+    {
+      "test": "tests.test_env::test_out_of_order_calls_raise_clear_errors",
+      "category": "IPC"
+    },
+    {
+      "test": "tests.test_nexus::test_generated_curriculum_engine_loads",
+      "category": "IPC"
+    },
+    {
+      "test": "tests.test_nexus::test_checkpoint_load_once_and_readonly_act",
+      "category": "missing weights"
+    },
+    {
+      "test": "tests.test_nexus::test_memory_reset_and_independent_instances",
+      "category": "missing weights"
+    },
+    {
+      "test": "tests.test_nexus::test_real_episode_without_invalid_actions",
+      "category": "missing weights"
+    },
+    {
+      "test": "tests.test_remote::test_good_agent_full_episode",
+      "category": "IPC"
+    },
+    {
+      "test": "tests.test_remote::test_loopback_tcp_fallback",
+      "category": "IPC"
+    },
+    {
+      "test": "tests.test_remote::test_misbehaving_agents[init_raises-init-error]",
+      "category": "IPC"
+    },
+    {
+      "test": "tests.test_remote::test_misbehaving_agents[sys_exit-init-error]",
+      "category": "IPC"
+    },
+    {
+      "test": "tests.test_remote::test_misbehaving_agents[no_class-init-error]",
+      "category": "IPC"
+    },
+    {
+      "test": "tests.test_remote::test_misbehaving_agents[act_raises-act-error]",
+      "category": "IPC"
+    },
+    {
+      "test": "tests.test_remote::test_misbehaving_agents[act_hangs-act-timeout]",
+      "category": "IPC"
+    },
+    {
+      "test": "tests.test_remote::test_misbehaving_agents[bad_shape-act-invalid_action]",
+      "category": "IPC"
+    },
+    {
+      "test": "tests.test_remote::test_misbehaving_agents[bad_values-act-invalid_action]",
+      "category": "IPC"
+    },
+    {
+      "test": "tests.test_remote::test_misbehaving_agents[returns_str-act-error]",
+      "category": "IPC"
+    },
+    {
+      "test": "tests.test_remote::test_misbehaving_agents[hard_crash-act-crash]",
+      "category": "IPC"
+    },
+    {
+      "test": "tests.test_remote::test_misbehaving_agents[gc_snoop-None-None]",
+      "category": "IPC"
+    },
+    {
+      "test": "tests.test_remote::test_hostile_replies_become_protocol_failures[conflicting_paths]",
+      "category": "Windows platform"
+    },
+    {
+      "test": "tests.test_remote::test_hostile_replies_become_protocol_failures[deep_json]",
+      "category": "Windows platform"
+    },
+    {
+      "test": "tests.test_remote::test_hostile_replies_become_protocol_failures[huge_int]",
+      "category": "Windows platform"
+    },
+    {
+      "test": "tests.test_remote::test_hostile_replies_become_protocol_failures[int64_wrap_shape]",
+      "category": "Windows platform"
+    },
+    {
+      "test": "tests.test_remote::test_hostile_replies_become_protocol_failures[negative_size_bomb]",
+      "category": "Windows platform"
+    },
+    {
+      "test": "tests.test_remote::test_hostile_replies_become_protocol_failures[not_an_object]",
+      "category": "Windows platform"
+    },
+    {
+      "test": "tests.test_remote::test_hostile_replies_become_protocol_failures[wrong_seq]",
+      "category": "Windows platform"
+    },
+    {
+      "test": "tests.test_validate::test_template_baseline_passes",
+      "category": "missing weights"
+    },
+    {
+      "test": "tests.test_validate::test_crashing_agent_fails",
+      "category": "IPC"
+    },
+    {
+      "test": "tests.test_validate::test_optional_and_varargs_signatures_pass",
+      "category": "IPC"
+    },
+    {
+      "test": "tests.test_validate::test_cpu_and_ram_limits_are_emulated",
+      "category": "Windows platform"
+    }
+  ]
+}

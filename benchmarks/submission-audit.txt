@@ -1,0 +1,12 @@
+{
+  "passed": false,
+  "errors": [
+    "No trained checkpoint: ViZDoom engine IPC was blocked on this host",
+    "Selected weights missing from Git LFS index"
+  ],
+  "trained_steps": 0,
+  "updates": 0,
+  "checkpoint_sha256": null,
+  "lfs": "",
+  "note": "Static import allowlist supplements manual source review; not a security proof"
+}

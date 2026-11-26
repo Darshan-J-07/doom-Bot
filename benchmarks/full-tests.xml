@@ -1,0 +1,2131 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="12" failures="33" skipped="1" tests="89" time="16.722" timestamp="2026-11-26T15:07:27.330395+05:30" hostname="Lucifier"><testcase classname="tests.test_env" name="test_contract_version" time="0.001" /><testcase classname="tests.test_env" name="test_observation_matches_space" time="0.052"><failure message="vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_observation_matches_space0')
+
+    def test_observation_matches_space(tmp_path):
+&gt;       env = make_env(wad(tmp_path, "#####\n#P.z#\n#####"))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_env.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env\doom_env\__init__.py:18: in make_env
+    return DoomEnv(wad, map_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;doom_env.wrapper.DoomEnv object at 0x0000029F95C28590&gt;
+wad = 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\tests\\fixtures\\68d6a90a9de31bb8.wad'
+map_name = 'MAP01'
+
+    def __init__(
+        self,
+        wad: str | os.PathLike,
+        map_name: str = "MAP01",
+        *,
+        episode_ticks: int = DEFAULT_EPISODE_TICKS,
+        render_buffers: bool = True,
+        render_mode: str | None = None,
+    ):
+        """
+        wad: path to a PWAD with the map (e.g. "maps/two_rooms.wad").
+        map_name: map lump inside the WAD.
+        episode_ticks: game tics before truncation (35 tics = 1 second of game time).
+        render_buffers: False skips filling `rgb`/`depth` (zeros, same spaces) for faster training.
+        """
+        self.observation_space = S.observation_space()
+        self.action_space = S.action_space()
+        self.render_mode = render_mode
+        self.wad = str(Path(wad).resolve())
+        self.map_name = map_name.upper()
+        self.episode_ticks = int(episode_ticks)
+        self.render_buffers = render_buffers
+        self.mapinfo = load_mapinfo(self.wad, self.map_name)
+    
+        g = vd.DoomGame()
+        g.set_doom_game_path(IWAD)
+        g.set_doom_scenario_path(self.wad)
+        g.set_doom_map(self.map_name)
+        g.set_doom_skill(SKILL)
+        g.set_mode(vd.Mode.PLAYER)
+        g.set_window_visible(False)
+        g.set_sound_enabled(False)
+        g.set_console_enabled(False)
+        g.set_screen_resolution(vd.ScreenResolution.RES_160X120)
+        g.set_screen_format(vd.ScreenFormat.RGB24)
+        g.set_depth_buffer_enabled(True)
+        g.set_render_hud(False)
+        g.set_render_crosshair(False)
+        g.set_render_weapon(True)
+        g.set_render_decals(False)
+        g.set_render_particles(False)
+        g.set_render_messages(False)
+        g.set_render_corpses(True)
+        g.set_objects_info_enabled(True)
+        g.set_sectors_info_enabled(True)
+        g.set_available_buttons([getattr(vd.Button, b) for b in S.BUTTONS])
+        g.set_available_game_variables(GAME_VARIABLES)
+        g.set_episode_timeout(self.episode_ticks)
+&gt;       g.init()
+E       vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.
+
+env\doom_env\wrapper.py:90: MessageQueueException</failure></testcase><testcase classname="tests.test_env" name="test_rays_walls_and_doors" time="0.025"><failure message="vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_rays_walls_and_doors0')
+
+    def test_rays_walls_and_doors(tmp_path):
+        # Player at x=96 (cell 1), facing east. Door cell at col 4 -&gt; x in [256, 320].
+&gt;       env = make_env(wad(tmp_path, "##########\n#P..D...E#\n##########"))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_env.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env\doom_env\__init__.py:18: in make_env
+    return DoomEnv(wad, map_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;doom_env.wrapper.DoomEnv object at 0x0000029F959B9E50&gt;
+wad = 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\tests\\fixtures\\9a5147dc56a65733.wad'
+map_name = 'MAP01'
+
+    def __init__(
+        self,
+        wad: str | os.PathLike,
+        map_name: str = "MAP01",
+        *,
+        episode_ticks: int = DEFAULT_EPISODE_TICKS,
+        render_buffers: bool = True,
+        render_mode: str | None = None,
+    ):
+        """
+        wad: path to a PWAD with the map (e.g. "maps/two_rooms.wad").
+        map_name: map lump inside the WAD.
+        episode_ticks: game tics before truncation (35 tics = 1 second of game time).
+        render_buffers: False skips filling `rgb`/`depth` (zeros, same spaces) for faster training.
+        """
+        self.observation_space = S.observation_space()
+        self.action_space = S.action_space()
+        self.render_mode = render_mode
+        self.wad = str(Path(wad).resolve())
+        self.map_name = map_name.upper()
+        self.episode_ticks = int(episode_ticks)
+        self.render_buffers = render_buffers
+        self.mapinfo = load_mapinfo(self.wad, self.map_name)
+    
+        g = vd.DoomGame()
+        g.set_doom_game_path(IWAD)
+        g.set_doom_scenario_path(self.wad)
+        g.set_doom_map(self.map_name)
+        g.set_doom_skill(SKILL)
+        g.set_mode(vd.Mode.PLAYER)
+        g.set_window_visible(False)
+        g.set_sound_enabled(False)
+        g.set_console_enabled(False)
+        g.set_screen_resolution(vd.ScreenResolution.RES_160X120)
+        g.set_screen_format(vd.ScreenFormat.RGB24)
+        g.set_depth_buffer_enabled(True)
+        g.set_render_hud(False)
+        g.set_render_crosshair(False)
+        g.set_render_weapon(True)
+        g.set_render_decals(False)
+        g.set_render_particles(False)
+        g.set_render_messages(False)
+        g.set_render_corpses(True)
+        g.set_objects_info_enabled(True)
+        g.set_sectors_info_enabled(True)
+        g.set_available_buttons([getattr(vd.Button, b) for b in S.BUTTONS])
+        g.set_available_game_variables(GAME_VARIABLES)
+        g.set_episode_timeout(self.episode_ticks)
+&gt;       g.init()
+E       vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.
+
+env\doom_env\wrapper.py:90: MessageQueueException</failure></testcase><testcase classname="tests.test_env" name="test_locked_door_ray_type" time="0.027"><failure message="vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_locked_door_ray_type0')
+
+    def test_locked_door_ray_type(tmp_path):
+&gt;       env = make_env(wad(tmp_path, "#######\n#P..B.E#\n#######"))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_env.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env\doom_env\__init__.py:18: in make_env
+    return DoomEnv(wad, map_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;doom_env.wrapper.DoomEnv object at 0x0000029F959B9090&gt;
+wad = 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\tests\\fixtures\\7965e3db9e16c412.wad'
+map_name = 'MAP01'
+
+    def __init__(
+        self,
+        wad: str | os.PathLike,
+        map_name: str = "MAP01",
+        *,
+        episode_ticks: int = DEFAULT_EPISODE_TICKS,
+        render_buffers: bool = True,
+        render_mode: str | None = None,
+    ):
+        """
+        wad: path to a PWAD with the map (e.g. "maps/two_rooms.wad").
+        map_name: map lump inside the WAD.
+        episode_ticks: game tics before truncation (35 tics = 1 second of game time).
+        render_buffers: False skips filling `rgb`/`depth` (zeros, same spaces) for faster training.
+        """
+        self.observation_space = S.observation_space()
+        self.action_space = S.action_space()
+        self.render_mode = render_mode
+        self.wad = str(Path(wad).resolve())
+        self.map_name = map_name.upper()
+        self.episode_ticks = int(episode_ticks)
+        self.render_buffers = render_buffers
+        self.mapinfo = load_mapinfo(self.wad, self.map_name)
+    
+        g = vd.DoomGame()
+        g.set_doom_game_path(IWAD)
+        g.set_doom_scenario_path(self.wad)
+        g.set_doom_map(self.map_name)
+        g.set_doom_skill(SKILL)
+        g.set_mode(vd.Mode.PLAYER)
+        g.set_window_visible(False)
+        g.set_sound_enabled(False)
+        g.set_console_enabled(False)
+        g.set_screen_resolution(vd.ScreenResolution.RES_160X120)
+        g.set_screen_format(vd.ScreenFormat.RGB24)
+        g.set_depth_buffer_enabled(True)
+        g.set_render_hud(False)
+        g.set_render_crosshair(False)
+        g.set_render_weapon(True)
+        g.set_render_decals(False)
+        g.set_render_particles(False)
+        g.set_render_messages(False)
+        g.set_render_corpses(True)
+        g.set_objects_info_enabled(True)
+        g.set_sectors_info_enabled(True)
+        g.set_available_buttons([getattr(vd.Button, b) for b in S.BUTTONS])
+        g.set_available_game_variables(GAME_VARIABLES)
+        g.set_episode_timeout(self.episode_ticks)
+&gt;       g.init()
+E       vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.
+
+env\doom_env\wrapper.py:90: MessageQueueException</failure></testcase><testcase classname="tests.test_env" name="test_enemy_and_item_rays_and_entities" time="0.019"><failure message="vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_enemy_and_item_rays_and_e0')
+
+    def test_enemy_and_item_rays_and_entities(tmp_path):
+&gt;       env = make_env(wad(tmp_path, "#########\n#P..h..z#\n#########"))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_env.py:64: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env\doom_env\__init__.py:18: in make_env
+    return DoomEnv(wad, map_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;doom_env.wrapper.DoomEnv object at 0x0000029F959B7A80&gt;
+wad = 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\tests\\fixtures\\78a88879a8fdeb46.wad'
+map_name = 'MAP01'
+
+    def __init__(
+        self,
+        wad: str | os.PathLike,
+        map_name: str = "MAP01",
+        *,
+        episode_ticks: int = DEFAULT_EPISODE_TICKS,
+        render_buffers: bool = True,
+        render_mode: str | None = None,
+    ):
+        """
+        wad: path to a PWAD with the map (e.g. "maps/two_rooms.wad").
+        map_name: map lump inside the WAD.
+        episode_ticks: game tics before truncation (35 tics = 1 second of game time).
+        render_buffers: False skips filling `rgb`/`depth` (zeros, same spaces) for faster training.
+        """
+        self.observation_space = S.observation_space()
+        self.action_space = S.action_space()
+        self.render_mode = render_mode
+        self.wad = str(Path(wad).resolve())
+        self.map_name = map_name.upper()
+        self.episode_ticks = int(episode_ticks)
+        self.render_buffers = render_buffers
+        self.mapinfo = load_mapinfo(self.wad, self.map_name)
+    
+        g = vd.DoomGame()
+        g.set_doom_game_path(IWAD)
+        g.set_doom_scenario_path(self.wad)
+        g.set_doom_map(self.map_name)
+        g.set_doom_skill(SKILL)
+        g.set_mode(vd.Mode.PLAYER)
+        g.set_window_visible(False)
+        g.set_sound_enabled(False)
+        g.set_console_enabled(False)
+        g.set_screen_resolution(vd.ScreenResolution.RES_160X120)
+        g.set_screen_format(vd.ScreenFormat.RGB24)
+        g.set_depth_buffer_enabled(True)
+        g.set_render_hud(False)
+        g.set_render_crosshair(False)
+        g.set_render_weapon(True)
+        g.set_render_decals(False)
+        g.set_render_particles(False)
+        g.set_render_messages(False)
+        g.set_render_corpses(True)
+        g.set_objects_info_enabled(True)
+        g.set_sectors_info_enabled(True)
+        g.set_available_buttons([getattr(vd.Button, b) for b in S.BUTTONS])
+        g.set_available_game_variables(GAME_VARIABLES)
+        g.set_episode_timeout(self.episode_ticks)
+&gt;       g.init()
+E       vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.
+
+env\doom_env\wrapper.py:90: MessageQueueException</failure></testcase><testcase classname="tests.test_env" name="test_line_of_sight_and_fov" time="0.023"><failure message="vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_line_of_sight_and_fov0')
+
+    def test_line_of_sight_and_fov(tmp_path):
+        # Zombieman behind a closed door is not visible; one behind the player is outside the FOV.
+&gt;       env = make_env(wad(tmp_path, "###########\n#z.P..D..z#\n###########"))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_env.py:80: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env\doom_env\__init__.py:18: in make_env
+    return DoomEnv(wad, map_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;doom_env.wrapper.DoomEnv object at 0x0000029F95D98180&gt;
+wad = 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\tests\\fixtures\\5c688a052900e964.wad'
+map_name = 'MAP01'
+
+    def __init__(
+        self,
+        wad: str | os.PathLike,
+        map_name: str = "MAP01",
+        *,
+        episode_ticks: int = DEFAULT_EPISODE_TICKS,
+        render_buffers: bool = True,
+        render_mode: str | None = None,
+    ):
+        """
+        wad: path to a PWAD with the map (e.g. "maps/two_rooms.wad").
+        map_name: map lump inside the WAD.
+        episode_ticks: game tics before truncation (35 tics = 1 second of game time).
+        render_buffers: False skips filling `rgb`/`depth` (zeros, same spaces) for faster training.
+        """
+        self.observation_space = S.observation_space()
+        self.action_space = S.action_space()
+        self.render_mode = render_mode
+        self.wad = str(Path(wad).resolve())
+        self.map_name = map_name.upper()
+        self.episode_ticks = int(episode_ticks)
+        self.render_buffers = render_buffers
+        self.mapinfo = load_mapinfo(self.wad, self.map_name)
+    
+        g = vd.DoomGame()
+        g.set_doom_game_path(IWAD)
+        g.set_doom_scenario_path(self.wad)
+        g.set_doom_map(self.map_name)
+        g.set_doom_skill(SKILL)
+        g.set_mode(vd.Mode.PLAYER)
+        g.set_window_visible(False)
+        g.set_sound_enabled(False)
+        g.set_console_enabled(False)
+        g.set_screen_resolution(vd.ScreenResolution.RES_160X120)
+        g.set_screen_format(vd.ScreenFormat.RGB24)
+        g.set_depth_buffer_enabled(True)
+        g.set_render_hud(False)
+        g.set_render_crosshair(False)
+        g.set_render_weapon(True)
+        g.set_render_decals(False)
+        g.set_render_particles(False)
+        g.set_render_messages(False)
+        g.set_render_corpses(True)
+        g.set_objects_info_enabled(True)
+        g.set_sectors_info_enabled(True)
+        g.set_available_buttons([getattr(vd.Button, b) for b in S.BUTTONS])
+        g.set_available_game_variables(GAME_VARIABLES)
+        g.set_episode_timeout(self.episode_ticks)
+&gt;       g.init()
+E       vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.
+
+env\doom_env\wrapper.py:90: MessageQueueException</failure></testcase><testcase classname="tests.test_env" name="test_key_pickup_and_locked_door_exit" time="0.022"><failure message="vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_key_pickup_and_locked_doo0')
+
+    def test_key_pickup_and_locked_door_exit(tmp_path):
+&gt;       env = make_env(wad(tmp_path, "############\n#P.r..R...E#\n############"), episode_ticks=1000)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_env.py:89: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env\doom_env\__init__.py:18: in make_env
+    return DoomEnv(wad, map_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;doom_env.wrapper.DoomEnv object at 0x0000029F95C916D0&gt;
+wad = 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\tests\\fixtures\\e7ab54fb6834ffa3.wad'
+map_name = 'MAP01'
+
+    def __init__(
+        self,
+        wad: str | os.PathLike,
+        map_name: str = "MAP01",
+        *,
+        episode_ticks: int = DEFAULT_EPISODE_TICKS,
+        render_buffers: bool = True,
+        render_mode: str | None = None,
+    ):
+        """
+        wad: path to a PWAD with the map (e.g. "maps/two_rooms.wad").
+        map_name: map lump inside the WAD.
+        episode_ticks: game tics before truncation (35 tics = 1 second of game time).
+        render_buffers: False skips filling `rgb`/`depth` (zeros, same spaces) for faster training.
+        """
+        self.observation_space = S.observation_space()
+        self.action_space = S.action_space()
+        self.render_mode = render_mode
+        self.wad = str(Path(wad).resolve())
+        self.map_name = map_name.upper()
+        self.episode_ticks = int(episode_ticks)
+        self.render_buffers = render_buffers
+        self.mapinfo = load_mapinfo(self.wad, self.map_name)
+    
+        g = vd.DoomGame()
+        g.set_doom_game_path(IWAD)
+        g.set_doom_scenario_path(self.wad)
+        g.set_doom_map(self.map_name)
+        g.set_doom_skill(SKILL)
+        g.set_mode(vd.Mode.PLAYER)
+        g.set_window_visible(False)
+        g.set_sound_enabled(False)
+        g.set_console_enabled(False)
+        g.set_screen_resolution(vd.ScreenResolution.RES_160X120)
+        g.set_screen_format(vd.ScreenFormat.RGB24)
+        g.set_depth_buffer_enabled(True)
+        g.set_render_hud(False)
+        g.set_render_crosshair(False)
+        g.set_render_weapon(True)
+        g.set_render_decals(False)
+        g.set_render_particles(False)
+        g.set_render_messages(False)
+        g.set_render_corpses(True)
+        g.set_objects_info_enabled(True)
+        g.set_sectors_info_enabled(True)
+        g.set_available_buttons([getattr(vd.Button, b) for b in S.BUTTONS])
+        g.set_available_game_variables(GAME_VARIABLES)
+        g.set_episode_timeout(self.episode_ticks)
+&gt;       g.init()
+E       vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.
+
+env\doom_env\wrapper.py:90: MessageQueueException</failure></testcase><testcase classname="tests.test_env" name="test_truncation_at_tick_cap" time="0.025"><failure message="vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_truncation_at_tick_cap0')
+
+    def test_truncation_at_tick_cap(tmp_path):
+&gt;       env = make_env(wad(tmp_path, "#####\n#P..#\n#####"), episode_ticks=40)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_env.py:109: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env\doom_env\__init__.py:18: in make_env
+    return DoomEnv(wad, map_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;doom_env.wrapper.DoomEnv object at 0x0000029F95973DF0&gt;
+wad = 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\tests\\fixtures\\2f617ad2aa6b5618.wad'
+map_name = 'MAP01'
+
+    def __init__(
+        self,
+        wad: str | os.PathLike,
+        map_name: str = "MAP01",
+        *,
+        episode_ticks: int = DEFAULT_EPISODE_TICKS,
+        render_buffers: bool = True,
+        render_mode: str | None = None,
+    ):
+        """
+        wad: path to a PWAD with the map (e.g. "maps/two_rooms.wad").
+        map_name: map lump inside the WAD.
+        episode_ticks: game tics before truncation (35 tics = 1 second of game time).
+        render_buffers: False skips filling `rgb`/`depth` (zeros, same spaces) for faster training.
+        """
+        self.observation_space = S.observation_space()
+        self.action_space = S.action_space()
+        self.render_mode = render_mode
+        self.wad = str(Path(wad).resolve())
+        self.map_name = map_name.upper()
+        self.episode_ticks = int(episode_ticks)
+        self.render_buffers = render_buffers
+        self.mapinfo = load_mapinfo(self.wad, self.map_name)
+    
+        g = vd.DoomGame()
+        g.set_doom_game_path(IWAD)
+        g.set_doom_scenario_path(self.wad)
+        g.set_doom_map(self.map_name)
+        g.set_doom_skill(SKILL)
+        g.set_mode(vd.Mode.PLAYER)
+        g.set_window_visible(False)
+        g.set_sound_enabled(False)
+        g.set_console_enabled(False)
+        g.set_screen_resolution(vd.ScreenResolution.RES_160X120)
+        g.set_screen_format(vd.ScreenFormat.RGB24)
+        g.set_depth_buffer_enabled(True)
+        g.set_render_hud(False)
+        g.set_render_crosshair(False)
+        g.set_render_weapon(True)
+        g.set_render_decals(False)
+        g.set_render_particles(False)
+        g.set_render_messages(False)
+        g.set_render_corpses(True)
+        g.set_objects_info_enabled(True)
+        g.set_sectors_info_enabled(True)
+        g.set_available_buttons([getattr(vd.Button, b) for b in S.BUTTONS])
+        g.set_available_game_variables(GAME_VARIABLES)
+        g.set_episode_timeout(self.episode_ticks)
+&gt;       g.init()
+E       vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.
+
+env\doom_env\wrapper.py:90: MessageQueueException</failure></testcase><testcase classname="tests.test_env" name="test_translation_invariance" time="0.025"><failure message="vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_translation_invariance0')
+
+    def test_translation_invariance(tmp_path):
+        """The same layout placed elsewhere on the map must yield identical non-pixel observations."""
+        grid = "#########\n#P.....z#\n#..D....#\n#########"
+        shifted = "\n".join(["#" * 13] * 3 + ["####" + row for row in grid.splitlines()])
+&gt;       a = make_env(wad(tmp_path, grid, "a.wad"))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_env.py:126: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env\doom_env\__init__.py:18: in make_env
+    return DoomEnv(wad, map_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;doom_env.wrapper.DoomEnv object at 0x0000029F95D906B0&gt;
+wad = 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\tests\\fixtures\\509aca7cabb8cd7f.wad'
+map_name = 'MAP01'
+
+    def __init__(
+        self,
+        wad: str | os.PathLike,
+        map_name: str = "MAP01",
+        *,
+        episode_ticks: int = DEFAULT_EPISODE_TICKS,
+        render_buffers: bool = True,
+        render_mode: str | None = None,
+    ):
+        """
+        wad: path to a PWAD with the map (e.g. "maps/two_rooms.wad").
+        map_name: map lump inside the WAD.
+        episode_ticks: game tics before truncation (35 tics = 1 second of game time).
+        render_buffers: False skips filling `rgb`/`depth` (zeros, same spaces) for faster training.
+        """
+        self.observation_space = S.observation_space()
+        self.action_space = S.action_space()
+        self.render_mode = render_mode
+        self.wad = str(Path(wad).resolve())
+        self.map_name = map_name.upper()
+        self.episode_ticks = int(episode_ticks)
+        self.render_buffers = render_buffers
+        self.mapinfo = load_mapinfo(self.wad, self.map_name)
+    
+        g = vd.DoomGame()
+        g.set_doom_game_path(IWAD)
+        g.set_doom_scenario_path(self.wad)
+        g.set_doom_map(self.map_name)
+        g.set_doom_skill(SKILL)
+        g.set_mode(vd.Mode.PLAYER)
+        g.set_window_visible(False)
+        g.set_sound_enabled(False)
+        g.set_console_enabled(False)
+        g.set_screen_resolution(vd.ScreenResolution.RES_160X120)
+        g.set_screen_format(vd.ScreenFormat.RGB24)
+        g.set_depth_buffer_enabled(True)
+        g.set_render_hud(False)
+        g.set_render_crosshair(False)
+        g.set_render_weapon(True)
+        g.set_render_decals(False)
+        g.set_render_particles(False)
+        g.set_render_messages(False)
+        g.set_render_corpses(True)
+        g.set_objects_info_enabled(True)
+        g.set_sectors_info_enabled(True)
+        g.set_available_buttons([getattr(vd.Button, b) for b in S.BUTTONS])
+        g.set_available_game_variables(GAME_VARIABLES)
+        g.set_episode_timeout(self.episode_ticks)
+&gt;       g.init()
+E       vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.
+
+env\doom_env\wrapper.py:90: MessageQueueException</failure></testcase><testcase classname="tests.test_env" name="test_invalid_actions_rejected" time="0.022"><failure message="vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_invalid_actions_rejected0')
+
+    def test_invalid_actions_rejected(tmp_path):
+&gt;       env = make_env(wad(tmp_path, "####\n#P.#\n####"))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_env.py:145: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env\doom_env\__init__.py:18: in make_env
+    return DoomEnv(wad, map_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;doom_env.wrapper.DoomEnv object at 0x0000029F95D49850&gt;
+wad = 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\tests\\fixtures\\57a739138e7e276d.wad'
+map_name = 'MAP01'
+
+    def __init__(
+        self,
+        wad: str | os.PathLike,
+        map_name: str = "MAP01",
+        *,
+        episode_ticks: int = DEFAULT_EPISODE_TICKS,
+        render_buffers: bool = True,
+        render_mode: str | None = None,
+    ):
+        """
+        wad: path to a PWAD with the map (e.g. "maps/two_rooms.wad").
+        map_name: map lump inside the WAD.
+        episode_ticks: game tics before truncation (35 tics = 1 second of game time).
+        render_buffers: False skips filling `rgb`/`depth` (zeros, same spaces) for faster training.
+        """
+        self.observation_space = S.observation_space()
+        self.action_space = S.action_space()
+        self.render_mode = render_mode
+        self.wad = str(Path(wad).resolve())
+        self.map_name = map_name.upper()
+        self.episode_ticks = int(episode_ticks)
+        self.render_buffers = render_buffers
+        self.mapinfo = load_mapinfo(self.wad, self.map_name)
+    
+        g = vd.DoomGame()
+        g.set_doom_game_path(IWAD)
+        g.set_doom_scenario_path(self.wad)
+        g.set_doom_map(self.map_name)
+        g.set_doom_skill(SKILL)
+        g.set_mode(vd.Mode.PLAYER)
+        g.set_window_visible(False)
+        g.set_sound_enabled(False)
+        g.set_console_enabled(False)
+        g.set_screen_resolution(vd.ScreenResolution.RES_160X120)
+        g.set_screen_format(vd.ScreenFormat.RGB24)
+        g.set_depth_buffer_enabled(True)
+        g.set_render_hud(False)
+        g.set_render_crosshair(False)
+        g.set_render_weapon(True)
+        g.set_render_decals(False)
+        g.set_render_particles(False)
+        g.set_render_messages(False)
+        g.set_render_corpses(True)
+        g.set_objects_info_enabled(True)
+        g.set_sectors_info_enabled(True)
+        g.set_available_buttons([getattr(vd.Button, b) for b in S.BUTTONS])
+        g.set_available_game_variables(GAME_VARIABLES)
+        g.set_episode_timeout(self.episode_ticks)
+&gt;       g.init()
+E       vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.
+
+env\doom_env\wrapper.py:90: MessageQueueException</failure></testcase><testcase classname="tests.test_env" name="test_freedoom_map_runs" time="0.073"><failure message="vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.">def test_freedoom_map_runs():
+        """Real Doom-format map (Freedoom MAP01): many sectors, doors, monsters."""
+        import os
+        import vizdoom
+&gt;       env = make_env(os.path.join(os.path.dirname(vizdoom.__file__), "freedoom2.wad"), "MAP01", episode_ticks=400)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_env.py:158: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env\doom_env\__init__.py:18: in make_env
+    return DoomEnv(wad, map_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;doom_env.wrapper.DoomEnv object at 0x0000029F95D48D50&gt;
+wad = 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\work\\.venv\\Lib\\site-packages\\vizdoom\\freedoom2.wad'
+map_name = 'MAP01'
+
+    def __init__(
+        self,
+        wad: str | os.PathLike,
+        map_name: str = "MAP01",
+        *,
+        episode_ticks: int = DEFAULT_EPISODE_TICKS,
+        render_buffers: bool = True,
+        render_mode: str | None = None,
+    ):
+        """
+        wad: path to a PWAD with the map (e.g. "maps/two_rooms.wad").
+        map_name: map lump inside the WAD.
+        episode_ticks: game tics before truncation (35 tics = 1 second of game time).
+        render_buffers: False skips filling `rgb`/`depth` (zeros, same spaces) for faster training.
+        """
+        self.observation_space = S.observation_space()
+        self.action_space = S.action_space()
+        self.render_mode = render_mode
+        self.wad = str(Path(wad).resolve())
+        self.map_name = map_name.upper()
+        self.episode_ticks = int(episode_ticks)
+        self.render_buffers = render_buffers
+        self.mapinfo = load_mapinfo(self.wad, self.map_name)
+    
+        g = vd.DoomGame()
+        g.set_doom_game_path(IWAD)
+        g.set_doom_scenario_path(self.wad)
+        g.set_doom_map(self.map_name)
+        g.set_doom_skill(SKILL)
+        g.set_mode(vd.Mode.PLAYER)
+        g.set_window_visible(False)
+        g.set_sound_enabled(False)
+        g.set_console_enabled(False)
+        g.set_screen_resolution(vd.ScreenResolution.RES_160X120)
+        g.set_screen_format(vd.ScreenFormat.RGB24)
+        g.set_depth_buffer_enabled(True)
+        g.set_render_hud(False)
+        g.set_render_crosshair(False)
+        g.set_render_weapon(True)
+        g.set_render_decals(False)
+        g.set_render_particles(False)
+        g.set_render_messages(False)
+        g.set_render_corpses(True)
+        g.set_objects_info_enabled(True)
+        g.set_sectors_info_enabled(True)
+        g.set_available_buttons([getattr(vd.Button, b) for b in S.BUTTONS])
+        g.set_available_game_variables(GAME_VARIABLES)
+        g.set_episode_timeout(self.episode_ticks)
+&gt;       g.init()
+E       vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.
+
+env\doom_env\wrapper.py:90: MessageQueueException</failure></testcase><testcase classname="tests.test_env" name="test_projectiles_are_classified" time="0.022"><failure message="vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_projectiles_are_classifie0')
+
+    def test_projectiles_are_classified(tmp_path):
+        """Imp fireballs have ViZDoom category 'Explosive' (like bullet puffs); they must show up as projectiles."""
+&gt;       env = make_env(wad(tmp_path, "##########\n#P......i#\n##########"), episode_ticks=700)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_env.py:171: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env\doom_env\__init__.py:18: in make_env
+    return DoomEnv(wad, map_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;doom_env.wrapper.DoomEnv object at 0x0000029F95BB6120&gt;
+wad = 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\tests\\fixtures\\99c8410f05906e0e.wad'
+map_name = 'MAP01'
+
+    def __init__(
+        self,
+        wad: str | os.PathLike,
+        map_name: str = "MAP01",
+        *,
+        episode_ticks: int = DEFAULT_EPISODE_TICKS,
+        render_buffers: bool = True,
+        render_mode: str | None = None,
+    ):
+        """
+        wad: path to a PWAD with the map (e.g. "maps/two_rooms.wad").
+        map_name: map lump inside the WAD.
+        episode_ticks: game tics before truncation (35 tics = 1 second of game time).
+        render_buffers: False skips filling `rgb`/`depth` (zeros, same spaces) for faster training.
+        """
+        self.observation_space = S.observation_space()
+        self.action_space = S.action_space()
+        self.render_mode = render_mode
+        self.wad = str(Path(wad).resolve())
+        self.map_name = map_name.upper()
+        self.episode_ticks = int(episode_ticks)
+        self.render_buffers = render_buffers
+        self.mapinfo = load_mapinfo(self.wad, self.map_name)
+    
+        g = vd.DoomGame()
+        g.set_doom_game_path(IWAD)
+        g.set_doom_scenario_path(self.wad)
+        g.set_doom_map(self.map_name)
+        g.set_doom_skill(SKILL)
+        g.set_mode(vd.Mode.PLAYER)
+        g.set_window_visible(False)
+        g.set_sound_enabled(False)
+        g.set_console_enabled(False)
+        g.set_screen_resolution(vd.ScreenResolution.RES_160X120)
+        g.set_screen_format(vd.ScreenFormat.RGB24)
+        g.set_depth_buffer_enabled(True)
+        g.set_render_hud(False)
+        g.set_render_crosshair(False)
+        g.set_render_weapon(True)
+        g.set_render_decals(False)
+        g.set_render_particles(False)
+        g.set_render_messages(False)
+        g.set_render_corpses(True)
+        g.set_objects_info_enabled(True)
+        g.set_sectors_info_enabled(True)
+        g.set_available_buttons([getattr(vd.Button, b) for b in S.BUTTONS])
+        g.set_available_game_variables(GAME_VARIABLES)
+        g.set_episode_timeout(self.episode_ticks)
+&gt;       g.init()
+E       vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.
+
+env\doom_env\wrapper.py:90: MessageQueueException</failure></testcase><testcase classname="tests.test_env" name="test_final_step_variables_are_refreshed" time="0.023"><failure message="vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_final_step_variables_are_0')
+
+    def test_final_step_variables_are_refreshed(tmp_path):
+        """The killing blow / last kill happen on the terminal step and must still be visible to scoring."""
+&gt;       env = make_env(wad(tmp_path, "##########\n#P......c#\n##########"), episode_ticks=2000)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_env.py:186: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env\doom_env\__init__.py:18: in make_env
+    return DoomEnv(wad, map_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;doom_env.wrapper.DoomEnv object at 0x0000029F95D45220&gt;
+wad = 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\tests\\fixtures\\279106a4a09e9579.wad'
+map_name = 'MAP01'
+
+    def __init__(
+        self,
+        wad: str | os.PathLike,
+        map_name: str = "MAP01",
+        *,
+        episode_ticks: int = DEFAULT_EPISODE_TICKS,
+        render_buffers: bool = True,
+        render_mode: str | None = None,
+    ):
+        """
+        wad: path to a PWAD with the map (e.g. "maps/two_rooms.wad").
+        map_name: map lump inside the WAD.
+        episode_ticks: game tics before truncation (35 tics = 1 second of game time).
+        render_buffers: False skips filling `rgb`/`depth` (zeros, same spaces) for faster training.
+        """
+        self.observation_space = S.observation_space()
+        self.action_space = S.action_space()
+        self.render_mode = render_mode
+        self.wad = str(Path(wad).resolve())
+        self.map_name = map_name.upper()
+        self.episode_ticks = int(episode_ticks)
+        self.render_buffers = render_buffers
+        self.mapinfo = load_mapinfo(self.wad, self.map_name)
+    
+        g = vd.DoomGame()
+        g.set_doom_game_path(IWAD)
+        g.set_doom_scenario_path(self.wad)
+        g.set_doom_map(self.map_name)
+        g.set_doom_skill(SKILL)
+        g.set_mode(vd.Mode.PLAYER)
+        g.set_window_visible(False)
+        g.set_sound_enabled(False)
+        g.set_console_enabled(False)
+        g.set_screen_resolution(vd.ScreenResolution.RES_160X120)
+        g.set_screen_format(vd.ScreenFormat.RGB24)
+        g.set_depth_buffer_enabled(True)
+        g.set_render_hud(False)
+        g.set_render_crosshair(False)
+        g.set_render_weapon(True)
+        g.set_render_decals(False)
+        g.set_render_particles(False)
+        g.set_render_messages(False)
+        g.set_render_corpses(True)
+        g.set_objects_info_enabled(True)
+        g.set_sectors_info_enabled(True)
+        g.set_available_buttons([getattr(vd.Button, b) for b in S.BUTTONS])
+        g.set_available_game_variables(GAME_VARIABLES)
+        g.set_episode_timeout(self.episode_ticks)
+&gt;       g.init()
+E       vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.
+
+env\doom_env\wrapper.py:90: MessageQueueException</failure></testcase><testcase classname="tests.test_env" name="test_static_geometry_comes_from_the_wad" time="0.058"><failure message="vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.">def test_static_geometry_comes_from_the_wad():
+        """ViZDoom's runtime sector line lists can be incomplete on big maps; doom_env reads exact WAD geometry."""
+        import os
+        import vizdoom
+&gt;       env = make_env(os.path.join(os.path.dirname(vizdoom.__file__), "freedoom2.wad"), "MAP01", episode_ticks=100)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_env.py:201: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env\doom_env\__init__.py:18: in make_env
+    return DoomEnv(wad, map_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;doom_env.wrapper.DoomEnv object at 0x0000029F95C1F150&gt;
+wad = 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\work\\.venv\\Lib\\site-packages\\vizdoom\\freedoom2.wad'
+map_name = 'MAP01'
+
+    def __init__(
+        self,
+        wad: str | os.PathLike,
+        map_name: str = "MAP01",
+        *,
+        episode_ticks: int = DEFAULT_EPISODE_TICKS,
+        render_buffers: bool = True,
+        render_mode: str | None = None,
+    ):
+        """
+        wad: path to a PWAD with the map (e.g. "maps/two_rooms.wad").
+        map_name: map lump inside the WAD.
+        episode_ticks: game tics before truncation (35 tics = 1 second of game time).
+        render_buffers: False skips filling `rgb`/`depth` (zeros, same spaces) for faster training.
+        """
+        self.observation_space = S.observation_space()
+        self.action_space = S.action_space()
+        self.render_mode = render_mode
+        self.wad = str(Path(wad).resolve())
+        self.map_name = map_name.upper()
+        self.episode_ticks = int(episode_ticks)
+        self.render_buffers = render_buffers
+        self.mapinfo = load_mapinfo(self.wad, self.map_name)
+    
+        g = vd.DoomGame()
+        g.set_doom_game_path(IWAD)
+        g.set_doom_scenario_path(self.wad)
+        g.set_doom_map(self.map_name)
+        g.set_doom_skill(SKILL)
+        g.set_mode(vd.Mode.PLAYER)
+        g.set_window_visible(False)
+        g.set_sound_enabled(False)
+        g.set_console_enabled(False)
+        g.set_screen_resolution(vd.ScreenResolution.RES_160X120)
+        g.set_screen_format(vd.ScreenFormat.RGB24)
+        g.set_depth_buffer_enabled(True)
+        g.set_render_hud(False)
+        g.set_render_crosshair(False)
+        g.set_render_weapon(True)
+        g.set_render_decals(False)
+        g.set_render_particles(False)
+        g.set_render_messages(False)
+        g.set_render_corpses(True)
+        g.set_objects_info_enabled(True)
+        g.set_sectors_info_enabled(True)
+        g.set_available_buttons([getattr(vd.Button, b) for b in S.BUTTONS])
+        g.set_available_game_variables(GAME_VARIABLES)
+        g.set_episode_timeout(self.episode_ticks)
+&gt;       g.init()
+E       vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.
+
+env\doom_env\wrapper.py:90: MessageQueueException</failure></testcase><testcase classname="tests.test_env" name="test_out_of_order_calls_raise_clear_errors" time="0.012"><failure message="vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_out_of_order_calls_raise_0')
+
+    def test_out_of_order_calls_raise_clear_errors(tmp_path):
+&gt;       env = make_env(fixture_wad("#####\n#P..#\n#####"), "MAP01", episode_ticks=100)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_env.py:209: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env\doom_env\__init__.py:18: in make_env
+    return DoomEnv(wad, map_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;doom_env.wrapper.DoomEnv object at 0x0000029F95C883D0&gt;
+wad = 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\tests\\fixtures\\2f617ad2aa6b5618.wad'
+map_name = 'MAP01'
+
+    def __init__(
+        self,
+        wad: str | os.PathLike,
+        map_name: str = "MAP01",
+        *,
+        episode_ticks: int = DEFAULT_EPISODE_TICKS,
+        render_buffers: bool = True,
+        render_mode: str | None = None,
+    ):
+        """
+        wad: path to a PWAD with the map (e.g. "maps/two_rooms.wad").
+        map_name: map lump inside the WAD.
+        episode_ticks: game tics before truncation (35 tics = 1 second of game time).
+        render_buffers: False skips filling `rgb`/`depth` (zeros, same spaces) for faster training.
+        """
+        self.observation_space = S.observation_space()
+        self.action_space = S.action_space()
+        self.render_mode = render_mode
+        self.wad = str(Path(wad).resolve())
+        self.map_name = map_name.upper()
+        self.episode_ticks = int(episode_ticks)
+        self.render_buffers = render_buffers
+        self.mapinfo = load_mapinfo(self.wad, self.map_name)
+    
+        g = vd.DoomGame()
+        g.set_doom_game_path(IWAD)
+        g.set_doom_scenario_path(self.wad)
+        g.set_doom_map(self.map_name)
+        g.set_doom_skill(SKILL)
+        g.set_mode(vd.Mode.PLAYER)
+        g.set_window_visible(False)
+        g.set_sound_enabled(False)
+        g.set_console_enabled(False)
+        g.set_screen_resolution(vd.ScreenResolution.RES_160X120)
+        g.set_screen_format(vd.ScreenFormat.RGB24)
+        g.set_depth_buffer_enabled(True)
+        g.set_render_hud(False)
+        g.set_render_crosshair(False)
+        g.set_render_weapon(True)
+        g.set_render_decals(False)
+        g.set_render_particles(False)
+        g.set_render_messages(False)
+        g.set_render_corpses(True)
+        g.set_objects_info_enabled(True)
+        g.set_sectors_info_enabled(True)
+        g.set_available_buttons([getattr(vd.Button, b) for b in S.BUTTONS])
+        g.set_available_game_variables(GAME_VARIABLES)
+        g.set_episode_timeout(self.episode_ticks)
+&gt;       g.init()
+E       vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.
+
+env\doom_env\wrapper.py:90: MessageQueueException</failure></testcase><testcase classname="tests.test_env" name="test_boom_generalized_lock_keys_and_doom_udmf" time="0.001" /><testcase classname="tests.test_env" name="test_duplicate_map_uses_last_lump" time="0.001" /><testcase classname="tests.test_nexus" name="test_valid_spatial_observations[0-0]" time="0.118" /><testcase classname="tests.test_nexus" name="test_valid_spatial_observations[0-1]" time="0.025" /><testcase classname="tests.test_nexus" name="test_valid_spatial_observations[0-8]" time="0.026" /><testcase classname="tests.test_nexus" name="test_valid_spatial_observations[0-32]" time="0.028" /><testcase classname="tests.test_nexus" name="test_valid_spatial_observations[1-0]" time="0.033" /><testcase classname="tests.test_nexus" name="test_valid_spatial_observations[1-1]" time="0.032" /><testcase classname="tests.test_nexus" name="test_valid_spatial_observations[1-8]" time="0.027" /><testcase classname="tests.test_nexus" name="test_valid_spatial_observations[1-32]" time="0.029" /><testcase classname="tests.test_nexus" name="test_valid_spatial_observations[2-0]" time="0.029" /><testcase classname="tests.test_nexus" name="test_valid_spatial_observations[2-1]" time="0.024" /><testcase classname="tests.test_nexus" name="test_valid_spatial_observations[2-8]" time="0.022" /><testcase classname="tests.test_nexus" name="test_valid_spatial_observations[2-32]" time="0.021" /><testcase classname="tests.test_nexus" name="test_valid_spatial_observations[3-0]" time="0.022" /><testcase classname="tests.test_nexus" name="test_valid_spatial_observations[3-1]" time="0.022" /><testcase classname="tests.test_nexus" name="test_valid_spatial_observations[3-8]" time="0.023" /><testcase classname="tests.test_nexus" name="test_valid_spatial_observations[3-32]" time="0.021" /><testcase classname="tests.test_nexus" name="test_valid_spatial_observations[4-0]" time="0.021" /><testcase classname="tests.test_nexus" name="test_valid_spatial_observations[4-1]" time="0.021" /><testcase classname="tests.test_nexus" name="test_valid_spatial_observations[4-8]" time="0.024" /><testcase classname="tests.test_nexus" name="test_valid_spatial_observations[4-32]" time="0.025" /><testcase classname="tests.test_nexus" name="test_valid_spatial_observations[5-0]" time="0.023" /><testcase classname="tests.test_nexus" name="test_valid_spatial_observations[5-1]" time="0.023" /><testcase classname="tests.test_nexus" name="test_valid_spatial_observations[5-8]" time="0.021" /><testcase classname="tests.test_nexus" name="test_valid_spatial_observations[5-32]" time="0.022" /><testcase classname="tests.test_nexus" name="test_vitals_and_extremes[0-0]" time="0.010" /><testcase classname="tests.test_nexus" name="test_vitals_and_extremes[1-0]" time="0.008" /><testcase classname="tests.test_nexus" name="test_vitals_and_extremes[200-0]" time="0.007" /><testcase classname="tests.test_nexus" name="test_vitals_and_extremes[200-9999]" time="0.008" /><testcase classname="tests.test_nexus" name="test_entity_permutation_and_padding" time="0.023" /><testcase classname="tests.test_nexus" name="test_gae_boundaries_and_time_limit_bootstrap" time="0.003" /><testcase classname="tests.test_nexus" name="test_ppo_updates_parameters_with_finite_gradients[False]" time="3.943" /><testcase classname="tests.test_nexus" name="test_ppo_updates_parameters_with_finite_gradients[True]" time="0.050" /><testcase classname="tests.test_nexus" name="test_official_files_unchanged" time="0.430" /><testcase classname="tests.test_nexus" name="test_map_splits_disjoint" time="0.002" /><testcase classname="tests.test_nexus" name="test_generated_curriculum_engine_loads" time="0.007"><failure message="vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.">def test_generated_curriculum_engine_loads():
+        rows = json.loads((ROOT/"training/maps/manifest.json").read_text())["maps"]
+        for stage in ("movement","combat","exploration","keys","gauntlet"):
+            spec = next(r for r in rows if r["stage"]==stage and r["split"]=="train")
+&gt;           env = make_env(spec["path"],episode_ticks=40,render_buffers=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_nexus.py:118: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env\doom_env\__init__.py:18: in make_env
+    return DoomEnv(wad, map_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;doom_env.wrapper.DoomEnv object at 0x0000029F9AB1E000&gt;
+wad = 'training/maps/train/movement/00.wad', map_name = 'MAP01'
+
+    def __init__(
+        self,
+        wad: str | os.PathLike,
+        map_name: str = "MAP01",
+        *,
+        episode_ticks: int = DEFAULT_EPISODE_TICKS,
+        render_buffers: bool = True,
+        render_mode: str | None = None,
+    ):
+        """
+        wad: path to a PWAD with the map (e.g. "maps/two_rooms.wad").
+        map_name: map lump inside the WAD.
+        episode_ticks: game tics before truncation (35 tics = 1 second of game time).
+        render_buffers: False skips filling `rgb`/`depth` (zeros, same spaces) for faster training.
+        """
+        self.observation_space = S.observation_space()
+        self.action_space = S.action_space()
+        self.render_mode = render_mode
+        self.wad = str(Path(wad).resolve())
+        self.map_name = map_name.upper()
+        self.episode_ticks = int(episode_ticks)
+        self.render_buffers = render_buffers
+        self.mapinfo = load_mapinfo(self.wad, self.map_name)
+    
+        g = vd.DoomGame()
+        g.set_doom_game_path(IWAD)
+        g.set_doom_scenario_path(self.wad)
+        g.set_doom_map(self.map_name)
+        g.set_doom_skill(SKILL)
+        g.set_mode(vd.Mode.PLAYER)
+        g.set_window_visible(False)
+        g.set_sound_enabled(False)
+        g.set_console_enabled(False)
+        g.set_screen_resolution(vd.ScreenResolution.RES_160X120)
+        g.set_screen_format(vd.ScreenFormat.RGB24)
+        g.set_depth_buffer_enabled(True)
+        g.set_render_hud(False)
+        g.set_render_crosshair(False)
+        g.set_render_weapon(True)
+        g.set_render_decals(False)
+        g.set_render_particles(False)
+        g.set_render_messages(False)
+        g.set_render_corpses(True)
+        g.set_objects_info_enabled(True)
+        g.set_sectors_info_enabled(True)
+        g.set_available_buttons([getattr(vd.Button, b) for b in S.BUTTONS])
+        g.set_available_game_variables(GAME_VARIABLES)
+        g.set_episode_timeout(self.episode_ticks)
+&gt;       g.init()
+E       vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.
+
+env\doom_env\wrapper.py:90: MessageQueueException</failure></testcase><testcase classname="tests.test_nexus" name="test_reward_novelty_and_door_rewards_are_once_only" time="0.002" /><testcase classname="tests.test_nexus" name="test_checkpoint_load_once_and_readonly_act" time="0.021"><failure message="FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\submission\\weights\\best_model.pt'">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000029F9AA41A70&gt;
+
+    def test_checkpoint_load_once_and_readonly_act(monkeypatch):
+        calls=[]; original=torch.load
+        def load(*a,**kw): calls.append(a[0]); return original(*a,**kw)
+        monkeypatch.setattr(torch,"load",load)
+&gt;       agent=trained_agent()
+              ^^^^^^^^^^^^^^^
+
+tests\test_nexus.py:150: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_nexus.py:143: in trained_agent
+    return DoomAgent(observation_space(),action_space(),"cpu")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+submission\agent.py:18: in __init__
+    checkpoint = torch.load(Path(__file__).parent / "weights" / "best_model.pt",
+tests\test_nexus.py:148: in load
+    def load(*a,**kw): calls.append(a[0]); return original(*a,**kw)
+                                                  ^^^^^^^^^^^^^^^^^
+..\..\work\.venv\Lib\site-packages\torch\serialization.py:1484: in load
+    with _open_file_like(f, "rb") as opened_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\work\.venv\Lib\site-packages\torch\serialization.py:759: in _open_file_like
+    return _open_file(name_or_buffer, mode)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;torch.serialization._open_file object at 0x0000029F9AA6D7F0&gt;
+name = WindowsPath('C:/Users/Darshan/Documents/Codex/2026-11-26/files-mentioned-by-the-user-yugaantar/outputs/doom-nexus/submission/weights/best_model.pt')
+mode = 'rb'
+
+    def __init__(self, name: Union[str, os.PathLike[str]], mode: str) -&gt; None:
+&gt;       super().__init__(open(name, mode))
+                         ^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\submission\\weights\\best_model.pt'
+
+..\..\work\.venv\Lib\site-packages\torch\serialization.py:740: FileNotFoundError</failure></testcase><testcase classname="tests.test_nexus" name="test_memory_reset_and_independent_instances" time="0.003"><failure message="FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\submission\\weights\\best_model.pt'">def test_memory_reset_and_independent_instances():
+&gt;       a,b=trained_agent(),trained_agent(); obs=official_observation()
+            ^^^^^^^^^^^^^^^
+
+tests\test_nexus.py:161: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_nexus.py:143: in trained_agent
+    return DoomAgent(observation_space(),action_space(),"cpu")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+submission\agent.py:18: in __init__
+    checkpoint = torch.load(Path(__file__).parent / "weights" / "best_model.pt",
+..\..\work\.venv\Lib\site-packages\torch\serialization.py:1484: in load
+    with _open_file_like(f, "rb") as opened_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\work\.venv\Lib\site-packages\torch\serialization.py:759: in _open_file_like
+    return _open_file(name_or_buffer, mode)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;torch.serialization._open_file object at 0x0000029F959BAE90&gt;
+name = WindowsPath('C:/Users/Darshan/Documents/Codex/2026-11-26/files-mentioned-by-the-user-yugaantar/outputs/doom-nexus/submission/weights/best_model.pt')
+mode = 'rb'
+
+    def __init__(self, name: Union[str, os.PathLike[str]], mode: str) -&gt; None:
+&gt;       super().__init__(open(name, mode))
+                         ^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\submission\\weights\\best_model.pt'
+
+..\..\work\.venv\Lib\site-packages\torch\serialization.py:740: FileNotFoundError</failure></testcase><testcase classname="tests.test_nexus" name="test_real_episode_without_invalid_actions" time="0.009"><failure message="FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\submission\\weights\\best_model.pt'">def test_real_episode_without_invalid_actions():
+&gt;       agent=trained_agent(); env=make_env(ROOT/"maps/two_rooms.wad",episode_ticks=100)
+              ^^^^^^^^^^^^^^^
+
+tests\test_nexus.py:173: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_nexus.py:143: in trained_agent
+    return DoomAgent(observation_space(),action_space(),"cpu")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+submission\agent.py:18: in __init__
+    checkpoint = torch.load(Path(__file__).parent / "weights" / "best_model.pt",
+..\..\work\.venv\Lib\site-packages\torch\serialization.py:1484: in load
+    with _open_file_like(f, "rb") as opened_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\work\.venv\Lib\site-packages\torch\serialization.py:759: in _open_file_like
+    return _open_file(name_or_buffer, mode)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;torch.serialization._open_file object at 0x0000029F9AB24550&gt;
+name = WindowsPath('C:/Users/Darshan/Documents/Codex/2026-11-26/files-mentioned-by-the-user-yugaantar/outputs/doom-nexus/submission/weights/best_model.pt')
+mode = 'rb'
+
+    def __init__(self, name: Union[str, os.PathLike[str]], mode: str) -&gt; None:
+&gt;       super().__init__(open(name, mode))
+                         ^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\submission\\weights\\best_model.pt'
+
+..\..\work\.venv\Lib\site-packages\torch\serialization.py:740: FileNotFoundError</failure></testcase><testcase classname="tests.test_nexus" name="test_cuda_agent" time="0.001"><skipped type="pytest.skip" message="CUDA execution not verified: local PyTorch is the CPU build">C:\Users\Darshan\Documents\Codex\2026-11-26\files-mentioned-by-the-user-yugaantar\outputs\doom-nexus\tests\test_nexus.py:184: CUDA execution not verified: local PyTorch is the CPU build</skipped></testcase><testcase classname="tests.test_remote" name="test_good_agent_full_episode" time="0.020"><error message="failed on setup with &quot;vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.&quot;">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_good_agent_full_episode0')
+
+    @pytest.fixture
+    def env(tmp_path):
+&gt;       e = make_env(fixture_wad("#######\n#P...E#\n#######"), episode_ticks=200)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_remote.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env\doom_env\__init__.py:18: in make_env
+    return DoomEnv(wad, map_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;doom_env.wrapper.DoomEnv object at 0x0000029F9AB50890&gt;
+wad = 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\tests\\fixtures\\6a392a907969372f.wad'
+map_name = 'MAP01'
+
+    def __init__(
+        self,
+        wad: str | os.PathLike,
+        map_name: str = "MAP01",
+        *,
+        episode_ticks: int = DEFAULT_EPISODE_TICKS,
+        render_buffers: bool = True,
+        render_mode: str | None = None,
+    ):
+        """
+        wad: path to a PWAD with the map (e.g. "maps/two_rooms.wad").
+        map_name: map lump inside the WAD.
+        episode_ticks: game tics before truncation (35 tics = 1 second of game time).
+        render_buffers: False skips filling `rgb`/`depth` (zeros, same spaces) for faster training.
+        """
+        self.observation_space = S.observation_space()
+        self.action_space = S.action_space()
+        self.render_mode = render_mode
+        self.wad = str(Path(wad).resolve())
+        self.map_name = map_name.upper()
+        self.episode_ticks = int(episode_ticks)
+        self.render_buffers = render_buffers
+        self.mapinfo = load_mapinfo(self.wad, self.map_name)
+    
+        g = vd.DoomGame()
+        g.set_doom_game_path(IWAD)
+        g.set_doom_scenario_path(self.wad)
+        g.set_doom_map(self.map_name)
+        g.set_doom_skill(SKILL)
+        g.set_mode(vd.Mode.PLAYER)
+        g.set_window_visible(False)
+        g.set_sound_enabled(False)
+        g.set_console_enabled(False)
+        g.set_screen_resolution(vd.ScreenResolution.RES_160X120)
+        g.set_screen_format(vd.ScreenFormat.RGB24)
+        g.set_depth_buffer_enabled(True)
+        g.set_render_hud(False)
+        g.set_render_crosshair(False)
+        g.set_render_weapon(True)
+        g.set_render_decals(False)
+        g.set_render_particles(False)
+        g.set_render_messages(False)
+        g.set_render_corpses(True)
+        g.set_objects_info_enabled(True)
+        g.set_sectors_info_enabled(True)
+        g.set_available_buttons([getattr(vd.Button, b) for b in S.BUTTONS])
+        g.set_available_game_variables(GAME_VARIABLES)
+        g.set_episode_timeout(self.episode_ticks)
+&gt;       g.init()
+E       vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.
+
+env\doom_env\wrapper.py:90: MessageQueueException</error></testcase><testcase classname="tests.test_remote" name="test_loopback_tcp_fallback" time="0.011"><error message="failed on setup with &quot;vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.&quot;">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_loopback_tcp_fallback0')
+
+    @pytest.fixture
+    def env(tmp_path):
+&gt;       e = make_env(fixture_wad("#######\n#P...E#\n#######"), episode_ticks=200)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_remote.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env\doom_env\__init__.py:18: in make_env
+    return DoomEnv(wad, map_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;doom_env.wrapper.DoomEnv object at 0x0000029F9AB50350&gt;
+wad = 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\tests\\fixtures\\6a392a907969372f.wad'
+map_name = 'MAP01'
+
+    def __init__(
+        self,
+        wad: str | os.PathLike,
+        map_name: str = "MAP01",
+        *,
+        episode_ticks: int = DEFAULT_EPISODE_TICKS,
+        render_buffers: bool = True,
+        render_mode: str | None = None,
+    ):
+        """
+        wad: path to a PWAD with the map (e.g. "maps/two_rooms.wad").
+        map_name: map lump inside the WAD.
+        episode_ticks: game tics before truncation (35 tics = 1 second of game time).
+        render_buffers: False skips filling `rgb`/`depth` (zeros, same spaces) for faster training.
+        """
+        self.observation_space = S.observation_space()
+        self.action_space = S.action_space()
+        self.render_mode = render_mode
+        self.wad = str(Path(wad).resolve())
+        self.map_name = map_name.upper()
+        self.episode_ticks = int(episode_ticks)
+        self.render_buffers = render_buffers
+        self.mapinfo = load_mapinfo(self.wad, self.map_name)
+    
+        g = vd.DoomGame()
+        g.set_doom_game_path(IWAD)
+        g.set_doom_scenario_path(self.wad)
+        g.set_doom_map(self.map_name)
+        g.set_doom_skill(SKILL)
+        g.set_mode(vd.Mode.PLAYER)
+        g.set_window_visible(False)
+        g.set_sound_enabled(False)
+        g.set_console_enabled(False)
+        g.set_screen_resolution(vd.ScreenResolution.RES_160X120)
+        g.set_screen_format(vd.ScreenFormat.RGB24)
+        g.set_depth_buffer_enabled(True)
+        g.set_render_hud(False)
+        g.set_render_crosshair(False)
+        g.set_render_weapon(True)
+        g.set_render_decals(False)
+        g.set_render_particles(False)
+        g.set_render_messages(False)
+        g.set_render_corpses(True)
+        g.set_objects_info_enabled(True)
+        g.set_sectors_info_enabled(True)
+        g.set_available_buttons([getattr(vd.Button, b) for b in S.BUTTONS])
+        g.set_available_game_variables(GAME_VARIABLES)
+        g.set_episode_timeout(self.episode_ticks)
+&gt;       g.init()
+E       vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.
+
+env\doom_env\wrapper.py:90: MessageQueueException</error></testcase><testcase classname="tests.test_remote" name="test_misbehaving_agents[init_raises-init-error]" time="0.011"><error message="failed on setup with &quot;vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.&quot;">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_misbehaving_agents_init_r0')
+
+    @pytest.fixture
+    def env(tmp_path):
+&gt;       e = make_env(fixture_wad("#######\n#P...E#\n#######"), episode_ticks=200)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_remote.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env\doom_env\__init__.py:18: in make_env
+    return DoomEnv(wad, map_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;doom_env.wrapper.DoomEnv object at 0x0000029F9AB78260&gt;
+wad = 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\tests\\fixtures\\6a392a907969372f.wad'
+map_name = 'MAP01'
+
+    def __init__(
+        self,
+        wad: str | os.PathLike,
+        map_name: str = "MAP01",
+        *,
+        episode_ticks: int = DEFAULT_EPISODE_TICKS,
+        render_buffers: bool = True,
+        render_mode: str | None = None,
+    ):
+        """
+        wad: path to a PWAD with the map (e.g. "maps/two_rooms.wad").
+        map_name: map lump inside the WAD.
+        episode_ticks: game tics before truncation (35 tics = 1 second of game time).
+        render_buffers: False skips filling `rgb`/`depth` (zeros, same spaces) for faster training.
+        """
+        self.observation_space = S.observation_space()
+        self.action_space = S.action_space()
+        self.render_mode = render_mode
+        self.wad = str(Path(wad).resolve())
+        self.map_name = map_name.upper()
+        self.episode_ticks = int(episode_ticks)
+        self.render_buffers = render_buffers
+        self.mapinfo = load_mapinfo(self.wad, self.map_name)
+    
+        g = vd.DoomGame()
+        g.set_doom_game_path(IWAD)
+        g.set_doom_scenario_path(self.wad)
+        g.set_doom_map(self.map_name)
+        g.set_doom_skill(SKILL)
+        g.set_mode(vd.Mode.PLAYER)
+        g.set_window_visible(False)
+        g.set_sound_enabled(False)
+        g.set_console_enabled(False)
+        g.set_screen_resolution(vd.ScreenResolution.RES_160X120)
+        g.set_screen_format(vd.ScreenFormat.RGB24)
+        g.set_depth_buffer_enabled(True)
+        g.set_render_hud(False)
+        g.set_render_crosshair(False)
+        g.set_render_weapon(True)
+        g.set_render_decals(False)
+        g.set_render_particles(False)
+        g.set_render_messages(False)
+        g.set_render_corpses(True)
+        g.set_objects_info_enabled(True)
+        g.set_sectors_info_enabled(True)
+        g.set_available_buttons([getattr(vd.Button, b) for b in S.BUTTONS])
+        g.set_available_game_variables(GAME_VARIABLES)
+        g.set_episode_timeout(self.episode_ticks)
+&gt;       g.init()
+E       vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.
+
+env\doom_env\wrapper.py:90: MessageQueueException</error></testcase><testcase classname="tests.test_remote" name="test_misbehaving_agents[sys_exit-init-error]" time="0.011"><error message="failed on setup with &quot;vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.&quot;">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_misbehaving_agents_sys_ex0')
+
+    @pytest.fixture
+    def env(tmp_path):
+&gt;       e = make_env(fixture_wad("#######\n#P...E#\n#######"), episode_ticks=200)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_remote.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env\doom_env\__init__.py:18: in make_env
+    return DoomEnv(wad, map_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;doom_env.wrapper.DoomEnv object at 0x0000029F9AB78680&gt;
+wad = 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\tests\\fixtures\\6a392a907969372f.wad'
+map_name = 'MAP01'
+
+    def __init__(
+        self,
+        wad: str | os.PathLike,
+        map_name: str = "MAP01",
+        *,
+        episode_ticks: int = DEFAULT_EPISODE_TICKS,
+        render_buffers: bool = True,
+        render_mode: str | None = None,
+    ):
+        """
+        wad: path to a PWAD with the map (e.g. "maps/two_rooms.wad").
+        map_name: map lump inside the WAD.
+        episode_ticks: game tics before truncation (35 tics = 1 second of game time).
+        render_buffers: False skips filling `rgb`/`depth` (zeros, same spaces) for faster training.
+        """
+        self.observation_space = S.observation_space()
+        self.action_space = S.action_space()
+        self.render_mode = render_mode
+        self.wad = str(Path(wad).resolve())
+        self.map_name = map_name.upper()
+        self.episode_ticks = int(episode_ticks)
+        self.render_buffers = render_buffers
+        self.mapinfo = load_mapinfo(self.wad, self.map_name)
+    
+        g = vd.DoomGame()
+        g.set_doom_game_path(IWAD)
+        g.set_doom_scenario_path(self.wad)
+        g.set_doom_map(self.map_name)
+        g.set_doom_skill(SKILL)
+        g.set_mode(vd.Mode.PLAYER)
+        g.set_window_visible(False)
+        g.set_sound_enabled(False)
+        g.set_console_enabled(False)
+        g.set_screen_resolution(vd.ScreenResolution.RES_160X120)
+        g.set_screen_format(vd.ScreenFormat.RGB24)
+        g.set_depth_buffer_enabled(True)
+        g.set_render_hud(False)
+        g.set_render_crosshair(False)
+        g.set_render_weapon(True)
+        g.set_render_decals(False)
+        g.set_render_particles(False)
+        g.set_render_messages(False)
+        g.set_render_corpses(True)
+        g.set_objects_info_enabled(True)
+        g.set_sectors_info_enabled(True)
+        g.set_available_buttons([getattr(vd.Button, b) for b in S.BUTTONS])
+        g.set_available_game_variables(GAME_VARIABLES)
+        g.set_episode_timeout(self.episode_ticks)
+&gt;       g.init()
+E       vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.
+
+env\doom_env\wrapper.py:90: MessageQueueException</error></testcase><testcase classname="tests.test_remote" name="test_misbehaving_agents[no_class-init-error]" time="0.010"><error message="failed on setup with &quot;vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.&quot;">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_misbehaving_agents_no_cla0')
+
+    @pytest.fixture
+    def env(tmp_path):
+&gt;       e = make_env(fixture_wad("#######\n#P...E#\n#######"), episode_ticks=200)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_remote.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env\doom_env\__init__.py:18: in make_env
+    return DoomEnv(wad, map_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;doom_env.wrapper.DoomEnv object at 0x0000029F9AB5AA30&gt;
+wad = 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\tests\\fixtures\\6a392a907969372f.wad'
+map_name = 'MAP01'
+
+    def __init__(
+        self,
+        wad: str | os.PathLike,
+        map_name: str = "MAP01",
+        *,
+        episode_ticks: int = DEFAULT_EPISODE_TICKS,
+        render_buffers: bool = True,
+        render_mode: str | None = None,
+    ):
+        """
+        wad: path to a PWAD with the map (e.g. "maps/two_rooms.wad").
+        map_name: map lump inside the WAD.
+        episode_ticks: game tics before truncation (35 tics = 1 second of game time).
+        render_buffers: False skips filling `rgb`/`depth` (zeros, same spaces) for faster training.
+        """
+        self.observation_space = S.observation_space()
+        self.action_space = S.action_space()
+        self.render_mode = render_mode
+        self.wad = str(Path(wad).resolve())
+        self.map_name = map_name.upper()
+        self.episode_ticks = int(episode_ticks)
+        self.render_buffers = render_buffers
+        self.mapinfo = load_mapinfo(self.wad, self.map_name)
+    
+        g = vd.DoomGame()
+        g.set_doom_game_path(IWAD)
+        g.set_doom_scenario_path(self.wad)
+        g.set_doom_map(self.map_name)
+        g.set_doom_skill(SKILL)
+        g.set_mode(vd.Mode.PLAYER)
+        g.set_window_visible(False)
+        g.set_sound_enabled(False)
+        g.set_console_enabled(False)
+        g.set_screen_resolution(vd.ScreenResolution.RES_160X120)
+        g.set_screen_format(vd.ScreenFormat.RGB24)
+        g.set_depth_buffer_enabled(True)
+        g.set_render_hud(False)
+        g.set_render_crosshair(False)
+        g.set_render_weapon(True)
+        g.set_render_decals(False)
+        g.set_render_particles(False)
+        g.set_render_messages(False)
+        g.set_render_corpses(True)
+        g.set_objects_info_enabled(True)
+        g.set_sectors_info_enabled(True)
+        g.set_available_buttons([getattr(vd.Button, b) for b in S.BUTTONS])
+        g.set_available_game_variables(GAME_VARIABLES)
+        g.set_episode_timeout(self.episode_ticks)
+&gt;       g.init()
+E       vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.
+
+env\doom_env\wrapper.py:90: MessageQueueException</error></testcase><testcase classname="tests.test_remote" name="test_misbehaving_agents[act_raises-act-error]" time="0.010"><error message="failed on setup with &quot;vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.&quot;">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_misbehaving_agents_act_ra0')
+
+    @pytest.fixture
+    def env(tmp_path):
+&gt;       e = make_env(fixture_wad("#######\n#P...E#\n#######"), episode_ticks=200)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_remote.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env\doom_env\__init__.py:18: in make_env
+    return DoomEnv(wad, map_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;doom_env.wrapper.DoomEnv object at 0x0000029F9AB5A530&gt;
+wad = 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\tests\\fixtures\\6a392a907969372f.wad'
+map_name = 'MAP01'
+
+    def __init__(
+        self,
+        wad: str | os.PathLike,
+        map_name: str = "MAP01",
+        *,
+        episode_ticks: int = DEFAULT_EPISODE_TICKS,
+        render_buffers: bool = True,
+        render_mode: str | None = None,
+    ):
+        """
+        wad: path to a PWAD with the map (e.g. "maps/two_rooms.wad").
+        map_name: map lump inside the WAD.
+        episode_ticks: game tics before truncation (35 tics = 1 second of game time).
+        render_buffers: False skips filling `rgb`/`depth` (zeros, same spaces) for faster training.
+        """
+        self.observation_space = S.observation_space()
+        self.action_space = S.action_space()
+        self.render_mode = render_mode
+        self.wad = str(Path(wad).resolve())
+        self.map_name = map_name.upper()
+        self.episode_ticks = int(episode_ticks)
+        self.render_buffers = render_buffers
+        self.mapinfo = load_mapinfo(self.wad, self.map_name)
+    
+        g = vd.DoomGame()
+        g.set_doom_game_path(IWAD)
+        g.set_doom_scenario_path(self.wad)
+        g.set_doom_map(self.map_name)
+        g.set_doom_skill(SKILL)
+        g.set_mode(vd.Mode.PLAYER)
+        g.set_window_visible(False)
+        g.set_sound_enabled(False)
+        g.set_console_enabled(False)
+        g.set_screen_resolution(vd.ScreenResolution.RES_160X120)
+        g.set_screen_format(vd.ScreenFormat.RGB24)
+        g.set_depth_buffer_enabled(True)
+        g.set_render_hud(False)
+        g.set_render_crosshair(False)
+        g.set_render_weapon(True)
+        g.set_render_decals(False)
+        g.set_render_particles(False)
+        g.set_render_messages(False)
+        g.set_render_corpses(True)
+        g.set_objects_info_enabled(True)
+        g.set_sectors_info_enabled(True)
+        g.set_available_buttons([getattr(vd.Button, b) for b in S.BUTTONS])
+        g.set_available_game_variables(GAME_VARIABLES)
+        g.set_episode_timeout(self.episode_ticks)
+&gt;       g.init()
+E       vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.
+
+env\doom_env\wrapper.py:90: MessageQueueException</error></testcase><testcase classname="tests.test_remote" name="test_misbehaving_agents[act_hangs-act-timeout]" time="0.010"><error message="failed on setup with &quot;vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.&quot;">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_misbehaving_agents_act_ha0')
+
+    @pytest.fixture
+    def env(tmp_path):
+&gt;       e = make_env(fixture_wad("#######\n#P...E#\n#######"), episode_ticks=200)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_remote.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env\doom_env\__init__.py:18: in make_env
+    return DoomEnv(wad, map_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;doom_env.wrapper.DoomEnv object at 0x0000029F95D1C560&gt;
+wad = 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\tests\\fixtures\\6a392a907969372f.wad'
+map_name = 'MAP01'
+
+    def __init__(
+        self,
+        wad: str | os.PathLike,
+        map_name: str = "MAP01",
+        *,
+        episode_ticks: int = DEFAULT_EPISODE_TICKS,
+        render_buffers: bool = True,
+        render_mode: str | None = None,
+    ):
+        """
+        wad: path to a PWAD with the map (e.g. "maps/two_rooms.wad").
+        map_name: map lump inside the WAD.
+        episode_ticks: game tics before truncation (35 tics = 1 second of game time).
+        render_buffers: False skips filling `rgb`/`depth` (zeros, same spaces) for faster training.
+        """
+        self.observation_space = S.observation_space()
+        self.action_space = S.action_space()
+        self.render_mode = render_mode
+        self.wad = str(Path(wad).resolve())
+        self.map_name = map_name.upper()
+        self.episode_ticks = int(episode_ticks)
+        self.render_buffers = render_buffers
+        self.mapinfo = load_mapinfo(self.wad, self.map_name)
+    
+        g = vd.DoomGame()
+        g.set_doom_game_path(IWAD)
+        g.set_doom_scenario_path(self.wad)
+        g.set_doom_map(self.map_name)
+        g.set_doom_skill(SKILL)
+        g.set_mode(vd.Mode.PLAYER)
+        g.set_window_visible(False)
+        g.set_sound_enabled(False)
+        g.set_console_enabled(False)
+        g.set_screen_resolution(vd.ScreenResolution.RES_160X120)
+        g.set_screen_format(vd.ScreenFormat.RGB24)
+        g.set_depth_buffer_enabled(True)
+        g.set_render_hud(False)
+        g.set_render_crosshair(False)
+        g.set_render_weapon(True)
+        g.set_render_decals(False)
+        g.set_render_particles(False)
+        g.set_render_messages(False)
+        g.set_render_corpses(True)
+        g.set_objects_info_enabled(True)
+        g.set_sectors_info_enabled(True)
+        g.set_available_buttons([getattr(vd.Button, b) for b in S.BUTTONS])
+        g.set_available_game_variables(GAME_VARIABLES)
+        g.set_episode_timeout(self.episode_ticks)
+&gt;       g.init()
+E       vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.
+
+env\doom_env\wrapper.py:90: MessageQueueException</error></testcase><testcase classname="tests.test_remote" name="test_misbehaving_agents[bad_shape-act-invalid_action]" time="0.010"><error message="failed on setup with &quot;vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.&quot;">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_misbehaving_agents_bad_sh0')
+
+    @pytest.fixture
+    def env(tmp_path):
+&gt;       e = make_env(fixture_wad("#######\n#P...E#\n#######"), episode_ticks=200)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_remote.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env\doom_env\__init__.py:18: in make_env
+    return DoomEnv(wad, map_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;doom_env.wrapper.DoomEnv object at 0x0000029F9AC23800&gt;
+wad = 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\tests\\fixtures\\6a392a907969372f.wad'
+map_name = 'MAP01'
+
+    def __init__(
+        self,
+        wad: str | os.PathLike,
+        map_name: str = "MAP01",
+        *,
+        episode_ticks: int = DEFAULT_EPISODE_TICKS,
+        render_buffers: bool = True,
+        render_mode: str | None = None,
+    ):
+        """
+        wad: path to a PWAD with the map (e.g. "maps/two_rooms.wad").
+        map_name: map lump inside the WAD.
+        episode_ticks: game tics before truncation (35 tics = 1 second of game time).
+        render_buffers: False skips filling `rgb`/`depth` (zeros, same spaces) for faster training.
+        """
+        self.observation_space = S.observation_space()
+        self.action_space = S.action_space()
+        self.render_mode = render_mode
+        self.wad = str(Path(wad).resolve())
+        self.map_name = map_name.upper()
+        self.episode_ticks = int(episode_ticks)
+        self.render_buffers = render_buffers
+        self.mapinfo = load_mapinfo(self.wad, self.map_name)
+    
+        g = vd.DoomGame()
+        g.set_doom_game_path(IWAD)
+        g.set_doom_scenario_path(self.wad)
+        g.set_doom_map(self.map_name)
+        g.set_doom_skill(SKILL)
+        g.set_mode(vd.Mode.PLAYER)
+        g.set_window_visible(False)
+        g.set_sound_enabled(False)
+        g.set_console_enabled(False)
+        g.set_screen_resolution(vd.ScreenResolution.RES_160X120)
+        g.set_screen_format(vd.ScreenFormat.RGB24)
+        g.set_depth_buffer_enabled(True)
+        g.set_render_hud(False)
+        g.set_render_crosshair(False)
+        g.set_render_weapon(True)
+        g.set_render_decals(False)
+        g.set_render_particles(False)
+        g.set_render_messages(False)
+        g.set_render_corpses(True)
+        g.set_objects_info_enabled(True)
+        g.set_sectors_info_enabled(True)
+        g.set_available_buttons([getattr(vd.Button, b) for b in S.BUTTONS])
+        g.set_available_game_variables(GAME_VARIABLES)
+        g.set_episode_timeout(self.episode_ticks)
+&gt;       g.init()
+E       vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.
+
+env\doom_env\wrapper.py:90: MessageQueueException</error></testcase><testcase classname="tests.test_remote" name="test_misbehaving_agents[bad_values-act-invalid_action]" time="0.014"><error message="failed on setup with &quot;vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.&quot;">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_misbehaving_agents_bad_va0')
+
+    @pytest.fixture
+    def env(tmp_path):
+&gt;       e = make_env(fixture_wad("#######\n#P...E#\n#######"), episode_ticks=200)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_remote.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env\doom_env\__init__.py:18: in make_env
+    return DoomEnv(wad, map_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;doom_env.wrapper.DoomEnv object at 0x0000029F9AC23BF0&gt;
+wad = 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\tests\\fixtures\\6a392a907969372f.wad'
+map_name = 'MAP01'
+
+    def __init__(
+        self,
+        wad: str | os.PathLike,
+        map_name: str = "MAP01",
+        *,
+        episode_ticks: int = DEFAULT_EPISODE_TICKS,
+        render_buffers: bool = True,
+        render_mode: str | None = None,
+    ):
+        """
+        wad: path to a PWAD with the map (e.g. "maps/two_rooms.wad").
+        map_name: map lump inside the WAD.
+        episode_ticks: game tics before truncation (35 tics = 1 second of game time).
+        render_buffers: False skips filling `rgb`/`depth` (zeros, same spaces) for faster training.
+        """
+        self.observation_space = S.observation_space()
+        self.action_space = S.action_space()
+        self.render_mode = render_mode
+        self.wad = str(Path(wad).resolve())
+        self.map_name = map_name.upper()
+        self.episode_ticks = int(episode_ticks)
+        self.render_buffers = render_buffers
+        self.mapinfo = load_mapinfo(self.wad, self.map_name)
+    
+        g = vd.DoomGame()
+        g.set_doom_game_path(IWAD)
+        g.set_doom_scenario_path(self.wad)
+        g.set_doom_map(self.map_name)
+        g.set_doom_skill(SKILL)
+        g.set_mode(vd.Mode.PLAYER)
+        g.set_window_visible(False)
+        g.set_sound_enabled(False)
+        g.set_console_enabled(False)
+        g.set_screen_resolution(vd.ScreenResolution.RES_160X120)
+        g.set_screen_format(vd.ScreenFormat.RGB24)
+        g.set_depth_buffer_enabled(True)
+        g.set_render_hud(False)
+        g.set_render_crosshair(False)
+        g.set_render_weapon(True)
+        g.set_render_decals(False)
+        g.set_render_particles(False)
+        g.set_render_messages(False)
+        g.set_render_corpses(True)
+        g.set_objects_info_enabled(True)
+        g.set_sectors_info_enabled(True)
+        g.set_available_buttons([getattr(vd.Button, b) for b in S.BUTTONS])
+        g.set_available_game_variables(GAME_VARIABLES)
+        g.set_episode_timeout(self.episode_ticks)
+&gt;       g.init()
+E       vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.
+
+env\doom_env\wrapper.py:90: MessageQueueException</error></testcase><testcase classname="tests.test_remote" name="test_misbehaving_agents[returns_str-act-error]" time="0.010"><error message="failed on setup with &quot;vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.&quot;">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_misbehaving_agents_return0')
+
+    @pytest.fixture
+    def env(tmp_path):
+&gt;       e = make_env(fixture_wad("#######\n#P...E#\n#######"), episode_ticks=200)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_remote.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env\doom_env\__init__.py:18: in make_env
+    return DoomEnv(wad, map_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;doom_env.wrapper.DoomEnv object at 0x0000029F9ABB07A0&gt;
+wad = 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\tests\\fixtures\\6a392a907969372f.wad'
+map_name = 'MAP01'
+
+    def __init__(
+        self,
+        wad: str | os.PathLike,
+        map_name: str = "MAP01",
+        *,
+        episode_ticks: int = DEFAULT_EPISODE_TICKS,
+        render_buffers: bool = True,
+        render_mode: str | None = None,
+    ):
+        """
+        wad: path to a PWAD with the map (e.g. "maps/two_rooms.wad").
+        map_name: map lump inside the WAD.
+        episode_ticks: game tics before truncation (35 tics = 1 second of game time).
+        render_buffers: False skips filling `rgb`/`depth` (zeros, same spaces) for faster training.
+        """
+        self.observation_space = S.observation_space()
+        self.action_space = S.action_space()
+        self.render_mode = render_mode
+        self.wad = str(Path(wad).resolve())
+        self.map_name = map_name.upper()
+        self.episode_ticks = int(episode_ticks)
+        self.render_buffers = render_buffers
+        self.mapinfo = load_mapinfo(self.wad, self.map_name)
+    
+        g = vd.DoomGame()
+        g.set_doom_game_path(IWAD)
+        g.set_doom_scenario_path(self.wad)
+        g.set_doom_map(self.map_name)
+        g.set_doom_skill(SKILL)
+        g.set_mode(vd.Mode.PLAYER)
+        g.set_window_visible(False)
+        g.set_sound_enabled(False)
+        g.set_console_enabled(False)
+        g.set_screen_resolution(vd.ScreenResolution.RES_160X120)
+        g.set_screen_format(vd.ScreenFormat.RGB24)
+        g.set_depth_buffer_enabled(True)
+        g.set_render_hud(False)
+        g.set_render_crosshair(False)
+        g.set_render_weapon(True)
+        g.set_render_decals(False)
+        g.set_render_particles(False)
+        g.set_render_messages(False)
+        g.set_render_corpses(True)
+        g.set_objects_info_enabled(True)
+        g.set_sectors_info_enabled(True)
+        g.set_available_buttons([getattr(vd.Button, b) for b in S.BUTTONS])
+        g.set_available_game_variables(GAME_VARIABLES)
+        g.set_episode_timeout(self.episode_ticks)
+&gt;       g.init()
+E       vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.
+
+env\doom_env\wrapper.py:90: MessageQueueException</error></testcase><testcase classname="tests.test_remote" name="test_misbehaving_agents[hard_crash-act-crash]" time="0.010"><error message="failed on setup with &quot;vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.&quot;">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_misbehaving_agents_hard_c0')
+
+    @pytest.fixture
+    def env(tmp_path):
+&gt;       e = make_env(fixture_wad("#######\n#P...E#\n#######"), episode_ticks=200)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_remote.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env\doom_env\__init__.py:18: in make_env
+    return DoomEnv(wad, map_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;doom_env.wrapper.DoomEnv object at 0x0000029F9ABB0C20&gt;
+wad = 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\tests\\fixtures\\6a392a907969372f.wad'
+map_name = 'MAP01'
+
+    def __init__(
+        self,
+        wad: str | os.PathLike,
+        map_name: str = "MAP01",
+        *,
+        episode_ticks: int = DEFAULT_EPISODE_TICKS,
+        render_buffers: bool = True,
+        render_mode: str | None = None,
+    ):
+        """
+        wad: path to a PWAD with the map (e.g. "maps/two_rooms.wad").
+        map_name: map lump inside the WAD.
+        episode_ticks: game tics before truncation (35 tics = 1 second of game time).
+        render_buffers: False skips filling `rgb`/`depth` (zeros, same spaces) for faster training.
+        """
+        self.observation_space = S.observation_space()
+        self.action_space = S.action_space()
+        self.render_mode = render_mode
+        self.wad = str(Path(wad).resolve())
+        self.map_name = map_name.upper()
+        self.episode_ticks = int(episode_ticks)
+        self.render_buffers = render_buffers
+        self.mapinfo = load_mapinfo(self.wad, self.map_name)
+    
+        g = vd.DoomGame()
+        g.set_doom_game_path(IWAD)
+        g.set_doom_scenario_path(self.wad)
+        g.set_doom_map(self.map_name)
+        g.set_doom_skill(SKILL)
+        g.set_mode(vd.Mode.PLAYER)
+        g.set_window_visible(False)
+        g.set_sound_enabled(False)
+        g.set_console_enabled(False)
+        g.set_screen_resolution(vd.ScreenResolution.RES_160X120)
+        g.set_screen_format(vd.ScreenFormat.RGB24)
+        g.set_depth_buffer_enabled(True)
+        g.set_render_hud(False)
+        g.set_render_crosshair(False)
+        g.set_render_weapon(True)
+        g.set_render_decals(False)
+        g.set_render_particles(False)
+        g.set_render_messages(False)
+        g.set_render_corpses(True)
+        g.set_objects_info_enabled(True)
+        g.set_sectors_info_enabled(True)
+        g.set_available_buttons([getattr(vd.Button, b) for b in S.BUTTONS])
+        g.set_available_game_variables(GAME_VARIABLES)
+        g.set_episode_timeout(self.episode_ticks)
+&gt;       g.init()
+E       vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.
+
+env\doom_env\wrapper.py:90: MessageQueueException</error></testcase><testcase classname="tests.test_remote" name="test_misbehaving_agents[gc_snoop-None-None]" time="0.010"><error message="failed on setup with &quot;vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.&quot;">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_misbehaving_agents_gc_sno0')
+
+    @pytest.fixture
+    def env(tmp_path):
+&gt;       e = make_env(fixture_wad("#######\n#P...E#\n#######"), episode_ticks=200)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_remote.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env\doom_env\__init__.py:18: in make_env
+    return DoomEnv(wad, map_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;doom_env.wrapper.DoomEnv object at 0x0000029F9ABB0F80&gt;
+wad = 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\tests\\fixtures\\6a392a907969372f.wad'
+map_name = 'MAP01'
+
+    def __init__(
+        self,
+        wad: str | os.PathLike,
+        map_name: str = "MAP01",
+        *,
+        episode_ticks: int = DEFAULT_EPISODE_TICKS,
+        render_buffers: bool = True,
+        render_mode: str | None = None,
+    ):
+        """
+        wad: path to a PWAD with the map (e.g. "maps/two_rooms.wad").
+        map_name: map lump inside the WAD.
+        episode_ticks: game tics before truncation (35 tics = 1 second of game time).
+        render_buffers: False skips filling `rgb`/`depth` (zeros, same spaces) for faster training.
+        """
+        self.observation_space = S.observation_space()
+        self.action_space = S.action_space()
+        self.render_mode = render_mode
+        self.wad = str(Path(wad).resolve())
+        self.map_name = map_name.upper()
+        self.episode_ticks = int(episode_ticks)
+        self.render_buffers = render_buffers
+        self.mapinfo = load_mapinfo(self.wad, self.map_name)
+    
+        g = vd.DoomGame()
+        g.set_doom_game_path(IWAD)
+        g.set_doom_scenario_path(self.wad)
+        g.set_doom_map(self.map_name)
+        g.set_doom_skill(SKILL)
+        g.set_mode(vd.Mode.PLAYER)
+        g.set_window_visible(False)
+        g.set_sound_enabled(False)
+        g.set_console_enabled(False)
+        g.set_screen_resolution(vd.ScreenResolution.RES_160X120)
+        g.set_screen_format(vd.ScreenFormat.RGB24)
+        g.set_depth_buffer_enabled(True)
+        g.set_render_hud(False)
+        g.set_render_crosshair(False)
+        g.set_render_weapon(True)
+        g.set_render_decals(False)
+        g.set_render_particles(False)
+        g.set_render_messages(False)
+        g.set_render_corpses(True)
+        g.set_objects_info_enabled(True)
+        g.set_sectors_info_enabled(True)
+        g.set_available_buttons([getattr(vd.Button, b) for b in S.BUTTONS])
+        g.set_available_game_variables(GAME_VARIABLES)
+        g.set_episode_timeout(self.episode_ticks)
+&gt;       g.init()
+E       vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.
+
+env\doom_env\wrapper.py:90: MessageQueueException</error></testcase><testcase classname="tests.test_remote" name="test_startup_crash_detected_quickly" time="0.215" /><testcase classname="tests.test_remote" name="test_encode_rejects_object_arrays" time="0.002" /><testcase classname="tests.test_remote" name="test_roundtrip_nested" time="0.023" /><testcase classname="tests.test_remote" name="test_hostile_replies_become_protocol_failures[conflicting_paths]" time="0.004"><failure message="ModuleNotFoundError: No module named 'resource'">name = 'conflicting_paths'
+
+    @pytest.mark.parametrize("name", sorted(HOSTILE))
+    def test_hostile_replies_become_protocol_failures(name):
+&gt;       import resource
+E       ModuleNotFoundError: No module named 'resource'
+
+tests\test_remote.py:187: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_remote" name="test_hostile_replies_become_protocol_failures[deep_json]" time="0.003"><failure message="ModuleNotFoundError: No module named 'resource'">name = 'deep_json'
+
+    @pytest.mark.parametrize("name", sorted(HOSTILE))
+    def test_hostile_replies_become_protocol_failures(name):
+&gt;       import resource
+E       ModuleNotFoundError: No module named 'resource'
+
+tests\test_remote.py:187: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_remote" name="test_hostile_replies_become_protocol_failures[huge_int]" time="0.003"><failure message="ModuleNotFoundError: No module named 'resource'">name = 'huge_int'
+
+    @pytest.mark.parametrize("name", sorted(HOSTILE))
+    def test_hostile_replies_become_protocol_failures(name):
+&gt;       import resource
+E       ModuleNotFoundError: No module named 'resource'
+
+tests\test_remote.py:187: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_remote" name="test_hostile_replies_become_protocol_failures[int64_wrap_shape]" time="0.003"><failure message="ModuleNotFoundError: No module named 'resource'">name = 'int64_wrap_shape'
+
+    @pytest.mark.parametrize("name", sorted(HOSTILE))
+    def test_hostile_replies_become_protocol_failures(name):
+&gt;       import resource
+E       ModuleNotFoundError: No module named 'resource'
+
+tests\test_remote.py:187: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_remote" name="test_hostile_replies_become_protocol_failures[negative_size_bomb]" time="0.003"><failure message="ModuleNotFoundError: No module named 'resource'">name = 'negative_size_bomb'
+
+    @pytest.mark.parametrize("name", sorted(HOSTILE))
+    def test_hostile_replies_become_protocol_failures(name):
+&gt;       import resource
+E       ModuleNotFoundError: No module named 'resource'
+
+tests\test_remote.py:187: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_remote" name="test_hostile_replies_become_protocol_failures[not_an_object]" time="0.003"><failure message="ModuleNotFoundError: No module named 'resource'">name = 'not_an_object'
+
+    @pytest.mark.parametrize("name", sorted(HOSTILE))
+    def test_hostile_replies_become_protocol_failures(name):
+&gt;       import resource
+E       ModuleNotFoundError: No module named 'resource'
+
+tests\test_remote.py:187: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_remote" name="test_hostile_replies_become_protocol_failures[wrong_seq]" time="0.003"><failure message="ModuleNotFoundError: No module named 'resource'">name = 'wrong_seq'
+
+    @pytest.mark.parametrize("name", sorted(HOSTILE))
+    def test_hostile_replies_become_protocol_failures(name):
+&gt;       import resource
+E       ModuleNotFoundError: No module named 'resource'
+
+tests\test_remote.py:187: ModuleNotFoundError</failure></testcase><testcase classname="tests.test_remote" name="test_presented_valid_reply_is_rejected" time="0.002" /><testcase classname="tests.test_remote" name="test_guessed_sequence_numbers_are_rejected" time="0.002" /><testcase classname="tests.test_validate" name="test_template_baseline_passes" time="0.642"><failure message="AssertionError: Validating C:\Users\Darshan\Documents\Codex\2026-11-26\files-mentioned-by-the-user-yugaantar\outputs\doom-nexus  (contract 1.0.0-draft)&#10;  &#10;  Traceback (most recent call last):&#10;    File &quot;C:\Users\Darshan\Documents\Codex\2026-11-26\files-mentioned-by-the-user-yugaantar\outputs\doom-nexus\validate.py&quot;, line 604, in &lt;module&gt;&#10;      sys.exit(main())&#10;               ~~~~^^&#10;    File &quot;C:\Users\Darshan\Documents\Codex\2026-11-26\files-mentioned-by-the-user-yugaantar\outputs\doom-nexus\validate.py&quot;, line 586, in main&#10;      check_size(repo, limits.MAX_REPO_BYTES)&#10;      ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^&#10;    File &quot;C:\Users\Darshan\Documents\Codex\2026-11-26\files-mentioned-by-the-user-yugaantar\outputs\doom-nexus\validate.py&quot;, line 89, in check_size&#10;      report(status, &quot;Repository size (tracked files)&quot;, f&quot;{human(total)} of {human(max_bytes)}&quot;)&#10;      ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^&#10;    File &quot;C:\Users\Darshan\Documents\Codex\2026-11-26\files-mentioned-by-the-user-yugaantar\outputs\doom-nexus\validate.py&quot;, line 46, in report&#10;      print(f&quot; {mark} {check}&quot; + (f&quot;: {detail}&quot; if detail else &quot;&quot;), flush=True)&#10;      ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^&#10;    File &quot;C:\Users\Darshan\anaconda3\Lib\encodings\cp1252.py&quot;, line 19, in encode&#10;      return codecs.charmap_encode(input,self.errors,encoding_table)[0]&#10;             ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^&#10;  UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 6: character maps to &lt;undefined&gt;&#10;  &#10;assert 1 == 0&#10; +  where 1 = CompletedProcess(args=['C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\work\...codeEncodeError: \'charmap\' codec can\'t encode character \'\\u2713\' in position 6: character maps to &lt;undefined&gt;\n').returncode">def test_template_baseline_passes():
+        out = run(ROOT)
+&gt;       assert out.returncode == 0, out.stdout + out.stderr
+E       AssertionError: Validating C:\Users\Darshan\Documents\Codex\2026-11-26\files-mentioned-by-the-user-yugaantar\outputs\doom-nexus  (contract 1.0.0-draft)
+E         
+E         Traceback (most recent call last):
+E           File "C:\Users\Darshan\Documents\Codex\2026-11-26\files-mentioned-by-the-user-yugaantar\outputs\doom-nexus\validate.py", line 604, in &lt;module&gt;
+E             sys.exit(main())
+E                      ~~~~^^
+E           File "C:\Users\Darshan\Documents\Codex\2026-11-26\files-mentioned-by-the-user-yugaantar\outputs\doom-nexus\validate.py", line 586, in main
+E             check_size(repo, limits.MAX_REPO_BYTES)
+E             ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "C:\Users\Darshan\Documents\Codex\2026-11-26\files-mentioned-by-the-user-yugaantar\outputs\doom-nexus\validate.py", line 89, in check_size
+E             report(status, "Repository size (tracked files)", f"{human(total)} of {human(max_bytes)}")
+E             ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "C:\Users\Darshan\Documents\Codex\2026-11-26\files-mentioned-by-the-user-yugaantar\outputs\doom-nexus\validate.py", line 46, in report
+E             print(f" {mark} {check}" + (f": {detail}" if detail else ""), flush=True)
+E             ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "C:\Users\Darshan\anaconda3\Lib\encodings\cp1252.py", line 19, in encode
+E             return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+E                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E         UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 6: character maps to &lt;undefined&gt;
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\work\...codeEncodeError: \'charmap\' codec can\'t encode character \'\\u2713\' in position 6: character maps to &lt;undefined&gt;\n').returncode
+
+tests\test_validate.py:23: AssertionError</failure></testcase><testcase classname="tests.test_validate" name="test_bad_signature_fails" time="0.624"><failure message="AssertionError: assert 'DoomAgent.__init__' in 'Validating C:\\Users\\Darshan\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{3a10dbc4-d4a5-497...tract 1.0.0-draft)\n\n \x1b[33m!\x1b[0m Repository size: not a git repository; measuring all files (excluding .venv)\n'&#10; +  where 'Validating C:\\Users\\Darshan\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{3a10dbc4-d4a5-497...tract 1.0.0-draft)\n\n \x1b[33m!\x1b[0m Repository size: not a git repository; measuring all files (excluding .venv)\n' = CompletedProcess(args=['C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\work\...codeEncodeError: \'charmap\' codec can\'t encode character \'\\u2713\' in position 6: character maps to &lt;undefined&gt;\n').stdout">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_bad_signature_fails0')
+
+    def test_bad_signature_fails(tmp_path):
+        out = run(make_repo(tmp_path, "class DoomAgent:\n    def __init__(self, a): pass\n    def reset(self): pass\n    def act(self, o): pass\n"))
+        assert out.returncode == 1
+&gt;       assert "DoomAgent.__init__" in out.stdout
+E       AssertionError: assert 'DoomAgent.__init__' in 'Validating C:\\Users\\Darshan\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{3a10dbc4-d4a5-497...tract 1.0.0-draft)\n\n \x1b[33m!\x1b[0m Repository size: not a git repository; measuring all files (excluding .venv)\n'
+E        +  where 'Validating C:\\Users\\Darshan\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{3a10dbc4-d4a5-497...tract 1.0.0-draft)\n\n \x1b[33m!\x1b[0m Repository size: not a git repository; measuring all files (excluding .venv)\n' = CompletedProcess(args=['C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\work\...codeEncodeError: \'charmap\' codec can\'t encode character \'\\u2713\' in position 6: character maps to &lt;undefined&gt;\n').stdout
+
+tests\test_validate.py:30: AssertionError</failure></testcase><testcase classname="tests.test_validate" name="test_crashing_agent_fails" time="0.649"><failure message="AssertionError: assert 'kaboom' in 'Validating C:\\Users\\Darshan\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{3a10dbc4-d4a5-497...tract 1.0.0-draft)\n\n \x1b[33m!\x1b[0m Repository size: not a git repository; measuring all files (excluding .venv)\n'&#10; +  where 'Validating C:\\Users\\Darshan\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{3a10dbc4-d4a5-497...tract 1.0.0-draft)\n\n \x1b[33m!\x1b[0m Repository size: not a git repository; measuring all files (excluding .venv)\n' = CompletedProcess(args=['C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\work\...codeEncodeError: \'charmap\' codec can\'t encode character \'\\u2713\' in position 6: character maps to &lt;undefined&gt;\n').stdout">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_crashing_agent_fails0')
+
+    def test_crashing_agent_fails(tmp_path):
+        src = (
+            "class DoomAgent:\n    def __init__(self, o, a, d): pass\n    def reset(self): pass\n"
+            "    def act(self, obs): raise RuntimeError('kaboom')\n"
+        )
+        out = run(make_repo(tmp_path, src))
+        assert out.returncode == 1
+&gt;       assert "kaboom" in out.stdout
+E       AssertionError: assert 'kaboom' in 'Validating C:\\Users\\Darshan\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{3a10dbc4-d4a5-497...tract 1.0.0-draft)\n\n \x1b[33m!\x1b[0m Repository size: not a git repository; measuring all files (excluding .venv)\n'
+E        +  where 'Validating C:\\Users\\Darshan\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{3a10dbc4-d4a5-497...tract 1.0.0-draft)\n\n \x1b[33m!\x1b[0m Repository size: not a git repository; measuring all files (excluding .venv)\n' = CompletedProcess(args=['C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\work\...codeEncodeError: \'charmap\' codec can\'t encode character \'\\u2713\' in position 6: character maps to &lt;undefined&gt;\n').stdout
+
+tests\test_validate.py:40: AssertionError</failure></testcase><testcase classname="tests.test_validate" name="test_optional_and_varargs_signatures_pass" time="0.627"><failure message="AssertionError: Validating C:\Users\Darshan\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\AC\#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}\Temp\pytest-of-Darshan\pytest-0\test_optional_and_varargs_sign0  (contract 1.0.0-draft)&#10;  &#10;   #x1B[33m!#x1B[0m Repository size: not a git repository; measuring all files (excluding .venv)&#10;  &#10;assert ('DoomAgent interface' in 'Validating C:\\Users\\Darshan\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{3a10dbc4-d4a5-497...tract 1.0.0-draft)\n\n \x1b[33m!\x1b[0m Repository size: not a git repository; measuring all files (excluding .venv)\n')&#10; +  where 'Validating C:\\Users\\Darshan\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{3a10dbc4-d4a5-497...tract 1.0.0-draft)\n\n \x1b[33m!\x1b[0m Repository size: not a git repository; measuring all files (excluding .venv)\n' = CompletedProcess(args=['C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\work\...codeEncodeError: \'charmap\' codec can\'t encode character \'\\u2713\' in position 6: character maps to &lt;undefined&gt;\n').stdout">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_optional_and_varargs_sign0')
+
+    def test_optional_and_varargs_signatures_pass(tmp_path):
+        src = (
+            "import numpy as np\n"
+            "class DoomAgent:\n    def __init__(self, observation_space, action_space, device='cpu', *, extra=1): pass\n"
+            "    def reset(self, *args): pass\n    def act(self, obs, **kw): return np.zeros(9, np.int8)\n"
+        )
+        out = run(make_repo(tmp_path, src))
+&gt;       assert "DoomAgent interface" in out.stdout and out.returncode == 0, out.stdout
+E       AssertionError: Validating C:\Users\Darshan\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\AC\#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}\Temp\pytest-of-Darshan\pytest-0\test_optional_and_varargs_sign0  (contract 1.0.0-draft)
+E         
+E          #x1B[33m!#x1B[0m Repository size: not a git repository; measuring all files (excluding .venv)
+E         
+E       assert ('DoomAgent interface' in 'Validating C:\\Users\\Darshan\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{3a10dbc4-d4a5-497...tract 1.0.0-draft)\n\n \x1b[33m!\x1b[0m Repository size: not a git repository; measuring all files (excluding .venv)\n')
+E        +  where 'Validating C:\\Users\\Darshan\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{3a10dbc4-d4a5-497...tract 1.0.0-draft)\n\n \x1b[33m!\x1b[0m Repository size: not a git repository; measuring all files (excluding .venv)\n' = CompletedProcess(args=['C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\work\...codeEncodeError: \'charmap\' codec can\'t encode character \'\\u2713\' in position 6: character maps to &lt;undefined&gt;\n').stdout
+
+tests\test_validate.py:50: AssertionError</failure></testcase><testcase classname="tests.test_validate" name="test_gitignored_submission_files_fail" time="0.878"><failure message="AssertionError: Validating C:\Users\Darshan\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\AC\#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}\Temp\pytest-of-Darshan\pytest-0\test_gitignored_submission_fil0  (contract 1.0.0-draft)&#10;  &#10;  &#10;assert (1 == 1 and 'ignored by .gitignore' in 'Validating C:\\Users\\Darshan\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}\\Temp\\pytest-of-Darshan\\pytest-0\\test_gitignored_submission_fil0  (contract 1.0.0-draft)\n\n')&#10; +  where 1 = CompletedProcess(args=['C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\work\...codeEncodeError: \'charmap\' codec can\'t encode character \'\\u2713\' in position 6: character maps to &lt;undefined&gt;\n').returncode&#10; +  and   'Validating C:\\Users\\Darshan\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}\\Temp\\pytest-of-Darshan\\pytest-0\\test_gitignored_submission_fil0  (contract 1.0.0-draft)\n\n' = CompletedProcess(args=['C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\work\...codeEncodeError: \'charmap\' codec can\'t encode character \'\\u2713\' in position 6: character maps to &lt;undefined&gt;\n').stdout">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_gitignored_submission_fil0')
+
+    def test_gitignored_submission_files_fail(tmp_path):
+        repo = make_repo(tmp_path, "import numpy as np\nfrom lib.policy import X\nclass DoomAgent:\n"
+                         "    def __init__(self, o, a, d): pass\n    def reset(self): pass\n"
+                         "    def act(self, obs): return np.zeros(9, np.int8)\n")
+        (repo / "submission" / "lib").mkdir()
+        (repo / "submission" / "lib" / "policy.py").write_text("X = 1\n")
+        (repo / ".gitignore").write_text("lib/\n")
+        for cmd in (["init", "-q"], ["add", "-A"], ["-c", "user.email=t@t", "-c", "user.name=t", "commit", "-qm", "x"]):
+            subprocess.run(["git", "-C", str(repo), *cmd], check=True)
+        out = run(repo)
+&gt;       assert out.returncode == 1 and "ignored by .gitignore" in out.stdout, out.stdout
+E       AssertionError: Validating C:\Users\Darshan\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\AC\#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}\Temp\pytest-of-Darshan\pytest-0\test_gitignored_submission_fil0  (contract 1.0.0-draft)
+E         
+E         
+E       assert (1 == 1 and 'ignored by .gitignore' in 'Validating C:\\Users\\Darshan\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}\\Temp\\pytest-of-Darshan\\pytest-0\\test_gitignored_submission_fil0  (contract 1.0.0-draft)\n\n')
+E        +  where 1 = CompletedProcess(args=['C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\work\...codeEncodeError: \'charmap\' codec can\'t encode character \'\\u2713\' in position 6: character maps to &lt;undefined&gt;\n').returncode
+E        +  and   'Validating C:\\Users\\Darshan\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}\\Temp\\pytest-of-Darshan\\pytest-0\\test_gitignored_submission_fil0  (contract 1.0.0-draft)\n\n' = CompletedProcess(args=['C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\work\...codeEncodeError: \'charmap\' codec can\'t encode character \'\\u2713\' in position 6: character maps to &lt;undefined&gt;\n').stdout
+
+tests\test_validate.py:63: AssertionError</failure></testcase><testcase classname="tests.test_validate" name="test_requirements_rules" time="0.654"><failure message="AssertionError: assert ('unsupported line' in 'Validating C:\\Users\\Darshan\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{3a10dbc4-d4a5-497...tract 1.0.0-draft)\n\n \x1b[33m!\x1b[0m Repository size: not a git repository; measuring all files (excluding .venv)\n')&#10; +  where 'Validating C:\\Users\\Darshan\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{3a10dbc4-d4a5-497...tract 1.0.0-draft)\n\n \x1b[33m!\x1b[0m Repository size: not a git repository; measuring all files (excluding .venv)\n' = CompletedProcess(args=['C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\work\...codeEncodeError: \'charmap\' codec can\'t encode character \'\\u2713\' in position 6: character maps to &lt;undefined&gt;\n').stdout">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_requirements_rules0')
+
+    def test_requirements_rules(tmp_path):
+        repo = make_repo(tmp_path, "class DoomAgent:\n    def __init__(self, o, a, d): pass\n    def reset(self): pass\n    def act(self, o): pass\n")
+        (repo / "submission" / "requirements.txt").write_text("einops==0.8.1\n--find-links https://evil.example\n")
+        out = run(repo)
+&gt;       assert "unsupported line" in out.stdout and out.returncode == 1
+E       AssertionError: assert ('unsupported line' in 'Validating C:\\Users\\Darshan\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{3a10dbc4-d4a5-497...tract 1.0.0-draft)\n\n \x1b[33m!\x1b[0m Repository size: not a git repository; measuring all files (excluding .venv)\n')
+E        +  where 'Validating C:\\Users\\Darshan\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{3a10dbc4-d4a5-497...tract 1.0.0-draft)\n\n \x1b[33m!\x1b[0m Repository size: not a git repository; measuring all files (excluding .venv)\n' = CompletedProcess(args=['C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\work\...codeEncodeError: \'charmap\' codec can\'t encode character \'\\u2713\' in position 6: character maps to &lt;undefined&gt;\n').stdout
+
+tests\test_validate.py:70: AssertionError</failure></testcase><testcase classname="tests.test_validate" name="test_cpu_and_ram_limits_are_emulated" time="0.002"><failure message="AttributeError: module 'os' has no attribute 'sched_getaffinity'">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_cpu_and_ram_limits_are_em0')
+
+    def test_cpu_and_ram_limits_are_emulated(tmp_path):
+        """The agent runs on one core with single-threaded numeric libraries, and its RAM is measured."""
+        import os
+        import re
+    
+        src = (
+            "import os\nimport numpy as np\n"
+            "class DoomAgent:\n"
+            "    def __init__(self, o, a, d):\n"
+            "        assert os.environ['OMP_NUM_THREADS'] == '1'\n"
+&gt;           f"        assert len(os.sched_getaffinity(0)) == {1 if len(os.sched_getaffinity(0)) &gt; 1 else len(os.sched_getaffinity(0))}\n"
+                                                                       ^^^^^^^^^^^^^^^^^^^^
+            "        self.buf = np.ones(300 * 2**20 // 8)  # 300 MB, touched\n"
+            "        self.a = a\n"
+            "    def reset(self): pass\n"
+            "    def act(self, obs): return self.a.sample()\n"
+        )
+E       AttributeError: module 'os' has no attribute 'sched_getaffinity'
+
+tests\test_validate.py:83: AttributeError</failure></testcase><testcase classname="tests.test_validate" name="test_imports_missing_from_image_warn" time="0.681"><failure message="AssertionError: assert ('Imports' in 'Validating C:\\Users\\Darshan\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{3a10dbc4-d4a5-497...tract 1.0.0-draft)\n\n \x1b[33m!\x1b[0m Repository size: not a git repository; measuring all files (excluding .venv)\n')&#10; +  where 'Validating C:\\Users\\Darshan\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{3a10dbc4-d4a5-497...tract 1.0.0-draft)\n\n \x1b[33m!\x1b[0m Repository size: not a git repository; measuring all files (excluding .venv)\n' = CompletedProcess(args=['C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\work\...codeEncodeError: \'charmap\' codec can\'t encode character \'\\u2713\' in position 6: character maps to &lt;undefined&gt;\n').stdout">tmp_path = WindowsPath('C:/Users/Darshan/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/AC/#!sandbox.{3a10dbc4-d4a5-4974-9740-2fe74b6d7b13}/Temp/pytest-of-Darshan/pytest-0/test_imports_missing_from_imag0')
+
+    def test_imports_missing_from_image_warn(tmp_path):
+        """pytest is installed here but not in the official image: importing it must warn, unless listed."""
+        src = (
+            "import os, numpy, pytest\nfrom submission_helpers import x  # noqa\n"
+            "class DoomAgent:\n    def __init__(self, o, a, d): self.a = a\n    def reset(self): pass\n"
+            "    def act(self, obs): return self.a.sample()\n"
+        )
+        repo = make_repo(tmp_path, src)
+        (repo / "submission" / "submission_helpers.py").write_text("x = 1\n")
+        out = run(repo)
+&gt;       assert "Imports" in out.stdout and "pytest" in out.stdout and "numpy" not in out.stdout.split("Imports")[1].split("\n")[0]
+E       AssertionError: assert ('Imports' in 'Validating C:\\Users\\Darshan\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{3a10dbc4-d4a5-497...tract 1.0.0-draft)\n\n \x1b[33m!\x1b[0m Repository size: not a git repository; measuring all files (excluding .venv)\n')
+E        +  where 'Validating C:\\Users\\Darshan\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{3a10dbc4-d4a5-497...tract 1.0.0-draft)\n\n \x1b[33m!\x1b[0m Repository size: not a git repository; measuring all files (excluding .venv)\n' = CompletedProcess(args=['C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\work\...codeEncodeError: \'charmap\' codec can\'t encode character \'\\u2713\' in position 6: character maps to &lt;undefined&gt;\n').stdout
+
+tests\test_validate.py:105: AssertionError</failure></testcase></testsuite></testsuites>

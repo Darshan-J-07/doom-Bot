@@ -1,88 +1,173 @@
-# devforge-doom-template
+# DOOM NEXUS
 
-Starter template for **Yugaantar 2026 · DevForge — Track 1: "Can It Play DOOM?"**
+A custom spatial reinforcement-learning implementation for DevForge Track 1.
+**NOT READY:** ViZDoom's Windows message-queue creation is denied in this sandbox.
+There are no trained weights, gameplay scores or successful official validation.
+Start with [the measured final report](docs/FINAL_REPORT.md). The original starter
+README is preserved in `docs/upstream-README.md`.
 
-> For decades, *"Can it run DOOM?"* was the ultimate hardware test. Now: **can your neural network
-> actually play DOOM?** Train an agent that plays unseen levels **zero-shot**: survive ambushes,
-> navigate multi-room layouts, find keycards, unlock doors and reach the exit.
+## Measured status
 
-No dataset is provided. Your agent learns by interacting with the engine.
+| Check | Actual result |
+|---|---|
+| Local acceptance cases | 35 passed, 4 failed, 1 CUDA skip |
+| Full suite including organizer cases | 47 passed, 29 failed, 12 errors, 1 skip |
+| Real training / selected checkpoint | 0 decisions; no trained weights |
+| Official validator | Exit 1: checkpoint missing; interface check passes |
+| Docker validator | Exit 2: Docker not installed |
+| Untrained model-only CPU mean latency | MLP 3.337 ms; GRU 5.575 ms; 512 synthetic inputs each |
 
-## Quickstart
+The model-only timing is not submitted-agent or RTX3090 performance. Engine IPC,
+missing weights and eight Linux-specific upstream cases account for all failing
+or error cases. [Raw results](benchmarks/full-tests-utf8.txt) and
+[failure categories](benchmarks/test-failure-categories.json) preserve the evidence.
+No gameplay skill, learning curve or hidden-map score has been established.
+All 50 generated maps passed static WAD metadata parsing; that does not establish
+successful engine loading. Evidence: `benchmarks/static-map-check.json`.
 
-1. Click **"Use this template"** on GitHub to create your team's (public) repository.
-2. Set up the environment (Python 3.13, [uv](https://docs.astral.sh/uv/)):
+This local checkout originates at the official template commit
+`63b90c441ca92bcdf043de9ee3930ac6370a44bc` and implements contract `1.0.0-draft`.
+The official wrapper, limits and validator are preserved unchanged. There is no
+published team repository yet, and event-time eligibility must be checked by the
+team. Hidden leaderboard performance is unknown.
 
-   ```bash
-   uv sync                 # installs vizdoom, gymnasium and the official wrapper (env/) in editable mode
-   uv run python validate.py
-   ```
+## What the project implements
 
-   Or use the official image, which is exactly what the scorer runs:
+The implemented policy encodes 64 circular raycasts, masked visible entities and 17
+vitals. A shared fusion layer receives previous action bits. An optional 128-unit
+GRU supplies compressed history; a feed-forward ablation bypasses that memory.
+Six learned categorical heads produce the nine official binary buttons, with no
+opposing movement/turn commands. A critic supplies training value estimates.
+There is no rule-based aiming, pathfinding, map lookup or engine access in the
+submission. RGB and depth are not used in this configuration.
 
-   ```bash
-   docker build -t devforge-doom .            # or: docker pull <official image tag, announced>
-   python validate.py --docker --image devforge-doom   # installs requirements.txt, then runs sandboxed like the scorer
-   ```
+PPO is implemented directly: clipped policy and value objectives, GAE, entropy,
+normalized advantages, finite-gradient checks, gradient clipping, learning-rate
+decay and contiguous recurrent minibatches. Self-authored maps cover movement,
+combat, exploration, red-card progression and a combined scenario. Training-only
+privileged state supplies shaped reward; it never enters model features. Model
+selection uses a validation split and test reporting uses a separate split.
 
-3. Replace the random baseline in `submission/agent.py` with your trained agent.
-4. Put weights in `submission/weights/` (Git LFS) and training code in `training/`.
-5. Run `python validate.py --docker` and submit your repo URL.
+These are implemented mechanisms, not claims of mastered gameplay. Only the
+recorded episodes establish success rates. Read [architecture](docs/ARCHITECTURE.md),
+[training and assets](docs/TRAINING_AND_ASSETS.md), [traceability](docs/TRACEABILITY.md)
+and [demo/Q&A](docs/DEMO_AND_QA.md).
 
-**Platforms:** Linux (x86-64/ARM), macOS on Apple Silicon (macOS 15+) and Windows (x86-64) all
-work with `uv sync` and `validate.py`. Intel Macs have no `vizdoom` 1.3.3 wheel: use Docker or a
-Linux machine. Evaluation runs on Linux, so `validate.py --docker` is the closest check.
+## Windows setup
 
-## Repository layout
+From this repository in PowerShell, create an isolated environment:
 
+```powershell
+.\scripts\setup.ps1 -Python 'C:\Users\Darshan\anaconda3\python.exe'
+$Python = (Resolve-Path '.\.venv\Scripts\python.exe').Path
+$env:PYTHONUTF8 = '1'
+& $Python -m scripts.diagnose
+& $Python -m training.generate_maps
 ```
-env/                  official ViZDoom Gymnasium wrapper (doom_env): spaces, sensors, protocol, limits
-maps/                 one small test map (NOT an evaluation map); bring your own for training
-submission/agent.py   your DoomAgent: the evaluation entry point
-submission/weights/   model weights (Git LFS)
-training/             your training pipeline
-validate.py           run before submitting
-tests/                tests for the wrapper and validator (uv run pytest)
-docs/                 contract, rules, submission guide, evaluation details
+
+The supplied setup script installs the tested CPU PyTorch 2.9.1 wheel and pinned
+training packages. `-Cuda` instead requests its CUDA 12.8 wheel; CUDA support must
+be verified on the installed driver before training. Do not count a CPU-only
+test as a CUDA result. The official evaluation image currently locks newer
+versions; it must be tested separately before submission. Inference imports only
+PyTorch, NumPy and Python standard libraries, all supplied by that image, so
+`submission/requirements.txt` requires no extra packages.
+
+This build's existing environment is outside the deliverable repository. To use
+it without reinstalling, from this exact workspace checkout:
+
+```powershell
+$Python = (Resolve-Path '..\..\work\.venv\Scripts\python.exe').Path
 ```
 
-## Using the environment
+Linux setup uses Python 3.13, `python -m venv .venv`, installs the appropriate
+PyTorch wheel, then `pip install -r requirements-training.txt -e env`. Evaluation
+must use the organizer base image. The starter Dockerfile is preserved verbatim
+as `docs/organizer-base-image.Dockerfile.txt`, not as a submitted Dockerfile.
 
-```python
-from doom_env import make_env
+## Train and resume
 
-env = make_env("maps/two_rooms.wad")     # test map; use your own maps for training
-obs, info = env.reset(seed=0)
-obs, reward, terminated, truncated, info = env.step(env.action_space.sample())
+Benchmark workers before selecting their count. CPU threads are limited to one
+by the training and inference code. The environment pool is serial by default;
+`--parallel` enables separate spawned engine processes and costs more RAM.
+
+```powershell
+& $Python -m scripts.benchmark --throughput-only
+& $Python -m training.train --config configs/baseline.json --out runs/mlp
+& $Python -m training.train --config configs/recurrent.json --out runs/gru
+& $Python -m training.train --model gru --stage auto --steps 2000000 --seconds 3600 --resume runs/gru/latest.pt --out runs/gru
 ```
 
-Observations are a dict of `rgb`, `depth`, `vitals`, `rays` and `visible_entities`, all
-ego-centric and partially observable. See [docs/CONTRACT.md](docs/CONTRACT.md).
-The wrapper's `reward` is a basic default for convenience. Shape your own reward for training.
+`--steps` is the total lifetime target, including resumed steps. `--seconds` is a
+per-invocation wall-clock budget, checked between rollouts. A resume starts fresh
+episodes, restores model/optimizer/RNG state and preserves counters. Use `--envs`,
+`--rollout`, `--sequence`, `--epochs`, `--ticks`, `--lr`, `--entropy`, `--seed` and
+`--device cpu|cuda` to match hardware and time. Config JSON supplies defaults;
+explicit command-line values override them. Checkpoints are replaced atomically
+after every completed optimizer update. Interrupted in-progress rollouts are lost.
 
-**Compute tip:** training only on raw pixels is expensive. The `rays`, `visible_entities` and
-`vitals` signals run thousands of steps per second on a CPU. Hybrid pixel + spatial models are welcome.
+## Evaluate and choose weights
 
-## Hardware at evaluation
+```powershell
+& $Python -m training.evaluate --checkpoint runs/mlp/latest.pt --checkpoint runs/gru/latest.pt --split validation --seeds 0 1 --ticks 2100 --promote --out benchmarks/validation.json
+& $Python -m training.evaluate --checkpoint submission/weights/best_model.pt --split test --seeds 0 1 --ticks 2100 --out benchmarks/heldout.json
+& $Python -m scripts.benchmark --steps 512
+```
 
-One NVIDIA **RTX 3090 (24 GB)** shared between evaluation workers. Each agent gets **2 GB VRAM,
-8 GB RAM and 1 CPU thread**, so keep models compact and inference fast
-(see [hardware](docs/EVALUATION.md#hardware) and [timeouts](docs/EVALUATION.md#timeouts)).
-`validate.py` runs your agent under the same CPU/RAM limits and reports GPU memory.
+Promotion exports a small inference-only `submission/weights/best_model.pt` from
+the highest local proxy mean on validation maps. Test-split promotion is rejected.
+The proxy formula is documented and is not an estimate of official leaderboard
+points. Stochastic inference uses a private generator reset for each map;
+`--deterministic` is an explicit evaluation/selection option, not a heuristic.
+Additional training time should be spent on varied vanilla maps and multiple
+seeds, with broad held-out progression results before optional architectural
+experiments.
 
-## Documentation
+## Tests, validator and demonstration
 
-| Doc | What's inside |
-| --- | --- |
-| [docs/CONTRACT.md](docs/CONTRACT.md) | Observation/action spaces and the `DoomAgent` interface |
-| [docs/RULES.md](docs/RULES.md) | Ground rules: what's allowed, what gets you disqualified |
-| [docs/SUBMISSION.md](docs/SUBMISSION.md) | Submission checklist, Git LFS, 1 GB limit, `requirements.txt` |
-| [docs/EVALUATION.md](docs/EVALUATION.md) | Map tiers, scoring categories, timeouts, replays |
+```powershell
+& $Python -m pytest tests/test_nexus.py tests/test_env.py -q -ra
+& $Python validate.py
+& $Python -m scripts.check_submission
+& $Python -m scripts.demo --stage gauntlet --seed 0 --out recordings/demo
+```
 
-## Rules in one minute
+After the engine and training blockers are resolved, the demo command saves an
+engine replay, raw RGB frames and a metric JSON. No replay or GIF was produced in
+this build. Upstream Linux-only tests
+may fail on Windows because they import `resource` or use `sched_getaffinity`;
+the full suite result and platform limitations must be reported explicitly.
+No official check is weakened. On an appropriately configured Linux GPU host:
 
-- Actions must come from **trained neural parameters**: no rule trees, no `A*`/Dijkstra, no `atan2` aimbots,
-  no unmodified off-the-shelf SB3.
-- Change anything you want **during training**. Evaluation uses the **vanilla engine**, the
-  official wrapper and **unseen maps**.
-- Create the repo during the hackathon. Libraries are fine; the core architecture and training must be yours.
+```bash
+python validate.py --docker --image ghcr.io/reinforce-sst/devforge-doom:latest
+```
+
+This checks the real organizer image, offline/read-only isolation and resource
+limits. Local Windows CPU measurements alone cannot certify that container or
+RTX3090 performance.
+
+The two-page project brief and final report use actual saved measurements only.
+No model is downloaded at inference, and a missing/untrained checkpoint is an
+error rather than a silent random fallback. Git LFS attributes cover `.pt` files.
+Train intermediates and replays are ignored; future selected weights and compact
+evidence belong in the submitted tree. Public GitHub creation/push is a separate,
+user-authorized step.
+
+## Layout
+
+```text
+submission/       neural model, preprocessing, exact DoomAgent, selected LFS weights
+training/         custom PPO, rewards, map generation, curricula, workers, evaluator
+training/maps/    self-authored train/validation/test maps and hash manifest
+configs/          baseline and recurrent defaults
+tests/            original organizer tests plus local agent/training acceptance tests
+scripts/          setup, hardware/resource benchmark, audit, demonstration
+benchmarks/       measured training/evaluation/test/validator evidence
+docs/             official rules and contract, design, traceability, report and Q&A
+validate.py       untouched official validator
+```
+
+Dependencies retain their upstream licenses: PyTorch, NumPy, Gymnasium, ViZDoom,
+Freedoom, pytest and psutil. Generated map geometry is CC0-1.0; runtime assets
+retain Freedoom licensing. No commercial IWAD is distributed by this project.

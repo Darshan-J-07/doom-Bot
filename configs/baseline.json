@@ -1,0 +1,1 @@
+{"model":"mlp","stage":"movement","steps":100000,"seconds":600,"envs":2,"rollout":128,"sequence":32,"epochs":3,"seed":7,"device":"cpu"}

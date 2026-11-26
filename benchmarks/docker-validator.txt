@@ -1,0 +1,4 @@
+ [32m✓[0m Repository size (tracked files): 231.0 KB of 1.0 GB
+ [33m![0m Untracked files in submission/: submission/__init__.py, submission/model.py, submission/preprocessing.py (not part of your submission until committed)
+ [33m![0m Uncommitted changes in submission/: submission/agent.py (the scorer uses your last pushed commit)
+docker not found. Install Docker or run without --docker.

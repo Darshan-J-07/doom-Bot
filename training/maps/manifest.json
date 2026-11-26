@@ -1,0 +1,456 @@
+{
+  "source": "Self-authored procedural UDMF geometry; Freedoom textures at runtime",
+  "license": "Generated map geometry: CC0-1.0; engine/IWAD retain upstream licenses",
+  "maps": [
+    {
+      "path": "training/maps/train/movement/00.wad",
+      "stage": "movement",
+      "seed": 1000,
+      "map_name": "MAP01",
+      "cells": 4,
+      "sha256": "37c6df459aa220cd1ea859ae43ea73ba57c378466b7b9f9bf6690125aa40d21e",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/train/movement/01.wad",
+      "stage": "movement",
+      "seed": 1001,
+      "map_name": "MAP01",
+      "cells": 3,
+      "sha256": "d5c4b39f34feebaf6dd7a01155e267c6d186ff168528084452c282803f5f1a40",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/train/movement/02.wad",
+      "stage": "movement",
+      "seed": 1002,
+      "map_name": "MAP01",
+      "cells": 5,
+      "sha256": "d0b2d38b99be779f06929d335d24f297b5b4fda6604a02e978bfeb2ae9611de3",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/train/movement/03.wad",
+      "stage": "movement",
+      "seed": 1003,
+      "map_name": "MAP01",
+      "cells": 4,
+      "sha256": "fbd58711dd01081e1d01b538002bec71ddb5cf8444c419594e643e2cecb61e11",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/train/movement/04.wad",
+      "stage": "movement",
+      "seed": 1004,
+      "map_name": "MAP01",
+      "cells": 4,
+      "sha256": "e5a52c29a98a3df37252c55b4666c7fd1d7d24f930efbce1b65abc51c374a0ed",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/train/movement/05.wad",
+      "stage": "movement",
+      "seed": 1005,
+      "map_name": "MAP01",
+      "cells": 4,
+      "sha256": "9999bf5cbc5467f5cf43847c6089c4bbc342f0be9fb53d0c3facc965a1aa2928",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/train/combat/00.wad",
+      "stage": "combat",
+      "seed": 1100,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "ae02af472f320846b348f81707b07ca1336d2396fdc9c4e7dc226f87ffd10bd5",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/train/combat/01.wad",
+      "stage": "combat",
+      "seed": 1101,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "d8a9d6353b06e1405a95c35ee86dbfa1419dbb4df28eb02d5d9c83ba6d18cb6d",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/train/combat/02.wad",
+      "stage": "combat",
+      "seed": 1102,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "1dc3d698c6ec3313dbfd76a25514fa25161f386fe76721fd201005ca704c1d68",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/train/combat/03.wad",
+      "stage": "combat",
+      "seed": 1103,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "30cf60517a3f8dd55f193d6732d778a617a4812bc2d6225d48199e8613ec6edb",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/train/combat/04.wad",
+      "stage": "combat",
+      "seed": 1104,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "ffc9c231db33aa7216b0c62a89ae9ed2e37f1b3c2ec6f1abe0d953f9a721aeb4",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/train/combat/05.wad",
+      "stage": "combat",
+      "seed": 1105,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "7a6916c0e4a796e29d772db643f39f0b5c470ecc39189b1c565ddc274c1819de",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/train/exploration/00.wad",
+      "stage": "exploration",
+      "seed": 1200,
+      "map_name": "MAP01",
+      "cells": 8,
+      "sha256": "2f617abda9aa4e38f7744ec29b42807cd544296da96e685752262408c9bf9acf",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/train/exploration/01.wad",
+      "stage": "exploration",
+      "seed": 1201,
+      "map_name": "MAP01",
+      "cells": 7,
+      "sha256": "b273ed7f177b63acb9ff7f29059a6e462b11f1c085490200266654b48fb62311",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/train/exploration/02.wad",
+      "stage": "exploration",
+      "seed": 1202,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "5b63dd84f81f7e0a11120aef2aff87bd62316db1eb64f637d2dda4387e99739d",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/train/exploration/03.wad",
+      "stage": "exploration",
+      "seed": 1203,
+      "map_name": "MAP01",
+      "cells": 7,
+      "sha256": "681e28ee9abca8b526648ea6179cb15defa9dbfbadff1fa3b009afa5607262c5",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/train/exploration/04.wad",
+      "stage": "exploration",
+      "seed": 1204,
+      "map_name": "MAP01",
+      "cells": 12,
+      "sha256": "857bc2e374b2fe1abd09b8be0a2c3bafcf0f6cd2dd43434c003cb102418b3111",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/train/exploration/05.wad",
+      "stage": "exploration",
+      "seed": 1205,
+      "map_name": "MAP01",
+      "cells": 10,
+      "sha256": "a6213fb6117f53daf8394335928a87efdc929a3054b2c2f8f4f2f776acf242d3",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/train/keys/00.wad",
+      "stage": "keys",
+      "seed": 1300,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "d96c0c5ca1a17dd697497ead803513f81b16cb3d5c47304fb57560f902d8d8c9",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/train/keys/01.wad",
+      "stage": "keys",
+      "seed": 1301,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "e755a241a67abd6f0d588ca57c222a4cd982540fe503928954b0b197570e1148",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/train/keys/02.wad",
+      "stage": "keys",
+      "seed": 1302,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "1b0a8d1be0f3b85d2fb1ab511ac3b2e7dfa3cbdd3a94654b4d00bd9c76d0a47c",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/train/keys/03.wad",
+      "stage": "keys",
+      "seed": 1303,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "73e728a670a6e6c4ea82341af11b8c45a3c7b544645733c9cc49937699e5b5c5",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/train/keys/04.wad",
+      "stage": "keys",
+      "seed": 1304,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "56e9868ac3528a906f4ccfb0158ae9c3eb7f9c6c2032e52b27845a565c98ef40",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/train/keys/05.wad",
+      "stage": "keys",
+      "seed": 1305,
+      "map_name": "MAP01",
+      "cells": 8,
+      "sha256": "2741775a9c2a7b348ee0d459b9ea5496652467243a05fc4610ae6f210c62b921",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/train/gauntlet/00.wad",
+      "stage": "gauntlet",
+      "seed": 1400,
+      "map_name": "MAP01",
+      "cells": 8,
+      "sha256": "74f55b939aca06f4d8e9e37d89d864527e07386eedc3e72fdb3808ce391ad225",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/train/gauntlet/01.wad",
+      "stage": "gauntlet",
+      "seed": 1401,
+      "map_name": "MAP01",
+      "cells": 10,
+      "sha256": "2ffdcc1c8c1cbb61c88d1521e2fa09b317126ba0e2254aed8d148f2383742299",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/train/gauntlet/02.wad",
+      "stage": "gauntlet",
+      "seed": 1402,
+      "map_name": "MAP01",
+      "cells": 10,
+      "sha256": "e7bef05bfaf460577a9f598546c5c8696c35f0f4837591144a0a8985dcb96cea",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/train/gauntlet/03.wad",
+      "stage": "gauntlet",
+      "seed": 1403,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "39f4795b0904e58df89cc194eed7f1013614185d2c1c0b2c72e8b9cd314e7ed9",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/train/gauntlet/04.wad",
+      "stage": "gauntlet",
+      "seed": 1404,
+      "map_name": "MAP01",
+      "cells": 8,
+      "sha256": "f66787e1b8fef6bd43906d9850def0a5afc220ad777b8396b3c1938d848ed8c5",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/train/gauntlet/05.wad",
+      "stage": "gauntlet",
+      "seed": 1405,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "a9b6495541dfab98c0f390ae19f7431c5e8cff58ad46583c3c8ed84fcd679130",
+      "split": "train"
+    },
+    {
+      "path": "training/maps/validation/movement/00.wad",
+      "stage": "movement",
+      "seed": 90000,
+      "map_name": "MAP01",
+      "cells": 4,
+      "sha256": "e2b43aedc8ff21728c3cda8f3d3f86128362371c4dcc66b3424eca4185294c3f",
+      "split": "validation"
+    },
+    {
+      "path": "training/maps/validation/movement/01.wad",
+      "stage": "movement",
+      "seed": 90001,
+      "map_name": "MAP01",
+      "cells": 5,
+      "sha256": "d24fd69c297ba15cf82eb36dfbfcd24f0f7141c4ad5fb863102ca9535a0113da",
+      "split": "validation"
+    },
+    {
+      "path": "training/maps/validation/combat/00.wad",
+      "stage": "combat",
+      "seed": 90100,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "b1aeb447222c27fb74afb8ff0ebfa1ec2692fc7ef1f4a719852a4016954e77be",
+      "split": "validation"
+    },
+    {
+      "path": "training/maps/validation/combat/01.wad",
+      "stage": "combat",
+      "seed": 90101,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "5f0ead6bd26a6477d55b1bc071f6a3543b0436d785d00446604ec29e2dbb6113",
+      "split": "validation"
+    },
+    {
+      "path": "training/maps/validation/exploration/00.wad",
+      "stage": "exploration",
+      "seed": 90200,
+      "map_name": "MAP01",
+      "cells": 11,
+      "sha256": "a1f9c090b4b3aa944750397e88f9d900a414d74f20fefc9ed07c9526ff3bc979",
+      "split": "validation"
+    },
+    {
+      "path": "training/maps/validation/exploration/01.wad",
+      "stage": "exploration",
+      "seed": 90201,
+      "map_name": "MAP01",
+      "cells": 10,
+      "sha256": "8aabe62eaa5b91cd15ae31d101119d1c05dc6b13e5737c5fb23249c14b63cf2e",
+      "split": "validation"
+    },
+    {
+      "path": "training/maps/validation/keys/00.wad",
+      "stage": "keys",
+      "seed": 90300,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "6dab5f92d0b413a096f82de8a13d0db3ea1ba30272aad28f308ef0d5d668b275",
+      "split": "validation"
+    },
+    {
+      "path": "training/maps/validation/keys/01.wad",
+      "stage": "keys",
+      "seed": 90301,
+      "map_name": "MAP01",
+      "cells": 8,
+      "sha256": "ce0765b1d5c12f733e5f919ccd4f831cbaef0b7704a8c924b034fabeb6a3294b",
+      "split": "validation"
+    },
+    {
+      "path": "training/maps/validation/gauntlet/00.wad",
+      "stage": "gauntlet",
+      "seed": 90400,
+      "map_name": "MAP01",
+      "cells": 8,
+      "sha256": "d83a4c46c96a5a879631a76d00483d3f077a68f67ba8ae729b252372e6a31049",
+      "split": "validation"
+    },
+    {
+      "path": "training/maps/validation/gauntlet/01.wad",
+      "stage": "gauntlet",
+      "seed": 90401,
+      "map_name": "MAP01",
+      "cells": 8,
+      "sha256": "4215fc264cf25dfc172bb17979eb6eb8bc602eb2d9d757f5caba0b3617cc33b5",
+      "split": "validation"
+    },
+    {
+      "path": "training/maps/test/movement/00.wad",
+      "stage": "movement",
+      "seed": 190000,
+      "map_name": "MAP01",
+      "cells": 4,
+      "sha256": "ed211a3478fa94ccee655076b7f78e3fd4463ab27933b466712f5dff1edbb142",
+      "split": "test"
+    },
+    {
+      "path": "training/maps/test/movement/01.wad",
+      "stage": "movement",
+      "seed": 190001,
+      "map_name": "MAP01",
+      "cells": 4,
+      "sha256": "961254bf537847a0a9f818ef066588cbd835aca87db7478175bbf16487d1dbcf",
+      "split": "test"
+    },
+    {
+      "path": "training/maps/test/combat/00.wad",
+      "stage": "combat",
+      "seed": 190100,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "9c367ce39cef7560314854fcab0594f48ff0cb499bfaadae2772298e82b07fa2",
+      "split": "test"
+    },
+    {
+      "path": "training/maps/test/combat/01.wad",
+      "stage": "combat",
+      "seed": 190101,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "fea0d2bae798879960f46b2791cb2e681b2825e6122a2e458e40c5b2d560cf51",
+      "split": "test"
+    },
+    {
+      "path": "training/maps/test/exploration/00.wad",
+      "stage": "exploration",
+      "seed": 190200,
+      "map_name": "MAP01",
+      "cells": 8,
+      "sha256": "9e69eb67027d2e0a489005e924532b7cd71bec8481c8acb7fb9d71faa7d8b496",
+      "split": "test"
+    },
+    {
+      "path": "training/maps/test/exploration/01.wad",
+      "stage": "exploration",
+      "seed": 190201,
+      "map_name": "MAP01",
+      "cells": 8,
+      "sha256": "a65f41554162a85c4ec34f0c9acad4fdc5701517da64659eeee2bc2b2852c8fd",
+      "split": "test"
+    },
+    {
+      "path": "training/maps/test/keys/00.wad",
+      "stage": "keys",
+      "seed": 190300,
+      "map_name": "MAP01",
+      "cells": 10,
+      "sha256": "d70da938c41d7ea900ebb189a3c7439457ae3c142d9f2fa3d684127c2e1a7026",
+      "split": "test"
+    },
+    {
+      "path": "training/maps/test/keys/01.wad",
+      "stage": "keys",
+      "seed": 190301,
+      "map_name": "MAP01",
+      "cells": 10,
+      "sha256": "51ab32083a500ee865a89ae81103a2ffbcc07ca30ce550ac81b9d300b261e072",
+      "split": "test"
+    },
+    {
+      "path": "training/maps/test/gauntlet/00.wad",
+      "stage": "gauntlet",
+      "seed": 190400,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "b322be2193a16843413756a11d81d7f924982eb07cbafc8332ba62c0237a212d",
+      "split": "test"
+    },
+    {
+      "path": "training/maps/test/gauntlet/01.wad",
+      "stage": "gauntlet",
+      "seed": 190401,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "106fec40ce919a950c3ab2f08bcd40f9a22ff0e1fe60ae2972e009237bc03704",
+      "split": "test"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "status": "NOT READY",
+  "tests": {
+    "tests": 89,
+    "failures": 29,
+    "errors": 12,
+    "skipped": 1,
+    "passed": 47
+  },
+  "local_tests": {
+    "total": 40,
+    "passed": 35,
+    "failed": 4,
+    "skipped": 1
+  },
+  "real_training_steps": 0,
+  "trained_checkpoint": null,
+  "official_validator_exit": 1,
+  "docker_validator_exit": 2,
+  "blocker": "ViZDoom MessageQueueException: Failed to create message queues: Access is denied.",
+  "inference_latency": null,
+  "heldout_performance": null,
+  "microbenchmark": {
+    "scope": "UNTRAINED synthetic-observation microbenchmark; not DoomAgent or official latency",
+    "device": "cpu",
+    "cpu_threads": 1,
+    "trained_weights_saved": false,
+    "results": [
+      {
+        "model": "MLP",
+        "parameters": 84232,
+        "samples": 512,
+        "mean_ms": 3.3371947263276525,
+        "peak_ms": 18.115200044121593,
+        "p95_ms": 5.786225010524503,
+        "process_rss_bytes": 216211456,
+        "windows_peak_working_set_bytes": 216264704
+      },
+      {
+        "model": "GRU",
+        "parameters": 183304,
+        "samples": 512,
+        "mean_ms": 5.575333985575526,
+        "peak_ms": 43.38460002327338,
+        "p95_ms": 10.210104964789934,
+        "process_rss_bytes": 217882624,
+        "windows_peak_working_set_bytes": 218464256
+      }
+    ]
+  }
+}
