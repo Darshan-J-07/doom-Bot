@@ -1,0 +1,17 @@
+{
+  "released": "submission/weights/best_model.pt",
+  "preserved_git_tag": "phase2-baseline",
+  "sha256": "fe14608eaa2728ebe2389b7940144713ab6c0ce39da28a1aba24f576005a463f",
+  "steps": 200096,
+  "updates": 878,
+  "frozen_training_sha256": "edfde9c3ff9d03a4e6347ac710a4d481cba49fd96deed91bd7184410c4627c75",
+  "final_proxy_before": 16.4112,
+  "final_proxy_after": 23.582,
+  "approximate_paired_map_bootstrap_95": [
+    -4.9503999999999975,
+    19.1952
+  ],
+  "bootstrap_scope": "Resamples five maps per tier, keeping each map's engine seeds together.",
+  "hard_tier_weighted_sum_before": -37.168000000000006,
+  "hard_tier_weighted_sum_after": -20.924
+}

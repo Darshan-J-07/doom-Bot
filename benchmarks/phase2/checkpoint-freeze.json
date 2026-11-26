@@ -1,0 +1,356 @@
+{
+  "selection_split": "validation",
+  "training_architecture": {
+    "hidden_size": 128,
+    "recurrent": false,
+    "entity_mode": "pool"
+  },
+  "frozen_checkpoint": "runs/phase2/frozen/mlp-200096/latest.pt",
+  "validation_source": "runs/phase2/milestone-250k/step-200096.pt",
+  "challenger_sha256": "edfde9c3ff9d03a4e6347ac710a4d481cba49fd96deed91bd7184410c4627c75",
+  "validation_proxy": 38.876,
+  "baseline_sha256": "04a50910df3e5c4e4a74cc698b5ec7a5cefff7a0b1bf740e54381680ccdfa26e",
+  "baseline_validation_proxy": 26.47,
+  "ranking": [
+    {
+      "checkpoint": "runs/phase2/milestone-250k/step-200096.pt",
+      "trained_steps": 200096,
+      "sha256": "edfde9c3ff9d03a4e6347ac710a4d481cba49fd96deed91bd7184410c4627c75",
+      "tier_weighted_proxy": 38.876,
+      "tiers": {
+        "movement": {
+          "episodes": 10,
+          "proxy_score": 80.97999999999999,
+          "exit": 0.8,
+          "survived": 1.0,
+          "kills": 0.0,
+          "damage": 0.0,
+          "keys": 0.0,
+          "doors": 0.0,
+          "locks": 0.0,
+          "unique_cells": 9.8
+        },
+        "combat": {
+          "episodes": 10,
+          "proxy_score": 99.87,
+          "exit": 1.0,
+          "survived": 1.0,
+          "kills": 0.0,
+          "damage": 11.1,
+          "keys": 0.0,
+          "doors": 0.0,
+          "locks": 0.0,
+          "unique_cells": 9.8
+        },
+        "exploration": {
+          "episodes": 10,
+          "proxy_score": 83.46000000000001,
+          "exit": 0.8,
+          "survived": 1.0,
+          "kills": 0.0,
+          "damage": 0.0,
+          "keys": 0.0,
+          "doors": 0.5,
+          "locks": 0.0,
+          "unique_cells": 9.6
+        },
+        "keys": {
+          "episodes": 10,
+          "proxy_score": 50.43,
+          "exit": 0.2,
+          "survived": 1.0,
+          "kills": 0.0,
+          "damage": 0.0,
+          "keys": 1.0,
+          "doors": 0.9,
+          "locks": 0.9,
+          "unique_cells": 19.3
+        },
+        "gauntlet": {
+          "episodes": 10,
+          "proxy_score": -7.330000000000001,
+          "exit": 0.0,
+          "survived": 0.0,
+          "kills": 1.2,
+          "damage": 111.9,
+          "keys": 0.5,
+          "doors": 0.1,
+          "locks": 0.1,
+          "unique_cells": 12.6
+        }
+      }
+    },
+    {
+      "checkpoint": "runs/phase2/milestone-250k/latest.pt",
+      "trained_steps": 250000,
+      "sha256": "69b5b94a7547601d7b030f01b4ebeac7568cdbe6feb1356926f109047ad69a5d",
+      "tier_weighted_proxy": 30.866000000000003,
+      "tiers": {
+        "movement": {
+          "episodes": 10,
+          "proxy_score": 91.03,
+          "exit": 0.9,
+          "survived": 1.0,
+          "kills": 0.0,
+          "damage": 0.0,
+          "keys": 0.0,
+          "doors": 0.0,
+          "locks": 0.0,
+          "unique_cells": 10.3
+        },
+        "combat": {
+          "episodes": 10,
+          "proxy_score": 99.96000000000001,
+          "exit": 1.0,
+          "survived": 1.0,
+          "kills": 0.0,
+          "damage": 9.9,
+          "keys": 0.0,
+          "doors": 0.0,
+          "locks": 0.0,
+          "unique_cells": 9.5
+        },
+        "exploration": {
+          "episodes": 10,
+          "proxy_score": 83.51,
+          "exit": 0.8,
+          "survived": 1.0,
+          "kills": 0.0,
+          "damage": 0.0,
+          "keys": 0.0,
+          "doors": 0.5,
+          "locks": 0.0,
+          "unique_cells": 10.1
+        },
+        "keys": {
+          "episodes": 10,
+          "proxy_score": 27.52,
+          "exit": 0.0,
+          "survived": 1.0,
+          "kills": 0.0,
+          "damage": 0.0,
+          "keys": 1.0,
+          "doors": 0.7,
+          "locks": 0.7,
+          "unique_cells": 20.2
+        },
+        "gauntlet": {
+          "episodes": 10,
+          "proxy_score": -10.220000000000002,
+          "exit": 0.0,
+          "survived": 0.0,
+          "kills": 1.3,
+          "damage": 112.8,
+          "keys": 0.4,
+          "doors": 0.0,
+          "locks": 0.0,
+          "unique_cells": 11.6
+        }
+      }
+    },
+    {
+      "checkpoint": "runs/phase2/milestone-100k/latest.pt",
+      "trained_steps": 100000,
+      "sha256": "0c035356025a3957f3306aaf915d8d90a3dc048b0d60eb2323cd3d00dfcaa063",
+      "tier_weighted_proxy": 30.604000000000003,
+      "tiers": {
+        "movement": {
+          "episodes": 10,
+          "proxy_score": 90.97,
+          "exit": 0.9,
+          "survived": 1.0,
+          "kills": 0.0,
+          "damage": 0.0,
+          "keys": 0.0,
+          "doors": 0.0,
+          "locks": 0.0,
+          "unique_cells": 9.7
+        },
+        "combat": {
+          "episodes": 10,
+          "proxy_score": 87.99,
+          "exit": 0.9,
+          "survived": 0.9,
+          "kills": 0.0,
+          "damage": 18.9,
+          "keys": 0.0,
+          "doors": 0.0,
+          "locks": 0.0,
+          "unique_cells": 8.8
+        },
+        "exploration": {
+          "episodes": 10,
+          "proxy_score": 83.51,
+          "exit": 0.8,
+          "survived": 1.0,
+          "kills": 0.0,
+          "damage": 0.0,
+          "keys": 0.0,
+          "doors": 0.5,
+          "locks": 0.0,
+          "unique_cells": 10.1
+        },
+        "keys": {
+          "episodes": 10,
+          "proxy_score": 28.330000000000002,
+          "exit": 0.1,
+          "survived": 1.0,
+          "kills": 0.0,
+          "damage": 0.0,
+          "keys": 0.7,
+          "doors": 0.4,
+          "locks": 0.4,
+          "unique_cells": 18.3
+        },
+        "gauntlet": {
+          "episodes": 10,
+          "proxy_score": -8.49,
+          "exit": 0.0,
+          "survived": 0.0,
+          "kills": 1.3,
+          "damage": 111.3,
+          "keys": 0.5,
+          "doors": 0.0,
+          "locks": 0.0,
+          "unique_cells": 12.4
+        }
+      }
+    },
+    {
+      "checkpoint": "runs/phase2/baseline/best_model.pt",
+      "trained_steps": 8192,
+      "sha256": "04a50910df3e5c4e4a74cc698b5ec7a5cefff7a0b1bf740e54381680ccdfa26e",
+      "tier_weighted_proxy": 26.47,
+      "tiers": {
+        "movement": {
+          "episodes": 10,
+          "proxy_score": 90.95,
+          "exit": 0.9,
+          "survived": 1.0,
+          "kills": 0.0,
+          "damage": 0.0,
+          "keys": 0.0,
+          "doors": 0.0,
+          "locks": 0.0,
+          "unique_cells": 9.5
+        },
+        "combat": {
+          "episodes": 10,
+          "proxy_score": 99.1,
+          "exit": 1.0,
+          "survived": 1.0,
+          "kills": 0.0,
+          "damage": 17.4,
+          "keys": 0.0,
+          "doors": 0.0,
+          "locks": 0.0,
+          "unique_cells": 8.4
+        },
+        "exploration": {
+          "episodes": 10,
+          "proxy_score": 73.31,
+          "exit": 0.7,
+          "survived": 1.0,
+          "kills": 0.0,
+          "damage": 0.0,
+          "keys": 0.0,
+          "doors": 0.5,
+          "locks": 0.0,
+          "unique_cells": 8.1
+        },
+        "keys": {
+          "episodes": 10,
+          "proxy_score": 24.259999999999998,
+          "exit": 0.0,
+          "survived": 1.0,
+          "kills": 0.0,
+          "damage": 0.0,
+          "keys": 0.8,
+          "doors": 0.7,
+          "locks": 0.7,
+          "unique_cells": 17.6
+        },
+        "gauntlet": {
+          "episodes": 10,
+          "proxy_score": -13.45,
+          "exit": 0.0,
+          "survived": 0.0,
+          "kills": 1.2,
+          "damage": 108.6,
+          "keys": 0.2,
+          "doors": 0.0,
+          "locks": 0.0,
+          "unique_cells": 8.1
+        }
+      }
+    },
+    {
+      "checkpoint": "runs/phase2/control-gru-legacy/latest.pt",
+      "trained_steps": 8192,
+      "sha256": "aec264447e3e8007a1cf0cab869fdc4089644c5401688b58719861ef18556ee2",
+      "tier_weighted_proxy": 17.788,
+      "tiers": {
+        "movement": {
+          "episodes": 10,
+          "proxy_score": 40.86,
+          "exit": 0.4,
+          "survived": 1.0,
+          "kills": 0.0,
+          "damage": 0.0,
+          "keys": 0.0,
+          "doors": 0.0,
+          "locks": 0.0,
+          "unique_cells": 8.6
+        },
+        "combat": {
+          "episodes": 10,
+          "proxy_score": 73.25,
+          "exit": 0.8,
+          "survived": 0.8,
+          "kills": 0.0,
+          "damage": 57.0,
+          "keys": 0.0,
+          "doors": 0.0,
+          "locks": 0.0,
+          "unique_cells": 9.5
+        },
+        "exploration": {
+          "episodes": 10,
+          "proxy_score": 53.35,
+          "exit": 0.5,
+          "survived": 1.0,
+          "kills": 0.0,
+          "damage": 0.0,
+          "keys": 0.0,
+          "doors": 0.5,
+          "locks": 0.0,
+          "unique_cells": 8.5
+        },
+        "keys": {
+          "episodes": 10,
+          "proxy_score": 23.470000000000002,
+          "exit": 0.1,
+          "survived": 1.0,
+          "kills": 0.0,
+          "damage": 0.0,
+          "keys": 0.5,
+          "doors": 0.3,
+          "locks": 0.3,
+          "unique_cells": 14.7
+        },
+        "gauntlet": {
+          "episodes": 10,
+          "proxy_score": -18.12,
+          "exit": 0.0,
+          "survived": 0.0,
+          "kills": 0.8,
+          "damage": 110.4,
+          "keys": 0.0,
+          "doors": 0.0,
+          "locks": 0.0,
+          "unique_cells": 5.2
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "map": "runs/phase2/expanded-curriculum/train/gauntlet/two-lock-00.wad",
+    "seed": 0,
+    "decisions": 10,
+    "terminated": false,
+    "truncated": true,
+    "info": {
+      "tic": 41,
+      "exit_reached": false
+    },
+    "seconds": 0.2772762420008803
+  },
+  {
+    "map": "runs/phase2/expanded-curriculum/train/gauntlet/two-lock-01.wad",
+    "seed": 1,
+    "decisions": 10,
+    "terminated": false,
+    "truncated": true,
+    "info": {
+      "tic": 41,
+      "exit_reached": false
+    },
+    "seconds": 0.16851075900012802
+  },
+  {
+    "map": "runs/phase2/expanded-curriculum/train/gauntlet/two-lock-02.wad",
+    "seed": 2,
+    "decisions": 10,
+    "terminated": false,
+    "truncated": true,
+    "info": {
+      "tic": 41,
+      "exit_reached": false
+    },
+    "seconds": 0.18104449699967518
+  },
+  {
+    "map": "runs/phase2/expanded-curriculum/train/gauntlet/two-lock-03.wad",
+    "seed": 3,
+    "decisions": 10,
+    "terminated": false,
+    "truncated": true,
+    "info": {
+      "tic": 41,
+      "exit_reached": false
+    },
+    "seconds": 0.20643987400035257
+  },
+  {
+    "map": "runs/phase2/expanded-curriculum/train/gauntlet/two-lock-04.wad",
+    "seed": 4,
+    "decisions": 10,
+    "terminated": false,
+    "truncated": true,
+    "info": {
+      "tic": 41,
+      "exit_reached": false
+    },
+    "seconds": 0.18309177799892495
+  },
+  {
+    "map": "runs/phase2/expanded-curriculum/train/gauntlet/two-lock-05.wad",
+    "seed": 5,
+    "decisions": 10,
+    "terminated": false,
+    "truncated": true,
+    "info": {
+      "tic": 41,
+      "exit_reached": false
+    },
+    "seconds": 0.1870164060001116
+  }
+]
