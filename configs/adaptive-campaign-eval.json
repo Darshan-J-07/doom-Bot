@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "training_seeds": [59, 83],
+  "midpoint_decisions": 12000,
+  "followup_decisions": 25000,
+  "development": {
+    "switch": {
+      "manifest": "runs/exit-recovery-study/maps/manifest.json",
+      "sha256": "9abc280e207d3ea18a0a9e546b4c3a09d5e6b58680811da2d43e4cb077c7d691",
+      "split": "validation",
+      "engine_seeds": [0, 1, 2],
+      "layout_count": 32
+    },
+    "familiar": {
+      "manifest": "runs/limit-campaign-20261127/original-120-panel.json",
+      "sha256": "3f1707b75fecb6f0bb5941e22489639a106226ee5c374f518ceadba312daa685",
+      "split": "test",
+      "engine_seeds": [0, 1, 2, 3, 4],
+      "layout_count": 24
+    }
+  },
+  "thresholds": {
+    "switch_range_entries": 24,
+    "switch_range_improved_layouts": 2,
+    "alignment_exits": 11,
+    "walkover_exits": 8,
+    "familiar_exits": 27,
+    "gauntlet_deaths_max": 21,
+    "late_switch_exits": 19,
+    "late_switch_exit_improved_layouts": 2
+  },
+  "local_proxy": {
+    "exit": 100.0,
+    "key": 15.0,
+    "door": 5.0,
+    "lock": 10.0,
+    "kill": 3.0,
+    "unique_cell": 0.1,
+    "health": 0.02,
+    "damage": -0.1,
+    "exit_fraction_of_tic_cap_remaining": 2.0,
+    "death": -10.0
+  },
+  "selection": "Primary gates use paired raw outcomes against the exact frozen approach baseline. Both mixed training seeds must pass at the same midpoint for a matched extension. Sequential arms measure the curriculum contrast. Late eligibility adds replicated true switch exit gains on at least two geometric layouts. The local proxy is descriptive only and has no official scoring interpretation."
+}

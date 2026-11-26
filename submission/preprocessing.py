@@ -7,6 +7,8 @@ import torch
 VITAL_SCALE = np.array([100, 100, 7, 200, 200, 50, 50, 300,
                         1, 1, 1, 1, 1, 1, 20, 20, 20], np.float32)
 ENTITY_SCALE = np.array([4, 1, 1, 20, 20], np.float32)
+RGB_SHAPE = (120, 160, 3)
+PACKED_RGB_SHAPE = (3, 60, 80)
 
 
 def bounded(value, scale=1):
@@ -16,10 +18,23 @@ def bounded(value, scale=1):
     return np.clip(np.clip(a, -1e6, 1e6) / scale, -10, 10).astype(np.float32)
 
 
-def pack(observation: dict) -> dict[str, np.ndarray]:
+def pack_rgb(frame):
+    if frame.shape != RGB_SHAPE or frame.dtype != np.uint8:
+        raise ValueError(f"Expected RGB shape {RGB_SHAPE} and dtype uint8, got {frame.shape}, {frame.dtype}")
+    # Average each 2 x 2 sensor patch within its original color channel. Keep
+    # the downsampled rollout in uint8 and scale inside the shared network.
+    pixels = frame[::2, ::2].astype(np.uint16)
+    pixels += frame[1::2, ::2]
+    pixels += frame[::2, 1::2]
+    pixels += frame[1::2, 1::2]
+    pixels = ((pixels + 2) // 4).astype(np.uint8)
+    return np.ascontiguousarray(pixels.transpose(2, 0, 1))
+
+
+def pack(observation: dict, *, vision=None) -> dict[str, np.ndarray]:
     entities = observation["visible_entities"]
     mask = np.asarray(entities["mask"], np.float32)
-    return {
+    packed = {
         "distance": bounded(observation["rays"]["distance"]),
         "hit_type": np.asarray(observation["rays"]["hit_type"], np.int64),
         "vitals": bounded(observation["vitals"], VITAL_SCALE),
@@ -27,9 +42,16 @@ def pack(observation: dict) -> dict[str, np.ndarray]:
         "entity_type": np.where(mask > 0, entities["entity_type"], 0).astype(np.int64),
         "mask": mask,
     }
+    if vision == "rgb":
+        packed["rgb"] = pack_rgb(observation["rgb"])
+    elif vision == "constant":
+        packed["rgb"] = np.full(PACKED_RGB_SHAPE, 128, dtype=np.uint8)
+    elif vision is not None:
+        raise ValueError(f"Unrecognized vision mode {vision!r}")
+    return packed
 
 
-def tensor_batch(observations: list[dict], device="cpu") -> dict[str, torch.Tensor]:
-    packed = [pack(o) for o in observations]
+def tensor_batch(observations: list[dict], device="cpu", *, vision=None) -> dict[str, torch.Tensor]:
+    packed = [pack(o, vision=vision) for o in observations]
     return {k: torch.as_tensor(np.stack([p[k] for p in packed]), device=device)
             for k in packed[0]}

@@ -35,7 +35,7 @@ class DoomAgent:
 
     @torch.inference_mode()
     def act(self, observation):
-        logits, _, self.hidden = self.model(tensor_batch([observation], self.device),
+        logits, _, self.hidden = self.model(tensor_batch([observation], self.device, vision=self.model.vision_kind),
             self.hidden, self.previous_action, self.episode_start)
         groups = action_groups(logits, deterministic=self.deterministic, generator=self.generator)
         action = buttons(groups)

@@ -4,16 +4,19 @@ import multiprocessing as mp
 import traceback
 
 
-def _serve(pipe, wad, ticks):
+def _serve(pipe, wad, map_name, ticks, training_signals, render_buffers):
     from doom_env import make_env
     env = None
     try:
-        env = make_env(wad, episode_ticks=ticks, render_buffers=False)
+        env = make_env(wad, map_name, episode_ticks=ticks, render_buffers=render_buffers)
+        if training_signals:
+            from training.skills import skill_state
         while True:
             command, payload = pipe.recv()
             if command == "close": break
             result = env.reset(seed=payload) if command == "reset" else env.step(payload)
-            pipe.send((True, result, env.privileged_state()))
+            state = skill_state(env) if training_signals else env.privileged_state()
+            pipe.send((True, result, state))
     except BaseException:
         try: pipe.send((False, traceback.format_exc(), None))
         except (EOFError,OSError): pass
@@ -23,12 +26,14 @@ def _serve(pipe, wad, ticks):
 
 
 class WorkerEnv:
-    def __init__(self, wad, episode_ticks):
+    def __init__(self, wad, episode_ticks, *, map_name="MAP01", training_signals=False, render_buffers=False):
         from doom_env import action_space, observation_space
         self.action_space, self.observation_space = action_space(), observation_space()
         context = mp.get_context("spawn")
         self.pipe, child = context.Pipe()
-        self.process = context.Process(target=_serve, args=(child,wad,episode_ticks), daemon=True)
+        self.process = context.Process(target=_serve,
+                                       args=(child, wad, map_name, episode_ticks, training_signals, render_buffers),
+                                       daemon=True)
         self.process.start(); child.close()
         self.state = None
 

@@ -1,0 +1,20 @@
+{
+  "hypothesis": "Staging recovery from diverse switch approach poses and routes transfers better than another pass over the prior drill distribution.",
+  "warm_start_decisions": 314496,
+  "training_seeds": [59, 83],
+  "validation_engine_seeds": [0, 1, 2],
+  "assessment_engine_seeds": [11, 23, 37],
+  "screen_decisions": [12000, 25000],
+  "max_training_decisions": 100000,
+  "max_seconds_per_invocation": 360,
+  "phases_start_added_decisions": [0, 4000, 8400, 17600],
+  "phase_names": ["align and interact", "cross the room", "recover the route", "finish after unlocking"],
+  "practice_weights": {"switch": 72, "walkover": 24, "shared": 16},
+  "min_exit_gain_pp": 5,
+  "min_range_gain_pp": 5,
+  "min_improved_layouts": 2,
+  "walkover_max_loss_pp": 10,
+  "selection": "At a common milestone, each curriculum seed must beat both the frozen warm start and its matched control for both range entry and exit on out-of-range-start switch layouts. Require at least 5 percentage points and two improved geometric layouts per metric, and at most 10 points of walkover loss relative to each comparator. Prefer the strongest minimum gain across seeds. Validation is the sole selection source.",
+  "pause": "Before the second wave, require valid clean runtime/rollout records and inspect true exits and range. Stop for invalid fixtures, invalid actions, nonfinite optimization or excess pose reward. If either seed has zero switch exits and zero range-entry improvement over both comparators on validation, stop that comparison when its post-alignment practice gained pose reward on at least 12 episodes with no true switch exit.",
+  "final": "After a pass, freeze validation-selected curriculum policies and both baselines. Assess on fresh family-disjoint layouts, keeping conditional switch, walkover, full keycard and guarded gauntlet results distinct. Hold the final panel closed after a failed gate. Run familiar regression on the retained validation candidate."
+}

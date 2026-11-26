@@ -11,9 +11,13 @@ from doom_env.wad import Lump, write_wad
 STAGES = ("movement", "combat", "exploration", "keys", "gauntlet")
 
 
-def create_map(path, stage, seed, *, two_locks=False):
+def create_map(path, stage, seed, *, two_locks=False, short_route=False, enemy_count=None):
     if two_locks and stage != "gauntlet":
         raise ValueError("Two-lock layouts require the gauntlet stage")
+    if (short_route or enemy_count is not None) and not two_locks:
+        raise ValueError("Gauntlet practice options require two locks")
+    if enemy_count is not None and not 0 <= enemy_count <= 3:
+        raise ValueError("enemy_count must be between zero and three")
     rng = random.Random(seed)
     door = key = second_door = second_key = None
     if stage == "movement":
@@ -35,6 +39,12 @@ def create_map(path, stage, seed, *, two_locks=False):
         # Door placement off the start tile; some layouts have alternative routes.
         candidates = sorted(cells - {start, goal})
         door = rng.choice(candidates) if candidates else None
+    elif short_route:
+        length = rng.randint(8, 9)
+        cells = {(x, 0) for x in range(length)} | {(1, 1), (4, -1)}
+        start, goal = (0, 0), (length - 1, 0)
+        door, key = (2, 0), (1, 1)
+        second_door, second_key = (length - 2, 0), (4, -1)
     elif two_locks:
         length = rng.randint(10, 12)
         first_branch, second_branch = rng.choice((1, 2)), rng.choice((6, 7))
@@ -50,6 +60,10 @@ def create_map(path, stage, seed, *, two_locks=False):
         cells = {(x, 0) for x in range(length)} | {(branch, 1), (branch, 2)}
         start, goal = (0, 0), (length - 1, 0)
         door, key = (length - 3, 0), (branch, 2)
+    if two_locks:
+        # A locked portal has its own linedef special. Give the exit a separate boundary.
+        goal = (goal[0] + 1, goal[1])
+        cells.add(goal)
     # Rotations change layouts relative to the random initial heading.
     rotations = rng.randrange(4)
     def rotate(c):
@@ -115,19 +129,24 @@ def create_map(path, stage, seed, *, two_locks=False):
                    f'texturefloor = "FLOOR0_1"; textureceiling = "CEIL1_1"; lightlevel = {rng.randint(160,224)}; }}'
                    for c in sorted(cells)]
     things = []
-    def thing(cell, kind, jitter=0, angle=None):
+    def thing(cell, kind, jitter=0, angle=None, *, include=True):
         x, y = (cell[0]+.5)*tile, (cell[1]+.5)*tile
         x += rng.uniform(-jitter, jitter); y += rng.uniform(-jitter, jitter)
         angle = rng.randrange(360) if angle is None else angle
-        things.append(f"thing {{ x = {x:.3f}; y = {y:.3f}; type = {kind}; angle = {angle}; "
-                      "skill1 = true; skill2 = true; skill3 = true; skill4 = true; skill5 = true; single = true; }")
+        if include:
+            things.append(f"thing {{ x = {x:.3f}; y = {y:.3f}; type = {kind}; angle = {angle}; "
+                          "skill1 = true; skill2 = true; skill3 = true; skill4 = true; skill5 = true; single = true; }")
     thing(start, 1, tile*.12)
     for location, kind in key_things.items():
         thing(location, kind)
     available = sorted(cells - {start, goal} - door_locks.keys() - key_things.keys())
     if stage in ("combat", "gauntlet"):
-        for c in rng.sample(available, min(len(available), 1 if stage == "combat" else 3)):
-            thing(c, rng.choice((3004, 3001)), tile*.12)
+        count = 1 if stage == "combat" else 3
+        if enemy_count is not None:
+            count = enemy_count
+        # Draw the same spawn slots and types for paired variants at a fixed layout seed.
+        for i, c in enumerate(rng.sample(available, min(len(available), 1 if stage == "combat" else 3))):
+            thing(c, rng.choice((3004, 3001)), tile*.12, include=i < count)
         for c in rng.sample(available, min(len(available), 1 if two_locks else 2)):
             thing(c, rng.choice((2011, 2007)), tile*.2)
     text = '\n'.join(['namespace = "zdoom";', *vertices, *sector_text, *sides, *lines, *things])
