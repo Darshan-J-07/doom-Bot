@@ -67,3 +67,7 @@ The two-lock replacement increased unlocks on the fresh progression panel and lo
 The targeted 4/8-engine sweep ran 2,048 decisions twice per configuration with alternating order. Four serial engines had a median of 294.1 decisions/sec and about 764 MiB peak summed process RSS. Eight reached 308.8 decisions/sec with about 838 MiB peak summed RSS. Eight also showed more timing variance and a lower minimum available-memory sample. Four engines remains the conservative default for long runs.
 
 Raw evidence is under [benchmarks/phase3](../benchmarks/phase3). It includes the training counters and checkpoint hashes, both development panels, the entity ablation, exit-cue audit and throughput sweep. The next curriculum experiment should isolate survival and the first lock-to-second-key transition before increasing the budget or combining other architecture changes.
+
+## Verification
+
+All 112 tests passed. The unchanged official validator passed on CPU and CUDA locally and inside the pinned organizer-recipe image with networking disabled and the repository mounted read-only. The Git LFS integrity checks passed for both the release and the recoverable baseline tag. The release weight hash matched the pre-experiment snapshot.
