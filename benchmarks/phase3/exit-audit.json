@@ -1,0 +1,44 @@
+{
+  "explicit_exit_sensor_label": false,
+  "maps": 53,
+  "walkover_exit_linedefs": 76,
+  "walkover_exit_texture_pairs_also_on_ordinary_portals": 76,
+  "episodes": [
+    {
+      "map": "runs/phase3/cue-audit/exploration-0.wad",
+      "decisions": 347,
+      "exit": true,
+      "rgb_shape": [
+        120,
+        160,
+        3
+      ],
+      "pixel_std": 33.392326491729705,
+      "image": "runs/phase3/cue-audit/exploration-0-last-decision.png"
+    },
+    {
+      "map": "runs/phase3/cue-audit/exploration-1.wad",
+      "decisions": 525,
+      "exit": true,
+      "rgb_shape": [
+        120,
+        160,
+        3
+      ],
+      "pixel_std": 33.675310964765806,
+      "image": "runs/phase3/cue-audit/exploration-1-last-decision.png"
+    },
+    {
+      "map": "runs/phase3/cue-audit/exploration-2.wad",
+      "decisions": 525,
+      "exit": false,
+      "rgb_shape": [
+        120,
+        160,
+        3
+      ],
+      "pixel_std": 29.070526143553177,
+      "image": "runs/phase3/cue-audit/exploration-2-last-decision.png"
+    }
+  ]
+}

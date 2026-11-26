@@ -82,3 +82,33 @@ def test_action_only_inference_matches_ppo_sampling(deterministic):
     for _ in range(8):
         groups, _, _ = policy_stats(logits, deterministic=deterministic, generator=expected)
         assert torch.equal(action_groups(logits, deterministic, actual), groups)
+
+
+def test_attention_starts_from_pool_and_ignores_padding_and_entity_order():
+    from doom_env.spaces import observation_space
+    from submission.preprocessing import tensor_batch
+
+    observation = observation_space().sample()
+    packed = tensor_batch([observation, observation], "cpu")
+    packed["mask"][0].zero_()
+    packed["mask"][1, :4] = 1
+    packed["mask"][1, 4:] = 0
+    torch.manual_seed(7)
+    pool = SpatialPolicy(recurrent=False)
+    expected_rng = torch.random.get_rng_state()
+    torch.manual_seed(7)
+    attention = SpatialPolicy(recurrent=False, entity_mode="attention")
+    assert torch.equal(expected_rng, torch.random.get_rng_state())
+    inputs = (pool.initial_state(2), torch.zeros(2, 9), torch.ones(2))
+    torch.testing.assert_close(attention(packed, *inputs)[0], pool(packed, *inputs)[0])
+
+    with torch.no_grad():
+        attention.entity_query.bias.fill_(1)
+    logits = attention(packed, *inputs)[0]
+    assert torch.isfinite(logits).all()
+    packed["entities"][1, 4:] += 5
+    packed["entity_type"][1, 4:] = 5
+    permuted = dict(packed)
+    for key in ("entities", "entity_type", "mask"):
+        permuted[key] = packed[key].flip(1)
+    torch.testing.assert_close(attention(permuted, *inputs)[0], logits)

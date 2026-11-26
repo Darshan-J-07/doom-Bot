@@ -44,3 +44,13 @@ python -m scripts.diagnose_episodes --checkpoint runs/phase2/baseline/best_model
 python -m scripts.diagnose_episodes --checkpoint runs/phase2/milestone-100k/latest.pt --split validation --stage keys --index 1 --seeds 1 --record --trace-dir recordings/phase2/replay-100k --out runs/phase2/replay-100k.json
 python -m scripts.build_replay_dashboard --baseline recordings/phase2/replay-baseline/keys-01-1 --candidate recordings/phase2/replay-100k/keys-01-1 --comparison benchmarks/phase2/milestone-100k-validation.json --learning runs/phase2/milestone-100k/learning.jsonl --out recordings/phase2/rebuilt-dashboard
 ```
+
+## Watch the agent play
+
+From the project root in WSL with WSLg, run:
+
+```bash
+~/doom-test/.venv/bin/python -m scripts.demo --stage gauntlet --seed 0 --out recordings/live-demo
+```
+
+The window displays live ViZDoom frames from the trained policy at approximately game speed. Press Escape or close the window to stop the demonstration and keep the frames captured so far. Add `--headless` to record without opening a window.

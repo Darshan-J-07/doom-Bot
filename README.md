@@ -164,6 +164,9 @@ Additional training time should be spent on varied vanilla maps and multiple
 seeds, with broad held-out progression results before optional architectural
 experiments.
 
+For the visible gameplay demo and latest research experiments, see the
+[demo guide](docs/PHASE2_DEMO.md) and [Phase 3 results](docs/PHASE3.md).
+
 ## Tests, validator and demonstration
 
 ```powershell

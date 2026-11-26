@@ -48,9 +48,9 @@ def _minibatch(model, data, sequences):
 
 def update(model, optimizer, data, *, epochs=3, sequence_length=32,
            sequences_per_batch=4, clip=.2, value_coef=.5, entropy_coef=.01,
-           max_grad_norm=.5, generator=None):
+           max_grad_norm=.5, generator=None, gamma=.99):
     advantage, returns = generalized_advantage(data["rewards"], data["values"],
-        data["next_values"], data["terminated"], data["truncated"])
+        data["next_values"], data["terminated"], data["truncated"], gamma=gamma)
     advantage = (advantage - advantage.mean()) / advantage.std(unbiased=False).clamp_min(1e-6)
     time_steps, envs = advantage.shape
     sequences = [(e, s, min(s + sequence_length, time_steps))

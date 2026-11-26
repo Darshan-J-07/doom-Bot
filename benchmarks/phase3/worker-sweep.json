@@ -1,0 +1,45 @@
+{
+  "decisions_per_run": 2048,
+  "jobs": [
+    {
+      "repeat": 0,
+      "envs": 4,
+      "peak_tree_rss_bytes": 800817152,
+      "min_available_bytes": 3754053632,
+      "exit_code": 0,
+      "completed": true,
+      "decisions_per_second": 300.7588551969851
+    },
+    {
+      "repeat": 0,
+      "envs": 8,
+      "peak_tree_rss_bytes": 877686784,
+      "min_available_bytes": 3423440896,
+      "exit_code": 0,
+      "completed": true,
+      "decisions_per_second": 334.29912994019713
+    },
+    {
+      "repeat": 1,
+      "envs": 8,
+      "peak_tree_rss_bytes": 878907392,
+      "min_available_bytes": 2451668992,
+      "exit_code": 0,
+      "completed": true,
+      "decisions_per_second": 283.3361474782763
+    },
+    {
+      "repeat": 1,
+      "envs": 4,
+      "peak_tree_rss_bytes": 800899072,
+      "min_available_bytes": 3092627456,
+      "exit_code": 0,
+      "completed": true,
+      "decisions_per_second": 287.34770347226373
+    }
+  ],
+  "median": {
+    "4": 294.05327933462445,
+    "8": 308.8176387092367
+  }
+}

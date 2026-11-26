@@ -70,6 +70,12 @@ class SpatialPolicy(nn.Module):
                 nn.init.orthogonal_(module.weight, gain=1.0)
                 nn.init.zeros_(module.bias)
         nn.init.orthogonal_(self.actor.weight, gain=0.01)
+        if entity_mode == "attention":
+            # Start at uniform valid-entity weights and preserve the baseline RNG stream.
+            with torch.random.fork_rng(devices=[]):
+                self.entity_query = nn.Linear(32, 32)
+            nn.init.zeros_(self.entity_query.weight)
+            nn.init.zeros_(self.entity_query.bias)
 
     def initial_state(self, batch_size=1, device=None):
         return torch.zeros(batch_size, self.hidden_size,
@@ -83,7 +89,15 @@ class SpatialPolicy(nn.Module):
         entity = self.entity_mlp(torch.cat([obs["entities"], self.entity_embed(obs["entity_type"])], -1))
         mask = obs["mask"].unsqueeze(-1)
         count = mask.sum(1)
-        mean = (entity * mask).sum(1) / count.clamp_min(1)
+        vitals = self.vitals_mlp(obs["vitals"])
+        if self.entity_mode == "attention":
+            query = self.entity_query(vitals).unsqueeze(1)
+            scores = (entity * query).sum(-1, keepdim=True) / (32 ** .5)
+            scores = scores.masked_fill(mask == 0, torch.finfo(scores.dtype).min)
+            weights = scores.softmax(dim=1) * mask
+            mean = (entity * weights).sum(1)
+        else:
+            mean = (entity * mask).sum(1) / count.clamp_min(1)
         maximum = entity.masked_fill(mask == 0, -1e4).amax(1)
         maximum = torch.where(count > 0, maximum, torch.zeros_like(maximum))
         pooled = torch.cat([mean, maximum, count / 32], -1)
@@ -91,7 +105,7 @@ class SpatialPolicy(nn.Module):
             pooled = pooled * 0  # explicit ablation with the same parameter count
         hidden = hidden * (1 - episode_start.float()).unsqueeze(-1)
         previous_action = previous_action * (1 - episode_start.float()).unsqueeze(-1)
-        latent = self.fusion(torch.cat([spatial, pooled, self.vitals_mlp(obs["vitals"]),
+        latent = self.fusion(torch.cat([spatial, pooled, vitals,
                                        previous_action.float()], -1))
         next_hidden = self.gru(latent, hidden) if self.recurrent else latent
         return self.actor(next_hidden), self.critic(next_hidden).squeeze(-1), next_hidden

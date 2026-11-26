@@ -54,6 +54,7 @@ def main(argv=None):
     ap.add_argument("--seed", type=int, default=7)
     ap.add_argument("--lr", type=float, default=3e-4)
     ap.add_argument("--entropy", type=float, default=.01)
+    ap.add_argument("--gamma", type=float, default=.99, help="discount per agent decision")
     ap.add_argument("--ticks", type=int, default=700)
     ap.add_argument("--stage", choices=("auto", *STAGES, "mixed"), default="auto")
     ap.add_argument("--curriculum-clock", choices=("steps", "time"), default="steps")
@@ -61,7 +62,7 @@ def main(argv=None):
                     help="optional idle interval after each update; not a temperature limit")
     ap.add_argument("--gpu-memory-fraction", type=float, default=.45)
     ap.add_argument("--model", choices=("mlp", "gru"), default="gru")
-    ap.add_argument("--entity-mode", choices=("pool", "none"), default="pool")
+    ap.add_argument("--entity-mode", choices=("pool", "none", "attention"), default="pool")
     ap.add_argument("--map-root", default="training/maps")
     ap.add_argument("--out", default="runs/gru")
     ap.add_argument("--resume")
@@ -82,6 +83,8 @@ def main(argv=None):
         ap.error("budgets, batch sizes and worker counts must be positive")
     if args.cooldown_ms < 0 or not 0 < args.gpu_memory_fraction <= 1:
         ap.error("cooldown must be nonnegative and GPU memory fraction must be in (0,1]")
+    if not 0 < args.gamma <= 1:
+        ap.error("--gamma must be in (0,1]")
     if min(args.checkpoint_every, args.min_available_mib) < 0:
         ap.error("checkpoint interval and memory floor must be nonnegative")
     if args.min_available_mib:
@@ -197,7 +200,7 @@ def main(argv=None):
                 optimizer.param_groups[0]["lr"] = args.lr * max(.1, 1 - steps / args.steps)
                 stats = update(model, optimizer, batch, epochs=args.epochs,
                                sequence_length=args.sequence, sequences_per_batch=args.sequences_per_batch,
-                               entropy_coef=args.entropy)
+                               entropy_coef=args.entropy, gamma=args.gamma)
                 updates += 1
                 elapsed = time.perf_counter()-started
                 row = dict(steps=steps, updates=updates, seconds=elapsed,
