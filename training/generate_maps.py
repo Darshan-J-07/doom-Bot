@@ -66,6 +66,25 @@ def create_map(path, stage, seed, *, two_locks=False):
         door_locks[second_door] = LOCK_BLUE
         key_things[second_key] = 5
     tile = rng.choice((128, 160, 192))
+
+    def populate(thing):
+        thing(start, 1, tile*.12)
+        for location, kind in key_things.items():
+            thing(location, kind)
+        available = sorted(cells - {start, goal} - door_locks.keys() - key_things.keys())
+        if stage in ("combat", "gauntlet"):
+            for c in rng.sample(available, min(len(available), 1 if stage == "combat" else 3)):
+                thing(c, rng.choice((3004, 3001)), tile*.12)
+            for c in rng.sample(available, min(len(available), 1 if two_locks else 2)):
+                thing(c, rng.choice((2011, 2007)), tile*.2)
+
+    write_grid_wad(path, cells, goal, door_locks, tile, rng, populate)
+    return dict(path=Path(path).as_posix(), stage=stage, seed=seed, map_name="MAP01",
+                cells=len(cells), sha256=hashlib.sha256(Path(path).read_bytes()).hexdigest())
+
+
+def write_grid_wad(path, cells, goal, door_locks, tile, rng, populate):
+    """Render grid cells as UDMF sectors and place things using populate(thing)."""
     sectors = {cell: i for i, cell in enumerate(sorted(cells))}
     vertices, sides, lines = [], [], []
     vertex_ids = {}
@@ -121,19 +140,9 @@ def create_map(path, stage, seed, *, two_locks=False):
         angle = rng.randrange(360) if angle is None else angle
         things.append(f"thing {{ x = {x:.3f}; y = {y:.3f}; type = {kind}; angle = {angle}; "
                       "skill1 = true; skill2 = true; skill3 = true; skill4 = true; skill5 = true; single = true; }")
-    thing(start, 1, tile*.12)
-    for location, kind in key_things.items():
-        thing(location, kind)
-    available = sorted(cells - {start, goal} - door_locks.keys() - key_things.keys())
-    if stage in ("combat", "gauntlet"):
-        for c in rng.sample(available, min(len(available), 1 if stage == "combat" else 3)):
-            thing(c, rng.choice((3004, 3001)), tile*.12)
-        for c in rng.sample(available, min(len(available), 1 if two_locks else 2)):
-            thing(c, rng.choice((2011, 2007)), tile*.2)
+    populate(thing)
     text = '\n'.join(['namespace = "zdoom";', *vertices, *sector_text, *sides, *lines, *things])
     write_wad(path, [Lump("MAP01", b""), Lump("TEXTMAP", text.encode()), Lump("ENDMAP", b"")])
-    return dict(path=Path(path).as_posix(), stage=stage, seed=seed, map_name="MAP01",
-                cells=len(cells), sha256=hashlib.sha256(Path(path).read_bytes()).hexdigest())
 
 
 def generate(root="training/maps", per_stage=6):

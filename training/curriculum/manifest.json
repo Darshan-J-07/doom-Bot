@@ -1,0 +1,806 @@
+{
+  "source": "Self-authored UDMF grid layouts",
+  "license": "CC0-1.0 for map geometry",
+  "maps": [
+    {
+      "path": "training/curriculum/train/movement/first-steps-00.wad",
+      "split": "train",
+      "stage": "movement",
+      "layout": "first-steps",
+      "seed": 720000,
+      "map_name": "MAP01",
+      "cells": 3,
+      "sha256": "6526c4fbffa7b0439b3df90d5bc50197288eeb9747fa4911228728c7d2b7bca1"
+    },
+    {
+      "path": "training/curriculum/train/movement/first-steps-01.wad",
+      "split": "train",
+      "stage": "movement",
+      "layout": "first-steps",
+      "seed": 720001,
+      "map_name": "MAP01",
+      "cells": 3,
+      "sha256": "1b5345cc245d4bedbd7206dbd26f9e0152d96d3bd4d9252cc9087747aec46924"
+    },
+    {
+      "path": "training/curriculum/train/movement/first-steps-02.wad",
+      "split": "train",
+      "stage": "movement",
+      "layout": "first-steps",
+      "seed": 720002,
+      "map_name": "MAP01",
+      "cells": 3,
+      "sha256": "5d5b9a2c7c37978e9383f31157ff59f6a8df4b9ca985f574964a1936e9f06685"
+    },
+    {
+      "path": "training/curriculum/train/movement/first-steps-03.wad",
+      "split": "train",
+      "stage": "movement",
+      "layout": "first-steps",
+      "seed": 720003,
+      "map_name": "MAP01",
+      "cells": 3,
+      "sha256": "061bb90ee5fbf84808730741d413b8b48708a9be3ccd056dfa1d8ff957268604"
+    },
+    {
+      "path": "training/curriculum/train/movement/long-hall-00.wad",
+      "split": "train",
+      "stage": "movement",
+      "layout": "long-hall",
+      "seed": 720100,
+      "map_name": "MAP01",
+      "cells": 5,
+      "sha256": "59535a43b1350d8aa47f5ce24387422b8f3fc71f62b76c4366745f33b0bd52cf"
+    },
+    {
+      "path": "training/curriculum/train/movement/long-hall-01.wad",
+      "split": "train",
+      "stage": "movement",
+      "layout": "long-hall",
+      "seed": 720101,
+      "map_name": "MAP01",
+      "cells": 5,
+      "sha256": "11d3e25a2c280d5ba9e0c2c3d3b966f9f189e659b15f0049e75ddb821365ac33"
+    },
+    {
+      "path": "training/curriculum/train/movement/long-hall-02.wad",
+      "split": "train",
+      "stage": "movement",
+      "layout": "long-hall",
+      "seed": 720102,
+      "map_name": "MAP01",
+      "cells": 5,
+      "sha256": "ecaad6e53776bf0f532ce9d20b3aa197564ebdd104e19238db78c446d7d13f59"
+    },
+    {
+      "path": "training/curriculum/train/movement/long-hall-03.wad",
+      "split": "train",
+      "stage": "movement",
+      "layout": "long-hall",
+      "seed": 720103,
+      "map_name": "MAP01",
+      "cells": 5,
+      "sha256": "7c7417297f88256754b19b0d1bd58b4316c2f47a860f5527a40548e88c1472bf"
+    },
+    {
+      "path": "training/curriculum/train/movement/first-turn-00.wad",
+      "split": "train",
+      "stage": "movement",
+      "layout": "first-turn",
+      "seed": 720200,
+      "map_name": "MAP01",
+      "cells": 5,
+      "sha256": "ef2f39a3e773325bb2498edc14c4a0626884810c057a6185075061ac36604d69"
+    },
+    {
+      "path": "training/curriculum/train/movement/first-turn-01.wad",
+      "split": "train",
+      "stage": "movement",
+      "layout": "first-turn",
+      "seed": 720201,
+      "map_name": "MAP01",
+      "cells": 5,
+      "sha256": "dbe9ec2ea1366dc8eaa73bb4edacf1184ee7efe0e200c7ef670f3e486c997406"
+    },
+    {
+      "path": "training/curriculum/train/movement/first-turn-02.wad",
+      "split": "train",
+      "stage": "movement",
+      "layout": "first-turn",
+      "seed": 720202,
+      "map_name": "MAP01",
+      "cells": 5,
+      "sha256": "e244de0551143a7d570c8ff5d157c613f55b1af2c0738f15c356b9a59ded500f"
+    },
+    {
+      "path": "training/curriculum/train/movement/first-turn-03.wad",
+      "split": "train",
+      "stage": "movement",
+      "layout": "first-turn",
+      "seed": 720203,
+      "map_name": "MAP01",
+      "cells": 5,
+      "sha256": "182be8358a9c6d83955a87995f612032eb955b7639fed60a7aa663dd1bd8c30c"
+    },
+    {
+      "path": "training/curriculum/train/combat/single-target-00.wad",
+      "split": "train",
+      "stage": "combat",
+      "layout": "single-target",
+      "seed": 721000,
+      "map_name": "MAP01",
+      "cells": 4,
+      "sha256": "429fa770b8311a1d79a3e75c1474c3d02b2cdd235be8692080e42adcfdc79dd2"
+    },
+    {
+      "path": "training/curriculum/train/combat/single-target-01.wad",
+      "split": "train",
+      "stage": "combat",
+      "layout": "single-target",
+      "seed": 721001,
+      "map_name": "MAP01",
+      "cells": 4,
+      "sha256": "b0d87ba9187bea76c5f19b658128c1dfdb284540f523e4e54881189fd48c0456"
+    },
+    {
+      "path": "training/curriculum/train/combat/single-target-02.wad",
+      "split": "train",
+      "stage": "combat",
+      "layout": "single-target",
+      "seed": 721002,
+      "map_name": "MAP01",
+      "cells": 4,
+      "sha256": "5efad1325c1008569c772e838713e519dae72b1ff64166d570cb1905bb19929f"
+    },
+    {
+      "path": "training/curriculum/train/combat/single-target-03.wad",
+      "split": "train",
+      "stage": "combat",
+      "layout": "single-target",
+      "seed": 721003,
+      "map_name": "MAP01",
+      "cells": 4,
+      "sha256": "8d04b0c05d87ec1827a15c2337fad4c1a909a627d95807491ba37232ebe5942e"
+    },
+    {
+      "path": "training/curriculum/train/combat/target-arena-00.wad",
+      "split": "train",
+      "stage": "combat",
+      "layout": "target-arena",
+      "seed": 721100,
+      "map_name": "MAP01",
+      "cells": 15,
+      "sha256": "5dc1c09ed88c185e41ae3eec8697b726d7c10737156abf50a5d4d6373b4321da"
+    },
+    {
+      "path": "training/curriculum/train/combat/target-arena-01.wad",
+      "split": "train",
+      "stage": "combat",
+      "layout": "target-arena",
+      "seed": 721101,
+      "map_name": "MAP01",
+      "cells": 15,
+      "sha256": "32a6acba799c2d124b2c1b0808d011577748ce992af3aea5e2487f324d267fc4"
+    },
+    {
+      "path": "training/curriculum/train/combat/target-arena-02.wad",
+      "split": "train",
+      "stage": "combat",
+      "layout": "target-arena",
+      "seed": 721102,
+      "map_name": "MAP01",
+      "cells": 15,
+      "sha256": "9f948e60c1f02aabf511e6f4ed396ddddaabd961501f692ba19cbcf5b996de84"
+    },
+    {
+      "path": "training/curriculum/train/combat/target-arena-03.wad",
+      "split": "train",
+      "stage": "combat",
+      "layout": "target-arena",
+      "seed": 721103,
+      "map_name": "MAP01",
+      "cells": 15,
+      "sha256": "6bec45766ad16af5d9e1de829792be794271766f517b777bcbd7d45f08ed2f66"
+    },
+    {
+      "path": "training/curriculum/train/combat/target-cover-00.wad",
+      "split": "train",
+      "stage": "combat",
+      "layout": "target-cover",
+      "seed": 721200,
+      "map_name": "MAP01",
+      "cells": 13,
+      "sha256": "d5fd178fe89d56c42e9aa66a8208af86ec98730cfb9e5ca29c965d3e3e036833"
+    },
+    {
+      "path": "training/curriculum/train/combat/target-cover-01.wad",
+      "split": "train",
+      "stage": "combat",
+      "layout": "target-cover",
+      "seed": 721201,
+      "map_name": "MAP01",
+      "cells": 13,
+      "sha256": "da640199548fb1949f85356bea9ad5fd8c54069cc90c31d450cb3125db2a4786"
+    },
+    {
+      "path": "training/curriculum/train/combat/target-cover-02.wad",
+      "split": "train",
+      "stage": "combat",
+      "layout": "target-cover",
+      "seed": 721202,
+      "map_name": "MAP01",
+      "cells": 13,
+      "sha256": "26275e340e3dbc53261b6dcc5dcb77b0d02f1b107875dc695656e7987f119afd"
+    },
+    {
+      "path": "training/curriculum/train/combat/target-cover-03.wad",
+      "split": "train",
+      "stage": "combat",
+      "layout": "target-cover",
+      "seed": 721203,
+      "map_name": "MAP01",
+      "cells": 13,
+      "sha256": "6403fd1dd914f15ac24cb629efcc01cdf32abe81f3ef47382490247f421ac7cf"
+    },
+    {
+      "path": "training/curriculum/train/exploration/first-door-00.wad",
+      "split": "train",
+      "stage": "exploration",
+      "layout": "first-door",
+      "seed": 722000,
+      "map_name": "MAP01",
+      "cells": 8,
+      "sha256": "c8dab28d0c5923af7802fd3975e05a64093441bc6f70529dbe2f06eb509042fc"
+    },
+    {
+      "path": "training/curriculum/train/exploration/first-door-01.wad",
+      "split": "train",
+      "stage": "exploration",
+      "layout": "first-door",
+      "seed": 722001,
+      "map_name": "MAP01",
+      "cells": 8,
+      "sha256": "c73e07f34e21787afbae64e7bdd1350e694d4339dcb2afc7308852a7f95198b6"
+    },
+    {
+      "path": "training/curriculum/train/exploration/first-door-02.wad",
+      "split": "train",
+      "stage": "exploration",
+      "layout": "first-door",
+      "seed": 722002,
+      "map_name": "MAP01",
+      "cells": 8,
+      "sha256": "36bd8f5001e6d5dedfd645cc3adff012c4e8b45a30f3827dc24299e6934656b8"
+    },
+    {
+      "path": "training/curriculum/train/exploration/first-door-03.wad",
+      "split": "train",
+      "stage": "exploration",
+      "layout": "first-door",
+      "seed": 722003,
+      "map_name": "MAP01",
+      "cells": 8,
+      "sha256": "f06dc1da48a81cf0cd727e6a95833807458b1575dc5fc07a8b05312a9ebead20"
+    },
+    {
+      "path": "training/curriculum/train/exploration/door-around-corner-00.wad",
+      "split": "train",
+      "stage": "exploration",
+      "layout": "door-around-corner",
+      "seed": 722100,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "84a3e40ce93b47f18efb858c1dda4233126e503d37fd9caf1c9022dd55f471bf"
+    },
+    {
+      "path": "training/curriculum/train/exploration/door-around-corner-01.wad",
+      "split": "train",
+      "stage": "exploration",
+      "layout": "door-around-corner",
+      "seed": 722101,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "bf0ed0683bdb24572bfa58ba34fc379af769cebde4c999e1a4b614b0a2413581"
+    },
+    {
+      "path": "training/curriculum/train/exploration/door-around-corner-02.wad",
+      "split": "train",
+      "stage": "exploration",
+      "layout": "door-around-corner",
+      "seed": 722102,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "595f712567c4508423691c216fb5b13474b8dd6b5ae5db3a8f9237cbefebcf92"
+    },
+    {
+      "path": "training/curriculum/train/exploration/door-around-corner-03.wad",
+      "split": "train",
+      "stage": "exploration",
+      "layout": "door-around-corner",
+      "seed": 722103,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "f0d020bb96a20f54df426abed11736e07fa212e28bb2fb56c3c3a35ab6588df0"
+    },
+    {
+      "path": "training/curriculum/train/exploration/door-with-side-rooms-00.wad",
+      "split": "train",
+      "stage": "exploration",
+      "layout": "door-with-side-rooms",
+      "seed": 722200,
+      "map_name": "MAP01",
+      "cells": 13,
+      "sha256": "62984e2b6120312a3c67a51f94bb6a1d973b461b23f9865ac8c38af2165e9363"
+    },
+    {
+      "path": "training/curriculum/train/exploration/door-with-side-rooms-01.wad",
+      "split": "train",
+      "stage": "exploration",
+      "layout": "door-with-side-rooms",
+      "seed": 722201,
+      "map_name": "MAP01",
+      "cells": 13,
+      "sha256": "a2a81e0f171be1388960cf23540d5b84ee6098e6898b7933026e13f555a71af0"
+    },
+    {
+      "path": "training/curriculum/train/exploration/door-with-side-rooms-02.wad",
+      "split": "train",
+      "stage": "exploration",
+      "layout": "door-with-side-rooms",
+      "seed": 722202,
+      "map_name": "MAP01",
+      "cells": 13,
+      "sha256": "c6306241c47f13506af93b16d259942440f6bef8e0c1ddb778c270b90f0b1254"
+    },
+    {
+      "path": "training/curriculum/train/exploration/door-with-side-rooms-03.wad",
+      "split": "train",
+      "stage": "exploration",
+      "layout": "door-with-side-rooms",
+      "seed": 722203,
+      "map_name": "MAP01",
+      "cells": 13,
+      "sha256": "3837d2e69d099b4422c8d11be6298f53c70b2870fce2f26570d74f6d8e49a1ad"
+    },
+    {
+      "path": "training/curriculum/train/keys/key-before-lock-00.wad",
+      "split": "train",
+      "stage": "keys",
+      "layout": "key-before-lock",
+      "seed": 723000,
+      "map_name": "MAP01",
+      "cells": 5,
+      "sha256": "76c420b53bae54b9439ec94ad97824d5a175eb2cf77eb5aac7d22d15e88671ba"
+    },
+    {
+      "path": "training/curriculum/train/keys/key-before-lock-01.wad",
+      "split": "train",
+      "stage": "keys",
+      "layout": "key-before-lock",
+      "seed": 723001,
+      "map_name": "MAP01",
+      "cells": 5,
+      "sha256": "31301054a20c816478919cf83f995616f9c61104ec90f079424aeebefa1494ab"
+    },
+    {
+      "path": "training/curriculum/train/keys/key-before-lock-02.wad",
+      "split": "train",
+      "stage": "keys",
+      "layout": "key-before-lock",
+      "seed": 723002,
+      "map_name": "MAP01",
+      "cells": 5,
+      "sha256": "dd8af3eea3283fbcd01a8cb70cb22f3d61833e3ca221ae9bed5b854f7d0c1321"
+    },
+    {
+      "path": "training/curriculum/train/keys/key-before-lock-03.wad",
+      "split": "train",
+      "stage": "keys",
+      "layout": "key-before-lock",
+      "seed": 723003,
+      "map_name": "MAP01",
+      "cells": 5,
+      "sha256": "0010786224ea060da4f84f14721c7ab50fefd35d9529b170282a1e816cd63eb7"
+    },
+    {
+      "path": "training/curriculum/train/keys/blue-key-detour-00.wad",
+      "split": "train",
+      "stage": "keys",
+      "layout": "blue-key-detour",
+      "seed": 723100,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "6cc30962ef8ed962218b2d82ff5f3ea503e2cff51f57912ff946e5927ff3b3d9"
+    },
+    {
+      "path": "training/curriculum/train/keys/blue-key-detour-01.wad",
+      "split": "train",
+      "stage": "keys",
+      "layout": "blue-key-detour",
+      "seed": 723101,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "2d547d0a942f7bfc4d9c9ccb03acc84f5ca47bc24cdaebebbccef38dca82127b"
+    },
+    {
+      "path": "training/curriculum/train/keys/blue-key-detour-02.wad",
+      "split": "train",
+      "stage": "keys",
+      "layout": "blue-key-detour",
+      "seed": 723102,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "1066adc47e8d3ae2cd6b10c5c9d60032d0ad9aa9fa44e6d9e7d180958ee9238f"
+    },
+    {
+      "path": "training/curriculum/train/keys/blue-key-detour-03.wad",
+      "split": "train",
+      "stage": "keys",
+      "layout": "blue-key-detour",
+      "seed": 723103,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "f0a9f388a324de5eb479ab26eef222d230c1ecb4548aec72f7c81aec8f417240"
+    },
+    {
+      "path": "training/curriculum/train/keys/yellow-key-detour-00.wad",
+      "split": "train",
+      "stage": "keys",
+      "layout": "yellow-key-detour",
+      "seed": 723200,
+      "map_name": "MAP01",
+      "cells": 10,
+      "sha256": "d90b6af6023453ff1e0967d6715db1127fabd64955e14d99648332bd0539614f"
+    },
+    {
+      "path": "training/curriculum/train/keys/yellow-key-detour-01.wad",
+      "split": "train",
+      "stage": "keys",
+      "layout": "yellow-key-detour",
+      "seed": 723201,
+      "map_name": "MAP01",
+      "cells": 10,
+      "sha256": "d7dcf63eaa87748f16221ac30fc5b4fe9e8b9273e51a8083fa828a921916a2ea"
+    },
+    {
+      "path": "training/curriculum/train/keys/yellow-key-detour-02.wad",
+      "split": "train",
+      "stage": "keys",
+      "layout": "yellow-key-detour",
+      "seed": 723202,
+      "map_name": "MAP01",
+      "cells": 10,
+      "sha256": "2eb4078076a336d4a6d3e66a3f68e842f6e519e8c48474c305ab0b444f74693e"
+    },
+    {
+      "path": "training/curriculum/train/keys/yellow-key-detour-03.wad",
+      "split": "train",
+      "stage": "keys",
+      "layout": "yellow-key-detour",
+      "seed": 723203,
+      "map_name": "MAP01",
+      "cells": 10,
+      "sha256": "7a6f3f6c30b01678042e619c4c1273d49b64e920e2ff5093041e8c669ac6f832"
+    },
+    {
+      "path": "training/curriculum/train/gauntlet/two-lock-practice-00.wad",
+      "split": "train",
+      "stage": "gauntlet",
+      "layout": "two-lock-practice",
+      "seed": 724000,
+      "map_name": "MAP01",
+      "cells": 8,
+      "sha256": "bc115d5baa9b2aa95582436f4ef4a70f493ff203341e5c37643bdf01b3c799ff"
+    },
+    {
+      "path": "training/curriculum/train/gauntlet/two-lock-practice-01.wad",
+      "split": "train",
+      "stage": "gauntlet",
+      "layout": "two-lock-practice",
+      "seed": 724001,
+      "map_name": "MAP01",
+      "cells": 8,
+      "sha256": "0f1920d3efd2d9dee86878ae853f1f799403fbacf0a8cc207d49d1ef0dcdbae3"
+    },
+    {
+      "path": "training/curriculum/train/gauntlet/two-lock-practice-02.wad",
+      "split": "train",
+      "stage": "gauntlet",
+      "layout": "two-lock-practice",
+      "seed": 724002,
+      "map_name": "MAP01",
+      "cells": 8,
+      "sha256": "efa309e035c30bd0c11f1f272ab7fddba722cdc831b5227466574bad95b090d3"
+    },
+    {
+      "path": "training/curriculum/train/gauntlet/two-lock-practice-03.wad",
+      "split": "train",
+      "stage": "gauntlet",
+      "layout": "two-lock-practice",
+      "seed": 724003,
+      "map_name": "MAP01",
+      "cells": 8,
+      "sha256": "cb67de2375af344b354f137a5e5314d494a6bb82dabc1fcd5256d44cdda4f7a5"
+    },
+    {
+      "path": "training/curriculum/train/gauntlet/two-lock-skirmish-00.wad",
+      "split": "train",
+      "stage": "gauntlet",
+      "layout": "two-lock-skirmish",
+      "seed": 724100,
+      "map_name": "MAP01",
+      "cells": 15,
+      "sha256": "f380fca6219639658b77ddfb58930143e58f350a95085c3bcbf38d49848e3b36"
+    },
+    {
+      "path": "training/curriculum/train/gauntlet/two-lock-skirmish-01.wad",
+      "split": "train",
+      "stage": "gauntlet",
+      "layout": "two-lock-skirmish",
+      "seed": 724101,
+      "map_name": "MAP01",
+      "cells": 15,
+      "sha256": "a000c540bfb91d1bffec0dc12a85ea8c672ab3b3ce5bbb402169dda06a5537d0"
+    },
+    {
+      "path": "training/curriculum/train/gauntlet/two-lock-skirmish-02.wad",
+      "split": "train",
+      "stage": "gauntlet",
+      "layout": "two-lock-skirmish",
+      "seed": 724102,
+      "map_name": "MAP01",
+      "cells": 15,
+      "sha256": "e4952926490b412f4f29eb41e6caed99ad809265d172ef13d1839c6ea79a65af"
+    },
+    {
+      "path": "training/curriculum/train/gauntlet/two-lock-skirmish-03.wad",
+      "split": "train",
+      "stage": "gauntlet",
+      "layout": "two-lock-skirmish",
+      "seed": 724103,
+      "map_name": "MAP01",
+      "cells": 15,
+      "sha256": "0fe759efad65364d5aa6b037176c21f1515c11c82bf69e87f53f61f03fd1cd97"
+    },
+    {
+      "path": "training/curriculum/train/gauntlet/full-route-00.wad",
+      "split": "train",
+      "stage": "gauntlet",
+      "layout": "full-route",
+      "seed": 724200,
+      "map_name": "MAP01",
+      "cells": 18,
+      "sha256": "a521cc8992381b1cd0e67b054f7b2ade524716266c45688dc90bd431b64a2405"
+    },
+    {
+      "path": "training/curriculum/train/gauntlet/full-route-01.wad",
+      "split": "train",
+      "stage": "gauntlet",
+      "layout": "full-route",
+      "seed": 724201,
+      "map_name": "MAP01",
+      "cells": 18,
+      "sha256": "df7be3a342b01a82911d538046787d7ca7aca538d076f01a3c8e9f02d1e1cb77"
+    },
+    {
+      "path": "training/curriculum/train/gauntlet/full-route-02.wad",
+      "split": "train",
+      "stage": "gauntlet",
+      "layout": "full-route",
+      "seed": 724202,
+      "map_name": "MAP01",
+      "cells": 18,
+      "sha256": "19faf04cda204c4da826d6331bdb9806b73d5c45f0fe5c95174a2c8cb4fc72a7"
+    },
+    {
+      "path": "training/curriculum/train/gauntlet/full-route-03.wad",
+      "split": "train",
+      "stage": "gauntlet",
+      "layout": "full-route",
+      "seed": 724203,
+      "map_name": "MAP01",
+      "cells": 18,
+      "sha256": "f3befd5a5605a284a395d015e3763406417a626d731b326c76f170bb533f117d"
+    },
+    {
+      "path": "training/curriculum/validation/movement/bent-hall-00.wad",
+      "split": "validation",
+      "stage": "movement",
+      "layout": "bent-hall",
+      "seed": 730000,
+      "map_name": "MAP01",
+      "cells": 6,
+      "sha256": "4aabdfd87273a4b14d8368aa5a022d7c8f16e9cde2528349610f9a59ad49f238"
+    },
+    {
+      "path": "training/curriculum/validation/movement/bent-hall-01.wad",
+      "split": "validation",
+      "stage": "movement",
+      "layout": "bent-hall",
+      "seed": 730001,
+      "map_name": "MAP01",
+      "cells": 6,
+      "sha256": "1143a33e8a7a2c947453c0a0bbacc2078318eb9341bac4ae76f6b03e3415add5"
+    },
+    {
+      "path": "training/curriculum/validation/combat/offset-target-00.wad",
+      "split": "validation",
+      "stage": "combat",
+      "layout": "offset-target",
+      "seed": 731000,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "f1e42a489db95d6364c7c19a0ec877fe3df4e756a8b3fd05507d81d1c97c67e6"
+    },
+    {
+      "path": "training/curriculum/validation/combat/offset-target-01.wad",
+      "split": "validation",
+      "stage": "combat",
+      "layout": "offset-target",
+      "seed": 731001,
+      "map_name": "MAP01",
+      "cells": 9,
+      "sha256": "677aac7033acafa4c7e16ea3c131ccac467a5fed8cf42214688710713b2c2258"
+    },
+    {
+      "path": "training/curriculum/validation/exploration/west-door-00.wad",
+      "split": "validation",
+      "stage": "exploration",
+      "layout": "west-door",
+      "seed": 732000,
+      "map_name": "MAP01",
+      "cells": 13,
+      "sha256": "bc404c55eac2f178306fd1bc5bd3dbfafea354e68cd4d22b92a747994eeed377"
+    },
+    {
+      "path": "training/curriculum/validation/exploration/west-door-01.wad",
+      "split": "validation",
+      "stage": "exploration",
+      "layout": "west-door",
+      "seed": 732001,
+      "map_name": "MAP01",
+      "cells": 13,
+      "sha256": "fbd3f21ff5e056605292d7609d82296e6bc3e798f16fea42b6a584ce30926f3f"
+    },
+    {
+      "path": "training/curriculum/validation/keys/junction-red-key-00.wad",
+      "split": "validation",
+      "stage": "keys",
+      "layout": "junction-red-key",
+      "seed": 733000,
+      "map_name": "MAP01",
+      "cells": 13,
+      "sha256": "cc3af1c34c9a46dccedf80492efe571468c6b99b52c069e6de69a97eef52016f"
+    },
+    {
+      "path": "training/curriculum/validation/keys/junction-red-key-01.wad",
+      "split": "validation",
+      "stage": "keys",
+      "layout": "junction-red-key",
+      "seed": 733001,
+      "map_name": "MAP01",
+      "cells": 13,
+      "sha256": "e0ecc1afc5c3762f4dab7e78d0e3420e04bc543fcf2a35cefeb18b490b38da91"
+    },
+    {
+      "path": "training/curriculum/validation/gauntlet/guarded-bend-00.wad",
+      "split": "validation",
+      "stage": "gauntlet",
+      "layout": "guarded-bend",
+      "seed": 734000,
+      "map_name": "MAP01",
+      "cells": 17,
+      "sha256": "17a0550b18f7484cc5193788c82270ae811b167b83a85b807f94666a2e78c38e"
+    },
+    {
+      "path": "training/curriculum/validation/gauntlet/guarded-bend-01.wad",
+      "split": "validation",
+      "stage": "gauntlet",
+      "layout": "guarded-bend",
+      "seed": 734001,
+      "map_name": "MAP01",
+      "cells": 17,
+      "sha256": "35f09b6f11884e7f5e233f0bf23d7068dea5fc6c748cc59295d83bd43c89078a"
+    },
+    {
+      "path": "training/curriculum/test/movement/loop-and-turn-00.wad",
+      "split": "test",
+      "stage": "movement",
+      "layout": "loop-and-turn",
+      "seed": 740000,
+      "map_name": "MAP01",
+      "cells": 10,
+      "sha256": "cfaa9cb1258d78c489cfc98b054e0b560607ee019cad66e67ed05389edde15f7"
+    },
+    {
+      "path": "training/curriculum/test/movement/loop-and-turn-01.wad",
+      "split": "test",
+      "stage": "movement",
+      "layout": "loop-and-turn",
+      "seed": 740001,
+      "map_name": "MAP01",
+      "cells": 10,
+      "sha256": "91df52cc99f3ec8074964189c7e1447ca56314a9b145508e8c1276c3675a02eb"
+    },
+    {
+      "path": "training/curriculum/test/combat/flank-target-00.wad",
+      "split": "test",
+      "stage": "combat",
+      "layout": "flank-target",
+      "seed": 741000,
+      "map_name": "MAP01",
+      "cells": 10,
+      "sha256": "8e3c628e0ca69ae0cee0d72ba19b715e4c46f3b15193b2a56a053484cda58fd5"
+    },
+    {
+      "path": "training/curriculum/test/combat/flank-target-01.wad",
+      "split": "test",
+      "stage": "combat",
+      "layout": "flank-target",
+      "seed": 741001,
+      "map_name": "MAP01",
+      "cells": 10,
+      "sha256": "8369ff73ff4488fe6ddd85004441a7f20f2d942a00ebaece8f0c5fb55c16e882"
+    },
+    {
+      "path": "training/curriculum/test/exploration/loop-past-door-00.wad",
+      "split": "test",
+      "stage": "exploration",
+      "layout": "loop-past-door",
+      "seed": 742000,
+      "map_name": "MAP01",
+      "cells": 16,
+      "sha256": "5103183ae82780f29c4dfc8fa1c861410e77bf3730399405c86aa1e5ca0a878f"
+    },
+    {
+      "path": "training/curriculum/test/exploration/loop-past-door-01.wad",
+      "split": "test",
+      "stage": "exploration",
+      "layout": "loop-past-door",
+      "seed": 742001,
+      "map_name": "MAP01",
+      "cells": 16,
+      "sha256": "412f1c88253f76cd09d1faf6c285f28264d5f67e0d92239ddd46a21c19f91f81"
+    },
+    {
+      "path": "training/curriculum/test/keys/blue-key-return-00.wad",
+      "split": "test",
+      "stage": "keys",
+      "layout": "blue-key-return",
+      "seed": 743000,
+      "map_name": "MAP01",
+      "cells": 12,
+      "sha256": "bdcc6139341801f9f0b3bcc975a22749a7ce7c5207969fc7f7a136366286bba8"
+    },
+    {
+      "path": "training/curriculum/test/keys/blue-key-return-01.wad",
+      "split": "test",
+      "stage": "keys",
+      "layout": "blue-key-return",
+      "seed": 743001,
+      "map_name": "MAP01",
+      "cells": 12,
+      "sha256": "a50543c17dc9c3eabe6e6111f7d2a9faf4eccb636c29b71ceb342da0c6574e81"
+    },
+    {
+      "path": "training/curriculum/test/gauntlet/lock-and-ambush-00.wad",
+      "split": "test",
+      "stage": "gauntlet",
+      "layout": "lock-and-ambush",
+      "seed": 744000,
+      "map_name": "MAP01",
+      "cells": 22,
+      "sha256": "73c7451be2293567263017f67b127b30c9a2dc4e7c9dfc7aaba481f61c01e173"
+    },
+    {
+      "path": "training/curriculum/test/gauntlet/lock-and-ambush-01.wad",
+      "split": "test",
+      "stage": "gauntlet",
+      "layout": "lock-and-ambush",
+      "seed": 744001,
+      "map_name": "MAP01",
+      "cells": 22,
+      "sha256": "7c5b86d78346d7132e887989276b750f7a15102b85b0f3082473f9cd054319b4"
+    }
+  ]
+}
