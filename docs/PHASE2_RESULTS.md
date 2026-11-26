@@ -58,3 +58,13 @@ Sum of RSS can count shared pages more than once. PyTorch reserved VRAM omits ot
 - `benchmarks/phase2/checkpoint-freeze.json` stores the validation ranking and frozen training digest.
 - `recordings/phase2/dashboard-final/index.html` plays paired recorded runs on an illustrative validation scenario. The original LMP files and per-decision traces are in the adjoining replay directories.
 - `PHASE2_FAILURE_ANALYSIS.md`, `PHASE2_PROTOCOL.md`, and `PHASE2_DEMO.md` describe the failure evidence, controlled runs and demo.
+
+## Local release checks
+
+All 111 tests passed against the released checkpoint. The official validator passed on both devices with the original wrapper and validator preserved. The local checks measured a 2.1 MB tracked working payload including the hydrated Git LFS weight. The 525-decision validation episode used 1.1 seconds of agent time on CPU and 4.8 seconds on CUDA, about 2.1 ms and 9.1 ms per decision respectively. Peak resident memory was 544 MB on CPU and 1,281 MB on CUDA. The validator estimated a 190 MB whole-GPU increase above the pre-run level. The agent was pinned to one CPU core.
+
+Both devices also passed the unchanged validator inside a Linux namespace with only loopback networking, a read-only repository and writable scratch under /tmp. Those runs used the verified local package stack. They provide separate offline and read-only evidence.
+
+The ordinary and isolated validator logs are under `benchmarks/phase2/release-*.log`. The 111-case JUnit XML is `benchmarks/phase2/release-regression.xml`.
+
+The five-seed memory intervention confirmed a state-use effect on validation. The same GRU scored 17.79 with normal memory and 11.11 when its state was reset before every decision. Tier 3 unlocks decreased from three across ten episodes to zero. The GRU with memory still trailed the preserved MLP on that panel.

@@ -40,7 +40,7 @@ def summarize(frames, metrics):
         if any(kind in (1, 2, 3) for kind in row["entities"]):
             counts["enemy_visible"] += 1
             counts["attack_with_enemy_visible"] += action[6]
-        counts["selected_weapon_empty"] += row["vitals"][3] == 0
+        counts["selected_weapon_ammo_zero"] += row["vitals"][3] == 0
         counts["all_tracked_ammo_empty"] += not any(row["vitals"][4:8])
         previous = action[7]
     cells = [(int(np.floor(row["x"] / 96)), int(np.floor(row["y"] / 96))) for row in frames]

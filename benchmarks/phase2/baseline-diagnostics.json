@@ -25,11 +25,11 @@
       "shaped_return": 20.2,
       "evidence": {
         "turn_low_motion": 9,
-        "selected_weapon_empty": 76,
         "all_tracked_ammo_empty": 0,
         "cell_revisits": 12,
         "short_cell_reversals": 2,
-        "longest_no_novel_cell_steps": 78
+        "longest_no_novel_cell_steps": 78,
+        "selected_weapon_ammo_zero": 76
       }
     },
     {
@@ -54,11 +54,11 @@
       "shaped_return": 20.240000000000002,
       "evidence": {
         "turn_low_motion": 6,
-        "selected_weapon_empty": 69,
         "all_tracked_ammo_empty": 0,
         "cell_revisits": 5,
         "short_cell_reversals": 2,
-        "longest_no_novel_cell_steps": 45
+        "longest_no_novel_cell_steps": 45,
+        "selected_weapon_ammo_zero": 69
       }
     },
     {
@@ -83,11 +83,11 @@
       "shaped_return": 20.154,
       "evidence": {
         "turn_low_motion": 3,
-        "selected_weapon_empty": 74,
         "all_tracked_ammo_empty": 0,
         "cell_revisits": 12,
         "short_cell_reversals": 1,
-        "longest_no_novel_cell_steps": 46
+        "longest_no_novel_cell_steps": 46,
+        "selected_weapon_ammo_zero": 74
       }
     },
     {
@@ -112,11 +112,11 @@
       "shaped_return": 20.254,
       "evidence": {
         "turn_low_motion": 2,
-        "selected_weapon_empty": 10,
         "all_tracked_ammo_empty": 0,
         "cell_revisits": 1,
         "short_cell_reversals": 1,
-        "longest_no_novel_cell_steps": 6
+        "longest_no_novel_cell_steps": 6,
+        "selected_weapon_ammo_zero": 10
       }
     },
     {
@@ -143,11 +143,11 @@
         "turn_low_motion": 2,
         "enemy_visible": 34,
         "attack_with_enemy_visible": 17,
-        "selected_weapon_empty": 13,
         "all_tracked_ammo_empty": 0,
         "cell_revisits": 2,
         "short_cell_reversals": 1,
-        "longest_no_novel_cell_steps": 11
+        "longest_no_novel_cell_steps": 11,
+        "selected_weapon_ammo_zero": 13
       }
     },
     {
@@ -174,11 +174,11 @@
         "turn_low_motion": 5,
         "enemy_visible": 59,
         "attack_with_enemy_visible": 31,
-        "selected_weapon_empty": 38,
         "all_tracked_ammo_empty": 0,
         "cell_revisits": 7,
         "short_cell_reversals": 5,
-        "longest_no_novel_cell_steps": 19
+        "longest_no_novel_cell_steps": 19,
+        "selected_weapon_ammo_zero": 38
       }
     },
     {
@@ -203,11 +203,11 @@
       "shaped_return": 19.812,
       "evidence": {
         "turn_low_motion": 2,
-        "selected_weapon_empty": 11,
         "all_tracked_ammo_empty": 0,
         "cell_revisits": 0,
         "short_cell_reversals": 0,
-        "longest_no_novel_cell_steps": 13
+        "longest_no_novel_cell_steps": 13,
+        "selected_weapon_ammo_zero": 11
       }
     },
     {
@@ -232,13 +232,13 @@
       "shaped_return": 19.902,
       "evidence": {
         "turn_low_motion": 3,
-        "selected_weapon_empty": 31,
         "all_tracked_ammo_empty": 0,
         "enemy_visible": 4,
         "attack_with_enemy_visible": 2,
         "cell_revisits": 2,
         "short_cell_reversals": 2,
-        "longest_no_novel_cell_steps": 31
+        "longest_no_novel_cell_steps": 31,
+        "selected_weapon_ammo_zero": 31
       }
     },
     {
@@ -262,14 +262,14 @@
       "ticks": 0,
       "shaped_return": 19.832,
       "evidence": {
-        "selected_weapon_empty": 261,
         "all_tracked_ammo_empty": 0,
         "turn_low_motion": 27,
         "door_in_use_range_proxy": 4,
         "door_use_rising_edge": 1,
         "cell_revisits": 83,
         "short_cell_reversals": 25,
-        "longest_no_novel_cell_steps": 190
+        "longest_no_novel_cell_steps": 190,
+        "selected_weapon_ammo_zero": 261
       }
     },
     {
@@ -294,11 +294,11 @@
       "shaped_return": 20.182000000000002,
       "evidence": {
         "turn_low_motion": 2,
-        "selected_weapon_empty": 20,
         "all_tracked_ammo_empty": 0,
         "cell_revisits": 2,
         "short_cell_reversals": 2,
-        "longest_no_novel_cell_steps": 15
+        "longest_no_novel_cell_steps": 15,
+        "selected_weapon_ammo_zero": 20
       }
     },
     {
@@ -323,13 +323,16 @@
       "shaped_return": 1.4499999999999993,
       "evidence": {
         "turn_low_motion": 22,
-        "selected_weapon_empty": 259,
         "all_tracked_ammo_empty": 0,
         "door_in_use_range_proxy": 26,
         "door_use_rising_edge": 6,
         "cell_revisits": 50,
         "short_cell_reversals": 7,
-        "longest_no_novel_cell_steps": 433
+        "longest_no_novel_cell_steps": 433,
+        "selected_weapon_ammo_zero": 259,
+        "zero_ammo_by_selected_weapon_slot": {
+          "1": 259
+        }
       }
     },
     {
@@ -354,14 +357,17 @@
       "shaped_return": 1.3999999999999992,
       "evidence": {
         "turn_low_motion": 30,
-        "selected_weapon_empty": 283,
         "all_tracked_ammo_empty": 0,
         "door_in_use_range_proxy": 47,
         "door_use_rising_edge": 6,
         "forward_near_wall_low_motion": 1,
         "cell_revisits": 45,
         "short_cell_reversals": 12,
-        "longest_no_novel_cell_steps": 204
+        "longest_no_novel_cell_steps": 204,
+        "selected_weapon_ammo_zero": 283,
+        "zero_ammo_by_selected_weapon_slot": {
+          "1": 283
+        }
       }
     },
     {
@@ -386,14 +392,17 @@
       "shaped_return": -1.0408340855860843e-15,
       "evidence": {
         "turn_low_motion": 19,
-        "selected_weapon_empty": 260,
         "all_tracked_ammo_empty": 0,
         "key_visible": 69,
         "locked_door_in_use_range_proxy": 15,
         "lock_use_rising_edge": 3,
         "cell_revisits": 59,
         "short_cell_reversals": 12,
-        "longest_no_novel_cell_steps": 152
+        "longest_no_novel_cell_steps": 152,
+        "selected_weapon_ammo_zero": 260,
+        "zero_ammo_by_selected_weapon_slot": {
+          "1": 260
+        }
       }
     },
     {
@@ -418,14 +427,17 @@
       "shaped_return": 4.150000000000095,
       "evidence": {
         "turn_low_motion": 24,
-        "selected_weapon_empty": 278,
         "all_tracked_ammo_empty": 0,
         "forward_near_wall_low_motion": 2,
         "locked_door_in_use_range_proxy": 3,
         "lock_use_rising_edge": 0,
         "cell_revisits": 44,
         "short_cell_reversals": 15,
-        "longest_no_novel_cell_steps": 211
+        "longest_no_novel_cell_steps": 211,
+        "selected_weapon_ammo_zero": 278,
+        "zero_ammo_by_selected_weapon_slot": {
+          "1": 278
+        }
       },
       "first_key_step": 79,
       "subsequent_steps": 446,
@@ -453,13 +465,16 @@
       "shaped_return": 3.9000000000000785,
       "evidence": {
         "turn_low_motion": 27,
-        "selected_weapon_empty": 266,
         "all_tracked_ammo_empty": 0,
         "key_visible": 10,
         "forward_near_wall_low_motion": 1,
         "cell_revisits": 49,
         "short_cell_reversals": 11,
-        "longest_no_novel_cell_steps": 233
+        "longest_no_novel_cell_steps": 233,
+        "selected_weapon_ammo_zero": 266,
+        "zero_ammo_by_selected_weapon_slot": {
+          "1": 266
+        }
       },
       "first_key_step": 162,
       "subsequent_steps": 363,
@@ -487,12 +502,15 @@
       "shaped_return": 4.100000000000033,
       "evidence": {
         "turn_low_motion": 26,
-        "selected_weapon_empty": 270,
         "all_tracked_ammo_empty": 0,
         "key_visible": 19,
         "cell_revisits": 54,
         "short_cell_reversals": 18,
-        "longest_no_novel_cell_steps": 132
+        "longest_no_novel_cell_steps": 132,
+        "selected_weapon_ammo_zero": 270,
+        "zero_ammo_by_selected_weapon_slot": {
+          "1": 270
+        }
       },
       "first_key_step": 367,
       "subsequent_steps": 158,
@@ -520,14 +538,17 @@
       "shaped_return": -6.879999999999999,
       "evidence": {
         "turn_low_motion": 6,
-        "selected_weapon_empty": 38,
         "all_tracked_ammo_empty": 0,
         "enemy_visible": 18,
         "attack_with_enemy_visible": 7,
         "key_visible": 10,
         "cell_revisits": 3,
         "short_cell_reversals": 2,
-        "longest_no_novel_cell_steps": 20
+        "longest_no_novel_cell_steps": 20,
+        "selected_weapon_ammo_zero": 38,
+        "zero_ammo_by_selected_weapon_slot": {
+          "1": 38
+        }
       }
     },
     {
@@ -552,11 +573,14 @@
       "shaped_return": -7.1979999999999995,
       "evidence": {
         "turn_low_motion": 4,
-        "selected_weapon_empty": 36,
         "all_tracked_ammo_empty": 0,
         "cell_revisits": 9,
         "short_cell_reversals": 9,
-        "longest_no_novel_cell_steps": 22
+        "longest_no_novel_cell_steps": 22,
+        "selected_weapon_ammo_zero": 36,
+        "zero_ammo_by_selected_weapon_slot": {
+          "1": 36
+        }
       }
     },
     {
@@ -581,7 +605,6 @@
       "shaped_return": -4.794,
       "evidence": {
         "turn_low_motion": 10,
-        "selected_weapon_empty": 59,
         "all_tracked_ammo_empty": 0,
         "enemy_visible": 46,
         "attack_with_enemy_visible": 22,
@@ -590,7 +613,11 @@
         "key_visible": 12,
         "cell_revisits": 10,
         "short_cell_reversals": 4,
-        "longest_no_novel_cell_steps": 37
+        "longest_no_novel_cell_steps": 37,
+        "selected_weapon_ammo_zero": 59,
+        "zero_ammo_by_selected_weapon_slot": {
+          "1": 59
+        }
       }
     },
     {
@@ -615,13 +642,16 @@
       "shaped_return": -5.198,
       "evidence": {
         "turn_low_motion": 13,
-        "selected_weapon_empty": 64,
         "all_tracked_ammo_empty": 0,
         "enemy_visible": 49,
         "attack_with_enemy_visible": 28,
         "cell_revisits": 2,
         "short_cell_reversals": 1,
-        "longest_no_novel_cell_steps": 52
+        "longest_no_novel_cell_steps": 52,
+        "selected_weapon_ammo_zero": 64,
+        "zero_ammo_by_selected_weapon_slot": {
+          "1": 64
+        }
       }
     }
   ],
