@@ -1,0 +1,20 @@
+{
+  "wsl_executable_present": true,
+  "commands": [
+    {
+      "command": "wsl.exe --status",
+      "exit_code": -1,
+      "observed_error": "Wsl/E_ACCESSDENIED"
+    },
+    {
+      "command": "wsl.exe --list --verbose",
+      "exit_code": -1,
+      "observed_error": "Wsl/E_ACCESSDENIED"
+    }
+  ],
+  "user_report": "version 2 v1 is not supported",
+  "ubuntu_distribution": null,
+  "windows_gpu": "NVIDIA GeForce RTX 2050, 4096 MiB, driver 621.40",
+  "linux_cuda_verified": false,
+  "escalation_attempted_this_continuation": false
+}

@@ -1,3 +1,95 @@
+# DOOM NEXUS continuation report
+
+**NOT READY.** The existing implementation was preserved. WSL exists, but this
+session receives `Wsl/E_ACCESSDENIED` for both status and distribution enumeration.
+The user reports WSL version 2 / version 1 unsupported; installed Ubuntu and Linux
+CUDA remain unverified. No sandbox bypass or escalation was attempted in this
+continuation. No genuine training, new weights or held-out gameplay ran.
+
+## WSL 2 and CUDA checks
+
+Windows still detects RTX 2050, 4096 MiB, driver 621.40. The Windows environment
+has Python 3.13.9, ViZDoom 1.3.3 and CPU-only Torch 2.9.1. This is not WSL CUDA
+evidence. `benchmarks/continuation/host-probe.json` distinguishes observed command
+failures from the user's version report. Follow `LINUX_CONTINUATION.md` in a
+normal terminal to identify/install Ubuntu and verify real CUDA tensor execution.
+
+## Individual test investigation
+
+Every one of the previous 29 failed cases, 12 setup errors and the CUDA skip was
+reviewed using its JUnit traceback and source function. The complete per-case
+record, source lines, causes, remediation and exact selector commands are in
+`INDIVIDUAL_TEST_AUDIT.md` and `benchmarks/continuation/individual-test-audit.json`.
+Linux reruns are explicitly NOT EXECUTED. The original tests and validator are
+unchanged; eight Unix-only failures should be rerun unchanged on Linux, not
+removed or treated as successful Windows tests.
+
+## Genuine implementation fixes and new test results
+
+1. Training and evaluation now recalculate each WAD's SHA-256, inspect its actual
+   map metadata and reject cross-split byte overlap before using the manifest.
+   All existing 50 maps are preserved byte for byte, with 30/10/10 splits. Tests
+   demonstrate rejection of tampered bytes and duplicate train/validation WADs.
+2. Evaluation inherits the saved deterministic/stochastic mode by default and
+   promotion preserves the mode actually evaluated. Explicit `--deterministic`
+   and `--no-deterministic` overrides remain available. Four parity cases pass.
+3. Both installers force Torch replacement when switching CPU/CUDA builds,
+   avoiding an installed `2.9.1+cpu` satisfying a CUDA request for `2.9.1`.
+   Installer execution in Linux is still unverified.
+4. Resuming to a lifetime step target already reached now fails clearly, and
+   reset failures close the newly created training environment. These engine-
+   facing paths remain unverified without the real engine.
+5. The worker benchmark can cap itself at one environment for this RAM-limited
+   host. This does not claim that worker throughput was measured.
+
+Seven new regression cases passed. The combined unaffected unit rerun recorded
+**42 passed, 5 explicitly deselected**, in `benchmarks/continuation/unaffected-tests.txt`
+and `.xml`. The five deselected cases are engine-load, three trained-agent
+lifecycle/episode cases, and CUDA-agent execution; their previous failures/skip
+remain outstanding, not passed. No fresh full-suite success is claimed. The
+previous full-suite record remains 47 passed, 29 failed, 12 errors and one skip.
+Static preflight verified Python/ViZDoom versions and the actual hashes/separation
+of all 50 WADs; its `engine_requested=false` and empty episode list make clear
+that it is not an engine smoke result.
+
+## Manual Linux execution and exact remaining blocker
+
+Use the existing checkout, not a newly generated project. `LINUX_CONTINUATION.md`
+contains copyable PowerShell and Ubuntu commands. `scripts/setup_linux.sh`
+creates an external Linux Python 3.13.9 environment, pins ViZDoom 1.3.3 and Torch
+2.9.1 CUDA 12.8 or CPU, and records CUDA computation checks. `scripts/run_linux.sh`
+then performs an actual complete official-map episode and 50 complete short
+curriculum episodes, real PPO + resume, validation-only checkpoint selection,
+held-out evaluation, all tests, performance measurements, Git LFS staging and
+`python validate.py`. Each stage logs a real exit code and stops on failure.
+These scripts were reviewed but could not be executed under the WSL restriction.
+
+Run in normal PowerShell: `wsl --list --verbose`; use its Ubuntu distribution
+name to enter Linux. If absent, install Ubuntu using Microsoft's supported WSL
+procedure. Then follow the guide's `cd`, system dependency installation, and:
+
+```bash
+bash scripts/setup_linux.sh cuda
+bash scripts/run_linux.sh cuda
+```
+
+The CPU fallback is the same two commands with `cpu`. No Linux GPU display driver
+is installed by these scripts. Their first training budgets establish a baseline;
+they are not proof of competitive skill or equal-budget statistical superiority.
+
+Training, model weights, held-out combat/navigation/keycard results, official
+resource compliance and official validator success remain BLOCKED until these
+commands run in the user's normal Linux terminal. Preserve the timestamped
+evidence folder and share it back for failure analysis and further optimization.
+
+## Submission status
+
+**NOT READY.** No COMPETITION READY claim is justified. The two-page brief now
+includes this continuation's actual unit results and the WSL blocker. The
+historical report below remains a record of the earlier run, not fresh results.
+
+---
+
 # DOOM NEXUS final report
 
 **Classification: NOT READY.** Implementation and unit evidence are preserved,

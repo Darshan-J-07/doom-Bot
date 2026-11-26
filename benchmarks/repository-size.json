@@ -1,7 +1,7 @@
 {
-  "payload_files": 143,
-  "payload_bytes": 1219113,
-  "git_metadata_bytes_at_measurement": 294634,
+  "payload_files": 159,
+  "payload_bytes": 1310059,
+  "git_metadata_bytes_at_measurement": 304914,
   "lfs_object_bytes": 0,
   "limit_bytes": 1073741824,
   "model_weights_present": false,

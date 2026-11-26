@@ -11,13 +11,19 @@ from doom_env import CONTRACT_VERSION, make_env
 from submission.model import SpatialPolicy, buttons, policy_stats
 from submission.preprocessing import tensor_batch
 from training.rewards import EpisodeMetrics
+from training.maps import load_verified_maps
+
+
+def decision_mode(checkpoint, override=None):
+    return bool(checkpoint.get("deterministic", False)) if override is None else bool(override)
 
 
 @torch.inference_mode()
-def evaluate(checkpoint_path, maps, seeds=(0,), ticks=2100, deterministic=False, device="cpu", record_dir=None):
+def evaluate(checkpoint_path, maps, seeds=(0,), ticks=2100, deterministic=None, device="cpu", record_dir=None):
     checkpoint = torch.load(checkpoint_path, map_location="cpu", weights_only=True)
     if checkpoint["contract_version"] != CONTRACT_VERSION or checkpoint["trained_steps"] <= 0:
         raise ValueError("Not a trained checkpoint for this contract")
+    deterministic = decision_mode(checkpoint, deterministic)
     model = SpatialPolicy(**checkpoint["model_config"]).to(device).eval()
     model.load_state_dict(checkpoint["model"])
     episodes, latencies = [], []
@@ -69,7 +75,8 @@ def main():
     ap.add_argument("--ticks", type=int, default=2100)
     ap.add_argument("--per-stage", type=int, default=2)
     ap.add_argument("--stages", nargs="+")
-    ap.add_argument("--deterministic", action="store_true")
+    ap.add_argument("--deterministic", action=argparse.BooleanOptionalAction, default=None,
+                    help="default: preserve the checkpoint's saved decision mode")
     ap.add_argument("--device", choices=("cpu", "cuda"), default="cpu")
     ap.add_argument("--out", default="benchmarks/validation.json")
     ap.add_argument("--promote", action="store_true")
@@ -77,7 +84,7 @@ def main():
     args = ap.parse_args(); torch.set_num_threads(1)
     if args.promote and args.split != "validation":
         ap.error("Only validation maps may select the submitted checkpoint; test maps are reporting only")
-    manifest = json.loads(Path("training/maps/manifest.json").read_text())["maps"]
+    manifest = load_verified_maps()
     maps = []; counts = {}
     for m in manifest:
         if m["split"] != args.split or (args.stages and m["stage"] not in args.stages): continue
@@ -95,7 +102,7 @@ def main():
     if args.promote:
         full = torch.load(best["checkpoint"], map_location="cpu", weights_only=True)
         inference = {k:full[k] for k in ("model", "model_config", "contract_version", "trained_steps", "updates", "provenance")}
-        inference.update(deterministic=args.deterministic, selection=best["mean"], selection_split="validation")
+        inference.update(deterministic=best["deterministic"], selection=best["mean"], selection_split="validation")
         path = Path("submission/weights/best_model.pt"); path.parent.mkdir(exist_ok=True)
         torch.save(inference, path)
         report["promoted_sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()

@@ -1,3 +1,12 @@
+# Continuation evidence
+
+Status remains **NOT READY**. WSL status/list commands are denied; the user reports
+WSL 2 support. Seven new regression tests and the combined 42-case unaffected unit
+run passed. Five engine/checkpoint/CUDA cases were explicitly deselected and
+remain blocked. All 50 original WAD hashes and 30/10/10 split separation were
+rechecked. No training or official Linux validation has run. See FINAL_REPORT.md,
+LINUX_CONTINUATION.md and the 42-entry INDIVIDUAL_TEST_AUDIT.md for current details.
+
 # Requirements traceability - final evidence
 
 Status: **NOT READY**. Sources: supplied Track 1 PDF pages 3-6 and official template

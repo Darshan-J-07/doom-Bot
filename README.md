@@ -8,6 +8,19 @@ README is preserved in `docs/upstream-README.md`.
 
 ## Measured status
 
+Continuation: WSL exists, but this session receives `Wsl/E_ACCESSDENIED` for
+status and distro enumeration. The user reports version 2 support. Ubuntu and
+WSL CUDA are not yet verified. Start with the exact manual commands in
+[Linux continuation](docs/LINUX_CONTINUATION.md).
+
+The latest unaffected-unit run has **42 passed, 5 explicitly deselected**;
+the five engine/checkpoint/CUDA cases remain blocked. Seven new regression
+cases verify actual map-byte separation and saved decision-mode parity. All 50
+maps were preserved and their hashes rechecked. Every previous failed, errored
+and skipped case has an [individual audit](docs/INDIVIDUAL_TEST_AUDIT.md).
+
+The following table records the **previous full execution**, before continuation:
+
 | Check | Actual result |
 |---|---|
 | Local acceptance cases | 35 passed, 4 failed, 1 CUDA skip |
@@ -24,6 +37,12 @@ or error cases. [Raw results](benchmarks/full-tests-utf8.txt) and
 No gameplay skill, learning curve or hidden-map score has been established.
 All 50 generated maps passed static WAD metadata parsing; that does not establish
 successful engine loading. Evidence: `benchmarks/static-map-check.json`.
+
+New Linux entry points are `bash scripts/setup_linux.sh cuda` and
+`bash scripts/run_linux.sh cuda`, executed manually inside Ubuntu. Use `cpu`
+for both if CUDA compute checks fail. These scripts have not run in this sandbox;
+they retain per-stage logs and stop at the first failure. The full guide covers
+Ubuntu installation, Python 3.13.9, ViZDoom 1.3.3 and the existing checkout path.
 
 This local checkout originates at the official template commit
 `63b90c441ca92bcdf043de9ee3930ac6370a44bc` and implements contract `1.0.0-draft`.

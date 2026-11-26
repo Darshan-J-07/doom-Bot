@@ -10,7 +10,8 @@ import torch
 from doom_env import CONTRACT_VERSION, make_env
 from submission.model import SpatialPolicy, buttons, policy_stats
 from submission.preprocessing import tensor_batch
-from training.generate_maps import STAGES, generate
+from training.generate_maps import STAGES
+from training.maps import load_verified_maps
 from training.ppo import update
 from training.rewards import EpisodeMetrics
 
@@ -66,8 +67,7 @@ def main(argv=None):
         torch.cuda.set_per_process_memory_fraction(.6)
         torch.cuda.manual_seed_all(args.seed)
     rng = random.Random(args.seed)
-    manifest = Path(args.map_root) / "manifest.json"
-    maps = (json.loads(manifest.read_text())["maps"] if manifest.exists() else generate(args.map_root))
+    maps = load_verified_maps(args.map_root)
     train_maps = [m for m in maps if m["split"] == "train"]
     model = SpatialPolicy(recurrent=args.model == "gru", entity_mode=args.entity_mode).to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=args.lr, eps=1e-5)
@@ -78,6 +78,8 @@ def main(argv=None):
             raise ValueError("Resume architecture / contract mismatch")
         model.load_state_dict(saved["model"]); optimizer.load_state_dict(saved["optimizer"])
         steps, updates = saved["trained_steps"], saved["updates"]
+        if args.steps <= steps:
+            raise ValueError(f"Resume --steps must exceed checkpoint lifetime steps ({steps})")
         torch.set_rng_state(saved["torch_rng"]); rng.setstate(saved["map_rng"])
         if device.type == "cuda" and saved.get("cuda_rng"):
             torch.cuda.set_rng_state_all(saved["cuda_rng"])
@@ -92,7 +94,11 @@ def main(argv=None):
             env = WorkerEnv(spec["path"], args.ticks)
         else:
             env = make_env(spec["path"], episode_ticks=args.ticks, render_buffers=False)
-        obs, _ = env.reset(seed=rng.randrange(2**30))
+        try:
+            obs, _ = env.reset(seed=rng.randrange(2**30))
+        except BaseException:
+            env.close()
+            raise
         metrics = EpisodeMetrics(); metrics.reset(env.privileged_state())
         return env, obs, metrics
     envs, observations, trackers = [], [], []

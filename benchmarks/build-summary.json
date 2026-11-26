@@ -47,5 +47,24 @@
         "windows_peak_working_set_bytes": 218464256
       }
     ]
+  },
+  "continuation": {
+    "status": "NOT READY",
+    "linux_execution": "BLOCKED: Wsl/E_ACCESSDENIED",
+    "real_training_steps": 0,
+    "trained_checkpoint": null,
+    "heldout_evaluation": null,
+    "official_validator": "previous exit 1; no new Linux run",
+    "regression_tests_passed": 7,
+    "unaffected_tests_passed": 42,
+    "explicitly_deselected_cases": 5,
+    "individual_previous_cases_audited": 42,
+    "map_bytes_verified": 50,
+    "map_split_counts": {
+      "train": 30,
+      "validation": 10,
+      "test": 10
+    },
+    "shell_workflow_execution": "NOT EXECUTED; manual Linux terminal required"
   }
 }

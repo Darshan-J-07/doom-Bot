@@ -1,0 +1,422 @@
+[
+  {
+    "nodeid": "tests/test_env.py::test_observation_matches_space",
+    "previous_result": "failure",
+    "source_line": 32,
+    "category": "Engine IPC",
+    "cause": "Actual ViZDoom initialization raises MessageQueueException before the tested behavior is reached",
+    "remediation": "Pass Linux engine smoke, then rerun this exact case without changing its assertions",
+    "evidence": "vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_env.py::test_rays_walls_and_doors",
+    "previous_result": "failure",
+    "source_line": 43,
+    "category": "Engine IPC",
+    "cause": "Actual ViZDoom initialization raises MessageQueueException before the tested behavior is reached",
+    "remediation": "Pass Linux engine smoke, then rerun this exact case without changing its assertions",
+    "evidence": "vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_env.py::test_locked_door_ray_type",
+    "previous_result": "failure",
+    "source_line": 56,
+    "category": "Engine IPC",
+    "cause": "Actual ViZDoom initialization raises MessageQueueException before the tested behavior is reached",
+    "remediation": "Pass Linux engine smoke, then rerun this exact case without changing its assertions",
+    "evidence": "vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_env.py::test_enemy_and_item_rays_and_entities",
+    "previous_result": "failure",
+    "source_line": 63,
+    "category": "Engine IPC",
+    "cause": "Actual ViZDoom initialization raises MessageQueueException before the tested behavior is reached",
+    "remediation": "Pass Linux engine smoke, then rerun this exact case without changing its assertions",
+    "evidence": "vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_env.py::test_line_of_sight_and_fov",
+    "previous_result": "failure",
+    "source_line": 78,
+    "category": "Engine IPC",
+    "cause": "Actual ViZDoom initialization raises MessageQueueException before the tested behavior is reached",
+    "remediation": "Pass Linux engine smoke, then rerun this exact case without changing its assertions",
+    "evidence": "vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_env.py::test_key_pickup_and_locked_door_exit",
+    "previous_result": "failure",
+    "source_line": 88,
+    "category": "Engine IPC",
+    "cause": "Actual ViZDoom initialization raises MessageQueueException before the tested behavior is reached",
+    "remediation": "Pass Linux engine smoke, then rerun this exact case without changing its assertions",
+    "evidence": "vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_env.py::test_truncation_at_tick_cap",
+    "previous_result": "failure",
+    "source_line": 108,
+    "category": "Engine IPC",
+    "cause": "Actual ViZDoom initialization raises MessageQueueException before the tested behavior is reached",
+    "remediation": "Pass Linux engine smoke, then rerun this exact case without changing its assertions",
+    "evidence": "vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_env.py::test_translation_invariance",
+    "previous_result": "failure",
+    "source_line": 122,
+    "category": "Engine IPC",
+    "cause": "Actual ViZDoom initialization raises MessageQueueException before the tested behavior is reached",
+    "remediation": "Pass Linux engine smoke, then rerun this exact case without changing its assertions",
+    "evidence": "vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_env.py::test_invalid_actions_rejected",
+    "previous_result": "failure",
+    "source_line": 144,
+    "category": "Engine IPC",
+    "cause": "Actual ViZDoom initialization raises MessageQueueException before the tested behavior is reached",
+    "remediation": "Pass Linux engine smoke, then rerun this exact case without changing its assertions",
+    "evidence": "vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_env.py::test_freedoom_map_runs",
+    "previous_result": "failure",
+    "source_line": 154,
+    "category": "Engine IPC",
+    "cause": "Actual ViZDoom initialization raises MessageQueueException before the tested behavior is reached",
+    "remediation": "Pass Linux engine smoke, then rerun this exact case without changing its assertions",
+    "evidence": "vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_env.py::test_projectiles_are_classified",
+    "previous_result": "failure",
+    "source_line": 169,
+    "category": "Engine IPC",
+    "cause": "Actual ViZDoom initialization raises MessageQueueException before the tested behavior is reached",
+    "remediation": "Pass Linux engine smoke, then rerun this exact case without changing its assertions",
+    "evidence": "vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_env.py::test_final_step_variables_are_refreshed",
+    "previous_result": "failure",
+    "source_line": 184,
+    "category": "Engine IPC",
+    "cause": "Actual ViZDoom initialization raises MessageQueueException before the tested behavior is reached",
+    "remediation": "Pass Linux engine smoke, then rerun this exact case without changing its assertions",
+    "evidence": "vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_env.py::test_static_geometry_comes_from_the_wad",
+    "previous_result": "failure",
+    "source_line": 197,
+    "category": "Engine IPC",
+    "cause": "Actual ViZDoom initialization raises MessageQueueException before the tested behavior is reached",
+    "remediation": "Pass Linux engine smoke, then rerun this exact case without changing its assertions",
+    "evidence": "vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_env.py::test_out_of_order_calls_raise_clear_errors",
+    "previous_result": "failure",
+    "source_line": 208,
+    "category": "Engine IPC",
+    "cause": "Actual ViZDoom initialization raises MessageQueueException before the tested behavior is reached",
+    "remediation": "Pass Linux engine smoke, then rerun this exact case without changing its assertions",
+    "evidence": "vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_nexus.py::test_generated_curriculum_engine_loads",
+    "previous_result": "failure",
+    "source_line": 114,
+    "category": "Engine IPC",
+    "cause": "Actual ViZDoom initialization raises MessageQueueException before the tested behavior is reached",
+    "remediation": "Pass Linux engine smoke, then rerun this exact case without changing its assertions",
+    "evidence": "vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_nexus.py::test_checkpoint_load_once_and_readonly_act",
+    "previous_result": "failure",
+    "source_line": 146,
+    "category": "Missing weights",
+    "cause": "DoomAgent cannot initialize because genuine trained weights do not exist",
+    "remediation": "Complete real PPO updates, validate and promote a checkpoint, then rerun this case",
+    "evidence": "FileNotFoundError: [Errno 2] No such file or directory: 'C:\\\\Users\\\\Darshan\\\\Documents\\\\Codex\\\\2026-11-26\\\\files-mentioned-by-the-user-yugaantar\\\\outputs\\\\doom-nexus\\\\submission\\\\weights\\\\best_model.pt'",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_nexus.py::test_memory_reset_and_independent_instances",
+    "previous_result": "failure",
+    "source_line": 160,
+    "category": "Missing weights",
+    "cause": "DoomAgent cannot initialize because genuine trained weights do not exist",
+    "remediation": "Complete real PPO updates, validate and promote a checkpoint, then rerun this case",
+    "evidence": "FileNotFoundError: [Errno 2] No such file or directory: 'C:\\\\Users\\\\Darshan\\\\Documents\\\\Codex\\\\2026-11-26\\\\files-mentioned-by-the-user-yugaantar\\\\outputs\\\\doom-nexus\\\\submission\\\\weights\\\\best_model.pt'",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_nexus.py::test_real_episode_without_invalid_actions",
+    "previous_result": "failure",
+    "source_line": 172,
+    "category": "Missing weights",
+    "cause": "DoomAgent cannot initialize because genuine trained weights do not exist",
+    "remediation": "Complete real PPO updates, validate and promote a checkpoint, then rerun this case",
+    "evidence": "FileNotFoundError: [Errno 2] No such file or directory: 'C:\\\\Users\\\\Darshan\\\\Documents\\\\Codex\\\\2026-11-26\\\\files-mentioned-by-the-user-yugaantar\\\\outputs\\\\doom-nexus\\\\submission\\\\weights\\\\best_model.pt'",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_nexus.py::test_cuda_agent",
+    "previous_result": "skipped",
+    "source_line": 185,
+    "category": "CUDA build",
+    "cause": "CPU-only PyTorch; RTX 2050 hardware was detected, but CUDA agent execution was not tested",
+    "remediation": "Install CUDA PyTorch in WSL 2; pass CUDA tensor preflight, train real weights, rerun this case",
+    "evidence": "CUDA execution not verified: local PyTorch is the CPU build",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_remote.py::test_good_agent_full_episode",
+    "previous_result": "error",
+    "source_line": 81,
+    "category": "Engine IPC",
+    "cause": "Actual ViZDoom initialization raises MessageQueueException before the tested behavior is reached",
+    "remediation": "Pass Linux engine smoke, then rerun this exact case without changing its assertions",
+    "evidence": "failed on setup with \"vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.\"",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_remote.py::test_loopback_tcp_fallback",
+    "previous_result": "error",
+    "source_line": 97,
+    "category": "Engine IPC",
+    "cause": "Actual ViZDoom initialization raises MessageQueueException before the tested behavior is reached",
+    "remediation": "Pass Linux engine smoke, then rerun this exact case without changing its assertions",
+    "evidence": "failed on setup with \"vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.\"",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_remote.py::test_misbehaving_agents[init_raises-init-error]",
+    "previous_result": "error",
+    "source_line": 118,
+    "category": "Engine IPC",
+    "cause": "Actual ViZDoom initialization raises MessageQueueException before the tested behavior is reached",
+    "remediation": "Pass Linux engine smoke, then rerun this exact case without changing its assertions",
+    "evidence": "failed on setup with \"vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.\"",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_remote.py::test_misbehaving_agents[sys_exit-init-error]",
+    "previous_result": "error",
+    "source_line": 118,
+    "category": "Engine IPC",
+    "cause": "Actual ViZDoom initialization raises MessageQueueException before the tested behavior is reached",
+    "remediation": "Pass Linux engine smoke, then rerun this exact case without changing its assertions",
+    "evidence": "failed on setup with \"vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.\"",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_remote.py::test_misbehaving_agents[no_class-init-error]",
+    "previous_result": "error",
+    "source_line": 118,
+    "category": "Engine IPC",
+    "cause": "Actual ViZDoom initialization raises MessageQueueException before the tested behavior is reached",
+    "remediation": "Pass Linux engine smoke, then rerun this exact case without changing its assertions",
+    "evidence": "failed on setup with \"vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.\"",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_remote.py::test_misbehaving_agents[act_raises-act-error]",
+    "previous_result": "error",
+    "source_line": 118,
+    "category": "Engine IPC",
+    "cause": "Actual ViZDoom initialization raises MessageQueueException before the tested behavior is reached",
+    "remediation": "Pass Linux engine smoke, then rerun this exact case without changing its assertions",
+    "evidence": "failed on setup with \"vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.\"",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_remote.py::test_misbehaving_agents[act_hangs-act-timeout]",
+    "previous_result": "error",
+    "source_line": 118,
+    "category": "Engine IPC",
+    "cause": "Actual ViZDoom initialization raises MessageQueueException before the tested behavior is reached",
+    "remediation": "Pass Linux engine smoke, then rerun this exact case without changing its assertions",
+    "evidence": "failed on setup with \"vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.\"",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_remote.py::test_misbehaving_agents[bad_shape-act-invalid_action]",
+    "previous_result": "error",
+    "source_line": 118,
+    "category": "Engine IPC",
+    "cause": "Actual ViZDoom initialization raises MessageQueueException before the tested behavior is reached",
+    "remediation": "Pass Linux engine smoke, then rerun this exact case without changing its assertions",
+    "evidence": "failed on setup with \"vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.\"",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_remote.py::test_misbehaving_agents[bad_values-act-invalid_action]",
+    "previous_result": "error",
+    "source_line": 118,
+    "category": "Engine IPC",
+    "cause": "Actual ViZDoom initialization raises MessageQueueException before the tested behavior is reached",
+    "remediation": "Pass Linux engine smoke, then rerun this exact case without changing its assertions",
+    "evidence": "failed on setup with \"vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.\"",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_remote.py::test_misbehaving_agents[returns_str-act-error]",
+    "previous_result": "error",
+    "source_line": 118,
+    "category": "Engine IPC",
+    "cause": "Actual ViZDoom initialization raises MessageQueueException before the tested behavior is reached",
+    "remediation": "Pass Linux engine smoke, then rerun this exact case without changing its assertions",
+    "evidence": "failed on setup with \"vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.\"",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_remote.py::test_misbehaving_agents[hard_crash-act-crash]",
+    "previous_result": "error",
+    "source_line": 118,
+    "category": "Engine IPC",
+    "cause": "Actual ViZDoom initialization raises MessageQueueException before the tested behavior is reached",
+    "remediation": "Pass Linux engine smoke, then rerun this exact case without changing its assertions",
+    "evidence": "failed on setup with \"vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.\"",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_remote.py::test_misbehaving_agents[gc_snoop-None-None]",
+    "previous_result": "error",
+    "source_line": 118,
+    "category": "Engine IPC",
+    "cause": "Actual ViZDoom initialization raises MessageQueueException before the tested behavior is reached",
+    "remediation": "Pass Linux engine smoke, then rerun this exact case without changing its assertions",
+    "evidence": "failed on setup with \"vizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.\"",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_remote.py::test_hostile_replies_become_protocol_failures[conflicting_paths]",
+    "previous_result": "failure",
+    "source_line": 186,
+    "category": "Unix resource",
+    "cause": "The upstream test imports the Unix resource module, absent in native Windows",
+    "remediation": "Run unchanged in Linux; preserve protocol failure and memory-growth checks",
+    "evidence": "ModuleNotFoundError: No module named 'resource'",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_remote.py::test_hostile_replies_become_protocol_failures[deep_json]",
+    "previous_result": "failure",
+    "source_line": 186,
+    "category": "Unix resource",
+    "cause": "The upstream test imports the Unix resource module, absent in native Windows",
+    "remediation": "Run unchanged in Linux; preserve protocol failure and memory-growth checks",
+    "evidence": "ModuleNotFoundError: No module named 'resource'",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_remote.py::test_hostile_replies_become_protocol_failures[huge_int]",
+    "previous_result": "failure",
+    "source_line": 186,
+    "category": "Unix resource",
+    "cause": "The upstream test imports the Unix resource module, absent in native Windows",
+    "remediation": "Run unchanged in Linux; preserve protocol failure and memory-growth checks",
+    "evidence": "ModuleNotFoundError: No module named 'resource'",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_remote.py::test_hostile_replies_become_protocol_failures[int64_wrap_shape]",
+    "previous_result": "failure",
+    "source_line": 186,
+    "category": "Unix resource",
+    "cause": "The upstream test imports the Unix resource module, absent in native Windows",
+    "remediation": "Run unchanged in Linux; preserve protocol failure and memory-growth checks",
+    "evidence": "ModuleNotFoundError: No module named 'resource'",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_remote.py::test_hostile_replies_become_protocol_failures[negative_size_bomb]",
+    "previous_result": "failure",
+    "source_line": 186,
+    "category": "Unix resource",
+    "cause": "The upstream test imports the Unix resource module, absent in native Windows",
+    "remediation": "Run unchanged in Linux; preserve protocol failure and memory-growth checks",
+    "evidence": "ModuleNotFoundError: No module named 'resource'",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_remote.py::test_hostile_replies_become_protocol_failures[not_an_object]",
+    "previous_result": "failure",
+    "source_line": 186,
+    "category": "Unix resource",
+    "cause": "The upstream test imports the Unix resource module, absent in native Windows",
+    "remediation": "Run unchanged in Linux; preserve protocol failure and memory-growth checks",
+    "evidence": "ModuleNotFoundError: No module named 'resource'",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_remote.py::test_hostile_replies_become_protocol_failures[wrong_seq]",
+    "previous_result": "failure",
+    "source_line": 186,
+    "category": "Unix resource",
+    "cause": "The upstream test imports the Unix resource module, absent in native Windows",
+    "remediation": "Run unchanged in Linux; preserve protocol failure and memory-growth checks",
+    "evidence": "ModuleNotFoundError: No module named 'resource'",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_validate.py::test_template_baseline_passes",
+    "previous_result": "failure",
+    "source_line": 21,
+    "category": "Missing weights",
+    "cause": "DoomAgent cannot initialize because genuine trained weights do not exist",
+    "remediation": "Complete real PPO updates, validate and promote a checkpoint, then rerun this case",
+    "evidence": "AssertionError: Validating C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus  (contract 1.0.0-draft)\n  \n   #x1B[32m\u2713#x1B[0m Repository size (tracked files): 231.0 KB of 1.0 GB\n   #x1B[33m!#x1B[0m Untracked files in submission/: submission/__init__.py, submission/model.py, submission/preprocessing.py (not part of your submission until committed)\n   #x1B[33m!#x1B[0m Uncommitted changes in submission/: submission/agent.py (the scorer uses your last pushed commit)\n   #x1B[32m\u2713#x1B[0m requirements.txt: no extra packages\n   #x1B[32m\u2713#x1B[0m DoomAgent interface: __init__, reset, act\n   #x1B[33m!#x1B[0m CPU limit: could not pin the agent to 1 CPU here; evaluation gives it one CPU, so timings may look better than they will be\n   #x1B[31m\u2717#x1B[0m Agent failed (error during init): FileNotFoundError: [Errno 2] No such file or directory: 'C:\\\\Users\\\\Darshan\\\\Documents\\\\Codex\\\\2026-11-26\\\\files-mentioned-by-the-user-yugaantar\\\\outputs\\\\doom-nexus\\\\submission\\\\weights\\\\best_model.pt'\n       Traceback (most recent call last):\n         File \"C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\env\\doom_env\\remote.py\", line 399, in serve\n           agent = cls(S.observation_space(), S.action_space(), dev)\n         File \"C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\submission\\agent.py\", line 18, in __init__\n           checkpoint = torch.load(Path(__file__).parent / \"weights\" / \"best_model.pt\",\n                                   map_location=\"cpu\", weights_only=True)\n         File \"C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\work\\.venv\\Lib\\site-packages\\torch\\serialization.py\", line 1484, in load\n           with _open_file_like(f, \"rb\") as opened_file:\n                ~~~~~~~~~~~~~~~^^^^^^^^^\n         File \"C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\work\\.venv\\Lib\\site-packages\\torch\\serialization.py\", line 759, in _open_file_like\n           return _open_file(name_or_buffer, mode)\n         File \"C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\work\\.venv\\Lib\\site-packages\\torch\\serialization.py\", line 740, in __init__\n           super().__init__(open(name, mode))\n                            ~~~~^^^^^^^^^^^^\n       FileNotFoundError: [Errno 2] No such file or directory: 'C:\\\\Users\\\\Darshan\\\\Documents\\\\Codex\\\\2026-11-26\\\\files-mentioned-by-the-user-yugaantar\\\\outputs\\\\doom-nexus\\\\submission\\\\weights\\\\best_model.pt'\n   #x1B[33m!#x1B[0m Peak RAM: could not be measured here (needs Linux /proc); the limit is 8192 MB\n   #x1B[33m!#x1B[0m Peak GPU memory: could not be measured here (nvidia-smi has no per-process data); try --docker on a Linux GPU host\n     last agent output:\n       Traceback (most recent call last):\n         File \"C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\env\\doom_env\\remote.py\", line 399, in serve\n           agent = cls(S.observation_space(), S.action_space(), dev)\n         File \"C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\submission\\agent.py\", line 18, in __init__\n           checkpoint = torch.load(Path(__file__).parent / \"weights\" / \"best_model.pt\",\n                                   map_location=\"cpu\", weights_only=True)\n         File \"C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\work\\.venv\\Lib\\site-packages\\torch\\serialization.py\", line 1484, in load\n           with _open_file_like(f, \"rb\") as opened_file:\n                ~~~~~~~~~~~~~~~^^^^^^^^^\n         File \"C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\work\\.venv\\Lib\\site-packages\\torch\\serialization.py\", line 759, in _open_file_like\n           return _open_file(name_or_buffer, mode)\n         File \"C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\work\\.venv\\Lib\\site-packages\\torch\\serialization.py\", line 740, in __init__\n           super().__init__(open(name, mode))\n                            ~~~~^^^^^^^^^^^^\n       FileNotFoundError: [Errno 2] No such file or directory: 'C:\\\\Users\\\\Darshan\\\\Documents\\\\Codex\\\\2026-11-26\\\\files-mentioned-by-the-user-yugaantar\\\\outputs\\\\doom-nexus\\\\submission\\\\weights\\\\best_model.pt'\n  \n  #x1B[31mFAILED#x1B[0m: 1 check(s) failed, 5 warning(s).\n  \nassert 1 == 0\n +  where 1 = CompletedProcess(args=['C:\\\\Users\\\\Darshan\\\\Documents\\\\Codex\\\\2026-11-26\\\\files-mentioned-by-the-user-yugaantar\\\\work\\...s\\\\\\\\submission\\\\\\\\weights\\\\\\\\best_model.pt\\'\\n\\n\\x1b[31mFAILED\\x1b[0m: 1 check(s) failed, 5 warning(s).\\n', stderr='').returncode",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_validate.py::test_crashing_agent_fails",
+    "previous_result": "failure",
+    "source_line": 33,
+    "category": "Engine IPC",
+    "cause": "Actual ViZDoom initialization raises MessageQueueException before the tested behavior is reached",
+    "remediation": "Pass Linux engine smoke, then rerun this exact case without changing its assertions",
+    "evidence": "assert 'kaboom' in \"Validating C:\\\\Users\\\\Darshan\\\\AppData\\\\Local\\\\Packages\\\\OpenAI.Codex_2p2nqsd0c76g0\\\\AC\\\\#!sandbox.{026cd508-a890-49d...PU, so timings may look better than they will be\\n \\x1b[32m\u2713\\x1b[0m Initialization: 2.6s (limit 60s) on device 'cpu'\\n\"\n +  where \"Validating C:\\\\Users\\\\Darshan\\\\AppData\\\\Local\\\\Packages\\\\OpenAI.Codex_2p2nqsd0c76g0\\\\AC\\\\#!sandbox.{026cd508-a890-49d...PU, so timings may look better than they will be\\n \\x1b[32m\u2713\\x1b[0m Initialization: 2.6s (limit 60s) on device 'cpu'\\n\" = CompletedProcess(args=['C:\\\\Users\\\\Darshan\\\\Documents\\\\Codex\\\\2026-11-26\\\\files-mentioned-by-the-user-yugaantar\\\\work\\...  g.init()\\n    ~~~~~~^^\\nvizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.\\n').stdout",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_validate.py::test_optional_and_varargs_signatures_pass",
+    "previous_result": "failure",
+    "source_line": 43,
+    "category": "Engine IPC",
+    "cause": "Actual ViZDoom initialization raises MessageQueueException before the tested behavior is reached",
+    "remediation": "Pass Linux engine smoke, then rerun this exact case without changing its assertions",
+    "evidence": "AssertionError: Validating C:\\Users\\Darshan\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\AC\\#!sandbox.{026cd508-a890-49d2-beda-21bfb324eb16}\\Temp\\pytest-of-Darshan\\pytest-0\\test_optional_and_varargs_sign0  (contract 1.0.0-draft)\n  \n   #x1B[33m!#x1B[0m Repository size: not a git repository; measuring all files (excluding .venv)\n   #x1B[32m\u2713#x1B[0m Repository size (tracked files): 220.0 B of 1.0 GB\n   #x1B[32m\u2713#x1B[0m DoomAgent interface: __init__, reset, act\n   #x1B[33m!#x1B[0m CPU limit: could not pin the agent to 1 CPU here; evaluation gives it one CPU, so timings may look better than they will be\n   #x1B[32m\u2713#x1B[0m Initialization: 2.6s (limit 60s) on device 'cpu'\n  \nassert ('DoomAgent interface' in \"Validating C:\\\\Users\\\\Darshan\\\\AppData\\\\Local\\\\Packages\\\\OpenAI.Codex_2p2nqsd0c76g0\\\\AC\\\\#!sandbox.{026cd508-a890-49d...PU, so timings may look better than they will be\\n \\x1b[32m\u2713\\x1b[0m Initialization: 2.6s (limit 60s) on device 'cpu'\\n\" and 1 == 0)\n +  where \"Validating C:\\\\Users\\\\Darshan\\\\AppData\\\\Local\\\\Packages\\\\OpenAI.Codex_2p2nqsd0c76g0\\\\AC\\\\#!sandbox.{026cd508-a890-49d...PU, so timings may look better than they will be\\n \\x1b[32m\u2713\\x1b[0m Initialization: 2.6s (limit 60s) on device 'cpu'\\n\" = CompletedProcess(args=['C:\\\\Users\\\\Darshan\\\\Documents\\\\Codex\\\\2026-11-26\\\\files-mentioned-by-the-user-yugaantar\\\\work\\...  g.init()\\n    ~~~~~~^^\\nvizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.\\n').stdout\n +  and   1 = CompletedProcess(args=['C:\\\\Users\\\\Darshan\\\\Documents\\\\Codex\\\\2026-11-26\\\\files-mentioned-by-the-user-yugaantar\\\\work\\...  g.init()\\n    ~~~~~~^^\\nvizdoom.vizdoom.MessageQueueException: Failed to create message queues: Access is denied.\\n').returncode",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  },
+  {
+    "nodeid": "tests/test_validate.py::test_cpu_and_ram_limits_are_emulated",
+    "previous_result": "failure",
+    "source_line": 73,
+    "category": "Linux affinity",
+    "cause": "The upstream test calls os.sched_getaffinity, which native Windows does not provide",
+    "remediation": "Run unchanged in Linux; verify real one-CPU affinity and peak RSS assertions",
+    "evidence": "AttributeError: module 'os' has no attribute 'sched_getaffinity'",
+    "rerun_status": "NOT EXECUTED ON LINUX"
+  }
+]

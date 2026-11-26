@@ -43,10 +43,13 @@ def throughput(count, parallel=False, decisions=128):
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument("--device",default="cpu")
     ap.add_argument("--steps",type=int,default=512); ap.add_argument("--throughput-only",action="store_true")
+    ap.add_argument("--max-envs",type=int,choices=(1,2),default=2,
+                    help="cap the worker benchmark at one environment on RAM-limited machines")
     args=ap.parse_args(); torch.set_num_threads(1)
     report={}
     if args.throughput_only:
-        report["throughput"]=[throughput(1),throughput(2),throughput(2,True)]
+        report["throughput"]=[throughput(1)]
+        if args.max_envs==2: report["throughput"].extend([throughput(2),throughput(2,True)])
         target="benchmarks/throughput.json"
     else:
         process=psutil.Process(); rss=[]; stop=threading.Event()
@@ -84,7 +87,7 @@ def main():
                     official_limits=dict(init_s=L.INIT_TIMEOUT_S,reset_s=L.RESET_TIMEOUT_S,
                                          first_act_s=L.FIRST_ACT_TIMEOUT_S,act_s=L.ACT_TIMEOUT_S,
                                          mean_ms=L.AGENT_MS_PER_STEP,ram_mb=L.MAX_RAM_MB,vram_mb=L.MAX_VRAM_MB),
-                    scope="Local Windows process includes benchmark and game-wrapper imports; not Linux sandbox certification")
+                    scope="Local benchmark process includes game-wrapper imports; not organizer sandbox certification")
         target="benchmarks/performance.json"
     Path(target).write_text(json.dumps(report,indent=2),encoding="utf-8"); print(json.dumps(report,indent=2))
 
