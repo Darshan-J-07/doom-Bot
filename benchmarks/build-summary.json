@@ -66,5 +66,39 @@
       "test": 10
     },
     "shell_workflow_execution": "NOT EXECUTED; manual Linux terminal required"
+  },
+  "verified_environment_continuation": {
+    "status": "NOT READY",
+    "evidence_source": "User verified the Linux environment outside Codex",
+    "environment": {
+      "wsl": "2",
+      "ubuntu": "24.04",
+      "python": "3.13.18",
+      "vizdoom": "1.3.3",
+      "torch": "2.11.0+cu128",
+      "cuda_available": true,
+      "gpu": "RTX 2050, 4 GB",
+      "engine_actions": "USER VERIFIED PASSED",
+      "cuda_tensor_compute": "USER VERIFIED PASSED",
+      "virtualenv": "~/doom-test/.venv"
+    },
+    "codex_access": {
+      "command": "wsl.exe --list --verbose",
+      "exit_code": -1,
+      "error": "Wsl/E_ACCESSDENIED"
+    },
+    "linux_project_copy": "NOT EXECUTED BY CODEX",
+    "project_training": "NOT EXECUTED BY CODEX",
+    "trained_checkpoint": null,
+    "heldout_metrics": null,
+    "official_validator_passed": false,
+    "latest_local_unaffected_tests": {
+      "passed": 51,
+      "deselected": 5
+    },
+    "new_control_cases": {
+      "passed": 9
+    },
+    "launcher": "scripts/continue_verified.sh"
   }
 }

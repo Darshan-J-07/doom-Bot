@@ -1,12 +1,28 @@
 # DOOM NEXUS
 
 A custom spatial reinforcement-learning implementation for DevForge Track 1.
-**NOT READY:** ViZDoom's Windows message-queue creation is denied in this sandbox.
-There are no trained weights, gameplay scores or successful official validation.
+**NOT READY:** the user has verified Ubuntu engine/CUDA execution, but this Codex
+session still cannot access WSL (`Wsl/E_ACCESSDENIED`). Project training, weights,
+held-out results and successful official validation remain outstanding.
 Start with [the measured final report](docs/FINAL_REPORT.md). The original starter
 README is preserved in `docs/upstream-README.md`.
 
 ## Measured status
+
+Latest user-verified environment: Ubuntu 24.04 / WSL 2, Python 3.13.18, ViZDoom
+1.3.3 and Torch 2.11.0+cu128, with RTX 2050 CUDA computation and actual engine
+actions passed. Reuse `~/doom-test/.venv`; do not downgrade this working stack.
+Run the [verified-environment launcher](docs/VERIFIED_ENVIRONMENT_RUN.md) in the
+normal Ubuntu terminal to copy this existing checkout into Linux home and start
+the complete project workflow. It preserves the Windows original.
+
+The latest local unaffected/control run has **51 passed, 5 explicitly deselected**.
+The deselected cases still require actual engine/weights/CUDA access from this
+session. CPU/CUDA device selection now benchmarks real PPO runs, and CPU
+checkpoint saving avoids unnecessary CUDA initialization. None of these unit
+results is evidence of genuine game training or held-out skill.
+
+The remaining paragraphs and table below retain previous-run history:
 
 Continuation: WSL exists, but this session receives `Wsl/E_ACCESSDENIED` for
 status and distro enumeration. The user reports version 2 support. Ubuntu and
@@ -43,6 +59,8 @@ New Linux entry points are `bash scripts/setup_linux.sh cuda` and
 for both if CUDA compute checks fail. These scripts have not run in this sandbox;
 they retain per-stage logs and stop at the first failure. The full guide covers
 Ubuntu installation, Python 3.13.9, ViZDoom 1.3.3 and the existing checkout path.
+That fresh-install route is historical. The current preferred launcher reuses
+the verified 3.13.18 / Torch 2.11 environment and skips Torch installation.
 
 This local checkout originates at the official template commit
 `63b90c441ca92bcdf043de9ee3930ac6370a44bc` and implements contract `1.0.0-draft`.

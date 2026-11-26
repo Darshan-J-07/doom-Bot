@@ -1,5 +1,11 @@
 # Continue the existing project in WSL 2 / Ubuntu
 
+**Updated entry point:** the user has now verified Ubuntu 24.04, Python 3.13.18,
+ViZDoom 1.3.3, Torch 2.11.0+cu128, engine actions and CUDA tensor computation in
+`~/doom-test/.venv`. Use [VERIFIED_ENVIRONMENT_RUN.md](VERIFIED_ENVIRONMENT_RUN.md)
+to reuse it and copy the existing project. The setup history below should not
+be used to reinstall or downgrade that working environment.
+
 Current status: **NOT READY**. The existing project has been extended, not rebuilt.
 This session cannot launch WSL: both `wsl --status` and `wsl --list --verbose`
 return `Wsl/E_ACCESSDENIED`. The user reports version 2 with version 1 unsupported.

@@ -1,3 +1,90 @@
+# Verified environment continuation - current status
+
+**NOT READY.** The user has verified successful actual engine initialization,
+game actions and CUDA tensor computation in WSL 2 / Ubuntu 24.04, using Python
+3.13.18, ViZDoom 1.3.3, Torch 2.11.0+cu128 and RTX 2050 (4 GB). The working
+virtualenv is `~/doom-test/.venv`. These environment checks are accepted as user
+evidence; they are not project PPO, model-weight or held-out results.
+
+## Remaining execution boundary
+
+A fresh `wsl.exe --list --verbose` from this session still returns
+`Wsl/E_ACCESSDENIED` with exit -1. Codex therefore did not copy files into Linux
+home or execute project engine tests, training, evaluation or validation there.
+No sandbox bypass or escalation was attempted. The real engine is now known to
+work outside this session; the remaining blocker is access from Codex.
+
+## Exact manual continuation
+
+Run this single command in the already-working normal Ubuntu terminal:
+
+```bash
+bash '/mnt/c/Users/Darshan/Documents/Codex/2026-11-26/files-mentioned-by-the-user-yugaantar/outputs/doom-nexus/scripts/continue_verified.sh'
+```
+
+The launcher preserves the Windows checkout, copies it into a new Linux-home
+directory including Git history, reuses the verified Python environment, keeps
+Torch unchanged and installs only project support dependencies as needed. It
+prints and saves the actual destination path. It starts work in the foreground;
+both successful and failed runs export a timestamped archive of actual results
+back into this chat's Windows `outputs/` directory. No successful Linux result
+archive exists yet from this session. See `VERIFIED_ENVIRONMENT_RUN.md` for budget,
+resume and evidence details. Old fresh-install instructions are historical.
+
+## Project work completed here
+
+- Reviewed the existing setup, run, smoke, PPO, checkpoint and test interfaces.
+- Added a real PPO CPU-versus-CUDA benchmark with complete fixed-step jobs,
+  repeated alternating device order, recorded failures and median-rate selection.
+  No benchmark result has been fabricated or pre-selected.
+- Added a staged runner: project engine smoke on the official map and all 50
+  existing WADs; the entire test suite before training; an early real MLP
+  baseline plus full tests/official validation; longer GRU curriculum; real
+  optimizer/RNG resume; validation-only checkpoint selection; held-out report;
+  full final tests; CPU/CUDA inference measurements; Git LFS and official checks.
+- Pre-training failures can continue only when they are the explicitly known
+  missing `best_model.pt` prerequisite. Their failed status remains in the log;
+  every test is rerun after real training and must then succeed. Genuine
+  implementation errors stop the workflow. No organizer check is modified.
+- Fixed unnecessary CUDA RNG initialization when saving a CPU checkpoint on a
+  CUDA-capable host. This avoids distorting CPU training timing and memory.
+- Added a wall-clock curriculum option so short training budgets can introduce
+  late progression stages, a configurable post-update idle interval, and a
+  configurable CUDA allocator fraction. The verified workflow uses one engine,
+  one CPU thread, 0.45 allocator fraction and 200 ms update pauses. No measured
+  thermal/throughput benefit is claimed before Linux execution.
+- Preserved all original map bytes, submission modules, organizer wrapper,
+  upstream tests and validator. Existing trained parameters are not replaced;
+  this checkout still contains no genuinely trained checkpoint.
+
+## Actual new test results
+
+The latest combined unaffected/control run recorded **51 passed, 5 explicitly
+deselected**. It includes all nine new workflow control cases. The CPU RNG fix
+was also rerun with a simulated CUDA-available flag and no actual CUDA calls;
+all nine control cases passed. These are unit results, not GPU execution or
+DOOM training. The five engine/checkpoint/CUDA acceptance cases remain blocked
+from this session. Their required Linux reruns are included without deselection
+in the launcher. The previous full-suite result remains historical, not a
+successful fresh full-suite run.
+
+Evidence: `benchmarks/continuation/verified-environment-control-tests.xml`,
+`verified-workflow-unit-tests.xml` and `verified-environment-status.json`.
+
+## Submission readiness
+
+No genuine project training, trained weights, CPU/CUDA PPO timing comparison,
+held-out performance, official validator pass or organizer sandbox compliance
+has been measured by this session. The launcher will save these only if its
+actual stages execute successfully. Even a successful local baseline workflow
+requires review of held-out combat, navigation, exploration, doors and keys,
+plus organizer-image/resource certification and event-valid public delivery
+before a COMPETITION READY declaration. The updated brief reports this boundary.
+
+The reports below preserve previous execution history.
+
+---
+
 # DOOM NEXUS continuation report
 
 **NOT READY.** The existing implementation was preserved. WSL exists, but this

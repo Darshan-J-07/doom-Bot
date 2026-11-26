@@ -1,3 +1,12 @@
+# Verified environment update
+
+The user has verified Ubuntu 24.04, Python 3.13.18, ViZDoom 1.3.3 and Torch
+2.11.0+cu128 engine/CUDA execution outside Codex. This session still gets
+Wsl/E_ACCESSDENIED. Reuse ~/doom-test/.venv with VERIFIED_ENVIRONMENT_RUN.md.
+Latest local unit/control result: 51 passed, five explicitly deselected; nine
+new control cases pass. Project Linux smoke/training/evaluation/validator remain
+unexecuted here. Status: NOT READY. All older traceability below is historical.
+
 # Continuation evidence
 
 Status remains **NOT READY**. WSL status/list commands are denied; the user reports

@@ -16,12 +16,22 @@ from training.ppo import update
 from training.rewards import EpisodeMetrics
 
 
+def curriculum_progress(steps, target, elapsed, seconds, clock="steps"):
+    value = elapsed / seconds if clock == "time" else steps / target
+    return max(0., min(1., value))
+
+
+def model_cuda_rng(model):
+    # A CPU training run must not initialize CUDA just to serialize its checkpoint.
+    return torch.cuda.get_rng_state_all() if next(model.parameters()).is_cuda else []
+
+
 def save_checkpoint(path, model, optimizer, steps, updates, args, rng):
     path = Path(path); path.parent.mkdir(parents=True, exist_ok=True)
     payload = dict(model=model.state_dict(), model_config=model.config,
                    contract_version=CONTRACT_VERSION, trained_steps=steps, updates=updates,
                    optimizer=optimizer.state_dict(), torch_rng=torch.get_rng_state(),
-                   cuda_rng=torch.cuda.get_rng_state_all() if torch.cuda.is_available() else [],
+                   cuda_rng=model_cuda_rng(model),
                    map_rng=rng.getstate(), args=vars(args), deterministic=False,
                    provenance="PPO optimizer updates from official doom_env rollouts")
     temporary = path.with_suffix(".tmp")
@@ -44,6 +54,10 @@ def main(argv=None):
     ap.add_argument("--entropy", type=float, default=.01)
     ap.add_argument("--ticks", type=int, default=700)
     ap.add_argument("--stage", choices=("auto", *STAGES, "mixed"), default="auto")
+    ap.add_argument("--curriculum-clock", choices=("steps", "time"), default="steps")
+    ap.add_argument("--cooldown-ms", type=float, default=0,
+                    help="optional idle interval after each update; not a temperature limit")
+    ap.add_argument("--gpu-memory-fraction", type=float, default=.45)
     ap.add_argument("--model", choices=("mlp", "gru"), default="gru")
     ap.add_argument("--entity-mode", choices=("pool", "none"), default="pool")
     ap.add_argument("--map-root", default="training/maps")
@@ -58,13 +72,15 @@ def main(argv=None):
     args = ap.parse_args(argv)
     if min(args.steps, args.seconds, args.envs, args.rollout, args.sequence, args.epochs) <= 0:
         ap.error("budgets, batch sizes and worker counts must be positive")
+    if args.cooldown_ms < 0 or not 0 < args.gpu_memory_fraction <= 1:
+        ap.error("cooldown must be nonnegative and GPU memory fraction must be in (0,1]")
     torch.set_num_threads(1)
     if args.device == "cuda" and not torch.cuda.is_available():
         raise RuntimeError("CUDA requested but this PyTorch build has no available CUDA device")
     random.seed(args.seed); np.random.seed(args.seed); torch.manual_seed(args.seed)
     device = torch.device(args.device)
     if device.type == "cuda":
-        torch.cuda.set_per_process_memory_fraction(.6)
+        torch.cuda.set_per_process_memory_fraction(args.gpu_memory_fraction)
         torch.cuda.manual_seed_all(args.seed)
     rng = random.Random(args.seed)
     maps = load_verified_maps(args.map_root)
@@ -103,9 +119,12 @@ def main(argv=None):
         return env, obs, metrics
     envs, observations, trackers = [], [], []
     started = time.perf_counter(); first_steps = steps
+    def progress():
+        return curriculum_progress(steps, args.steps, time.perf_counter()-started,
+                                   args.seconds, args.curriculum_clock)
     try:
         for _ in range(args.envs):
-            env, obs, tracker = new_env(steps / args.steps)
+            env, obs, tracker = new_env(progress())
             envs.append(env); observations.append(obs); trackers.append(tracker)
         hidden = model.initial_state(args.envs, device)
         previous_action = torch.zeros(args.envs, 9, device=device)
@@ -145,7 +164,7 @@ def main(argv=None):
                     done = np.array(terminated) | np.array(truncated)
                     for i in np.flatnonzero(done):
                         episodes.append(trackers[i].summary()); envs[i].close()
-                        envs[i], following[i], trackers[i] = new_env(steps / args.steps)
+                        envs[i], following[i], trackers[i] = new_env(progress())
                     observations = following
                     hidden = next_hidden.detach()
                     starts = torch.as_tensor(done, device=device, dtype=torch.float32)
@@ -162,13 +181,18 @@ def main(argv=None):
                 log.write(json.dumps(row)+"\n"); log.flush()
                 save_checkpoint(out / "latest.pt", model, optimizer, steps, updates, args, rng)
                 print(json.dumps({k:v for k,v in row.items() if k != "episodes"}), flush=True)
+                if args.cooldown_ms:
+                    time.sleep(args.cooldown_ms / 1000)
     finally:
         for env in envs: env.close()
     if updates == 0:
         raise RuntimeError("No training update completed; no trained artifact was produced")
     summary = dict(steps=steps, updates=updates, elapsed_seconds=time.perf_counter()-started,
                    checkpoint=str(out/"latest.pt"), parameters=sum(p.numel() for p in model.parameters()),
-                   device=str(device), resumed_from=args.resume)
+                   device=str(device), resumed_from=args.resume, invocation_steps=steps-first_steps,
+                   cooldown_ms=args.cooldown_ms, curriculum_clock=args.curriculum_clock,
+                   torch_version=torch.__version__,
+                   peak_torch_vram_reserved_bytes=torch.cuda.max_memory_reserved() if device.type=="cuda" else 0)
     (out / "summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
     print(json.dumps(summary))
 

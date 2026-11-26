@@ -6,7 +6,7 @@ if [[ "$DEVICE" != cpu && "$DEVICE" != cuda ]]; then exit 2; fi
 REPO_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
 cd -- "$REPO_DIR"
 WORK_DIR="${DOOM_NEXUS_WORK_DIR:-$(cd -- "$REPO_DIR/../.." && pwd)/work/linux}"
-PYTHON="$WORK_DIR/venv/bin/python"
+PYTHON="${DOOM_NEXUS_PYTHON:-$WORK_DIR/venv/bin/python}"
 export PYTHONUTF8=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1
 export XDG_CACHE_HOME="$WORK_DIR/cache"
 RESULT_DIR="benchmarks/continuation/linux-$(date -u +%Y%m%dT%H%M%SZ)-$$"

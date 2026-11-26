@@ -12,6 +12,19 @@ if [[ "$(uname -s)" != Linux || "$(uname -m)" != x86_64 ]]; then
 fi
 REPO_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
 cd -- "$REPO_DIR"
+VERIFIED_PYTHON="${DOOM_NEXUS_PYTHON:-$HOME/doom-test/.venv/bin/python}"
+if [[ -x "$VERIFIED_PYTHON" ]]; then
+  printf 'Reusing verified environment: %s\n' "$VERIFIED_PYTHON"
+  if ! "$VERIFIED_PYTHON" -m pip --version >/dev/null 2>&1; then "$VERIFIED_PYTHON" -m ensurepip --upgrade; fi
+  "$VERIFIED_PYTHON" -m pip install --upgrade-strategy only-if-needed \
+    'gymnasium>=1.0' 'numpy>=2.0' 'pytest>=8' 'psutil>=7,<8' -e env
+  "$VERIFIED_PYTHON" -m pip check
+  ARGS=()
+  if [[ "$MODE" == cuda ]]; then ARGS+=(--require-cuda); fi
+  "$VERIFIED_PYTHON" -m scripts.preflight "${ARGS[@]}" --out benchmarks/continuation/reused-linux-setup.json
+  printf 'Torch was preserved. Use DOOM_NEXUS_PYTHON=%q with run_linux.sh, or use continue_verified.sh.\n' "$VERIFIED_PYTHON"
+  exit 0
+fi
 WORK_DIR="${DOOM_NEXUS_WORK_DIR:-$(cd -- "$REPO_DIR/../.." && pwd)/work/linux}"
 mkdir -p -- "$WORK_DIR/tools" "$WORK_DIR/cache"
 export UV_CACHE_DIR="$WORK_DIR/cache/uv"
