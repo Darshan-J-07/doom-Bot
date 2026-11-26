@@ -1,0 +1,42 @@
+Validating C:\Users\Darshan\Documents\Codex\2026-11-26\files-mentioned-by-the-user-yugaantar\outputs\doom-nexus  (contract 1.0.0-draft)
+
+ [32m✓[0m Repository size (tracked files): 1.2 MB of 1.0 GB
+ [32m✓[0m requirements.txt: no extra packages
+ [32m✓[0m DoomAgent interface: __init__, reset, act
+ [33m![0m CPU limit: could not pin the agent to 1 CPU here; evaluation gives it one CPU, so timings may look better than they will be
+ [31m✗[0m Agent failed (error during init): FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\submission\\weights\\best_model.pt'
+     Traceback (most recent call last):
+       File "C:\Users\Darshan\Documents\Codex\2026-11-26\files-mentioned-by-the-user-yugaantar\outputs\doom-nexus\env\doom_env\remote.py", line 399, in serve
+         agent = cls(S.observation_space(), S.action_space(), dev)
+       File "C:\Users\Darshan\Documents\Codex\2026-11-26\files-mentioned-by-the-user-yugaantar\outputs\doom-nexus\submission\agent.py", line 18, in __init__
+         checkpoint = torch.load(Path(__file__).parent / "weights" / "best_model.pt",
+                                 map_location="cpu", weights_only=True)
+       File "C:\Users\Darshan\Documents\Codex\2026-11-26\files-mentioned-by-the-user-yugaantar\work\.venv\Lib\site-packages\torch\serialization.py", line 1484, in load
+         with _open_file_like(f, "rb") as opened_file:
+              ~~~~~~~~~~~~~~~^^^^^^^^^
+       File "C:\Users\Darshan\Documents\Codex\2026-11-26\files-mentioned-by-the-user-yugaantar\work\.venv\Lib\site-packages\torch\serialization.py", line 759, in _open_file_like
+         return _open_file(name_or_buffer, mode)
+       File "C:\Users\Darshan\Documents\Codex\2026-11-26\files-mentioned-by-the-user-yugaantar\work\.venv\Lib\site-packages\torch\serialization.py", line 740, in __init__
+         super().__init__(open(name, mode))
+                          ~~~~^^^^^^^^^^^^
+     FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\submission\\weights\\best_model.pt'
+ [33m![0m Peak RAM: could not be measured here (needs Linux /proc); the limit is 8192 MB
+ [33m![0m Peak GPU memory: could not be measured here (nvidia-smi has no per-process data); try --docker on a Linux GPU host
+   last agent output:
+     Traceback (most recent call last):
+       File "C:\Users\Darshan\Documents\Codex\2026-11-26\files-mentioned-by-the-user-yugaantar\outputs\doom-nexus\env\doom_env\remote.py", line 399, in serve
+         agent = cls(S.observation_space(), S.action_space(), dev)
+       File "C:\Users\Darshan\Documents\Codex\2026-11-26\files-mentioned-by-the-user-yugaantar\outputs\doom-nexus\submission\agent.py", line 18, in __init__
+         checkpoint = torch.load(Path(__file__).parent / "weights" / "best_model.pt",
+                                 map_location="cpu", weights_only=True)
+       File "C:\Users\Darshan\Documents\Codex\2026-11-26\files-mentioned-by-the-user-yugaantar\work\.venv\Lib\site-packages\torch\serialization.py", line 1484, in load
+         with _open_file_like(f, "rb") as opened_file:
+              ~~~~~~~~~~~~~~~^^^^^^^^^
+       File "C:\Users\Darshan\Documents\Codex\2026-11-26\files-mentioned-by-the-user-yugaantar\work\.venv\Lib\site-packages\torch\serialization.py", line 759, in _open_file_like
+         return _open_file(name_or_buffer, mode)
+       File "C:\Users\Darshan\Documents\Codex\2026-11-26\files-mentioned-by-the-user-yugaantar\work\.venv\Lib\site-packages\torch\serialization.py", line 740, in __init__
+         super().__init__(open(name, mode))
+                          ~~~~^^^^^^^^^^^^
+     FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Darshan\\Documents\\Codex\\2026-11-26\\files-mentioned-by-the-user-yugaantar\\outputs\\doom-nexus\\submission\\weights\\best_model.pt'
+
+[31mFAILED[0m: 1 check(s) failed, 3 warning(s).

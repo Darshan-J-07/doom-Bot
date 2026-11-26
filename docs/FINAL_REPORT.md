@@ -156,6 +156,8 @@ No model weights were generated or fabricated. No learning curve exists.
 **None.** `submission/weights/best_model.pt` is the future required destination,
 not an existing artifact. Git LFS is installed locally and the starter attributes
 are retained; `git lfs ls-files` is empty because there are no trained weights.
+The Git shell hook also reports a Windows named-object access denial, so the LFS
+upload/checkout workflow must be tested outside this sandbox before adding weights.
 The submission audit intentionally fails this requirement. The agent has no
 random-weight fallback masquerading as a trained model.
 
