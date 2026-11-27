@@ -1,0 +1,433 @@
+{
+  "audit": {
+    "artifact": {
+      "command": [
+        "/home/darshan/doom-test/.venv/bin/python",
+        "-m",
+        "scripts.adaptive_compliance",
+        "verify",
+        "--repo",
+        "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/exports/p3-02-gru-83",
+        "--out",
+        "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/finalize-attempts/1795742728896769640/artifact",
+        "--devices",
+        "cpu",
+        "cuda",
+        "--repeats",
+        "5",
+        "--container-repeats",
+        "2"
+      ],
+      "log": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/finalize-attempts/1795742728896769640/compliance.log",
+      "wall_seconds": 105.58002735300397,
+      "wall_limit_seconds": 660,
+      "return_code": 1,
+      "stop_reason": null,
+      "passed": false
+    },
+    "exact_audit": {
+      "artifact": {
+        "repo": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/exports/p3-02-gru-83",
+        "weights_sha256": "a65728d2ba6b69d7de183d4b1a1f86cff6a3393a92785893175a48c206c42f5e",
+        "source_sha256": {
+          "submission/__init__.py": "744ae4ad719f618eb6d51cfbcabbba4e90f29e78d40bb8823f3a5cebd2ba1e88",
+          "submission/agent.py": "8125adcf19afdbce10773e6ee88d7f548fae6427f5ec4a62f7ab17a10978ac1d",
+          "submission/memory.py": "68c00291b25c51e7a06f36ddfa6597cf5bd91b6f040df41ac1f1e3e519039c52",
+          "submission/model.py": "f79477e25ee87d8fdf185cf185fd9d0b81abd9bc84060d143a54a2958b27ceb8",
+          "submission/preprocessing.py": "47a6e05da7a3b228353a38bd14da90b66eab172b3e7e901e9bf131c12ad6cf86"
+        }
+      },
+      "source_checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-02-gru-83/step-426112.pt",
+      "source_checkpoint_sha256": "57208b70ebb2971233ffb88901df6815e5d75f3bb46434a98b73b62f8b947d9e",
+      "package_exit_code": 0,
+      "passed": false,
+      "cold_start": {
+        "artifact": {
+          "repo": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/finalize-attempts/1795742728896769640/artifact/repo-checkout",
+          "weights_sha256": "a65728d2ba6b69d7de183d4b1a1f86cff6a3393a92785893175a48c206c42f5e",
+          "source_sha256": {
+            "submission/__init__.py": "744ae4ad719f618eb6d51cfbcabbba4e90f29e78d40bb8823f3a5cebd2ba1e88",
+            "submission/agent.py": "8125adcf19afdbce10773e6ee88d7f548fae6427f5ec4a62f7ab17a10978ac1d",
+            "submission/memory.py": "68c00291b25c51e7a06f36ddfa6597cf5bd91b6f040df41ac1f1e3e519039c52",
+            "submission/model.py": "f79477e25ee87d8fdf185cf185fd9d0b81abd9bc84060d143a54a2958b27ceb8",
+            "submission/preprocessing.py": "47a6e05da7a3b228353a38bd14da90b66eab172b3e7e901e9bf131c12ad6cf86"
+          }
+        },
+        "gpu_nvidia_smi": null,
+        "platform": "local evaluation transport",
+        "probe_map": "/home/darshan/projects/doom-nexus/maps/two_rooms.wad",
+        "probe_map_sha256": "24f8fe53389a76c07ee09c3d25aa136d3fc95ad0e1c07357ee43082a65ac352a",
+        "max_decisions": 525,
+        "earlier_cuda_history": {
+          "timed_out_original": {
+            "log": "/home/darshan/projects/doom-nexus/runs/exit-switch-study/compliance-seed31/structured-31-25000/validator/container-cuda.log",
+            "sha256": "be17007a5988536965194c1c84b78125ce90e4d4008d31efb5e9c0722a76a579",
+            "observed": [
+              "\u2713 Initialization: 4.8s (limit 60s) on device 'cuda'",
+              "\u2717 Agent failed (timeout during act): no reply within 10.0s",
+              "FAILED: 1 check(s) failed, 0 warning(s)."
+            ]
+          },
+          "passed_same_export_retry": {
+            "log": "/home/darshan/projects/doom-nexus/runs/exit-switch-study/compliance-seed31/structured-31-25000/validator-retry1/container-cuda.log",
+            "sha256": "ef1e6457c13afa2c2cd4e0a3416ea669591105bc8582774ae8fe50e1426a3da6",
+            "observed": [
+              "\u2713 Initialization: 4.7s (limit 60s) on device 'cuda'",
+              "\u2713 Step latency 'two_rooms.wad:MAP01': first 1609 ms, p50 9.9 ms, p99 40.2 ms, max 1609 ms",
+              "PASSED"
+            ]
+          },
+          "warm_baseline_earlier": {
+            "log": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/compliance/approach-41-12000/validator/container-cuda.log",
+            "sha256": "b8474ea3be4eaa4837016620e7c05adab908cc0b124f66b1766b385657c15f6c",
+            "observed": [
+              "\u2713 Initialization: 7.4s (limit 60s) on device 'cuda'",
+              "\u2713 Step latency 'two_rooms.wad:MAP01': first 9420 ms, p50 10.5 ms, p99 50.0 ms, max 9420 ms",
+              "PASSED"
+            ]
+          }
+        },
+        "measurement": "A new one-CPU DoomAgent subprocess per trial. Action round trip includes preprocessing and host-visible output. CUDA tensor-to-host output synchronizes action availability.",
+        "measurements": {
+          "cpu": {
+            "init_seconds": {
+              "samples": 5,
+              "mean": 0.9001138593986979,
+              "median": 0.9012807769977371,
+              "p95": 0.9219921645970317,
+              "p99": 0.925402294517844,
+              "maximum": 0.9262548269980471
+            },
+            "reset_seconds": {
+              "samples": 5,
+              "mean": 0.00036559679865604265,
+              "median": 0.000318350997986272,
+              "p95": 0.0004551962003461085,
+              "p99": 0.00045912164117908107,
+              "maximum": 0.0004601030013873242
+            },
+            "ready_to_first_call_ms": {
+              "samples": 5,
+              "mean": 0.710488400363829,
+              "median": 0.6654539974988438,
+              "p95": 0.8648893999634311,
+              "p99": 0.890207479824312,
+              "maximum": 0.8965369997895323
+            },
+            "first_action_ms": {
+              "samples": 5,
+              "mean": 2.9651008007931523,
+              "median": 2.929975002189167,
+              "p95": 3.298403401277028,
+              "p99": 3.368501481018029,
+              "maximum": 3.3860260009532794
+            },
+            "decision_ms": {
+              "samples": 2370,
+              "mean": 1.6021650353849881,
+              "median": 1.4929034987289924,
+              "p95": 2.2393251514586154,
+              "p99": 2.9483842020999873,
+              "maximum": 5.666937002388295
+            },
+            "subsequent_decision_ms": {
+              "samples": 2365,
+              "mean": 1.5992835644221801,
+              "median": 1.4924159986549057,
+              "p95": 2.2353793989168476,
+              "p99": 2.8627920371945974,
+              "maximum": 5.666937002388295
+            },
+            "errors": [],
+            "max_agent_rss_mib": 545.15234375,
+            "max_agent_gpu_mib": null,
+            "max_additional_whole_gpu_mib": null,
+            "status": "passed"
+          },
+          "cuda": {
+            "status": "unverified",
+            "reason": "No working nvidia-smi CUDA inventory"
+          }
+        }
+      },
+      "parity_exit_code": 0,
+      "official_validator_sha256": "a8872cd8083837f85cdb3c17a6f2cdd1db22750f6aee0885d1e7c085ba969f5a",
+      "container_attempts": [
+        {
+          "exit_code": 0,
+          "devices": {
+            "cpu": 0,
+            "cuda": 0
+          },
+          "mode": "local organizer-recipe image via Docker Desktop",
+          "directory": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/finalize-attempts/1795742728896769640/artifact/container-00",
+          "telemetry": {
+            "cpu": {
+              "log": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/finalize-attempts/1795742728896769640/artifact/container-00/container-cpu.log",
+              "sha256": "c01329565af52c732bb9dcbc15f6b630ba9b51fcce1114acc47724eddcd4aee7",
+              "initialization_s": 3.8,
+              "first_action_ms": 47.0,
+              "observations": [
+                "\u2713 Initialization: 3.8s (limit 60s) on device 'cpu'",
+                "\u2713 Episode on 'two_rooms.wad:MAP01': 474 steps, died, agent time 0.8s of 21.0s budget, 1.2s wall-clock",
+                "\u2713 Step latency 'two_rooms.wad:MAP01': first 47 ms, p50 1.4 ms, p99 7.1 ms, max 47 ms",
+                "\u2713 Peak RAM: 751 MB resident (limit 8192 MB, including files written to /tmp)",
+                "PASSED"
+              ]
+            },
+            "cuda": {
+              "log": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/finalize-attempts/1795742728896769640/artifact/container-00/container-cuda.log",
+              "sha256": "973669170f855b829862154707bdde84a117bb159bc7e2c431c196ea18f8610a",
+              "initialization_s": 4.1,
+              "first_action_ms": 5595.0,
+              "observations": [
+                "\u2713 Initialization: 4.1s (limit 60s) on device 'cuda'",
+                "\u2713 Episode on 'two_rooms.wad:MAP01': 518 steps, died, agent time 10.2s of 21.0s budget, 10.8s wall-clock",
+                "\u2713 Step latency 'two_rooms.wad:MAP01': first 5595 ms, p50 6.5 ms, p99 49.3 ms, max 5595 ms",
+                "\u2713 Peak RAM: 1520 MB resident (limit 8192 MB, including files written to /tmp)",
+                "\u2713 Peak GPU memory: ~83 MB above the pre-run level (whole GPU; limit 2048 MB)",
+                "PASSED"
+              ]
+            }
+          }
+        },
+        {
+          "exit_code": 0,
+          "devices": {
+            "cpu": 0,
+            "cuda": 0
+          },
+          "mode": "local organizer-recipe image via Docker Desktop",
+          "directory": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/finalize-attempts/1795742728896769640/artifact/container-01",
+          "telemetry": {
+            "cpu": {
+              "log": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/finalize-attempts/1795742728896769640/artifact/container-01/container-cpu.log",
+              "sha256": "c088c426ac49ef299c051c8b111f202066baa64824f3c449e1c74b46325677a2",
+              "initialization_s": 2.9,
+              "first_action_ms": 79.0,
+              "observations": [
+                "\u2713 Initialization: 2.9s (limit 60s) on device 'cpu'",
+                "\u2713 Episode on 'two_rooms.wad:MAP01': 474 steps, died, agent time 0.8s of 21.0s budget, 1.2s wall-clock",
+                "\u2713 Step latency 'two_rooms.wad:MAP01': first 79 ms, p50 1.5 ms, p99 3.3 ms, max 79 ms",
+                "\u2713 Peak RAM: 738 MB resident (limit 8192 MB, including files written to /tmp)",
+                "PASSED"
+              ]
+            },
+            "cuda": {
+              "log": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/finalize-attempts/1795742728896769640/artifact/container-01/container-cuda.log",
+              "sha256": "7330a0d20a3fbecf80907b476cc3216d6f5474ad03de30bdccde34e01eb10fef",
+              "initialization_s": 3.3,
+              "first_action_ms": 1476.0,
+              "observations": [
+                "\u2713 Initialization: 3.3s (limit 60s) on device 'cuda'",
+                "\u2713 Episode on 'two_rooms.wad:MAP01': 518 steps, died, agent time 6.0s of 21.0s budget, 6.7s wall-clock",
+                "\u2713 Step latency 'two_rooms.wad:MAP01': first 1476 ms, p50 6.9 ms, p99 46.1 ms, max 1476 ms",
+                "\u2713 Peak RAM: 1523 MB resident (limit 8192 MB, including files written to /tmp)",
+                "\u2713 Peak GPU memory: ~110 MB above the pre-run level (whole GPU; limit 2048 MB)",
+                "PASSED"
+              ]
+            }
+          }
+        }
+      ],
+      "official_container_devices": {
+        "cpu": "passed",
+        "cuda": "passed"
+      },
+      "runtimes": {
+        "local": {
+          "status": "measured",
+          "python": "3.13.18",
+          "operating_system": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+          "torch": "2.11.0+cu128",
+          "vizdoom": "1.3.3",
+          "gymnasium": "1.4.0",
+          "numpy": "2.5.5",
+          "contract": "1.0.0-draft"
+        },
+        "containers": {
+          "sha256:8d311347d5a761f27b9cef7cc931a2477bad05cbbad4a298f5435b7fdfd17738": {
+            "status": "measured",
+            "python": "3.13.12",
+            "operating_system": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+            "torch": "2.15.0",
+            "vizdoom": "1.3.3",
+            "gymnasium": "1.4.0",
+            "numpy": "2.5.5",
+            "contract": "1.0.0-draft"
+          }
+        }
+      },
+      "offline_and_read_only_container": "passed",
+      "checkout_commit": "4cbcb9c7b9e38fa2ea49ab59b6796dcf1706da10",
+      "packed_bytes_including_git": 5402282,
+      "repository_size_limit_bytes": 1073741824
+    },
+    "host_validator": {
+      "cpu": {
+        "command": [
+          "/home/darshan/doom-test/.venv/bin/python",
+          "/home/darshan/projects/doom-nexus/validate.py",
+          "--repo",
+          "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/finalize-attempts/1795742728896769640/artifact/repo-checkout",
+          "--device",
+          "cpu"
+        ],
+        "log": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/finalize-attempts/1795742728896769640/validator-host-cpu.log",
+        "wall_seconds": 4.5022914500004845,
+        "wall_limit_seconds": 170,
+        "return_code": 0,
+        "stop_reason": null,
+        "passed": true
+      },
+      "cuda": {
+        "command": [
+          "/home/darshan/doom-test/.venv/bin/python",
+          "/home/darshan/projects/doom-nexus/validate.py",
+          "--repo",
+          "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/finalize-attempts/1795742728896769640/artifact/repo-checkout",
+          "--device",
+          "cuda"
+        ],
+        "log": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/finalize-attempts/1795742728896769640/validator-host-cuda.log",
+        "wall_seconds": 9.003736119993846,
+        "wall_limit_seconds": 170,
+        "return_code": 0,
+        "stop_reason": null,
+        "passed": true
+      }
+    },
+    "passed": false
+  },
+  "tests": {
+    "command": [
+      "/home/darshan/doom-test/.venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "--junitxml",
+      "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/finalize-attempts/1795742728896769640/pytest.xml"
+    ],
+    "log": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/finalize-attempts/1795742728896769640/tests.log",
+    "wall_seconds": 42.520997112995246,
+    "wall_limit_seconds": 480,
+    "return_code": 0,
+    "stop_reason": null,
+    "passed": true,
+    "suites": [
+      {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "150",
+        "time": "40.110",
+        "timestamp": "2026-11-27T01:27:32.699671+00:00",
+        "hostname": "Lucifier"
+      }
+    ],
+    "xml": {
+      "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/finalize-attempts/1795742728896769640/pytest.xml",
+      "bytes": 16924,
+      "sha256": "768c9fa86d6db6c11472a2351282e427fb98825afeb2285d19bbbcfd01d46ff3"
+    }
+  },
+  "originals": {
+    "initial": {
+      "published": {
+        "path": "submission/weights/best_model.pt",
+        "sha256": "fe14608eaa2728ebe2389b7940144713ab6c0ce39da28a1aba24f576005a463f"
+      },
+      "starting_optimizer": {
+        "path": "runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "sha256": "1810650838aea8b230cb9ad34dbc4da358afb05b4934b0ebe392739ce4305724"
+      },
+      "starting_export": {
+        "path": "runs/limit-campaign-20261127/exports/approach-41-12000/submission/weights/best_model.pt",
+        "sha256": "e18cfbfd323ed3df5f8d499bbd0e19174ea00bb0f3f3f042953a74a496aefee8"
+      },
+      "frozen_exploration": {
+        "path": "runs/skill-campaign/frozen/repo-checkout/submission/weights/best_model.pt",
+        "sha256": "396a64abf6f358a6f298ef8d675c05a022b94482e9847bb9333e9a02876668dd"
+      },
+      "validator": {
+        "path": "validate.py",
+        "sha256": "a8872cd8083837f85cdb3c17a6f2cdd1db22750f6aee0885d1e7c085ba969f5a"
+      },
+      "limits": {
+        "path": "env/doom_env/limits.py",
+        "sha256": "9f7625557a5f88412ef17516c51f84623c32087550e6e64624b8e1a31228f9e6"
+      },
+      "contract": {
+        "path": "docs/CONTRACT.md",
+        "sha256": "482a4773bbdcbe4e810b0eaf081eea3706b90a12b664ffe7523730db70c8652a"
+      },
+      "lock_opening_optimizer": {
+        "path": "runs/adaptive-campaign-20261127/training/bc-ppo-59-12000/step-326496.pt",
+        "sha256": "e9e42ca9217811b7bd8b0c2987667b73533c0f4c97c40dc5cb73198a70cbd80d"
+      },
+      "lock_opening_export": {
+        "path": "runs/adaptive-campaign-20261127/exports/bc-ppo-59-12000/submission/weights/best_model.pt",
+        "sha256": "5dede02169e00efd9cf1d7dfbb26c7b94e7505ac0c192b46e89c21576c9022a6"
+      }
+    },
+    "final": {
+      "published": {
+        "path": "/home/darshan/projects/doom-nexus/submission/weights/best_model.pt",
+        "bytes": 345333,
+        "sha256": "fe14608eaa2728ebe2389b7940144713ab6c0ce39da28a1aba24f576005a463f"
+      },
+      "starting_optimizer": {
+        "path": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "bytes": 1077309,
+        "sha256": "1810650838aea8b230cb9ad34dbc4da358afb05b4934b0ebe392739ce4305724"
+      },
+      "starting_export": {
+        "path": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/exports/approach-41-12000/submission/weights/best_model.pt",
+        "bytes": 345141,
+        "sha256": "e18cfbfd323ed3df5f8d499bbd0e19174ea00bb0f3f3f042953a74a496aefee8"
+      },
+      "frozen_exploration": {
+        "path": "/home/darshan/projects/doom-nexus/runs/skill-campaign/frozen/repo-checkout/submission/weights/best_model.pt",
+        "bytes": 345141,
+        "sha256": "396a64abf6f358a6f298ef8d675c05a022b94482e9847bb9333e9a02876668dd"
+      },
+      "validator": {
+        "path": "/home/darshan/projects/doom-nexus/validate.py",
+        "bytes": 29459,
+        "sha256": "a8872cd8083837f85cdb3c17a6f2cdd1db22750f6aee0885d1e7c085ba969f5a"
+      },
+      "limits": {
+        "path": "/home/darshan/projects/doom-nexus/env/doom_env/limits.py",
+        "bytes": 2112,
+        "sha256": "9f7625557a5f88412ef17516c51f84623c32087550e6e64624b8e1a31228f9e6"
+      },
+      "contract": {
+        "path": "/home/darshan/projects/doom-nexus/docs/CONTRACT.md",
+        "bytes": 7561,
+        "sha256": "482a4773bbdcbe4e810b0eaf081eea3706b90a12b664ffe7523730db70c8652a"
+      },
+      "lock_opening_optimizer": {
+        "path": "/home/darshan/projects/doom-nexus/runs/adaptive-campaign-20261127/training/bc-ppo-59-12000/step-326496.pt",
+        "bytes": 1077309,
+        "sha256": "e9e42ca9217811b7bd8b0c2987667b73533c0f4c97c40dc5cb73198a70cbd80d"
+      },
+      "lock_opening_export": {
+        "path": "/home/darshan/projects/doom-nexus/runs/adaptive-campaign-20261127/exports/bc-ppo-59-12000/submission/weights/best_model.pt",
+        "bytes": 345141,
+        "sha256": "5dede02169e00efd9cf1d7dfbb26c7b94e7505ac0c192b46e89c21576c9022a6"
+      }
+    },
+    "unchanged": {
+      "published": true,
+      "starting_optimizer": true,
+      "starting_export": true,
+      "frozen_exploration": true,
+      "validator": true,
+      "limits": true,
+      "contract": true,
+      "lock_opening_optimizer": true,
+      "lock_opening_export": true
+    }
+  }
+}

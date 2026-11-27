@@ -1,0 +1,2871 @@
+{
+  "state": {
+    "start_utc": "2026-11-26T22:08:47.165224+00:00",
+    "start_monotonic": 41728.790542756,
+    "boot_id": "7179b4a4-a7c7-4972-942a-17a7ac3eed3a",
+    "active_training_target_seconds": 10800,
+    "planning_wall_target_seconds": 14400,
+    "planned_finish_utc": "2026-11-27T02:08:47.165224+00:00",
+    "planned_finish_monotonic": 56128.790542756,
+    "authoritative_hard_campaign_wall_limit": null,
+    "semantics": "Fresh four-hour planning deadline. Actual completion requires 10,800 durable active learning seconds; safety/operator and individual job guards remain in force.",
+    "state": "final audit",
+    "active_training_seconds": 10800.022660267,
+    "remaining_training_seconds": 0.0,
+    "evaluation_wall_seconds": 0,
+    "training_decisions": 3505152,
+    "ppo_updates": 3423,
+    "controller_pid": 200778,
+    "training_pid": null,
+    "blocks": [
+      {
+        "label": "post-lock-bootstrap-59",
+        "phase": "Post-lock progression",
+        "profile": "post-lock-bootstrap",
+        "seed": 59,
+        "active_limit_seconds": 450,
+        "max_wall_seconds": 750,
+        "parent": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "unit": "doom-nexus-continuity-bootstrap.service",
+        "meter_id": "post-lock-bootstrap-59",
+        "output": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/post-lock-bootstrap-59",
+        "attempt": 0,
+        "pair": "p1-post-lock-bootstrap",
+        "state": "complete",
+        "attempts": 1,
+        "phase_index": 0,
+        "active_training_ns": 451551215688,
+        "active_optimization_ns": 46992946626,
+        "active_rollout_ns": 404558269062,
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/post-lock-bootstrap-59/latest.pt",
+        "checkpoint_steps": 483456,
+        "checkpoint_updates": 1167,
+        "added_decisions": 168960,
+        "added_updates": 165,
+        "active_decisions_per_second": 374.1768245326642,
+        "latest_update_metrics": {
+          "loss": 3.2532927989959717,
+          "policy_loss": -0.0022412340622395277,
+          "value_loss": 6.561556339263916,
+          "entropy": 4.207326412200928,
+          "approx_kl": 0.004976163152605295,
+          "grad_norm": 14.015667915344238,
+          "learning_rate": 0.000268704
+        },
+        "latest_rollout": {
+          "episodes": 7,
+          "exits": 3,
+          "deaths": 0,
+          "shaped_reward": 13.340685589927665,
+          "mean_health": 100.0
+        },
+        "numbered_checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/post-lock-bootstrap-59/step-483456.pt"
+      },
+      {
+        "label": "post-lock-bootstrap-83",
+        "pair": "p1-post-lock-bootstrap",
+        "phase": "Post-lock progression",
+        "phase_index": 0,
+        "profile": "post-lock-bootstrap",
+        "seed": 83,
+        "parent": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "meter_id": "post-lock-bootstrap-83",
+        "output": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/post-lock-bootstrap-83",
+        "attempts": 1,
+        "active_limit_seconds": 450,
+        "state": "complete",
+        "created_utc": "2026-11-26T22:17:37.761866+00:00",
+        "commands": [
+          [
+            "/home/darshan/doom-test/.venv/bin/python",
+            "-m",
+            "scripts.continuity_post_lock",
+            "learner",
+            "--out",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/post-lock-bootstrap-83",
+            "--resume",
+            "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+            "--seed",
+            "83",
+            "--active-seconds",
+            "450",
+            "--meter-id",
+            "post-lock-bootstrap-83",
+            "--seconds",
+            "885.0",
+            "--decisions",
+            "500000",
+            "--stop-file",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/STOP"
+          ]
+        ],
+        "active_training_ns": 451268432622,
+        "active_optimization_ns": 46217439088,
+        "active_rollout_ns": 405050993534,
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/post-lock-bootstrap-83/latest.pt",
+        "checkpoint_steps": 464000,
+        "checkpoint_updates": 1148,
+        "added_decisions": 149504,
+        "added_updates": 146,
+        "active_decisions_per_second": 331.2972705210922,
+        "latest_update_metrics": {
+          "loss": 3.8233585357666016,
+          "policy_loss": -0.0013249758630990982,
+          "value_loss": 7.704118251800537,
+          "entropy": 4.562597751617432,
+          "approx_kl": 0.011071785353124142,
+          "grad_norm": 7.4550461769104,
+          "learning_rate": 0.000276
+        },
+        "latest_rollout": {
+          "episodes": 9,
+          "exits": 4,
+          "deaths": 0,
+          "shaped_reward": 11.909011934741029,
+          "mean_health": 90.11111111111111
+        },
+        "return_code": 0,
+        "last_stop_reason": null,
+        "numbered_checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/post-lock-bootstrap-83/step-464000.pt"
+      },
+      {
+        "label": "p1-02-post-lock-varied-59",
+        "pair": "p1-02-post-lock-varied",
+        "phase": "Post-lock progression",
+        "phase_index": 0,
+        "profile": "post-lock-varied",
+        "seed": 59,
+        "parent": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "meter_id": "p1-02-post-lock-varied-59",
+        "output": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p1-02-post-lock-varied-59",
+        "attempts": 1,
+        "active_limit_seconds": 450,
+        "state": "complete",
+        "created_utc": "2026-11-26T22:25:34.459103+00:00",
+        "commands": [
+          [
+            "/home/darshan/doom-test/.venv/bin/python",
+            "-m",
+            "scripts.continuity_post_lock",
+            "learner",
+            "--out",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p1-02-post-lock-varied-59",
+            "--resume",
+            "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+            "--seed",
+            "59",
+            "--active-seconds",
+            "450",
+            "--meter-id",
+            "p1-02-post-lock-varied-59",
+            "--seconds",
+            "885.0",
+            "--decisions",
+            "500000",
+            "--stop-file",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/STOP",
+            "--map-root",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/post-lock-maps"
+          ]
+        ],
+        "active_training_ns": 450254747672,
+        "active_optimization_ns": 47427631812,
+        "active_rollout_ns": 402827115860,
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p1-02-post-lock-varied-59/latest.pt",
+        "checkpoint_steps": 478336,
+        "checkpoint_updates": 1162,
+        "added_decisions": 163840,
+        "added_updates": 160,
+        "active_decisions_per_second": 363.8828926227194,
+        "latest_update_metrics": {
+          "loss": 1.92143976688385,
+          "policy_loss": -0.0035713494289666414,
+          "value_loss": 3.9054946899414062,
+          "entropy": 4.622713565826416,
+          "approx_kl": 0.00421412056311965,
+          "grad_norm": 8.766646385192871,
+          "learning_rate": 0.000270624
+        },
+        "latest_rollout": {
+          "episodes": 4,
+          "exits": 2,
+          "deaths": 0,
+          "shaped_reward": 17.394436310572427,
+          "mean_health": 100.0
+        },
+        "return_code": 0,
+        "last_stop_reason": null,
+        "numbered_checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p1-02-post-lock-varied-59/step-478336.pt"
+      },
+      {
+        "label": "p1-02-post-lock-varied-83",
+        "pair": "p1-02-post-lock-varied",
+        "phase": "Post-lock progression",
+        "phase_index": 0,
+        "profile": "post-lock-varied",
+        "seed": 83,
+        "parent": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "meter_id": "p1-02-post-lock-varied-83",
+        "output": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p1-02-post-lock-varied-83",
+        "attempts": 1,
+        "active_limit_seconds": 450,
+        "state": "complete",
+        "created_utc": "2026-11-26T22:33:30.257277+00:00",
+        "commands": [
+          [
+            "/home/darshan/doom-test/.venv/bin/python",
+            "-m",
+            "scripts.continuity_post_lock",
+            "learner",
+            "--out",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p1-02-post-lock-varied-83",
+            "--resume",
+            "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+            "--seed",
+            "83",
+            "--active-seconds",
+            "450",
+            "--meter-id",
+            "p1-02-post-lock-varied-83",
+            "--seconds",
+            "885.0",
+            "--decisions",
+            "500000",
+            "--stop-file",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/STOP",
+            "--map-root",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/post-lock-maps"
+          ]
+        ],
+        "active_training_ns": 451168497346,
+        "active_optimization_ns": 46285222955,
+        "active_rollout_ns": 404883274391,
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p1-02-post-lock-varied-83/latest.pt",
+        "checkpoint_steps": 471168,
+        "checkpoint_updates": 1155,
+        "added_decisions": 156672,
+        "added_updates": 153,
+        "active_decisions_per_second": 347.2582880268093,
+        "latest_update_metrics": {
+          "loss": 3.455179452896118,
+          "policy_loss": 0.0036308113485574722,
+          "value_loss": 6.95536470413208,
+          "entropy": 4.355661869049072,
+          "approx_kl": 0.009142623282968998,
+          "grad_norm": 7.622048854827881,
+          "learning_rate": 0.000273312
+        },
+        "latest_rollout": {
+          "episodes": 8,
+          "exits": 2,
+          "deaths": 1,
+          "shaped_reward": 9.222960907961642,
+          "mean_health": 86.0
+        },
+        "return_code": 0,
+        "last_stop_reason": null,
+        "numbered_checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p1-02-post-lock-varied-83/step-471168.pt"
+      },
+      {
+        "label": "p1-03-post-lock-gentle-59",
+        "pair": "p1-03-post-lock-gentle",
+        "phase": "Post-lock progression",
+        "phase_index": 0,
+        "profile": "post-lock-gentle",
+        "seed": 59,
+        "parent": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "meter_id": "p1-03-post-lock-gentle-59",
+        "output": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p1-03-post-lock-gentle-59",
+        "attempts": 1,
+        "active_limit_seconds": 450,
+        "state": "complete",
+        "created_utc": "2026-11-26T22:41:27.859523+00:00",
+        "commands": [
+          [
+            "/home/darshan/doom-test/.venv/bin/python",
+            "-m",
+            "scripts.continuity_post_lock",
+            "learner",
+            "--out",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p1-03-post-lock-gentle-59",
+            "--resume",
+            "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+            "--seed",
+            "59",
+            "--active-seconds",
+            "450",
+            "--meter-id",
+            "p1-03-post-lock-gentle-59",
+            "--seconds",
+            "885.0",
+            "--decisions",
+            "500000",
+            "--stop-file",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/STOP",
+            "--map-root",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/post-lock-maps",
+            "--lr",
+            "0.000135"
+          ]
+        ],
+        "active_training_ns": 450754456455,
+        "active_optimization_ns": 46038837267,
+        "active_rollout_ns": 404715619188,
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p1-03-post-lock-gentle-59/latest.pt",
+        "checkpoint_steps": 476288,
+        "checkpoint_updates": 1160,
+        "added_decisions": 161792,
+        "added_updates": 158,
+        "active_decisions_per_second": 358.9359964900361,
+        "latest_update_metrics": {
+          "loss": 3.371131658554077,
+          "policy_loss": -0.0033580188173800707,
+          "value_loss": 6.803194522857666,
+          "entropy": 4.517946243286133,
+          "approx_kl": 0.0022288160398602486,
+          "grad_norm": 15.957626342773438,
+          "learning_rate": 8.141759999999998e-05
+        },
+        "latest_rollout": {
+          "episodes": 7,
+          "exits": 2,
+          "deaths": 1,
+          "shaped_reward": 10.043240545818458,
+          "mean_health": 85.0
+        },
+        "return_code": 0,
+        "last_stop_reason": null,
+        "numbered_checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p1-03-post-lock-gentle-59/step-476288.pt"
+      },
+      {
+        "label": "p1-03-post-lock-gentle-83",
+        "pair": "p1-03-post-lock-gentle",
+        "phase": "Post-lock progression",
+        "phase_index": 0,
+        "profile": "post-lock-gentle",
+        "seed": 83,
+        "parent": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "meter_id": "p1-03-post-lock-gentle-83",
+        "output": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p1-03-post-lock-gentle-83",
+        "attempts": 1,
+        "active_limit_seconds": 445.0026502169999,
+        "state": "complete",
+        "created_utc": "2026-11-26T22:49:25.529357+00:00",
+        "commands": [
+          [
+            "/home/darshan/doom-test/.venv/bin/python",
+            "-m",
+            "scripts.continuity_post_lock",
+            "learner",
+            "--out",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p1-03-post-lock-gentle-83",
+            "--resume",
+            "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+            "--seed",
+            "83",
+            "--active-seconds",
+            "445.0026502169999",
+            "--meter-id",
+            "p1-03-post-lock-gentle-83",
+            "--seconds",
+            "875.5050354122998",
+            "--decisions",
+            "500000",
+            "--stop-file",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/STOP",
+            "--map-root",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/post-lock-maps",
+            "--lr",
+            "0.000135"
+          ]
+        ],
+        "active_training_ns": 445465858404,
+        "active_optimization_ns": 44165073038,
+        "active_rollout_ns": 401300785366,
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p1-03-post-lock-gentle-83/latest.pt",
+        "checkpoint_steps": 469120,
+        "checkpoint_updates": 1153,
+        "added_decisions": 154624,
+        "added_updates": 151,
+        "active_decisions_per_second": 347.1062867847642,
+        "latest_update_metrics": {
+          "loss": 5.608866214752197,
+          "policy_loss": -0.002758992835879326,
+          "value_loss": 11.276104927062988,
+          "entropy": 4.40445613861084,
+          "approx_kl": 0.002945715794339776,
+          "grad_norm": 11.361729621887207,
+          "learning_rate": 8.2224e-05
+        },
+        "latest_rollout": {
+          "episodes": 7,
+          "exits": 4,
+          "deaths": 0,
+          "shaped_reward": 18.573347989590673,
+          "mean_health": 100.0
+        },
+        "return_code": 0,
+        "last_stop_reason": null,
+        "numbered_checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p1-03-post-lock-gentle-83/step-469120.pt"
+      },
+      {
+        "label": "p2-01-bc-retention-59",
+        "pair": "p2-01-bc-retention",
+        "phase": "Skill retention and imitation",
+        "phase_index": 1,
+        "profile": "bc-retention",
+        "seed": 59,
+        "parent": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "meter_id": "p2-01-bc-retention-59",
+        "output": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-01-bc-retention-59",
+        "attempts": 1,
+        "active_limit_seconds": 450,
+        "state": "complete",
+        "created_utc": "2026-11-26T22:57:17.275234+00:00",
+        "commands": [
+          [
+            "/home/darshan/doom-test/.venv/bin/python",
+            "-m",
+            "scripts.continuity_learning",
+            "learner",
+            "--out",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127",
+            "--label",
+            "p2-01-bc-retention-59",
+            "--source",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-01-bc-retention-59-bc/latest.pt",
+            "--profile",
+            "retention-low",
+            "--seed",
+            "59",
+            "--meter-id",
+            "p2-01-bc-retention-59",
+            "--active-seconds",
+            "450"
+          ]
+        ],
+        "active_training_ns": 451427715871,
+        "active_optimization_ns": 45904616205,
+        "active_rollout_ns": 405523099666,
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-01-bc-retention-59/latest.pt",
+        "checkpoint_steps": 442496,
+        "checkpoint_updates": 1127,
+        "added_decisions": 128000,
+        "added_updates": 125,
+        "active_decisions_per_second": 283.5448411780221,
+        "latest_update_metrics": {
+          "loss": 3.297379493713379,
+          "policy_loss": -0.001960117369890213,
+          "value_loss": 6.654942989349365,
+          "entropy": 4.688640117645264,
+          "approx_kl": 0.0012550817336887121,
+          "grad_norm": 20.179834365844727,
+          "learning_rate": 0.000142032
+        },
+        "latest_rollout": {
+          "episodes": 5,
+          "exits": 3,
+          "deaths": 0,
+          "shaped_reward": 17.421736511185493,
+          "mean_health": 100.0
+        },
+        "return_code": 0,
+        "last_stop_reason": null,
+        "numbered_checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-01-bc-retention-59/step-442496.pt"
+      },
+      {
+        "label": "p2-01-bc-retention-83",
+        "pair": "p2-01-bc-retention",
+        "phase": "Skill retention and imitation",
+        "phase_index": 1,
+        "profile": "bc-retention",
+        "seed": 83,
+        "parent": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "meter_id": "p2-01-bc-retention-83",
+        "output": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-01-bc-retention-83",
+        "attempts": 1,
+        "active_limit_seconds": 450,
+        "state": "complete",
+        "created_utc": "2026-11-26T23:05:34.666960+00:00",
+        "commands": [
+          [
+            "/home/darshan/doom-test/.venv/bin/python",
+            "-m",
+            "scripts.continuity_learning",
+            "learner",
+            "--out",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127",
+            "--label",
+            "p2-01-bc-retention-83",
+            "--source",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-01-bc-retention-83-bc/latest.pt",
+            "--profile",
+            "retention-low",
+            "--seed",
+            "83",
+            "--meter-id",
+            "p2-01-bc-retention-83",
+            "--active-seconds",
+            "450"
+          ]
+        ],
+        "active_training_ns": 451749771773,
+        "active_optimization_ns": 46170575778,
+        "active_rollout_ns": 405579195995,
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-01-bc-retention-83/latest.pt",
+        "checkpoint_steps": 439424,
+        "checkpoint_updates": 1124,
+        "added_decisions": 124928,
+        "added_updates": 122,
+        "active_decisions_per_second": 276.5424750735129,
+        "latest_update_metrics": {
+          "loss": 7.283613681793213,
+          "policy_loss": -0.0040947869420051575,
+          "value_loss": 14.63174057006836,
+          "entropy": 4.693516254425049,
+          "approx_kl": 0.002331205876544118,
+          "grad_norm": 31.99672508239746,
+          "learning_rate": 0.000142608
+        },
+        "latest_rollout": {
+          "episodes": 10,
+          "exits": 6,
+          "deaths": 1,
+          "shaped_reward": 17.65341599716739,
+          "mean_health": 86.3
+        },
+        "return_code": 0,
+        "last_stop_reason": null,
+        "numbered_checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-01-bc-retention-83/step-439424.pt"
+      },
+      {
+        "label": "p2-02-retention-distill-59",
+        "pair": "p2-02-retention-distill",
+        "phase": "Skill retention and imitation",
+        "phase_index": 1,
+        "profile": "retention-distill",
+        "seed": 59,
+        "parent": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "meter_id": "p2-02-retention-distill-59",
+        "output": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-02-retention-distill-59",
+        "attempts": 1,
+        "active_limit_seconds": 450,
+        "state": "complete",
+        "created_utc": "2026-11-26T23:13:56.479888+00:00",
+        "commands": [
+          [
+            "/home/darshan/doom-test/.venv/bin/python",
+            "-m",
+            "scripts.continuity_learning",
+            "learner",
+            "--out",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127",
+            "--label",
+            "p2-02-retention-distill-59",
+            "--source",
+            "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+            "--profile",
+            "retention-distill",
+            "--seed",
+            "59",
+            "--meter-id",
+            "p2-02-retention-distill-59",
+            "--active-seconds",
+            "450"
+          ]
+        ],
+        "active_training_ns": 452283484187,
+        "active_optimization_ns": 56144619180,
+        "active_rollout_ns": 396138865007,
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-02-retention-distill-59/latest.pt",
+        "checkpoint_steps": 466048,
+        "checkpoint_updates": 1150,
+        "added_decisions": 151552,
+        "added_updates": 148,
+        "active_decisions_per_second": 335.08187961455536,
+        "latest_update_metrics": {
+          "loss": 2.8538739681243896,
+          "policy_loss": -0.0007260491256602108,
+          "value_loss": 5.752420425415039,
+          "entropy": 4.193746089935303,
+          "approx_kl": 0.005072242114692926,
+          "grad_norm": 12.296133995056152,
+          "anchor_kl": 0.0592036210000515,
+          "learning_rate": 0.000275232
+        },
+        "latest_rollout": {
+          "episodes": 5,
+          "exits": 2,
+          "deaths": 0,
+          "shaped_reward": 13.86815601209839,
+          "mean_health": 100.0
+        },
+        "return_code": 0,
+        "last_stop_reason": null,
+        "numbered_checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-02-retention-distill-59/step-466048.pt"
+      },
+      {
+        "label": "p2-02-retention-distill-83",
+        "pair": "p2-02-retention-distill",
+        "phase": "Skill retention and imitation",
+        "phase_index": 1,
+        "profile": "retention-distill",
+        "seed": 83,
+        "parent": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "meter_id": "p2-02-retention-distill-83",
+        "output": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-02-retention-distill-83",
+        "attempts": 1,
+        "active_limit_seconds": 450,
+        "state": "complete",
+        "created_utc": "2026-11-26T23:21:57.371136+00:00",
+        "commands": [
+          [
+            "/home/darshan/doom-test/.venv/bin/python",
+            "-m",
+            "scripts.continuity_learning",
+            "learner",
+            "--out",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127",
+            "--label",
+            "p2-02-retention-distill-83",
+            "--source",
+            "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+            "--profile",
+            "retention-distill",
+            "--seed",
+            "83",
+            "--meter-id",
+            "p2-02-retention-distill-83",
+            "--active-seconds",
+            "450"
+          ]
+        ],
+        "active_training_ns": 451640440127,
+        "active_optimization_ns": 55873022122,
+        "active_rollout_ns": 395767418005,
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-02-retention-distill-83/latest.pt",
+        "checkpoint_steps": 467072,
+        "checkpoint_updates": 1151,
+        "added_decisions": 152576,
+        "added_updates": 149,
+        "active_decisions_per_second": 337.8262583330582,
+        "latest_update_metrics": {
+          "loss": 2.891432762145996,
+          "policy_loss": -0.0014087235322222114,
+          "value_loss": 5.823670864105225,
+          "entropy": 4.172705173492432,
+          "approx_kl": 0.005445575807243586,
+          "grad_norm": 8.65071964263916,
+          "anchor_kl": 0.10071180015802383,
+          "learning_rate": 0.000274848
+        },
+        "latest_rollout": {
+          "episodes": 10,
+          "exits": 2,
+          "deaths": 2,
+          "shaped_reward": 7.807898851967569,
+          "mean_health": 77.7
+        },
+        "return_code": 0,
+        "last_stop_reason": null,
+        "numbered_checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-02-retention-distill-83/step-467072.pt"
+      },
+      {
+        "label": "p2-03-retention-low-59",
+        "pair": "p2-03-retention-low",
+        "phase": "Skill retention and imitation",
+        "phase_index": 1,
+        "profile": "retention-low",
+        "seed": 59,
+        "parent": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "meter_id": "p2-03-retention-low-59",
+        "output": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-03-retention-low-59",
+        "attempts": 1,
+        "active_limit_seconds": 450,
+        "state": "complete",
+        "created_utc": "2026-11-26T23:29:55.404425+00:00",
+        "commands": [
+          [
+            "/home/darshan/doom-test/.venv/bin/python",
+            "-m",
+            "scripts.continuity_learning",
+            "learner",
+            "--out",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127",
+            "--label",
+            "p2-03-retention-low-59",
+            "--source",
+            "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+            "--profile",
+            "retention-low",
+            "--seed",
+            "59",
+            "--meter-id",
+            "p2-03-retention-low-59",
+            "--active-seconds",
+            "450"
+          ]
+        ],
+        "active_training_ns": 451092783629,
+        "active_optimization_ns": 45512266222,
+        "active_rollout_ns": 405580517407,
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-03-retention-low-59/latest.pt",
+        "checkpoint_steps": 472192,
+        "checkpoint_updates": 1156,
+        "added_decisions": 157696,
+        "added_updates": 154,
+        "active_decisions_per_second": 349.58661659659055,
+        "latest_update_metrics": {
+          "loss": 4.532529830932617,
+          "policy_loss": -0.0019049098482355475,
+          "value_loss": 9.125752449035645,
+          "entropy": 4.740079879760742,
+          "approx_kl": 0.0014751628041267395,
+          "grad_norm": 13.045257568359375,
+          "learning_rate": 0.000136464
+        },
+        "latest_rollout": {
+          "episodes": 9,
+          "exits": 4,
+          "deaths": 1,
+          "shaped_reward": 13.470215887155561,
+          "mean_health": 87.11111111111111
+        },
+        "return_code": 0,
+        "last_stop_reason": null,
+        "numbered_checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-03-retention-low-59/step-472192.pt"
+      },
+      {
+        "label": "p2-03-retention-low-83",
+        "pair": "p2-03-retention-low",
+        "phase": "Skill retention and imitation",
+        "phase_index": 1,
+        "profile": "retention-low",
+        "seed": 83,
+        "parent": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "meter_id": "p2-03-retention-low-83",
+        "output": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-03-retention-low-83",
+        "attempts": 1,
+        "active_limit_seconds": 434.61986709099983,
+        "state": "complete",
+        "created_utc": "2026-11-26T23:37:54.913728+00:00",
+        "commands": [
+          [
+            "/home/darshan/doom-test/.venv/bin/python",
+            "-m",
+            "scripts.continuity_learning",
+            "learner",
+            "--out",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127",
+            "--label",
+            "p2-03-retention-low-83",
+            "--source",
+            "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+            "--profile",
+            "retention-low",
+            "--seed",
+            "83",
+            "--meter-id",
+            "p2-03-retention-low-83",
+            "--active-seconds",
+            "434.61986709099983"
+          ]
+        ],
+        "active_training_ns": 437078277812,
+        "active_optimization_ns": 45454863026,
+        "active_rollout_ns": 391623414786,
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-03-retention-low-83/latest.pt",
+        "checkpoint_steps": 448640,
+        "checkpoint_updates": 1133,
+        "added_decisions": 134144,
+        "added_updates": 131,
+        "active_decisions_per_second": 306.91069954681944,
+        "latest_update_metrics": {
+          "loss": 0.7122766375541687,
+          "policy_loss": -0.004467902239412069,
+          "value_loss": 1.4875164031982422,
+          "entropy": 4.502290725708008,
+          "approx_kl": 0.005646970123052597,
+          "grad_norm": 4.6241302490234375,
+          "learning_rate": 0.00014088
+        },
+        "latest_rollout": {
+          "episodes": 8,
+          "exits": 1,
+          "deaths": 0,
+          "shaped_reward": 5.817788492384388,
+          "mean_health": 99.25
+        },
+        "return_code": 0,
+        "last_stop_reason": null,
+        "numbered_checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-03-retention-low-83/step-448640.pt"
+      },
+      {
+        "label": "p3-01-memory-control-59",
+        "pair": "p3-01-memory-control",
+        "phase": "Spatial intelligence and exploration",
+        "phase_index": 2,
+        "profile": "memory-control",
+        "seed": 59,
+        "parent": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "meter_id": "p3-01-memory-control-59",
+        "output": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-01-memory-control-59",
+        "attempts": 1,
+        "active_limit_seconds": 450,
+        "state": "complete",
+        "created_utc": "2026-11-26T23:45:39.542607+00:00",
+        "commands": [
+          [
+            "/home/darshan/doom-test/.venv/bin/python",
+            "-m",
+            "scripts.continuity_learning",
+            "learner",
+            "--out",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127",
+            "--label",
+            "p3-01-memory-control-59",
+            "--source",
+            "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+            "--profile",
+            "memory-control",
+            "--seed",
+            "59",
+            "--meter-id",
+            "p3-01-memory-control-59",
+            "--active-seconds",
+            "450"
+          ]
+        ],
+        "active_training_ns": 451634690119,
+        "active_optimization_ns": 46137510657,
+        "active_rollout_ns": 405497179462,
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-01-memory-control-59/latest.pt",
+        "checkpoint_steps": 462976,
+        "checkpoint_updates": 1147,
+        "added_decisions": 148480,
+        "added_updates": 145,
+        "active_decisions_per_second": 328.7612826217521,
+        "latest_update_metrics": {
+          "loss": 4.0372538566589355,
+          "policy_loss": -0.007013475056737661,
+          "value_loss": 8.145010948181152,
+          "entropy": 4.706363677978516,
+          "approx_kl": 0.00455463258549571,
+          "grad_norm": 9.12937068939209,
+          "learning_rate": 0.000276384
+        },
+        "latest_rollout": {
+          "episodes": 10,
+          "exits": 5,
+          "deaths": 1,
+          "shaped_reward": 16.758692894507853,
+          "mean_health": 89.2
+        },
+        "return_code": 0,
+        "last_stop_reason": null,
+        "numbered_checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-01-memory-control-59/step-462976.pt"
+      },
+      {
+        "label": "p3-01-memory-control-83",
+        "pair": "p3-01-memory-control",
+        "phase": "Spatial intelligence and exploration",
+        "phase_index": 2,
+        "profile": "memory-control",
+        "seed": 83,
+        "parent": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "meter_id": "p3-01-memory-control-83",
+        "output": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-01-memory-control-83",
+        "attempts": 1,
+        "active_limit_seconds": 450,
+        "state": "complete",
+        "created_utc": "2026-11-26T23:53:39.973316+00:00",
+        "commands": [
+          [
+            "/home/darshan/doom-test/.venv/bin/python",
+            "-m",
+            "scripts.continuity_learning",
+            "learner",
+            "--out",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127",
+            "--label",
+            "p3-01-memory-control-83",
+            "--source",
+            "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+            "--profile",
+            "memory-control",
+            "--seed",
+            "83",
+            "--meter-id",
+            "p3-01-memory-control-83",
+            "--active-seconds",
+            "450"
+          ]
+        ],
+        "active_training_ns": 451244988880,
+        "active_optimization_ns": 45201256218,
+        "active_rollout_ns": 406043732662,
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-01-memory-control-83/latest.pt",
+        "checkpoint_steps": 469120,
+        "checkpoint_updates": 1153,
+        "added_decisions": 154624,
+        "added_updates": 151,
+        "active_decisions_per_second": 342.66086895231825,
+        "latest_update_metrics": {
+          "loss": 9.896729469299316,
+          "policy_loss": 0.0003069074300583452,
+          "value_loss": 19.842336654663086,
+          "entropy": 4.1240668296813965,
+          "approx_kl": 0.013617717660963535,
+          "grad_norm": 15.148825645446777,
+          "learning_rate": 0.00027408
+        },
+        "latest_rollout": {
+          "episodes": 11,
+          "exits": 8,
+          "deaths": 1,
+          "shaped_reward": 22.82986151011481,
+          "mean_health": 90.0909090909091
+        },
+        "return_code": 0,
+        "last_stop_reason": null,
+        "numbered_checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-01-memory-control-83/step-469120.pt"
+      },
+      {
+        "label": "p3-02-gru-59",
+        "pair": "p3-02-gru",
+        "phase": "Spatial intelligence and exploration",
+        "phase_index": 2,
+        "profile": "gru",
+        "seed": 59,
+        "parent": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "meter_id": "p3-02-gru-59",
+        "output": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-02-gru-59",
+        "attempts": 1,
+        "active_limit_seconds": 450,
+        "state": "complete",
+        "created_utc": "2026-11-27T00:01:39.543839+00:00",
+        "commands": [
+          [
+            "/home/darshan/doom-test/.venv/bin/python",
+            "-m",
+            "scripts.continuity_learning",
+            "learner",
+            "--out",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127",
+            "--label",
+            "p3-02-gru-59",
+            "--source",
+            "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+            "--profile",
+            "gru",
+            "--seed",
+            "59",
+            "--meter-id",
+            "p3-02-gru-59",
+            "--active-seconds",
+            "450"
+          ]
+        ],
+        "active_training_ns": 450034566708,
+        "active_optimization_ns": 89853229424,
+        "active_rollout_ns": 360181337284,
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-02-gru-59/latest.pt",
+        "checkpoint_steps": 443520,
+        "checkpoint_updates": 1128,
+        "added_decisions": 129024,
+        "added_updates": 126,
+        "active_decisions_per_second": 286.6979773216305,
+        "latest_update_metrics": {
+          "loss": 6.5127854347229,
+          "policy_loss": -0.0047051082365214825,
+          "value_loss": 13.090423583984375,
+          "entropy": 4.620083808898926,
+          "approx_kl": 0.00827820599079132,
+          "grad_norm": 12.317574501037598,
+          "learning_rate": 0.00028368
+        },
+        "latest_rollout": {
+          "episodes": 11,
+          "exits": 6,
+          "deaths": 1,
+          "shaped_reward": 16.13959401691595,
+          "mean_health": 88.54545454545455
+        },
+        "return_code": 0,
+        "last_stop_reason": null,
+        "numbered_checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-02-gru-59/step-443520.pt"
+      },
+      {
+        "label": "p3-02-gru-83",
+        "pair": "p3-02-gru",
+        "phase": "Spatial intelligence and exploration",
+        "phase_index": 2,
+        "profile": "gru",
+        "seed": 83,
+        "parent": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "meter_id": "p3-02-gru-83",
+        "output": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-02-gru-83",
+        "attempts": 1,
+        "active_limit_seconds": 450,
+        "state": "complete",
+        "created_utc": "2026-11-27T00:09:41.379456+00:00",
+        "commands": [
+          [
+            "/home/darshan/doom-test/.venv/bin/python",
+            "-m",
+            "scripts.continuity_learning",
+            "learner",
+            "--out",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127",
+            "--label",
+            "p3-02-gru-83",
+            "--source",
+            "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+            "--profile",
+            "gru",
+            "--seed",
+            "83",
+            "--meter-id",
+            "p3-02-gru-83",
+            "--active-seconds",
+            "450"
+          ]
+        ],
+        "active_training_ns": 450559653783,
+        "active_optimization_ns": 89676405666,
+        "active_rollout_ns": 360883248117,
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-02-gru-83/latest.pt",
+        "checkpoint_steps": 426112,
+        "checkpoint_updates": 1111,
+        "added_decisions": 111616,
+        "added_updates": 109,
+        "active_decisions_per_second": 247.72746308473697,
+        "latest_update_metrics": {
+          "loss": 5.358947277069092,
+          "policy_loss": -0.0072436765767633915,
+          "value_loss": 10.788945198059082,
+          "entropy": 4.713517665863037,
+          "approx_kl": 0.006582307163625956,
+          "grad_norm": 10.388392448425293,
+          "learning_rate": 0.000290208
+        },
+        "latest_rollout": {
+          "episodes": 9,
+          "exits": 5,
+          "deaths": 0,
+          "shaped_reward": 14.44248015332216,
+          "mean_health": 98.33333333333333
+        },
+        "return_code": 0,
+        "last_stop_reason": null,
+        "numbered_checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-02-gru-83/step-426112.pt"
+      },
+      {
+        "label": "p3-03-occupancy-59",
+        "pair": "p3-03-occupancy",
+        "phase": "Spatial intelligence and exploration",
+        "phase_index": 2,
+        "profile": "occupancy",
+        "seed": 59,
+        "parent": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "meter_id": "p3-03-occupancy-59",
+        "output": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-03-occupancy-59",
+        "attempts": 1,
+        "active_limit_seconds": 450,
+        "state": "complete",
+        "created_utc": "2026-11-27T00:17:45.984045+00:00",
+        "commands": [
+          [
+            "/home/darshan/doom-test/.venv/bin/python",
+            "-m",
+            "scripts.continuity_learning",
+            "learner",
+            "--out",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127",
+            "--label",
+            "p3-03-occupancy-59",
+            "--source",
+            "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+            "--profile",
+            "occupancy",
+            "--seed",
+            "59",
+            "--meter-id",
+            "p3-03-occupancy-59",
+            "--active-seconds",
+            "450"
+          ]
+        ],
+        "active_training_ns": 451889248483,
+        "active_optimization_ns": 103564214066,
+        "active_rollout_ns": 348325034417,
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-03-occupancy-59/latest.pt",
+        "checkpoint_steps": 441472,
+        "checkpoint_updates": 1126,
+        "added_decisions": 126976,
+        "added_updates": 124,
+        "active_decisions_per_second": 280.98920349678735,
+        "latest_update_metrics": {
+          "loss": 1.7983263731002808,
+          "policy_loss": -0.0038407426327466965,
+          "value_loss": 3.6626644134521484,
+          "entropy": 4.86085844039917,
+          "approx_kl": 0.00825014989823103,
+          "grad_norm": 6.043199062347412,
+          "learning_rate": 0.00028444799999999997
+        },
+        "latest_rollout": {
+          "episodes": 6,
+          "exits": 2,
+          "deaths": 1,
+          "shaped_reward": 12.284919559534892,
+          "mean_health": 83.0
+        },
+        "return_code": 0,
+        "last_stop_reason": null,
+        "numbered_checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-03-occupancy-59/step-441472.pt"
+      },
+      {
+        "label": "p3-03-occupancy-83",
+        "pair": "p3-03-occupancy",
+        "phase": "Spatial intelligence and exploration",
+        "phase_index": 2,
+        "profile": "occupancy",
+        "seed": 83,
+        "parent": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "meter_id": "p3-03-occupancy-83",
+        "output": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-03-occupancy-83",
+        "attempts": 1,
+        "active_limit_seconds": 442.1784413060004,
+        "state": "complete",
+        "created_utc": "2026-11-27T00:25:49.674565+00:00",
+        "commands": [
+          [
+            "/home/darshan/doom-test/.venv/bin/python",
+            "-m",
+            "scripts.continuity_learning",
+            "learner",
+            "--out",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127",
+            "--label",
+            "p3-03-occupancy-83",
+            "--source",
+            "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+            "--profile",
+            "occupancy",
+            "--seed",
+            "83",
+            "--meter-id",
+            "p3-03-occupancy-83",
+            "--active-seconds",
+            "442.1784413060004"
+          ]
+        ],
+        "active_training_ns": 442603900398,
+        "active_optimization_ns": 103099974164,
+        "active_rollout_ns": 339503926234,
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-03-occupancy-83/latest.pt",
+        "checkpoint_steps": 444544,
+        "checkpoint_updates": 1129,
+        "added_decisions": 130048,
+        "added_updates": 127,
+        "active_decisions_per_second": 293.8247943207408,
+        "latest_update_metrics": {
+          "loss": 7.9911065101623535,
+          "policy_loss": -0.006140409503132105,
+          "value_loss": 16.052366256713867,
+          "entropy": 4.822719573974609,
+          "approx_kl": 0.008994195610284805,
+          "grad_norm": 7.439037322998047,
+          "learning_rate": 0.000283296
+        },
+        "latest_rollout": {
+          "episodes": 10,
+          "exits": 9,
+          "deaths": 0,
+          "shaped_reward": 25.858020581055893,
+          "mean_health": 93.3
+        },
+        "return_code": 0,
+        "last_stop_reason": null,
+        "numbered_checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-03-occupancy-83/step-444544.pt"
+      },
+      {
+        "label": "p4-01-mastery-59",
+        "pair": "p4-01-mastery",
+        "phase": "Full-level mastery",
+        "phase_index": 3,
+        "profile": "mastery",
+        "seed": 59,
+        "parent": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "meter_id": "p4-01-mastery-59",
+        "output": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-01-mastery-59",
+        "attempts": 1,
+        "active_limit_seconds": 450,
+        "state": "complete",
+        "created_utc": "2026-11-27T00:33:42.352007+00:00",
+        "commands": [
+          [
+            "/home/darshan/doom-test/.venv/bin/python",
+            "-m",
+            "scripts.continuity_learning",
+            "learner",
+            "--out",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127",
+            "--label",
+            "p4-01-mastery-59",
+            "--source",
+            "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+            "--profile",
+            "mastery",
+            "--seed",
+            "59",
+            "--meter-id",
+            "p4-01-mastery-59",
+            "--active-seconds",
+            "450",
+            "--map-root",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/mastery-training"
+          ]
+        ],
+        "active_training_ns": 451891343140,
+        "active_optimization_ns": 48327681876,
+        "active_rollout_ns": 403563661264,
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-01-mastery-59/latest.pt",
+        "checkpoint_steps": 470144,
+        "checkpoint_updates": 1154,
+        "added_decisions": 155648,
+        "added_updates": 152,
+        "active_decisions_per_second": 344.4367819008625,
+        "latest_update_metrics": {
+          "loss": 0.28197816014289856,
+          "policy_loss": -0.0027616445440799,
+          "value_loss": 0.6278076171875,
+          "entropy": 4.86066198348999,
+          "approx_kl": 0.009307101368904114,
+          "grad_norm": 4.78229284286499,
+          "learning_rate": 0.0001505328
+        },
+        "latest_rollout": {
+          "episodes": 5,
+          "exits": 0,
+          "deaths": 0,
+          "shaped_reward": 1.5108164445427925,
+          "mean_health": 100.0
+        },
+        "return_code": 0,
+        "last_stop_reason": null,
+        "numbered_checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-01-mastery-59/step-470144.pt"
+      },
+      {
+        "label": "p4-01-mastery-83",
+        "pair": "p4-01-mastery",
+        "phase": "Full-level mastery",
+        "phase_index": 3,
+        "profile": "mastery",
+        "seed": 83,
+        "parent": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "meter_id": "p4-01-mastery-83",
+        "output": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-01-mastery-83",
+        "attempts": 1,
+        "active_limit_seconds": 450,
+        "state": "complete",
+        "created_utc": "2026-11-27T00:41:45.400380+00:00",
+        "commands": [
+          [
+            "/home/darshan/doom-test/.venv/bin/python",
+            "-m",
+            "scripts.continuity_learning",
+            "learner",
+            "--out",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127",
+            "--label",
+            "p4-01-mastery-83",
+            "--source",
+            "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+            "--profile",
+            "mastery",
+            "--seed",
+            "83",
+            "--meter-id",
+            "p4-01-mastery-83",
+            "--active-seconds",
+            "450",
+            "--map-root",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/mastery-training"
+          ]
+        ],
+        "active_training_ns": 450479285336,
+        "active_optimization_ns": 47239175121,
+        "active_rollout_ns": 403240110215,
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-01-mastery-83/latest.pt",
+        "checkpoint_steps": 415872,
+        "checkpoint_updates": 1101,
+        "added_decisions": 101376,
+        "added_updates": 99,
+        "active_decisions_per_second": 225.04031439400472,
+        "latest_update_metrics": {
+          "loss": 3.0905401706695557,
+          "policy_loss": -0.004553245380520821,
+          "value_loss": 6.244209289550781,
+          "entropy": 4.501879692077637,
+          "approx_kl": 0.007058430928736925,
+          "grad_norm": 9.383245468139648,
+          "learning_rate": 0.0001617264
+        },
+        "latest_rollout": {
+          "episodes": 9,
+          "exits": 5,
+          "deaths": 0,
+          "shaped_reward": 12.671763918255673,
+          "mean_health": 100.0
+        },
+        "return_code": 0,
+        "last_stop_reason": null,
+        "numbered_checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-01-mastery-83/step-415872.pt"
+      },
+      {
+        "label": "p4-02-count-59",
+        "pair": "p4-02-count",
+        "phase": "Full-level mastery",
+        "phase_index": 3,
+        "profile": "count",
+        "seed": 59,
+        "parent": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "meter_id": "p4-02-count-59",
+        "output": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-02-count-59",
+        "attempts": 1,
+        "active_limit_seconds": 450,
+        "state": "complete",
+        "created_utc": "2026-11-27T00:49:48.600053+00:00",
+        "commands": [
+          [
+            "/home/darshan/doom-test/.venv/bin/python",
+            "-m",
+            "scripts.continuity_learning",
+            "learner",
+            "--out",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127",
+            "--label",
+            "p4-02-count-59",
+            "--source",
+            "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+            "--profile",
+            "count",
+            "--seed",
+            "59",
+            "--meter-id",
+            "p4-02-count-59",
+            "--active-seconds",
+            "450",
+            "--map-root",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/mastery-training"
+          ]
+        ],
+        "active_training_ns": 451323200456,
+        "active_optimization_ns": 46445451952,
+        "active_rollout_ns": 404877748504,
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-02-count-59/latest.pt",
+        "checkpoint_steps": 480384,
+        "checkpoint_updates": 1164,
+        "added_decisions": 165888,
+        "added_updates": 162,
+        "active_decisions_per_second": 367.559212184069,
+        "latest_update_metrics": {
+          "loss": 2.250143051147461,
+          "policy_loss": -0.0017000194638967514,
+          "value_loss": 4.5555100440979,
+          "entropy": 4.318695068359375,
+          "approx_kl": 0.0026420520152896643,
+          "grad_norm": 11.308887481689453,
+          "learning_rate": 0.000269856
+        },
+        "latest_rollout": {
+          "episodes": 7,
+          "exits": 2,
+          "deaths": 0,
+          "shaped_reward": 10.45649688941019,
+          "mean_health": 97.85714285714286
+        },
+        "return_code": 0,
+        "last_stop_reason": null,
+        "numbered_checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-02-count-59/step-480384.pt"
+      },
+      {
+        "label": "p4-02-count-83",
+        "pair": "p4-02-count",
+        "phase": "Full-level mastery",
+        "phase_index": 3,
+        "profile": "count",
+        "seed": 83,
+        "parent": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "meter_id": "p4-02-count-83",
+        "output": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-02-count-83",
+        "attempts": 1,
+        "active_limit_seconds": 450,
+        "state": "complete",
+        "created_utc": "2026-11-27T00:57:41.304704+00:00",
+        "commands": [
+          [
+            "/home/darshan/doom-test/.venv/bin/python",
+            "-m",
+            "scripts.continuity_learning",
+            "learner",
+            "--out",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127",
+            "--label",
+            "p4-02-count-83",
+            "--source",
+            "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+            "--profile",
+            "count",
+            "--seed",
+            "83",
+            "--meter-id",
+            "p4-02-count-83",
+            "--active-seconds",
+            "450",
+            "--map-root",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/mastery-training"
+          ]
+        ],
+        "active_training_ns": 451431430403,
+        "active_optimization_ns": 45767980413,
+        "active_rollout_ns": 405663449990,
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-02-count-83/latest.pt",
+        "checkpoint_steps": 468096,
+        "checkpoint_updates": 1152,
+        "added_decisions": 153600,
+        "added_updates": 150,
+        "active_decisions_per_second": 340.2510096890658,
+        "latest_update_metrics": {
+          "loss": 7.453214645385742,
+          "policy_loss": -0.007292937487363815,
+          "value_loss": 14.978076934814453,
+          "entropy": 4.755308628082275,
+          "approx_kl": 0.008413405157625675,
+          "grad_norm": 17.80600357055664,
+          "learning_rate": 0.000274464
+        },
+        "latest_rollout": {
+          "episodes": 10,
+          "exits": 5,
+          "deaths": 0,
+          "shaped_reward": 16.381596986327096,
+          "mean_health": 95.6
+        },
+        "return_code": 0,
+        "last_stop_reason": null,
+        "numbered_checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-02-count-83/step-468096.pt"
+      },
+      {
+        "label": "p4-03-rnd-59",
+        "pair": "p4-03-rnd",
+        "phase": "Full-level mastery",
+        "phase_index": 3,
+        "profile": "rnd",
+        "seed": 59,
+        "parent": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "meter_id": "p4-03-rnd-59",
+        "output": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-03-rnd-59",
+        "attempts": 1,
+        "active_limit_seconds": 450,
+        "state": "complete",
+        "created_utc": "2026-11-27T01:05:34.124325+00:00",
+        "commands": [
+          [
+            "/home/darshan/doom-test/.venv/bin/python",
+            "-m",
+            "scripts.continuity_learning",
+            "learner",
+            "--out",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127",
+            "--label",
+            "p4-03-rnd-59",
+            "--source",
+            "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+            "--profile",
+            "rnd",
+            "--seed",
+            "59",
+            "--meter-id",
+            "p4-03-rnd-59",
+            "--active-seconds",
+            "450",
+            "--map-root",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/mastery-training"
+          ]
+        ],
+        "active_training_ns": 450846277342,
+        "active_optimization_ns": 47227180853,
+        "active_rollout_ns": 403619096489,
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-03-rnd-59/latest.pt",
+        "checkpoint_steps": 480384,
+        "checkpoint_updates": 1164,
+        "added_decisions": 165888,
+        "added_updates": 162,
+        "active_decisions_per_second": 367.94803092975695,
+        "latest_update_metrics": {
+          "loss": 3.5432674884796143,
+          "policy_loss": -0.0029951008036732674,
+          "value_loss": 7.145314693450928,
+          "entropy": 4.399124622344971,
+          "approx_kl": 0.004972971044480801,
+          "grad_norm": 7.579808712005615,
+          "learning_rate": 0.000269856
+        },
+        "latest_rollout": {
+          "episodes": 4,
+          "exits": 2,
+          "deaths": 0,
+          "shaped_reward": 16.606498825953636,
+          "mean_health": 100.0
+        },
+        "return_code": 0,
+        "last_stop_reason": null,
+        "numbered_checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-03-rnd-59/step-480384.pt"
+      },
+      {
+        "label": "p4-03-rnd-83",
+        "pair": "p4-03-rnd",
+        "phase": "Full-level mastery",
+        "phase_index": 3,
+        "profile": "rnd",
+        "seed": 83,
+        "parent": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "meter_id": "p4-03-rnd-83",
+        "output": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-03-rnd-83",
+        "attempts": 1,
+        "active_limit_seconds": 443.60300423099943,
+        "state": "complete",
+        "created_utc": "2026-11-27T01:13:31.494909+00:00",
+        "commands": [
+          [
+            "/home/darshan/doom-test/.venv/bin/python",
+            "-m",
+            "scripts.continuity_learning",
+            "learner",
+            "--out",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127",
+            "--label",
+            "p4-03-rnd-83",
+            "--source",
+            "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+            "--profile",
+            "rnd",
+            "--seed",
+            "83",
+            "--meter-id",
+            "p4-03-rnd-83",
+            "--active-seconds",
+            "443.60300423099943",
+            "--map-root",
+            "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/mastery-training"
+          ]
+        ],
+        "active_training_ns": 443625664498,
+        "active_optimization_ns": 45483190109,
+        "active_rollout_ns": 398142474389,
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-03-rnd-83/latest.pt",
+        "checkpoint_steps": 472192,
+        "checkpoint_updates": 1156,
+        "added_decisions": 157696,
+        "added_updates": 154,
+        "active_decisions_per_second": 355.47086794098436,
+        "latest_update_metrics": {
+          "loss": 4.720405101776123,
+          "policy_loss": -0.0028224587440490723,
+          "value_loss": 9.50007438659668,
+          "entropy": 4.46830415725708,
+          "approx_kl": 0.006783023942261934,
+          "grad_norm": 13.010055541992188,
+          "learning_rate": 0.000272928
+        },
+        "latest_rollout": {
+          "episodes": 10,
+          "exits": 4,
+          "deaths": 0,
+          "shaped_reward": 12.437801600341974,
+          "mean_health": 91.5
+        },
+        "return_code": 0,
+        "last_stop_reason": null,
+        "numbered_checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-03-rnd-83/step-472192.pt"
+      }
+    ],
+    "evaluation_queue": [
+      {
+        "label": "post-lock-bootstrap-59",
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/post-lock-bootstrap-59/step-483456.pt",
+        "pair": "p1-post-lock-bootstrap",
+        "seed": 59,
+        "status": "complete",
+        "attempts": 1,
+        "wall_seconds": 324.20857306299877
+      },
+      {
+        "label": "post-lock-bootstrap-83",
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/post-lock-bootstrap-83/step-464000.pt",
+        "pair": "p1-post-lock-bootstrap",
+        "seed": 83,
+        "status": "complete",
+        "attempts": 1,
+        "wall_seconds": 254.16255162899324
+      },
+      {
+        "label": "p1-02-post-lock-varied-59",
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p1-02-post-lock-varied-59/step-478336.pt",
+        "pair": "p1-02-post-lock-varied",
+        "seed": 59,
+        "status": "complete",
+        "attempts": 1,
+        "wall_seconds": 314.23246605200256
+      },
+      {
+        "label": "p1-02-post-lock-varied-83",
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p1-02-post-lock-varied-83/step-471168.pt",
+        "pair": "p1-02-post-lock-varied",
+        "seed": 83,
+        "status": "complete",
+        "attempts": 1,
+        "wall_seconds": 294.2203469090018
+      },
+      {
+        "label": "p1-03-post-lock-gentle-59",
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p1-03-post-lock-gentle-59/step-476288.pt",
+        "pair": "p1-03-post-lock-gentle",
+        "seed": 59,
+        "status": "complete",
+        "attempts": 1,
+        "wall_seconds": 278.21493499099597
+      },
+      {
+        "label": "p1-03-post-lock-gentle-83",
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p1-03-post-lock-gentle-83/step-469120.pt",
+        "pair": "p1-03-post-lock-gentle",
+        "seed": 83,
+        "status": "complete",
+        "attempts": 1,
+        "wall_seconds": 307.3898601799956
+      },
+      {
+        "label": "p2-01-bc-retention-59",
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-01-bc-retention-59/step-442496.pt",
+        "pair": "p2-01-bc-retention",
+        "seed": 59,
+        "status": "complete",
+        "attempts": 1,
+        "wall_seconds": 315.9167392540039
+      },
+      {
+        "label": "p2-01-bc-retention-83",
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-01-bc-retention-83/step-439424.pt",
+        "pair": "p2-01-bc-retention",
+        "seed": 83,
+        "status": "complete",
+        "attempts": 1,
+        "wall_seconds": 280.3486782300024
+      },
+      {
+        "label": "p2-02-retention-distill-59",
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-02-retention-distill-59/step-466048.pt",
+        "pair": "p2-02-retention-distill",
+        "seed": 59,
+        "status": "complete",
+        "attempts": 1,
+        "wall_seconds": 264.25349778899545
+      },
+      {
+        "label": "p2-02-retention-distill-83",
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-02-retention-distill-83/step-467072.pt",
+        "pair": "p2-02-retention-distill",
+        "seed": 83,
+        "status": "complete",
+        "attempts": 1,
+        "wall_seconds": 268.3342119969966
+      },
+      {
+        "label": "p2-03-retention-low-59",
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-03-retention-low-59/step-472192.pt",
+        "pair": "p2-03-retention-low",
+        "seed": 59,
+        "status": "complete",
+        "attempts": 1,
+        "wall_seconds": 304.4358708239961
+      },
+      {
+        "label": "p2-03-retention-low-83",
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-03-retention-low-83/step-448640.pt",
+        "pair": "p2-03-retention-low",
+        "seed": 83,
+        "status": "complete",
+        "attempts": 1,
+        "wall_seconds": 292.45217123100156
+      },
+      {
+        "label": "p3-01-memory-control-59",
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-01-memory-control-59/step-462976.pt",
+        "pair": "p3-01-memory-control",
+        "seed": 59,
+        "status": "complete",
+        "attempts": 1,
+        "wall_seconds": 288.3257928739986
+      },
+      {
+        "label": "p3-01-memory-control-83",
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-01-memory-control-83/step-469120.pt",
+        "pair": "p3-01-memory-control",
+        "seed": 83,
+        "status": "complete",
+        "attempts": 1,
+        "wall_seconds": 256.34362901099666
+      },
+      {
+        "label": "p3-02-gru-59",
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-02-gru-59/step-443520.pt",
+        "pair": "p3-02-gru",
+        "seed": 59,
+        "status": "complete",
+        "attempts": 1,
+        "wall_seconds": 362.59866294799576
+      },
+      {
+        "label": "p3-02-gru-83",
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-02-gru-83/step-426112.pt",
+        "pair": "p3-02-gru",
+        "seed": 83,
+        "status": "complete",
+        "attempts": 1,
+        "wall_seconds": 274.3357440589971
+      },
+      {
+        "label": "p3-03-occupancy-59",
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-03-occupancy-59/step-441472.pt",
+        "pair": "p3-03-occupancy",
+        "seed": 59,
+        "status": "complete",
+        "attempts": 1,
+        "wall_seconds": 296.38040215300134
+      },
+      {
+        "label": "p3-03-occupancy-83",
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-03-occupancy-83/step-444544.pt",
+        "pair": "p3-03-occupancy",
+        "seed": 83,
+        "status": "complete",
+        "attempts": 1,
+        "wall_seconds": 292.3583035720003
+      },
+      {
+        "label": "p4-01-mastery-59",
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-01-mastery-59/step-470144.pt",
+        "pair": "p4-01-mastery",
+        "seed": 59,
+        "status": "complete",
+        "attempts": 1,
+        "wall_seconds": 456.8501944710006
+      },
+      {
+        "label": "p4-01-mastery-83",
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-01-mastery-83/step-415872.pt",
+        "pair": "p4-01-mastery",
+        "seed": 83,
+        "status": "complete",
+        "attempts": 1,
+        "wall_seconds": 248.32077619899792
+      },
+      {
+        "label": "p4-02-count-59",
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-02-count-59/step-480384.pt",
+        "pair": "p4-02-count",
+        "seed": 59,
+        "status": "complete",
+        "attempts": 1,
+        "wall_seconds": 280.38022905499383
+      },
+      {
+        "label": "p4-02-count-83",
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-02-count-83/step-468096.pt",
+        "pair": "p4-02-count",
+        "seed": 83,
+        "status": "complete",
+        "attempts": 1,
+        "wall_seconds": 258.3639078709966
+      },
+      {
+        "label": "p4-03-rnd-59",
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-03-rnd-59/step-480384.pt",
+        "pair": "p4-03-rnd",
+        "seed": 59,
+        "status": "complete",
+        "attempts": 1,
+        "wall_seconds": 260.3764686380018
+      },
+      {
+        "label": "p4-03-rnd-83",
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-03-rnd-83/step-472192.pt",
+        "pair": "p4-03-rnd",
+        "seed": 83,
+        "status": "complete",
+        "attempts": 1,
+        "wall_seconds": 230.2742847059999
+      }
+    ],
+    "gates": {
+      "p1-post-lock-bootstrap": {
+        "passed": false,
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/evaluation/gate-p1-post-lock-bootstrap.json",
+        "labels": [
+          "post-lock-bootstrap-59",
+          "post-lock-bootstrap-83"
+        ]
+      },
+      "p1-02-post-lock-varied": {
+        "passed": false,
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/evaluation/gate-p1-02-post-lock-varied.json",
+        "labels": [
+          "p1-02-post-lock-varied-59",
+          "p1-02-post-lock-varied-83"
+        ]
+      },
+      "p1-03-post-lock-gentle": {
+        "passed": false,
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/evaluation/gate-p1-03-post-lock-gentle.json",
+        "labels": [
+          "p1-03-post-lock-gentle-59",
+          "p1-03-post-lock-gentle-83"
+        ]
+      },
+      "p2-01-bc-retention": {
+        "passed": false,
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/evaluation/gate-p2-01-bc-retention.json",
+        "labels": [
+          "p2-01-bc-retention-59",
+          "p2-01-bc-retention-83"
+        ]
+      },
+      "p2-02-retention-distill": {
+        "passed": false,
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/evaluation/gate-p2-02-retention-distill.json",
+        "labels": [
+          "p2-02-retention-distill-59",
+          "p2-02-retention-distill-83"
+        ]
+      },
+      "p2-03-retention-low": {
+        "passed": false,
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/evaluation/gate-p2-03-retention-low.json",
+        "labels": [
+          "p2-03-retention-low-59",
+          "p2-03-retention-low-83"
+        ]
+      },
+      "p3-01-memory-control": {
+        "passed": false,
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/evaluation/gate-p3-01-memory-control.json",
+        "labels": [
+          "p3-01-memory-control-59",
+          "p3-01-memory-control-83"
+        ]
+      },
+      "p3-02-gru": {
+        "passed": false,
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/evaluation/gate-p3-02-gru.json",
+        "labels": [
+          "p3-02-gru-59",
+          "p3-02-gru-83"
+        ]
+      },
+      "p3-03-occupancy": {
+        "passed": false,
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/evaluation/gate-p3-03-occupancy.json",
+        "labels": [
+          "p3-03-occupancy-59",
+          "p3-03-occupancy-83"
+        ]
+      },
+      "p4-01-mastery": {
+        "passed": false,
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/evaluation/gate-p4-01-mastery.json",
+        "labels": [
+          "p4-01-mastery-59",
+          "p4-01-mastery-83"
+        ]
+      },
+      "p4-02-count": {
+        "passed": false,
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/evaluation/gate-p4-02-count.json",
+        "labels": [
+          "p4-02-count-59",
+          "p4-02-count-83"
+        ]
+      },
+      "p4-03-rnd": {
+        "passed": false,
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/evaluation/gate-p4-03-rnd.json",
+        "labels": [
+          "p4-03-rnd-59",
+          "p4-03-rnd-83"
+        ]
+      }
+    },
+    "evaluation_seconds": 7003.078297705964,
+    "best_validated_checkpoint": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+    "best_rank": null,
+    "rejected_profiles": [
+      "post-lock-varied"
+    ],
+    "supervised_blocks": [
+      {
+        "label": "p2-01-bc-retention-59-bc",
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-01-bc-retention-59-bc/latest.pt",
+        "phase": "Skill retention and imitation",
+        "command": "clone",
+        "active_training_ns": 2975785124,
+        "supervised_updates": 240
+      },
+      {
+        "label": "p2-01-bc-retention-83-bc",
+        "checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-01-bc-retention-83-bc/latest.pt",
+        "phase": "Skill retention and imitation",
+        "command": "clone",
+        "active_training_ns": 3746944011,
+        "supervised_updates": 240
+      }
+    ],
+    "last_successful_checkpoint": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-03-rnd-83/step-472192.pt",
+    "supervised_updates": 480,
+    "total_elapsed_wall_seconds": 11799.26355,
+    "nontraining_wall_seconds": 999.2408897329988,
+    "updated_utc": "2026-11-27T01:25:26.428788+00:00",
+    "current_experiment": null,
+    "phase": "Full-level mastery",
+    "current_checkpoint": null,
+    "decisions_per_second": 0.0,
+    "evaluation_pid": null,
+    "next_evaluation_milestone": null,
+    "evaluation_age_seconds": 0.0,
+    "resources": {
+      "available_ram_mib": 4409.44140625,
+      "disk_free_gib": 943.6966972351074,
+      "load_average": [
+        1.51123046875,
+        1.466796875,
+        1.63525390625
+      ],
+      "thermal_celsius": []
+    },
+    "latest_development": {
+      "label": "p4-03-rnd-83",
+      "far_switch_exits": 15,
+      "far_range_entries": 36,
+      "familiar_exits": 33,
+      "gauntlet_deaths": 20
+    },
+    "failed_zero_progress": 0
+  },
+  "preregistered_protocol": {
+    "version": 1,
+    "training_seeds": [
+      59,
+      83
+    ],
+    "midpoint_decisions": 12000,
+    "followup_decisions": 25000,
+    "development": {
+      "switch": {
+        "manifest": "runs/exit-recovery-study/maps/manifest.json",
+        "sha256": "9abc280e207d3ea18a0a9e546b4c3a09d5e6b58680811da2d43e4cb077c7d691",
+        "split": "validation",
+        "engine_seeds": [
+          0,
+          1,
+          2
+        ],
+        "layout_count": 32
+      },
+      "familiar": {
+        "manifest": "runs/limit-campaign-20261127/original-120-panel.json",
+        "sha256": "3f1707b75fecb6f0bb5941e22489639a106226ee5c374f518ceadba312daa685",
+        "split": "test",
+        "engine_seeds": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "layout_count": 24
+      }
+    },
+    "thresholds": {
+      "switch_range_entries": 24,
+      "switch_range_improved_layouts": 2,
+      "alignment_exits": 11,
+      "walkover_exits": 8,
+      "familiar_exits": 27,
+      "gauntlet_deaths_max": 21,
+      "late_switch_exits": 19,
+      "late_switch_exit_improved_layouts": 2
+    },
+    "local_proxy": {
+      "exit": 100.0,
+      "key": 15.0,
+      "door": 5.0,
+      "lock": 10.0,
+      "kill": 3.0,
+      "unique_cell": 0.1,
+      "health": 0.02,
+      "damage": -0.1,
+      "exit_fraction_of_tic_cap_remaining": 2.0,
+      "death": -10.0
+    },
+    "selection": "Primary gates use paired raw outcomes against the exact frozen approach baseline. Both mixed training seeds must pass at the same midpoint for a matched extension. Sequential arms measure the curriculum contrast. Late eligibility adds replicated true switch exit gains on at least two geometric layouts. The local proxy is descriptive only and has no official scoring interpretation."
+  },
+  "block_invocations": {
+    "training/p1-02-post-lock-varied-59/continuity-invocation.json": {
+      "resume": {
+        "path": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "sha256": "1810650838aea8b230cb9ad34dbc4da358afb05b4934b0ebe392739ce4305724"
+      },
+      "manifest": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/post-lock-maps/manifest.json",
+        "sha256": "a7235dc46e72b43a9ea401f73b5a3ae000845ac1cd42ae85fd7d0b5169a75710"
+      },
+      "config": {
+        "path": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/config.json",
+        "sha256": "e4391beebf94dda9be95488289f56aa524f1f93cb9572d448dbe893a096bcfc8"
+      },
+      "reward": {
+        "path": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/source/switch_approach_reward.py",
+        "sha256": "4be9f0fc2eda78de34667fbc43128c8b2a85ada762e81729202409d407edbfbc"
+      },
+      "learner_source": {
+        "path": "/home/darshan/projects/doom-nexus/scripts/continuity_post_lock.py",
+        "sha256": "94ecf6746e9d8948a56e00ca902ae25c7a13db58a643cef864c55896309f719f"
+      },
+      "seed": 59,
+      "rng_restarted": true,
+      "start_steps": 314496,
+      "start_updates": 1002,
+      "post_lock_focus": "staged",
+      "options": [
+        "--config",
+        "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/config.json",
+        "--map-root",
+        "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/post-lock-maps",
+        "--resume",
+        "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "--seed",
+        "59",
+        "--steps",
+        "814496",
+        "--seconds",
+        "885.0",
+        "--out",
+        "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p1-02-post-lock-varied-59",
+        "--checkpoint-every",
+        "60000",
+        "--rollout",
+        "128",
+        "--headless",
+        "--stop-file",
+        "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/STOP",
+        "--restart-rng"
+      ]
+    },
+    "training/p1-02-post-lock-varied-83/continuity-invocation.json": {
+      "resume": {
+        "path": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "sha256": "1810650838aea8b230cb9ad34dbc4da358afb05b4934b0ebe392739ce4305724"
+      },
+      "manifest": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/post-lock-maps/manifest.json",
+        "sha256": "a7235dc46e72b43a9ea401f73b5a3ae000845ac1cd42ae85fd7d0b5169a75710"
+      },
+      "config": {
+        "path": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/config.json",
+        "sha256": "e4391beebf94dda9be95488289f56aa524f1f93cb9572d448dbe893a096bcfc8"
+      },
+      "reward": {
+        "path": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/source/switch_approach_reward.py",
+        "sha256": "4be9f0fc2eda78de34667fbc43128c8b2a85ada762e81729202409d407edbfbc"
+      },
+      "learner_source": {
+        "path": "/home/darshan/projects/doom-nexus/scripts/continuity_post_lock.py",
+        "sha256": "94ecf6746e9d8948a56e00ca902ae25c7a13db58a643cef864c55896309f719f"
+      },
+      "seed": 83,
+      "rng_restarted": true,
+      "start_steps": 314496,
+      "start_updates": 1002,
+      "post_lock_focus": "staged",
+      "options": [
+        "--config",
+        "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/config.json",
+        "--map-root",
+        "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/post-lock-maps",
+        "--resume",
+        "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "--seed",
+        "83",
+        "--steps",
+        "814496",
+        "--seconds",
+        "885.0",
+        "--out",
+        "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p1-02-post-lock-varied-83",
+        "--checkpoint-every",
+        "60000",
+        "--rollout",
+        "128",
+        "--headless",
+        "--stop-file",
+        "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/STOP",
+        "--restart-rng"
+      ]
+    },
+    "training/p1-03-post-lock-gentle-59/continuity-invocation.json": {
+      "resume": {
+        "path": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "sha256": "1810650838aea8b230cb9ad34dbc4da358afb05b4934b0ebe392739ce4305724"
+      },
+      "manifest": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/post-lock-maps/manifest.json",
+        "sha256": "a7235dc46e72b43a9ea401f73b5a3ae000845ac1cd42ae85fd7d0b5169a75710"
+      },
+      "config": {
+        "path": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/config.json",
+        "sha256": "e4391beebf94dda9be95488289f56aa524f1f93cb9572d448dbe893a096bcfc8"
+      },
+      "reward": {
+        "path": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/source/switch_approach_reward.py",
+        "sha256": "4be9f0fc2eda78de34667fbc43128c8b2a85ada762e81729202409d407edbfbc"
+      },
+      "learner_source": {
+        "path": "/home/darshan/projects/doom-nexus/scripts/continuity_post_lock.py",
+        "sha256": "94ecf6746e9d8948a56e00ca902ae25c7a13db58a643cef864c55896309f719f"
+      },
+      "seed": 59,
+      "rng_restarted": true,
+      "start_steps": 314496,
+      "start_updates": 1002,
+      "post_lock_focus": "staged",
+      "options": [
+        "--config",
+        "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/config.json",
+        "--map-root",
+        "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/post-lock-maps",
+        "--resume",
+        "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "--seed",
+        "59",
+        "--steps",
+        "814496",
+        "--seconds",
+        "885.0",
+        "--out",
+        "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p1-03-post-lock-gentle-59",
+        "--checkpoint-every",
+        "60000",
+        "--rollout",
+        "128",
+        "--headless",
+        "--stop-file",
+        "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/STOP",
+        "--restart-rng",
+        "--lr",
+        "0.000135"
+      ]
+    },
+    "training/p1-03-post-lock-gentle-83/continuity-invocation.json": {
+      "resume": {
+        "path": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "sha256": "1810650838aea8b230cb9ad34dbc4da358afb05b4934b0ebe392739ce4305724"
+      },
+      "manifest": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/post-lock-maps/manifest.json",
+        "sha256": "a7235dc46e72b43a9ea401f73b5a3ae000845ac1cd42ae85fd7d0b5169a75710"
+      },
+      "config": {
+        "path": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/config.json",
+        "sha256": "e4391beebf94dda9be95488289f56aa524f1f93cb9572d448dbe893a096bcfc8"
+      },
+      "reward": {
+        "path": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/source/switch_approach_reward.py",
+        "sha256": "4be9f0fc2eda78de34667fbc43128c8b2a85ada762e81729202409d407edbfbc"
+      },
+      "learner_source": {
+        "path": "/home/darshan/projects/doom-nexus/scripts/continuity_post_lock.py",
+        "sha256": "94ecf6746e9d8948a56e00ca902ae25c7a13db58a643cef864c55896309f719f"
+      },
+      "seed": 83,
+      "rng_restarted": true,
+      "start_steps": 314496,
+      "start_updates": 1002,
+      "post_lock_focus": "staged",
+      "options": [
+        "--config",
+        "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/config.json",
+        "--map-root",
+        "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/post-lock-maps",
+        "--resume",
+        "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "--seed",
+        "83",
+        "--steps",
+        "814496",
+        "--seconds",
+        "875.5050354122998",
+        "--out",
+        "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p1-03-post-lock-gentle-83",
+        "--checkpoint-every",
+        "60000",
+        "--rollout",
+        "128",
+        "--headless",
+        "--stop-file",
+        "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/STOP",
+        "--restart-rng",
+        "--lr",
+        "0.000135"
+      ]
+    },
+    "training/p2-01-bc-retention-59-bc/imitation-invocation.json": {
+      "source": {
+        "path": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "sha256": "1810650838aea8b230cb9ad34dbc4da358afb05b4934b0ebe392739ce4305724"
+      },
+      "dataset": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/imitation-data/trajectories.pt",
+        "sha256": "6d8a006f071c7e99003160b5dc07c08a35b8f4dea573e533789fb2f1c45086f8"
+      },
+      "seed": 59,
+      "supervised_updates": 240,
+      "actor_groups": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "regularizer": 2.0,
+      "source_code": {
+        "path": "/home/darshan/projects/doom-nexus/scripts/continuity_imitation.py",
+        "sha256": "2526d9dd958cf2b0f69b07ee1707c37dda8cc5e4329a9d12d0cb3129eb240bce"
+      }
+    },
+    "training/p2-01-bc-retention-83-bc/imitation-invocation.json": {
+      "source": {
+        "path": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "sha256": "1810650838aea8b230cb9ad34dbc4da358afb05b4934b0ebe392739ce4305724"
+      },
+      "dataset": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/imitation-data/trajectories.pt",
+        "sha256": "6d8a006f071c7e99003160b5dc07c08a35b8f4dea573e533789fb2f1c45086f8"
+      },
+      "seed": 83,
+      "supervised_updates": 240,
+      "actor_groups": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "regularizer": 2.0,
+      "source_code": {
+        "path": "/home/darshan/projects/doom-nexus/scripts/continuity_imitation.py",
+        "sha256": "2526d9dd958cf2b0f69b07ee1707c37dda8cc5e4329a9d12d0cb3129eb240bce"
+      }
+    },
+    "training/post-lock-bootstrap-59/continuity-invocation.json": {
+      "resume": {
+        "path": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "sha256": "1810650838aea8b230cb9ad34dbc4da358afb05b4934b0ebe392739ce4305724"
+      },
+      "manifest": {
+        "path": "/home/darshan/projects/doom-nexus/runs/exit-recovery-study/training-data/curriculum/manifest.json",
+        "sha256": "921c857b9ec26ee37eb9769605f123e58af1f0244a79e4c2419151b95212715d"
+      },
+      "config": {
+        "path": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/config.json",
+        "sha256": "e4391beebf94dda9be95488289f56aa524f1f93cb9572d448dbe893a096bcfc8"
+      },
+      "reward": {
+        "path": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/source/switch_approach_reward.py",
+        "sha256": "4be9f0fc2eda78de34667fbc43128c8b2a85ada762e81729202409d407edbfbc"
+      },
+      "learner_source": {
+        "path": "/home/darshan/projects/doom-nexus/scripts/continuity_post_lock.py",
+        "sha256": "2f00f51a9d5fa03e5e364727a12f2bf6cbd325ce04a47e829a32b4bb5cdd84bf"
+      },
+      "seed": 59,
+      "rng_restarted": true,
+      "start_steps": 314496,
+      "start_updates": 1002,
+      "options": [
+        "--config",
+        "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/config.json",
+        "--map-root",
+        "/home/darshan/projects/doom-nexus/runs/exit-recovery-study/training-data/curriculum",
+        "--resume",
+        "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "--seed",
+        "59",
+        "--steps",
+        "814496",
+        "--seconds",
+        "750.0",
+        "--out",
+        "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/post-lock-bootstrap-59",
+        "--checkpoint-every",
+        "60000",
+        "--rollout",
+        "128",
+        "--headless",
+        "--stop-file",
+        "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/STOP",
+        "--restart-rng"
+      ]
+    },
+    "training/post-lock-bootstrap-83/continuity-invocation.json": {
+      "resume": {
+        "path": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "sha256": "1810650838aea8b230cb9ad34dbc4da358afb05b4934b0ebe392739ce4305724"
+      },
+      "manifest": {
+        "path": "/home/darshan/projects/doom-nexus/runs/exit-recovery-study/training-data/curriculum/manifest.json",
+        "sha256": "921c857b9ec26ee37eb9769605f123e58af1f0244a79e4c2419151b95212715d"
+      },
+      "config": {
+        "path": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/config.json",
+        "sha256": "e4391beebf94dda9be95488289f56aa524f1f93cb9572d448dbe893a096bcfc8"
+      },
+      "reward": {
+        "path": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/source/switch_approach_reward.py",
+        "sha256": "4be9f0fc2eda78de34667fbc43128c8b2a85ada762e81729202409d407edbfbc"
+      },
+      "learner_source": {
+        "path": "/home/darshan/projects/doom-nexus/scripts/continuity_post_lock.py",
+        "sha256": "94ecf6746e9d8948a56e00ca902ae25c7a13db58a643cef864c55896309f719f"
+      },
+      "seed": 83,
+      "rng_restarted": true,
+      "start_steps": 314496,
+      "start_updates": 1002,
+      "post_lock_focus": "staged",
+      "options": [
+        "--config",
+        "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/config.json",
+        "--map-root",
+        "/home/darshan/projects/doom-nexus/runs/exit-recovery-study/training-data/curriculum",
+        "--resume",
+        "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "--seed",
+        "83",
+        "--steps",
+        "814496",
+        "--seconds",
+        "885.0",
+        "--out",
+        "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/post-lock-bootstrap-83",
+        "--checkpoint-every",
+        "60000",
+        "--rollout",
+        "128",
+        "--headless",
+        "--stop-file",
+        "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/STOP",
+        "--restart-rng"
+      ]
+    }
+  },
+  "profiles": {
+    "inputs": {
+      "warm_start": {
+        "path": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/training/approach-41/step-314496.pt",
+        "sha256": "1810650838aea8b230cb9ad34dbc4da358afb05b4934b0ebe392739ce4305724"
+      },
+      "config": {
+        "path": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/config.json",
+        "sha256": "e4391beebf94dda9be95488289f56aa524f1f93cb9572d448dbe893a096bcfc8"
+      },
+      "reward": {
+        "path": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/source/switch_approach_reward.py",
+        "sha256": "4be9f0fc2eda78de34667fbc43128c8b2a85ada762e81729202409d407edbfbc"
+      },
+      "training": {
+        "path": "/home/darshan/projects/doom-nexus/runs/exit-recovery-study/training-data/curriculum/manifest.json",
+        "sha256": "921c857b9ec26ee37eb9769605f123e58af1f0244a79e4c2419151b95212715d"
+      },
+      "published": {
+        "path": "/home/darshan/projects/doom-nexus/submission/weights/best_model.pt",
+        "sha256": "fe14608eaa2728ebe2389b7940144713ab6c0ce39da28a1aba24f576005a463f"
+      },
+      "lock_teacher": {
+        "path": "/home/darshan/projects/doom-nexus/runs/adaptive-campaign-20261127/training/bc-ppo-59-12000/step-326496.pt",
+        "sha256": "e9e42ca9217811b7bd8b0c2987667b73533c0f4c97c40dc5cb73198a70cbd80d"
+      }
+    },
+    "profile_source": {
+      "path": "/home/darshan/projects/doom-nexus/scripts/continuity_learning.py",
+      "sha256": "dc594cc2d11ceee64bf1d9156072f1b14b5facbfda96e9042d9272e55eec16b8"
+    },
+    "profiles": {
+      "mixed": {
+        "hypothesis": "Full-rate matched mixed control"
+      },
+      "retention-low": {
+        "hypothesis": "Half original learning rate on persistent mixed practice",
+        "rate": 0.5
+      },
+      "retention-anchor": {
+        "hypothesis": "Moderate warm-policy distillation on fresh mixed rollouts",
+        "anchor": 0.06
+      },
+      "retention-safe": {
+        "hypothesis": "Lower learning-rate fallback using the same moderate anchor",
+        "rate": 0.25,
+        "anchor": 0.06
+      },
+      "retention-distill": {
+        "hypothesis": "Transfer only the lock-opening head from the BC-PPO teacher, retaining the warm policy elsewhere",
+        "anchor": 0.06,
+        "lock_teacher": true
+      },
+      "memory-control": {
+        "hypothesis": "Matched feedforward control for fresh-Adam memory forks",
+        "fresh_adam": true
+      },
+      "gru": {
+        "hypothesis": "Residual GRU with parity-preserving initialization",
+        "memory": "residual-gru"
+      },
+      "occupancy": {
+        "hypothesis": "Ego-centric occupancy memory with parity-preserving initialization",
+        "memory": "occupancy"
+      },
+      "count": {
+        "hypothesis": "Bounded coverage-based novelty on course rewards",
+        "count_bonus": true
+      },
+      "rnd": {
+        "hypothesis": "Bounded random-network-distillation novelty",
+        "rnd_bonus": true
+      },
+      "mastery": {
+        "hypothesis": "Preserve all skills while adapting map families in a mixed course pool",
+        "adaptive_families": true,
+        "rate": 0.55
+      }
+    },
+    "mastery_maps": 190,
+    "mastery_manifest": {
+      "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/mastery-training/manifest.json",
+      "sha256": "71d30881671e497b1a075db121d4844bf198b2b708f964c38407509a6751d3d0"
+    },
+    "training_only": true,
+    "retention_lanes": [
+      "approach",
+      "approach",
+      "align",
+      "walkover",
+      "keys",
+      "combat",
+      "exploration",
+      "gauntlet"
+    ],
+    "prior_hardware_comparison": {
+      "path": "/home/darshan/projects/doom-nexus/runs/adaptive-campaign-20261127/hardware-followup/jobs.json",
+      "sha256": "4e7e69c89ca9fe808019ba84a869052a236b2b0284b113d456091239b8c5f605"
+    }
+  },
+  "credited": {
+    "post-lock-bootstrap-59": {
+      "kind": "ppo",
+      "phase": "Post-lock progression",
+      "active_training_ns": 451551215688,
+      "decisions": 168960,
+      "updates": 165,
+      "checkpoint": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/post-lock-bootstrap-59/step-483456.pt",
+        "bytes": 1077189,
+        "sha256": "30258789b507779ce522bc00d42e475048d1e0d0a9129ff91defcdedaf35aacd"
+      }
+    },
+    "post-lock-bootstrap-83": {
+      "kind": "ppo",
+      "phase": "Post-lock progression",
+      "active_training_ns": 451268432622,
+      "decisions": 149504,
+      "updates": 146,
+      "checkpoint": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/post-lock-bootstrap-83/step-464000.pt",
+        "bytes": 1077253,
+        "sha256": "a7abc58d43605c82eec710ba61445fc076d15683be96e98646f8efdd8004a9ba"
+      }
+    },
+    "p1-02-post-lock-varied-59": {
+      "kind": "ppo",
+      "phase": "Post-lock progression",
+      "active_training_ns": 450254747672,
+      "decisions": 163840,
+      "updates": 160,
+      "checkpoint": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p1-02-post-lock-varied-59/step-478336.pt",
+        "bytes": 1077125,
+        "sha256": "36626de35fcfa2e87ba3eecea312e6611c79b6a564dd7e49feb033adb2ce87b6"
+      }
+    },
+    "p1-02-post-lock-varied-83": {
+      "kind": "ppo",
+      "phase": "Post-lock progression",
+      "active_training_ns": 451168497346,
+      "decisions": 156672,
+      "updates": 153,
+      "checkpoint": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p1-02-post-lock-varied-83/step-471168.pt",
+        "bytes": 1077253,
+        "sha256": "933fef877958dd98c221523b3599c0be165794522c7e82634d6780e70300a496"
+      }
+    },
+    "p1-03-post-lock-gentle-59": {
+      "kind": "ppo",
+      "phase": "Post-lock progression",
+      "active_training_ns": 450754456455,
+      "decisions": 161792,
+      "updates": 158,
+      "checkpoint": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p1-03-post-lock-gentle-59/step-476288.pt",
+        "bytes": 1077189,
+        "sha256": "6f9889274f27cdb71b7d5121437e2543387bb1ab59ee21b199a12cc2ffca3eed"
+      }
+    },
+    "p1-03-post-lock-gentle-83": {
+      "kind": "ppo",
+      "phase": "Post-lock progression",
+      "active_training_ns": 445465858404,
+      "decisions": 154624,
+      "updates": 151,
+      "checkpoint": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p1-03-post-lock-gentle-83/step-469120.pt",
+        "bytes": 1077317,
+        "sha256": "a2f92839dfee4a519b62bf59e98bada45f4838afb7f702c966f88fa01c963ce2"
+      }
+    },
+    "p2-01-bc-retention-59": {
+      "kind": "ppo",
+      "phase": "Skill retention and imitation",
+      "active_training_ns": 451427715871,
+      "decisions": 128000,
+      "updates": 125,
+      "checkpoint": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-01-bc-retention-59/step-442496.pt",
+        "bytes": 1077189,
+        "sha256": "4a932d8486386d3db98773a9c8fe55b79564c1ec5fd4bd1c6054d53555423406"
+      }
+    },
+    "p2-01-bc-retention-83": {
+      "kind": "ppo",
+      "phase": "Skill retention and imitation",
+      "active_training_ns": 451749771773,
+      "decisions": 124928,
+      "updates": 122,
+      "checkpoint": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-01-bc-retention-83/step-439424.pt",
+        "bytes": 1077381,
+        "sha256": "e45028a4f469505f4ed8d9aee6bb3d18f4ee58497a2a0dac98bfde635f90eb4a"
+      }
+    },
+    "p2-02-retention-distill-59": {
+      "kind": "ppo",
+      "phase": "Skill retention and imitation",
+      "active_training_ns": 452283484187,
+      "decisions": 151552,
+      "updates": 148,
+      "checkpoint": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-02-retention-distill-59/step-466048.pt",
+        "bytes": 1077189,
+        "sha256": "2be01c7a5a68805fd5ddfb240b19a19ca5f8f880517687b578c782d2a9b0b707"
+      }
+    },
+    "p2-02-retention-distill-83": {
+      "kind": "ppo",
+      "phase": "Skill retention and imitation",
+      "active_training_ns": 451640440127,
+      "decisions": 152576,
+      "updates": 149,
+      "checkpoint": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-02-retention-distill-83/step-467072.pt",
+        "bytes": 1077381,
+        "sha256": "0f68e4203014fa3225e2013af146a65966041bfd642e884519c38b7b22154dd6"
+      }
+    },
+    "p2-03-retention-low-59": {
+      "kind": "ppo",
+      "phase": "Skill retention and imitation",
+      "active_training_ns": 451092783629,
+      "decisions": 157696,
+      "updates": 154,
+      "checkpoint": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-03-retention-low-59/step-472192.pt",
+        "bytes": 1077189,
+        "sha256": "fb364b5e9818c23f269fe8a1001b9b4622117b68e10f19b7a050c29e6df79c73"
+      }
+    },
+    "p2-03-retention-low-83": {
+      "kind": "ppo",
+      "phase": "Skill retention and imitation",
+      "active_training_ns": 437078277812,
+      "decisions": 134144,
+      "updates": 131,
+      "checkpoint": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-03-retention-low-83/step-448640.pt",
+        "bytes": 1077253,
+        "sha256": "eca408ba99cd0b8a7e7ededa60e3e85350e941715f6679cd9a0d69bead1318f0"
+      }
+    },
+    "p3-01-memory-control-59": {
+      "kind": "ppo",
+      "phase": "Spatial intelligence and exploration",
+      "active_training_ns": 451634690119,
+      "decisions": 148480,
+      "updates": 145,
+      "checkpoint": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-01-memory-control-59/step-462976.pt",
+        "bytes": 1077125,
+        "sha256": "c57c078193a698c8628b385b183952176ecbc1d417a9cb1c979a9948edb915c8"
+      }
+    },
+    "p3-01-memory-control-83": {
+      "kind": "ppo",
+      "phase": "Spatial intelligence and exploration",
+      "active_training_ns": 451244988880,
+      "decisions": 154624,
+      "updates": 151,
+      "checkpoint": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-01-memory-control-83/step-469120.pt",
+        "bytes": 1077317,
+        "sha256": "629967dd7674d46301b5c29683bfb7192a1334cbc0a3334c9254327362327416"
+      }
+    },
+    "p3-02-gru-59": {
+      "kind": "ppo",
+      "phase": "Spatial intelligence and exploration",
+      "active_training_ns": 450034566708,
+      "decisions": 129024,
+      "updates": 126,
+      "checkpoint": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-02-gru-59/step-443520.pt",
+        "bytes": 2468479,
+        "sha256": "788be62338d739d8dd7940c528a4bd34bc93238ab34aabb7dff8f65ef9374532"
+      }
+    },
+    "p3-02-gru-83": {
+      "kind": "ppo",
+      "phase": "Spatial intelligence and exploration",
+      "active_training_ns": 450559653783,
+      "decisions": 111616,
+      "updates": 109,
+      "checkpoint": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-02-gru-83/step-426112.pt",
+        "bytes": 2469083,
+        "sha256": "57208b70ebb2971233ffb88901df6815e5d75f3bb46434a98b73b62f8b947d9e"
+      }
+    },
+    "p3-03-occupancy-59": {
+      "kind": "ppo",
+      "phase": "Spatial intelligence and exploration",
+      "active_training_ns": 451889248483,
+      "decisions": 126976,
+      "updates": 124,
+      "checkpoint": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-03-occupancy-59/step-441472.pt",
+        "bytes": 1336141,
+        "sha256": "c658d09f77f3dedac2e403cabbf10ac74d7cc9be24c0f72be325d0e661355c81"
+      }
+    },
+    "p3-03-occupancy-83": {
+      "kind": "ppo",
+      "phase": "Spatial intelligence and exploration",
+      "active_training_ns": 442603900398,
+      "decisions": 130048,
+      "updates": 127,
+      "checkpoint": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p3-03-occupancy-83/step-444544.pt",
+        "bytes": 1336269,
+        "sha256": "5f72ba4659830e317889e27c3d31375ec0686d0a276917d82705b3ddddfce49c"
+      }
+    },
+    "p4-01-mastery-59": {
+      "kind": "ppo",
+      "phase": "Full-level mastery",
+      "active_training_ns": 451891343140,
+      "decisions": 155648,
+      "updates": 152,
+      "checkpoint": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-01-mastery-59/step-470144.pt",
+        "bytes": 1078469,
+        "sha256": "cc3b6b74d87cfea04cd9b7aa67259e9830e951df558fcb2b1f8c7bf8f0d8a613"
+      }
+    },
+    "p4-01-mastery-83": {
+      "kind": "ppo",
+      "phase": "Full-level mastery",
+      "active_training_ns": 450479285336,
+      "decisions": 101376,
+      "updates": 99,
+      "checkpoint": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-01-mastery-83/step-415872.pt",
+        "bytes": 1078533,
+        "sha256": "562e3074bfb8b9c40ab78bcdc6df81d1867212a68d1d65ea661f83a26512d8b3"
+      }
+    },
+    "p4-02-count-59": {
+      "kind": "ppo",
+      "phase": "Full-level mastery",
+      "active_training_ns": 451323200456,
+      "decisions": 165888,
+      "updates": 162,
+      "checkpoint": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-02-count-59/step-480384.pt",
+        "bytes": 1077125,
+        "sha256": "08c034b4d05a39d55687877e3120d77e573de74edff15be7f8929d1b1bad4faa"
+      }
+    },
+    "p4-02-count-83": {
+      "kind": "ppo",
+      "phase": "Full-level mastery",
+      "active_training_ns": 451431430403,
+      "decisions": 153600,
+      "updates": 150,
+      "checkpoint": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-02-count-83/step-468096.pt",
+        "bytes": 1077317,
+        "sha256": "b1d733500de240bc09fcb030d74f9347578459a45e0b1c71a16db1b80e545d13"
+      }
+    },
+    "p4-03-rnd-59": {
+      "kind": "ppo",
+      "phase": "Full-level mastery",
+      "active_training_ns": 450846277342,
+      "decisions": 165888,
+      "updates": 162,
+      "checkpoint": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-03-rnd-59/step-480384.pt",
+        "bytes": 1446911,
+        "sha256": "bbbe7e68cb4c8da0965e561bafd7a55879b2760830c2ed601751b7df5b7754be"
+      }
+    },
+    "p4-03-rnd-83": {
+      "kind": "ppo",
+      "phase": "Full-level mastery",
+      "active_training_ns": 443625664498,
+      "decisions": 157696,
+      "updates": 154,
+      "checkpoint": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p4-03-rnd-83/step-472192.pt",
+        "bytes": 1447103,
+        "sha256": "a7491f8b1ca4a9886f52beb8f5cf508a6ba9f236ef371184b9dd73a9b433693e"
+      }
+    },
+    "p2-01-bc-retention-59-bc": {
+      "kind": "supervised",
+      "phase": "Skill retention and imitation",
+      "active_training_ns": 2975785124,
+      "decisions": 0,
+      "updates": 240,
+      "checkpoint": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-01-bc-retention-59-bc/latest.pt",
+        "bytes": 1082346,
+        "sha256": "2ba5ddbeb2e7225162adbbad3e450974898a5cca834ae32119a92cb98d81c9f5"
+      }
+    },
+    "p2-01-bc-retention-83-bc": {
+      "kind": "supervised",
+      "phase": "Skill retention and imitation",
+      "active_training_ns": 3746944011,
+      "decisions": 0,
+      "updates": 240,
+      "checkpoint": {
+        "path": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/training/p2-01-bc-retention-83-bc/latest.pt",
+        "bytes": 1082346,
+        "sha256": "b855005728581ff249b00a0cc8db336c03144acb84d368f5eb2044881ef69646"
+      }
+    }
+  },
+  "final_jobs": [
+    {
+      "command": [
+        "/home/darshan/doom-test/.venv/bin/python",
+        "-m",
+        "scripts.adaptive_compliance",
+        "verify",
+        "--repo",
+        "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/exports/p3-02-gru-83",
+        "--out",
+        "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/finalize-attempts/1795742728896769640/artifact",
+        "--devices",
+        "cpu",
+        "cuda",
+        "--repeats",
+        "5",
+        "--container-repeats",
+        "2"
+      ],
+      "log": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/finalize-attempts/1795742728896769640/compliance.log",
+      "wall_seconds": 105.58002735300397,
+      "wall_limit_seconds": 660,
+      "return_code": 1,
+      "stop_reason": null,
+      "passed": false
+    },
+    {
+      "command": [
+        "/home/darshan/doom-test/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "--junitxml",
+        "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/finalize-attempts/1795742728896769640/pytest.xml"
+      ],
+      "log": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/finalize-attempts/1795742728896769640/tests.log",
+      "wall_seconds": 42.520997112995246,
+      "wall_limit_seconds": 480,
+      "return_code": 0,
+      "stop_reason": null,
+      "passed": true
+    },
+    {
+      "command": [
+        "/home/darshan/doom-test/.venv/bin/python",
+        "/home/darshan/projects/doom-nexus/validate.py",
+        "--repo",
+        "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/finalize-attempts/1795742728896769640/artifact/repo-checkout",
+        "--device",
+        "cpu"
+      ],
+      "log": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/finalize-attempts/1795742728896769640/validator-host-cpu.log",
+      "wall_seconds": 4.5022914500004845,
+      "wall_limit_seconds": 170,
+      "return_code": 0,
+      "stop_reason": null,
+      "passed": true
+    },
+    {
+      "command": [
+        "/home/darshan/doom-test/.venv/bin/python",
+        "/home/darshan/projects/doom-nexus/validate.py",
+        "--repo",
+        "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/finalize-attempts/1795742728896769640/artifact/repo-checkout",
+        "--device",
+        "cuda"
+      ],
+      "log": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/finalize-attempts/1795742728896769640/validator-host-cuda.log",
+      "wall_seconds": 9.003736119993846,
+      "wall_limit_seconds": 170,
+      "return_code": 0,
+      "stop_reason": null,
+      "passed": true
+    }
+  ]
+}

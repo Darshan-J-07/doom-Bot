@@ -1,0 +1,105 @@
+{
+  "artifact": {
+    "repo": "/home/darshan/projects/doom-nexus/runs/continuity-campaign-20261127/finalize-attempts/1795742728896769640/artifact/repo-checkout",
+    "weights_sha256": "a65728d2ba6b69d7de183d4b1a1f86cff6a3393a92785893175a48c206c42f5e",
+    "source_sha256": {
+      "submission/__init__.py": "744ae4ad719f618eb6d51cfbcabbba4e90f29e78d40bb8823f3a5cebd2ba1e88",
+      "submission/agent.py": "8125adcf19afdbce10773e6ee88d7f548fae6427f5ec4a62f7ab17a10978ac1d",
+      "submission/memory.py": "68c00291b25c51e7a06f36ddfa6597cf5bd91b6f040df41ac1f1e3e519039c52",
+      "submission/model.py": "f79477e25ee87d8fdf185cf185fd9d0b81abd9bc84060d143a54a2958b27ceb8",
+      "submission/preprocessing.py": "47a6e05da7a3b228353a38bd14da90b66eab172b3e7e901e9bf131c12ad6cf86"
+    }
+  },
+  "gpu_nvidia_smi": "NVIDIA GeForce RTX 2050, 621.40, 4096",
+  "platform": "local evaluation transport",
+  "probe_map": "/home/darshan/projects/doom-nexus/maps/two_rooms.wad",
+  "probe_map_sha256": "24f8fe53389a76c07ee09c3d25aa136d3fc95ad0e1c07357ee43082a65ac352a",
+  "max_decisions": 525,
+  "earlier_cuda_history": {
+    "timed_out_original": {
+      "log": "/home/darshan/projects/doom-nexus/runs/exit-switch-study/compliance-seed31/structured-31-25000/validator/container-cuda.log",
+      "sha256": "be17007a5988536965194c1c84b78125ce90e4d4008d31efb5e9c0722a76a579",
+      "observed": [
+        "\u2713 Initialization: 4.8s (limit 60s) on device 'cuda'",
+        "\u2717 Agent failed (timeout during act): no reply within 10.0s",
+        "FAILED: 1 check(s) failed, 0 warning(s)."
+      ]
+    },
+    "passed_same_export_retry": {
+      "log": "/home/darshan/projects/doom-nexus/runs/exit-switch-study/compliance-seed31/structured-31-25000/validator-retry1/container-cuda.log",
+      "sha256": "ef1e6457c13afa2c2cd4e0a3416ea669591105bc8582774ae8fe50e1426a3da6",
+      "observed": [
+        "\u2713 Initialization: 4.7s (limit 60s) on device 'cuda'",
+        "\u2713 Step latency 'two_rooms.wad:MAP01': first 1609 ms, p50 9.9 ms, p99 40.2 ms, max 1609 ms",
+        "PASSED"
+      ]
+    },
+    "warm_baseline_earlier": {
+      "log": "/home/darshan/projects/doom-nexus/runs/limit-campaign-20261127/compliance/approach-41-12000/validator/container-cuda.log",
+      "sha256": "b8474ea3be4eaa4837016620e7c05adab908cc0b124f66b1766b385657c15f6c",
+      "observed": [
+        "\u2713 Initialization: 7.4s (limit 60s) on device 'cuda'",
+        "\u2713 Step latency 'two_rooms.wad:MAP01': first 9420 ms, p50 10.5 ms, p99 50.0 ms, max 9420 ms",
+        "PASSED"
+      ]
+    }
+  },
+  "measurement": "A new one-CPU DoomAgent subprocess per trial. Action round trip includes preprocessing and host-visible output. CUDA tensor-to-host output synchronizes action availability.",
+  "measurements": {
+    "cuda": {
+      "init_seconds": {
+        "samples": 5,
+        "mean": 1.3301693569985218,
+        "median": 1.1317454829986673,
+        "p95": 1.9246642810001502,
+        "p99": 2.049294560201233,
+        "maximum": 2.080452130001504
+      },
+      "reset_seconds": {
+        "samples": 5,
+        "mean": 0.0006859841974801384,
+        "median": 0.0006639239945798181,
+        "p95": 0.0008701953964191488,
+        "p99": 0.0009033910764264875,
+        "maximum": 0.000911689996428322
+      },
+      "ready_to_first_call_ms": {
+        "samples": 5,
+        "mean": 37.66153419710463,
+        "median": 32.894270996621344,
+        "p95": 50.715583996498026,
+        "p99": 53.18036239652429,
+        "maximum": 53.79655699653085
+      },
+      "first_action_ms": {
+        "samples": 5,
+        "mean": 622.6937216022634,
+        "median": 400.7559029996628,
+        "p95": 1304.9751274040316,
+        "p99": 1478.3081542837317,
+        "maximum": 1521.6414110036567
+      },
+      "decision_ms": {
+        "samples": 2590,
+        "mean": 9.302263006910795,
+        "median": 6.84996699783369,
+        "p95": 14.437438751701846,
+        "p99": 16.992566149419922,
+        "maximum": 1521.6414110036567
+      },
+      "subsequent_decision_ms": {
+        "samples": 2585,
+        "mean": 8.115819179840482,
+        "median": 6.8483789946185425,
+        "p95": 14.392139400297308,
+        "p99": 16.539273925009176,
+        "maximum": 45.691151994105894
+      },
+      "errors": [],
+      "max_agent_rss_mib": 1266.13671875,
+      "max_agent_gpu_mib": null,
+      "max_additional_whole_gpu_mib": 111,
+      "status": "passed"
+    }
+  }
+}
